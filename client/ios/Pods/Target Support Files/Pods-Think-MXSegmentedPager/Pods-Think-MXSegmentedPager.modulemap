@@ -1,0 +1,6 @@
+framework module MXSegmentedPager {
+  umbrella header "Pods-Think-MXSegmentedPager-umbrella.h"
+
+  export *
+  module * { export * }
+}

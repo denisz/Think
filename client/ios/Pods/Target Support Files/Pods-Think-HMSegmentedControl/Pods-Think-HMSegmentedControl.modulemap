@@ -1,0 +1,6 @@
+framework module HMSegmentedControl {
+  umbrella header "Pods-Think-HMSegmentedControl-umbrella.h"
+
+  export *
+  module * { export * }
+}

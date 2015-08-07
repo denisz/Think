@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileViewConroller">
+            <connections>
+                <outlet property="label" destination="2cY-yQ-JDm" id="6lo-h0-WLI"/>
+                <outlet property="view" destination="iN0-l3-epB" id="Y7O-LY-0mO"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2cY-yQ-JDm">
+                    <rect key="frame" x="0.0" y="76" width="600" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="qs9-GE-Wwa"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="2cY-yQ-JDm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="76" id="HiT-7t-iK1"/>
+                <constraint firstItem="2cY-yQ-JDm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="SFW-5A-qAH"/>
+                <constraint firstAttribute="trailing" secondItem="2cY-yQ-JDm" secondAttribute="trailing" id="lUZ-KP-6Vd"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

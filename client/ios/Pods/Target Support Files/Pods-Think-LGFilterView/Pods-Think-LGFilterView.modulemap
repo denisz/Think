@@ -1,0 +1,6 @@
+framework module LGFilterView {
+  umbrella header "Pods-Think-LGFilterView-umbrella.h"
+
+  export *
+  module * { export * }
+}
