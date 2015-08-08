@@ -40,6 +40,10 @@ let kReusableFeedPostViewCell = "FeedPostViewCell"
         return cell
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default;
+    }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle  {
         return UIStatusBarStyle.LightContent

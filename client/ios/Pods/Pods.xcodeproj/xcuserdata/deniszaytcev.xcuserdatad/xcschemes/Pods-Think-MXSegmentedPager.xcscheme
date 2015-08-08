@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A98F94E4C7948B75FA0E2B4D"
+               BlueprintIdentifier = "5632B03090B569008DE4DEEA"
                BuildableName = "MXSegmentedPager.framework"
                BlueprintName = "Pods-Think-MXSegmentedPager"
                ReferencedContainer = "container:Pods.xcodeproj">

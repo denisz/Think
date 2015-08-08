@@ -12,6 +12,18 @@
 #define COCOAPODS_VERSION_MINOR_Alamofire 3
 #define COCOAPODS_VERSION_PATCH_Alamofire 0
 
+// AsyncDisplayKit
+#define COCOAPODS_POD_AVAILABLE_AsyncDisplayKit
+#define COCOAPODS_VERSION_MAJOR_AsyncDisplayKit 1
+#define COCOAPODS_VERSION_MINOR_AsyncDisplayKit 2
+#define COCOAPODS_VERSION_PATCH_AsyncDisplayKit 3
+
+// AsyncDisplayKit/ASDealloc2MainObject
+#define COCOAPODS_POD_AVAILABLE_AsyncDisplayKit_ASDealloc2MainObject
+#define COCOAPODS_VERSION_MAJOR_AsyncDisplayKit_ASDealloc2MainObject 1
+#define COCOAPODS_VERSION_MINOR_AsyncDisplayKit_ASDealloc2MainObject 2
+#define COCOAPODS_VERSION_PATCH_AsyncDisplayKit_ASDealloc2MainObject 3
+
 // FXBlurView
 #define COCOAPODS_POD_AVAILABLE_FXBlurView
 #define COCOAPODS_VERSION_MAJOR_FXBlurView 1
@@ -60,6 +72,12 @@
 #define COCOAPODS_VERSION_MINOR_LTMorphingLabel 0
 #define COCOAPODS_VERSION_PATCH_LTMorphingLabel 7
 
+// LoremIpsum
+#define COCOAPODS_POD_AVAILABLE_LoremIpsum
+#define COCOAPODS_VERSION_MAJOR_LoremIpsum 1
+#define COCOAPODS_VERSION_MINOR_LoremIpsum 0
+#define COCOAPODS_VERSION_PATCH_LoremIpsum 0
+
 // MXSegmentedPager
 #define COCOAPODS_POD_AVAILABLE_MXSegmentedPager
 #define COCOAPODS_VERSION_MAJOR_MXSegmentedPager 1
@@ -71,6 +89,12 @@
 #define COCOAPODS_VERSION_MAJOR_PureLayout 2
 #define COCOAPODS_VERSION_MINOR_PureLayout 0
 #define COCOAPODS_VERSION_PATCH_PureLayout 6
+
+// SlackTextViewController
+#define COCOAPODS_POD_AVAILABLE_SlackTextViewController
+#define COCOAPODS_VERSION_MAJOR_SlackTextViewController 1
+#define COCOAPODS_VERSION_MINOR_SlackTextViewController 6
+#define COCOAPODS_VERSION_PATCH_SlackTextViewController 0
 
 // VGParallaxHeader
 #define COCOAPODS_POD_AVAILABLE_VGParallaxHeader

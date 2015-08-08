@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     static var started: Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent;
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -45,15 +46,19 @@ class ViewController: UIViewController {
         UITextField.appearance().tintColor = UIColor.whiteColor()
         UISwitch.appearance().tintColor = UIColor(red:0, green:0.64, blue:0.85, alpha:1)
         
+        UINavigationBar.appearance().titleTextAttributes = [
+            NSForegroundColorAttributeName: UIColor(red:0.2, green:0.2, blue:0.2, alpha:1),
+            NSFontAttributeName: UIFont(name: "OpenSans-Light", size: 19)!
+        ]
         
-        // Sets background to a blank/empty image
+//        // Sets background to a blank/empty image
         UINavigationBar.appearance().setBackgroundImage(UIImage(), forBarMetrics: .Default)
-        // Sets shadow (line below the bar) to a blank image
-        UINavigationBar.appearance().shadowImage = UIImage()
-        // Sets the translucent background color
-        UINavigationBar.appearance().backgroundColor = UIColor.clearColor()
-        // Set translucent. (Default value is already true, so this can be removed if desired.)
-        UINavigationBar.appearance().translucent = true
+//        // Sets shadow (line below the bar) to a blank image
+//        UINavigationBar.appearance().shadowImage = UIImage()
+//        // Sets the translucent background color
+        UINavigationBar.appearance().backgroundColor = UIColor.whiteColor()
+//        // Set translucent. (Default value is already true, so this can be removed if desired.)
+//        UINavigationBar.appearance().translucent = true
         
     }
     

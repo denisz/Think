@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C53E5A9520EA9CF81C48FC28"
+               BlueprintIdentifier = "B3F0F3C852B75A3E10C83442"
                BuildableName = "VGParallaxHeader.framework"
                BlueprintName = "Pods-Think-VGParallaxHeader"
                ReferencedContainer = "container:Pods.xcodeproj">

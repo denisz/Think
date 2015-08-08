@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "36A1507B9FEAA2CCB0951792"
+               BlueprintIdentifier = "90DED1695E8B73A7E0E822AC"
                BuildableName = "LGAlertView.framework"
                BlueprintName = "Pods-Think-LGAlertView"
                ReferencedContainer = "container:Pods.xcodeproj">

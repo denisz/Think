@@ -79,6 +79,8 @@ protocol LogInViewControllerDelegate {
         if currentUser!.sessionToken != nil {
             self.dismissViewControllerAnimated(false, completion: nil)
         }
+        
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent;
     }
     
     override func viewDidLayoutSubviews() {

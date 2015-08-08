@@ -49,6 +49,7 @@ code_sign() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework 'Alamofire.framework'
+  install_framework 'AsyncDisplayKit.framework'
   install_framework 'FXBlurView.framework'
   install_framework 'HMSegmentedControl.framework'
   install_framework 'Kingfisher.framework'
@@ -57,13 +58,16 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework 'LGFilterView.framework'
   install_framework 'LGSideMenuController.framework'
   install_framework 'LTMorphingLabel.framework'
+  install_framework 'LoremIpsum.framework'
   install_framework 'MXSegmentedPager.framework'
   install_framework 'PureLayout.framework'
+  install_framework 'SlackTextViewController.framework'
   install_framework 'VGParallaxHeader.framework'
   install_framework 'XLForm.framework'
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework 'Alamofire.framework'
+  install_framework 'AsyncDisplayKit.framework'
   install_framework 'FXBlurView.framework'
   install_framework 'HMSegmentedControl.framework'
   install_framework 'Kingfisher.framework'
@@ -72,8 +76,10 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework 'LGFilterView.framework'
   install_framework 'LGSideMenuController.framework'
   install_framework 'LTMorphingLabel.framework'
+  install_framework 'LoremIpsum.framework'
   install_framework 'MXSegmentedPager.framework'
   install_framework 'PureLayout.framework'
+  install_framework 'SlackTextViewController.framework'
   install_framework 'VGParallaxHeader.framework'
   install_framework 'XLForm.framework'
 fi

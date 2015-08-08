@@ -47,6 +47,12 @@ protocol SignUpViewControllerDelegate {
         self.signUp.cornerEdge()
         
         self.setupKeyboard()
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent;
     }
 
     deinit {

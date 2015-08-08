@@ -36,15 +36,38 @@ let kReusableProfilePostViewCell = "ProfilePostViewCell"
     
     func customizeNavigationBar() {
         self.automaticallyAdjustsScrollViewInsets = false
+        var navigationBar = self.navigationController?.navigationBar
+        
+        // Sets background to a blank/empty image
+        navigationBar?.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        // Sets shadow (line below the bar) to a blank image
+        navigationBar?.shadowImage = UIImage()
+        // Sets the translucent background color
+        navigationBar?.backgroundColor = UIColor.clearColor()
+        // Set translucent. (Default value is already true, so this can be removed if desired.)
+        navigationBar?.translucent = true
+        
+        let editBarButtonItem = UIBarButtonItem(title: "Edit".uppercaseString, style: UIBarButtonItemStyle.Plain, target: self, action: "didTapEdit:")
+        let attributes = [
+            NSForegroundColorAttributeName: UIColor.whiteColor(),
+            NSFontAttributeName: UIFont(name: "OpenSans-Light", size: 18)!
+        ]
+        editBarButtonItem.setTitleTextAttributes(attributes, forState: UIControlState.Normal)
+        self.navigationItem.rightBarButtonItem = editBarButtonItem
+        self.configureNavigationBarBackBtn(UIColor.whiteColor())
     }
     
     override func viewDidAppear(animated: Bool) {
-        UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: UIStatusBarAnimation.Fade)
         super.viewDidAppear(animated)
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent;
+    }
+    
+    func didTapEdit(sender: AnyObject?) {
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     override func viewDidDisappear(animated: Bool) {
-        UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation: UIStatusBarAnimation.Fade)
+//        UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation: UIStatusBarAnimation.Fade)
         super.viewDidDisappear(animated)
     }
     
