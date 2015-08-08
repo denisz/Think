@@ -27,6 +27,5 @@ extension UITextField {
         self.addConstraints(menuBottomHairline_constraint_V)
         
         menuBottomHairline.backgroundColor = color
-        
     }
 }

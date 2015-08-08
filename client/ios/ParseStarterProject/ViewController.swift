@@ -37,11 +37,24 @@ class ViewController: UIViewController {
     
     func app() {
         let appController = AppViewController()
-        self.presentViewController(appController, animated:true, completion: nil)
+        let navigationController = BaseNavigationController(rootViewController: appController)
+        self.presentViewController(navigationController, animated:true, completion: nil)
     }
     
-    func globalApperence() {
+    class func globalApperence() {
         UITextField.appearance().tintColor = UIColor.whiteColor()
+        UISwitch.appearance().tintColor = UIColor(red:0, green:0.64, blue:0.85, alpha:1)
+        
+        
+        // Sets background to a blank/empty image
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        // Sets shadow (line below the bar) to a blank image
+        UINavigationBar.appearance().shadowImage = UIImage()
+        // Sets the translucent background color
+        UINavigationBar.appearance().backgroundColor = UIColor.clearColor()
+        // Set translucent. (Default value is already true, so this can be removed if desired.)
+        UINavigationBar.appearance().translucent = true
+        
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle  {

@@ -10,4 +10,9 @@ import Foundation
 import UIKit
 
 class BaseNavigationController: UINavigationController {
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle  {
+        return UIStatusBarStyle.LightContent
+    }
+
 }

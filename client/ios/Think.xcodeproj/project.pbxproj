@@ -34,7 +34,6 @@
 		A966ED731B7384B9002DFED8 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A966ED721B7384B9002DFED8 /* LogInViewController.swift */; };
 		A966ED771B73871D002DFED8 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A966ED761B73871D002DFED8 /* SignUpViewController.swift */; };
 		A966ED791B73891B002DFED8 /* AppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A966ED781B73891B002DFED8 /* AppViewController.swift */; };
-		A966ED7B1B73895F002DFED8 /* AppViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A966ED7A1B73895F002DFED8 /* AppViewController.xib */; };
 		A966ED7D1B738AE7002DFED8 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A966ED7C1B738AE7002DFED8 /* Social.framework */; };
 		A966ED7F1B738AEF002DFED8 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A966ED7E1B738AEF002DFED8 /* Accounts.framework */; };
 		A966ED851B73A0FE002DFED8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A966ED841B73A0FE002DFED8 /* Constants.swift */; };
@@ -52,18 +51,41 @@
 		A966EDA31B73A7E8002DFED8 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A966ED981B73A7E8002DFED8 /* OpenSans-Regular.ttf */; };
 		A966EDA41B73A7E8002DFED8 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A966ED991B73A7E8002DFED8 /* OpenSans-Semibold.ttf */; };
 		A966EDA51B73A7E8002DFED8 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A966ED9A1B73A7E8002DFED8 /* OpenSans-SemiboldItalic.ttf */; };
-		A966EDA71B73C22F002DFED8 /* LogInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A966EDA61B73C22F002DFED8 /* LogInViewController.xib */; };
-		A966EDA91B73C24D002DFED8 /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A966EDA81B73C24D002DFED8 /* SignUpViewController.xib */; };
 		A966EDAB1B73D3BF002DFED8 /* UITextField+placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A966EDAA1B73D3BF002DFED8 /* UITextField+placeholder.swift */; };
 		A966EDAD1B73D5C9002DFED8 /* UIViewController+keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A966EDAC1B73D5C9002DFED8 /* UIViewController+keyboard.swift */; };
 		A966EDB01B7402BF002DFED8 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A966EDAF1B7402BF002DFED8 /* ProfileViewController.swift */; };
-		A966EDB21B74032C002DFED8 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A966EDB11B74032C002DFED8 /* ProfileViewController.xib */; };
+		A9B7D45A1B752C5D00E79F12 /* UIImageView+corderEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B7D4591B752C5D00E79F12 /* UIImageView+corderEdge.swift */; };
+		A9B7D45C1B752E1700E79F12 /* LabelViewWithIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B7D45B1B752E1700E79F12 /* LabelViewWithIcon.swift */; };
+		A9B7D45E1B752ED400E79F12 /* UIImage+tintColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B7D45D1B752ED400E79F12 /* UIImage+tintColor.swift */; };
+		A9B7D4601B75424B00E79F12 /* UImageVIewCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B7D45F1B75424B00E79F12 /* UImageVIewCircle.swift */; };
+		A9B7D4621B75580600E79F12 /* Test.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9B7D4611B75580600E79F12 /* Test.storyboard */; };
+		A9B7D4681B75600C00E79F12 /* UIViewController+ScrollingStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B7D4671B75600C00E79F12 /* UIViewController+ScrollingStatusBar.m */; };
 		A9D6EC571B7405A7002546A3 /* StatefulViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D6EC551B7405A7002546A3 /* StatefulViewController.swift */; };
 		A9D6EC581B7405A7002546A3 /* ViewStateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D6EC561B7405A7002546A3 /* ViewStateMachine.swift */; };
 		A9D6EC5A1B746BC7002546A3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D6EC591B746BC6002546A3 /* AVFoundation.framework */; };
 		A9D6EC5C1B747472002546A3 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D6EC5B1B747472002546A3 /* CoreMedia.framework */; };
 		A9D6EC5E1B747486002546A3 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D6EC5D1B747486002546A3 /* CoreMotion.framework */; };
 		A9D6EC601B7474A6002546A3 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D6EC5F1B7474A5002546A3 /* AdSupport.framework */; };
+		A9D6EC641B74D76F002546A3 /* BaseQueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D6EC631B74D76F002546A3 /* BaseQueryViewController.swift */; };
+		A9D6EC661B74D7D9002546A3 /* BaseQueryTableViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D6EC651B74D7D9002546A3 /* BaseQueryTableViewContoller.swift */; };
+		A9D6EC6D1B74D957002546A3 /* BasicPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D6EC681B74D957002546A3 /* BasicPlaceholderView.swift */; };
+		A9D6EC6E1B74D957002546A3 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D6EC691B74D957002546A3 /* EmptyView.swift */; };
+		A9D6EC6F1B74D957002546A3 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D6EC6A1B74D957002546A3 /* ErrorView.swift */; };
+		A9D6EC701B74D957002546A3 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D6EC6B1B74D957002546A3 /* LoadingView.swift */; };
+		A9D6EC711B74D957002546A3 /* LoadingViewProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D6EC6C1B74D957002546A3 /* LoadingViewProfile.swift */; };
+		A9D6EC791B74DCA6002546A3 /* String+localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D6EC781B74DCA6002546A3 /* String+localized.swift */; };
+		A9D6EC7B1B74E66E002546A3 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D6EC7A1B74E66E002546A3 /* FeedViewController.swift */; };
+		A9D6EC961B7515B5002546A3 /* AppViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9D6EC901B7515B5002546A3 /* AppViewController.xib */; };
+		A9D6EC971B7515B5002546A3 /* FeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9D6EC911B7515B5002546A3 /* FeedViewController.xib */; };
+		A9D6EC981B7515B5002546A3 /* LogInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9D6EC921B7515B5002546A3 /* LogInViewController.xib */; };
+		A9D6EC991B7515B5002546A3 /* ProfilePostViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9D6EC931B7515B5002546A3 /* ProfilePostViewCell.xib */; };
+		A9D6EC9A1B7515B5002546A3 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9D6EC941B7515B5002546A3 /* ProfileViewController.xib */; };
+		A9D6EC9B1B7515B5002546A3 /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9D6EC951B7515B5002546A3 /* SignUpViewController.xib */; };
+		A9D6EC9E1B7515F6002546A3 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D6EC9D1B7515F6002546A3 /* ProfileHeaderView.swift */; };
+		A9D6ECA01B751655002546A3 /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9D6EC9F1B751655002546A3 /* ProfileHeaderView.xib */; };
+		A9D6ECA21B7516A2002546A3 /* ProfilePostViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D6ECA11B7516A2002546A3 /* ProfilePostViewCell.swift */; };
+		A9D6ECA41B751B02002546A3 /* FeedPostViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D6ECA31B751B02002546A3 /* FeedPostViewCell.swift */; };
+		A9D6ECA61B751B0D002546A3 /* FeedPostViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9D6ECA51B751B0D002546A3 /* FeedPostViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,7 +122,6 @@
 		A966ED721B7384B9002DFED8 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		A966ED761B73871D002DFED8 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		A966ED781B73891B002DFED8 /* AppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppViewController.swift; sourceTree = "<group>"; };
-		A966ED7A1B73895F002DFED8 /* AppViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppViewController.xib; sourceTree = "<group>"; };
 		A966ED7C1B738AE7002DFED8 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		A966ED7E1B738AEF002DFED8 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		A966ED841B73A0FE002DFED8 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -118,19 +139,43 @@
 		A966ED981B73A7E8002DFED8 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		A966ED991B73A7E8002DFED8 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
 		A966ED9A1B73A7E8002DFED8 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
-		A966EDA61B73C22F002DFED8 /* LogInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LogInViewController.xib; sourceTree = "<group>"; };
-		A966EDA81B73C24D002DFED8 /* SignUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignUpViewController.xib; sourceTree = "<group>"; };
 		A966EDAA1B73D3BF002DFED8 /* UITextField+placeholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+placeholder.swift"; sourceTree = "<group>"; };
 		A966EDAC1B73D5C9002DFED8 /* UIViewController+keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+keyboard.swift"; sourceTree = "<group>"; };
 		A966EDAE1B73D8DA002DFED8 /* Think.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Think.entitlements; sourceTree = "<group>"; };
 		A966EDAF1B7402BF002DFED8 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		A966EDB11B74032C002DFED8 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
+		A9B7D4591B752C5D00E79F12 /* UIImageView+corderEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+corderEdge.swift"; sourceTree = "<group>"; };
+		A9B7D45B1B752E1700E79F12 /* LabelViewWithIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelViewWithIcon.swift; sourceTree = "<group>"; };
+		A9B7D45D1B752ED400E79F12 /* UIImage+tintColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+tintColor.swift"; sourceTree = "<group>"; };
+		A9B7D45F1B75424B00E79F12 /* UImageVIewCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UImageVIewCircle.swift; sourceTree = "<group>"; };
+		A9B7D4611B75580600E79F12 /* Test.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Test.storyboard; sourceTree = "<group>"; };
+		A9B7D4661B75600200E79F12 /* UIViewController+ScrollingStatusBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ScrollingStatusBar.h"; sourceTree = "<group>"; };
+		A9B7D4671B75600C00E79F12 /* UIViewController+ScrollingStatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ScrollingStatusBar.m"; sourceTree = "<group>"; };
 		A9D6EC551B7405A7002546A3 /* StatefulViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatefulViewController.swift; sourceTree = "<group>"; };
 		A9D6EC561B7405A7002546A3 /* ViewStateMachine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewStateMachine.swift; sourceTree = "<group>"; };
 		A9D6EC591B746BC6002546A3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		A9D6EC5B1B747472002546A3 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		A9D6EC5D1B747486002546A3 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		A9D6EC5F1B7474A5002546A3 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		A9D6EC631B74D76F002546A3 /* BaseQueryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseQueryViewController.swift; sourceTree = "<group>"; };
+		A9D6EC651B74D7D9002546A3 /* BaseQueryTableViewContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseQueryTableViewContoller.swift; sourceTree = "<group>"; };
+		A9D6EC681B74D957002546A3 /* BasicPlaceholderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicPlaceholderView.swift; sourceTree = "<group>"; };
+		A9D6EC691B74D957002546A3 /* EmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
+		A9D6EC6A1B74D957002546A3 /* ErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		A9D6EC6B1B74D957002546A3 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		A9D6EC6C1B74D957002546A3 /* LoadingViewProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewProfile.swift; sourceTree = "<group>"; };
+		A9D6EC781B74DCA6002546A3 /* String+localized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+localized.swift"; sourceTree = "<group>"; };
+		A9D6EC7A1B74E66E002546A3 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		A9D6EC901B7515B5002546A3 /* AppViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppViewController.xib; sourceTree = "<group>"; };
+		A9D6EC911B7515B5002546A3 /* FeedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedViewController.xib; sourceTree = "<group>"; };
+		A9D6EC921B7515B5002546A3 /* LogInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LogInViewController.xib; sourceTree = "<group>"; };
+		A9D6EC931B7515B5002546A3 /* ProfilePostViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfilePostViewCell.xib; sourceTree = "<group>"; };
+		A9D6EC941B7515B5002546A3 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
+		A9D6EC951B7515B5002546A3 /* SignUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignUpViewController.xib; sourceTree = "<group>"; };
+		A9D6EC9D1B7515F6002546A3 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		A9D6EC9F1B751655002546A3 /* ProfileHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
+		A9D6ECA11B7516A2002546A3 /* ProfilePostViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePostViewCell.swift; sourceTree = "<group>"; };
+		A9D6ECA31B751B02002546A3 /* FeedPostViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedPostViewCell.swift; sourceTree = "<group>"; };
+		A9D6ECA51B751B0D002546A3 /* FeedPostViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedPostViewCell.xib; sourceTree = "<group>"; };
 		B9C7B197D1564C4ECD0230DB /* Pods_Think.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Think.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -199,6 +244,7 @@
 		81BA81471A49DA1800E65899 /* ParseStarterProject */ = {
 			isa = PBXGroup;
 			children = (
+				A9D6EC9C1B7515E5002546A3 /* CustomViews */,
 				A966ED861B73A147002DFED8 /* Playground */,
 				A966ED501B737C6F002DFED8 /* Application */,
 				A966ED511B737C6F002DFED8 /* Controllers */,
@@ -278,6 +324,7 @@
 				A966ED761B73871D002DFED8 /* SignUpViewController.swift */,
 				A966ED781B73891B002DFED8 /* AppViewController.swift */,
 				A966EDAF1B7402BF002DFED8 /* ProfileViewController.swift */,
+				A9D6EC7A1B74E66E002546A3 /* FeedViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -318,10 +365,14 @@
 		A966ED561B737C6F002DFED8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				A966ED7A1B73895F002DFED8 /* AppViewController.xib */,
-				A966EDA61B73C22F002DFED8 /* LogInViewController.xib */,
-				A966EDA81B73C24D002DFED8 /* SignUpViewController.xib */,
-				A966EDB11B74032C002DFED8 /* ProfileViewController.xib */,
+				A9D6EC901B7515B5002546A3 /* AppViewController.xib */,
+				A9D6EC911B7515B5002546A3 /* FeedViewController.xib */,
+				A9D6EC921B7515B5002546A3 /* LogInViewController.xib */,
+				A9D6EC931B7515B5002546A3 /* ProfilePostViewCell.xib */,
+				A9D6EC941B7515B5002546A3 /* ProfileViewController.xib */,
+				A9D6EC951B7515B5002546A3 /* SignUpViewController.xib */,
+				A9D6EC9F1B751655002546A3 /* ProfileHeaderView.xib */,
+				A9D6ECA51B751B0D002546A3 /* FeedPostViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -331,6 +382,8 @@
 			children = (
 				A966ED5E1B737D10002DFED8 /* BaseViewController.swift */,
 				A966ED601B737D31002DFED8 /* BaseNavigationController.swift */,
+				A9D6EC631B74D76F002546A3 /* BaseQueryViewController.swift */,
+				A9D6EC651B74D7D9002546A3 /* BaseQueryTableViewContoller.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -338,6 +391,7 @@
 		A966ED5B1B737CFA002DFED8 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				A9D6EC671B74D957002546A3 /* PlaceholderViews */,
 				A966ED891B73A22C002DFED8 /* Views */,
 				A966ED5C1B737CFA002DFED8 /* Constants */,
 			);
@@ -355,6 +409,7 @@
 		A966ED5D1B737CFA002DFED8 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				A9B7D4651B755FF700E79F12 /* ScrollingViewController */,
 				A9D6EC541B7405A7002546A3 /* StatefulViewController */,
 			);
 			path = Vendors;
@@ -364,6 +419,7 @@
 			isa = PBXGroup;
 			children = (
 				A966ED871B73A15E002DFED8 /* view.xib */,
+				A9B7D4611B75580600E79F12 /* Test.storyboard */,
 			);
 			path = Playground;
 			sourceTree = "<group>";
@@ -375,6 +431,11 @@
 				A966ED8C1B73A316002DFED8 /* UITextField+border.swift */,
 				A966EDAA1B73D3BF002DFED8 /* UITextField+placeholder.swift */,
 				A966EDAC1B73D5C9002DFED8 /* UIViewController+keyboard.swift */,
+				A9D6EC781B74DCA6002546A3 /* String+localized.swift */,
+				A9B7D4591B752C5D00E79F12 /* UIImageView+corderEdge.swift */,
+				A9B7D45B1B752E1700E79F12 /* LabelViewWithIcon.swift */,
+				A9B7D45D1B752ED400E79F12 /* UIImage+tintColor.swift */,
+				A9B7D45F1B75424B00E79F12 /* UImageVIewCircle.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -405,6 +466,15 @@
 			path = Open_Sans;
 			sourceTree = "<group>";
 		};
+		A9B7D4651B755FF700E79F12 /* ScrollingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A9B7D4661B75600200E79F12 /* UIViewController+ScrollingStatusBar.h */,
+				A9B7D4671B75600C00E79F12 /* UIViewController+ScrollingStatusBar.m */,
+			);
+			path = ScrollingViewController;
+			sourceTree = "<group>";
+		};
 		A9D6EC541B7405A7002546A3 /* StatefulViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -412,6 +482,28 @@
 				A9D6EC561B7405A7002546A3 /* ViewStateMachine.swift */,
 			);
 			path = StatefulViewController;
+			sourceTree = "<group>";
+		};
+		A9D6EC671B74D957002546A3 /* PlaceholderViews */ = {
+			isa = PBXGroup;
+			children = (
+				A9D6EC681B74D957002546A3 /* BasicPlaceholderView.swift */,
+				A9D6EC691B74D957002546A3 /* EmptyView.swift */,
+				A9D6EC6A1B74D957002546A3 /* ErrorView.swift */,
+				A9D6EC6B1B74D957002546A3 /* LoadingView.swift */,
+				A9D6EC6C1B74D957002546A3 /* LoadingViewProfile.swift */,
+			);
+			path = PlaceholderViews;
+			sourceTree = "<group>";
+		};
+		A9D6EC9C1B7515E5002546A3 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				A9D6EC9D1B7515F6002546A3 /* ProfileHeaderView.swift */,
+				A9D6ECA11B7516A2002546A3 /* ProfilePostViewCell.swift */,
+				A9D6ECA31B751B02002546A3 /* FeedPostViewCell.swift */,
+			);
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -485,24 +577,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				A966EDA51B73A7E8002DFED8 /* OpenSans-SemiboldItalic.ttf in Resources */,
+				A9D6EC971B7515B5002546A3 /* FeedViewController.xib in Resources */,
+				A9D6EC981B7515B5002546A3 /* LogInViewController.xib in Resources */,
+				A9D6ECA01B751655002546A3 /* ProfileHeaderView.xib in Resources */,
 				A966ED9B1B73A7E8002DFED8 /* LICENSE.txt in Resources */,
 				A966EDA01B73A7E8002DFED8 /* OpenSans-Italic.ttf in Resources */,
+				A9B7D4621B75580600E79F12 /* Test.storyboard in Resources */,
+				A9D6ECA61B751B0D002546A3 /* FeedPostViewCell.xib in Resources */,
 				A966ED9C1B73A7E8002DFED8 /* OpenSans-Bold.ttf in Resources */,
-				A966EDA91B73C24D002DFED8 /* SignUpViewController.xib in Resources */,
 				A966ED9E1B73A7E8002DFED8 /* OpenSans-ExtraBold.ttf in Resources */,
 				A966ED581B737CB5002DFED8 /* Authentication.storyboard in Resources */,
+				A9D6EC961B7515B5002546A3 /* AppViewController.xib in Resources */,
 				81BA81501A49DA1800E65899 /* Main.storyboard in Resources */,
 				A966EDA11B73A7E8002DFED8 /* OpenSans-Light.ttf in Resources */,
-				A966ED7B1B73895F002DFED8 /* AppViewController.xib in Resources */,
 				81BA81521A49DA1800E65899 /* Images.xcassets in Resources */,
-				A966EDB21B74032C002DFED8 /* ProfileViewController.xib in Resources */,
 				A966EDA41B73A7E8002DFED8 /* OpenSans-Semibold.ttf in Resources */,
 				A966ED9F1B73A7E8002DFED8 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 				A966EDA31B73A7E8002DFED8 /* OpenSans-Regular.ttf in Resources */,
 				A966ED9D1B73A7E8002DFED8 /* OpenSans-BoldItalic.ttf in Resources */,
+				A9D6EC9B1B7515B5002546A3 /* SignUpViewController.xib in Resources */,
 				A966EDA21B73A7E8002DFED8 /* OpenSans-LightItalic.ttf in Resources */,
-				A966EDA71B73C22F002DFED8 /* LogInViewController.xib in Resources */,
 				A966ED881B73A15E002DFED8 /* view.xib in Resources */,
+				A9D6EC9A1B7515B5002546A3 /* ProfileViewController.xib in Resources */,
+				A9D6EC991B7515B5002546A3 /* ProfilePostViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -575,19 +672,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9D6ECA41B751B02002546A3 /* FeedPostViewCell.swift in Sources */,
+				A9D6ECA21B7516A2002546A3 /* ProfilePostViewCell.swift in Sources */,
 				A966ED611B737D31002DFED8 /* BaseNavigationController.swift in Sources */,
+				A9D6EC711B74D957002546A3 /* LoadingViewProfile.swift in Sources */,
 				81BA814D1A49DA1800E65899 /* ViewController.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
 				A966EDAD1B73D5C9002DFED8 /* UIViewController+keyboard.swift in Sources */,
 				A966ED731B7384B9002DFED8 /* LogInViewController.swift in Sources */,
+				A9D6EC701B74D957002546A3 /* LoadingView.swift in Sources */,
+				A9D6EC6E1B74D957002546A3 /* EmptyView.swift in Sources */,
+				A9B7D45C1B752E1700E79F12 /* LabelViewWithIcon.swift in Sources */,
 				A966EDAB1B73D3BF002DFED8 /* UITextField+placeholder.swift in Sources */,
+				A9B7D45A1B752C5D00E79F12 /* UIImageView+corderEdge.swift in Sources */,
 				A966ED8D1B73A316002DFED8 /* UITextField+border.swift in Sources */,
+				A9B7D4681B75600C00E79F12 /* UIViewController+ScrollingStatusBar.m in Sources */,
+				A9B7D45E1B752ED400E79F12 /* UIImage+tintColor.swift in Sources */,
+				A9D6EC791B74DCA6002546A3 /* String+localized.swift in Sources */,
+				A9D6EC661B74D7D9002546A3 /* BaseQueryTableViewContoller.swift in Sources */,
 				A9D6EC581B7405A7002546A3 /* ViewStateMachine.swift in Sources */,
+				A9D6EC641B74D76F002546A3 /* BaseQueryViewController.swift in Sources */,
 				A966ED791B73891B002DFED8 /* AppViewController.swift in Sources */,
 				A966ED5F1B737D10002DFED8 /* BaseViewController.swift in Sources */,
 				A966ED771B73871D002DFED8 /* SignUpViewController.swift in Sources */,
+				A9D6EC6D1B74D957002546A3 /* BasicPlaceholderView.swift in Sources */,
+				A9D6EC9E1B7515F6002546A3 /* ProfileHeaderView.swift in Sources */,
+				A9D6EC6F1B74D957002546A3 /* ErrorView.swift in Sources */,
 				A9D6EC571B7405A7002546A3 /* StatefulViewController.swift in Sources */,
 				A966EDB01B7402BF002DFED8 /* ProfileViewController.swift in Sources */,
+				A9D6EC7B1B74E66E002546A3 /* FeedViewController.swift in Sources */,
+				A9B7D4601B75424B00E79F12 /* UImageVIewCircle.swift in Sources */,
 				A966ED851B73A0FE002DFED8 /* Constants.swift in Sources */,
 				A966ED8B1B73A23A002DFED8 /* UIButton+border.swift in Sources */,
 			);

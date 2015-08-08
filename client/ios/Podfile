@@ -10,6 +10,7 @@ target 'Think' do
 	pod 'LGActionSheet', '~> 1.0.0'
 	pod 'LGAlertView', '~> 1.0.0'
 	pod 'LGSideMenuController', '~> 1.0.0'
+	pod 'AsyncMessagesViewController' 
 	pod 'VGParallaxHeader'
 	pod 'LGFilterView', '~> 1.0.0'
 	pod 'MXSegmentedPager'

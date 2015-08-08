@@ -102,7 +102,9 @@ protocol LogInViewControllerDelegate {
         PFFacebookUtils.logInInBackgroundWithReadPermissions(permissions) {
             (user: PFUser?, error: NSError?) -> Void in
             if let user = user {
-                self.delegate?.logIn(self, facebook: user)
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.delegate?.logIn(self, facebook: user)
+                }
                 
                 if user.isNew {
                     println("User signed up and logged in through Facebook!")
@@ -110,7 +112,7 @@ protocol LogInViewControllerDelegate {
                     println("User logged in through Facebook!")
                 }
             } else {
-                self.message.text = "Uh oh. The you cancelled the Facebook login."
+                self.message.text = "Uh oh. You cancelled the Facebook login."
             }
         }
     }
@@ -126,10 +128,13 @@ protocol LogInViewControllerDelegate {
                 if let message: AnyObject = error!.userInfo!["error"] {
                     self.message.text = "\(message)"
                 }
-                
-                self.delegate?.logIn(self, failed: error!)
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.delegate?.logIn(self, failed: error!)
+                }
             } else {
-                self.delegate?.logIn(self, skiped: self.skip)
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.delegate?.logIn(self, skiped: self.skip)
+                }
             }
         }
     }
@@ -161,8 +166,9 @@ protocol LogInViewControllerDelegate {
                 if let message: AnyObject = error!.userInfo!["error"] {
                     self.message.text = "\(message)"
                 }
-                
-                self.delegate?.logIn(self, failed: error!)
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.delegate?.logIn(self, failed: error!)
+                }
             }
         }
     }

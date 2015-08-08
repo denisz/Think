@@ -10,64 +10,82 @@ import Foundation
 import Parse
 import ParseUI
 import UIKit
+import Bolts
 import VGParallaxHeader
 
-@objc(ProfileViewController) class ProfileViewController: StatefulViewController, StatefulViewControllerDelegate {
-    var model: PFUser?
-    @IBOutlet weak var label: UILabel!
-    
-    func hasContent() -> Bool {
-        return true
-    }
-    
-    func loadModel(model: PFUser) {
-        self.model = model
-        self.model?.fetchInBackgroundWithBlock{ (user: PFObject?, error: NSError?) -> Void in
-            if error == nil && user != nil {
-                self.model = user as? PFUser
-                self.endLoading(animated: true, error: nil)
-                self.setupView()
-            } else {
-                self.endLoading(animated: true, error: error)
-            }
-        }
-    }
-    
-    func loadUser(id: String) {
-        var query = PFQuery(className:"User")
-        query.getObjectInBackgroundWithId(id){ (object: PFObject?, error: NSError?) -> Void in
-            if error == nil && object != nil {
-                self.model = object as? PFUser
-                self.endLoading(animated: true, error: nil)
-                self.setupView()
-            } else {
-                self.endLoading(animated: true, error: error)
-            }
-        }
-        
-        self.startLoading(animated: true)
-    }
-    
-    func setupView() {
-        println(model)
-//        label.text = model!["username"] as? String
-    }
+let kReusableProfilePostViewCell = "ProfilePostViewCell"
+
+@objc(ProfileViewController) class ProfileViewController: BaseQueryTableViewContoller {
+    var owner: PFObject?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        var header = ProfileHeaderView()
+        header.object = self.owner
+        self.tableView.setParallaxHeaderView(header, mode: VGParallaxHeaderMode.Fill, height: 240)
+        self.tableView.registerNib(UINib(nibName: kReusableProfilePostViewCell, bundle: nil), forCellReuseIdentifier: kReusableProfilePostViewCell)
+
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+        self.tableView.estimatedRowHeight = 44.0;
+        self.tableView.rowHeight = UITableViewAutomaticDimension;
+        self.tableView.tableFooterView = UIView()
         
+        self.customizeNavigationBar()
     }
     
-    class func CreateWithModel(model: PFUser) -> ProfileViewController{
+    func customizeNavigationBar() {
+        self.automaticallyAdjustsScrollViewInsets = false
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: UIStatusBarAnimation.Fade)
+        super.viewDidAppear(animated)
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation: UIStatusBarAnimation.Fade)
+        super.viewDidDisappear(animated)
+    }
+    
+    deinit {
+    }
+    
+    override func scrollViewDidScroll(scrollView: UIScrollView) {
+        self.tableView.shouldPositionParallaxHeader();
+//        super.scrollViewDidScroll(scrollView)
+    }
+    
+    override func queryForTable() -> PFQuery {
+        var query = PFQuery(className: self.parseClassName!)
+        query.whereKey("owner", equalTo: owner!)
+        query.orderByDescending("createdAt")
+        return query
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell? {
+        let cell = tableView.dequeueReusableCellWithIdentifier(kReusableProfilePostViewCell) as! ProfilePostViewCell
+        cell.prepareView(object!)
+        return cell
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle  {
+        return UIStatusBarStyle.LightContent
+    }
+    
+    class func CreateWithModel(model: PFObject) -> ProfileViewController{
         var profile = ProfileViewController()
-        profile.loadModel(model)
+        profile.owner = model
+        profile.parseClassName = "Post"
+        profile.paginationEnabled = true
+        profile.pullToRefreshEnabled = false
+
+        
         return profile
     }
     
-    class func CreateWithId(id: String) -> ProfileViewController{
-        var profile = ProfileViewController()
-        profile.loadUser(id)
-        return profile
+    class func CreateWithId(objectId: String) -> ProfileViewController {
+        return CreateWithModel(PFObject(withoutDataWithClassName: "_User", objectId: objectId))
     }
 }
 

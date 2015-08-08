@@ -115,7 +115,10 @@ protocol SignUpViewControllerDelegate {
                 if let message: AnyObject = error!.userInfo!["error"] {
                     self.message.text = "\(message)"
                 }
-                self.delegate?.signUp(self, failed: error!)
+                
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.delegate?.signUp(self, failed: error!)
+                }
             }
         }
     }
