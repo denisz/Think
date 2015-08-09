@@ -23,8 +23,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ProfilePostViewCell" rowHeight="440" id="VM2-bt-t62" customClass="ProfilePostViewCell" customModule="Think" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="440"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ProfilePostViewCell" rowHeight="460" id="VM2-bt-t62" customClass="ProfilePostViewCell" customModule="Think" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VM2-bt-t62" id="2Jg-lU-YLw">
                 <autoresizingMask key="autoresizingMask"/>
@@ -92,10 +92,10 @@
                             <constraint firstItem="weB-RS-N1u" firstAttribute="top" secondItem="zJO-yN-DMX" secondAttribute="top" constant="3" id="vNn-yq-JTa"/>
                         </constraints>
                     </view>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pic_post" translatesAutoresizingMaskIntoConstraints="NO" id="u4c-ui-RBz">
-                        <rect key="frame" x="0.0" y="54" width="320" height="150"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pic_post" translatesAutoresizingMaskIntoConstraints="NO" id="u4c-ui-RBz">
+                        <rect key="frame" x="0.0" y="54" width="320" height="180"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="150" id="fVq-lK-vqL"/>
+                            <constraint firstAttribute="height" constant="180" id="fVq-lK-vqL"/>
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1DU-8A-xje">
@@ -103,6 +103,9 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="formula one, 05 Jul 2015" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tQF-CC-ZGq" customClass="LabelViewWithIcon" customModule="Think" customModuleProvider="target">
                                 <rect key="frame" x="15" y="0.0" width="305" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="PUG-vu-qMP"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="11"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -133,13 +136,12 @@
                         <constraints>
                             <constraint firstItem="tQF-CC-ZGq" firstAttribute="leading" secondItem="1DU-8A-xje" secondAttribute="leading" constant="15" id="aH0-pc-f3d"/>
                             <constraint firstItem="tQF-CC-ZGq" firstAttribute="top" secondItem="1DU-8A-xje" secondAttribute="top" id="bGG-dB-elE"/>
-                            <constraint firstAttribute="bottom" secondItem="tQF-CC-ZGq" secondAttribute="bottom" id="eod-Zl-OXd"/>
                             <constraint firstAttribute="trailing" secondItem="tQF-CC-ZGq" secondAttribute="trailing" id="txF-SN-vHy"/>
                             <constraint firstAttribute="height" constant="27" id="wop-wP-DwD"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Red Bull: Spin cost Kvyat podium shot" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="czt-IF-oH2">
-                        <rect key="frame" x="15" y="211" width="290" height="50"/>
+                        <rect key="frame" x="15" y="241" width="290" height="50"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="50" id="A7e-hc-Nc1"/>
                         </constraints>
@@ -148,7 +150,7 @@
                         <color key="highlightedColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                     </label>
                     <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="290" placeholderIntrinsicHeight="120" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6pt-Ay-ybB">
-                        <rect key="frame" x="10" y="261" width="300" height="139"/>
+                        <rect key="frame" x="10" y="291" width="300" height="129.5"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="120" id="UiY-wr-vzy"/>
                         </constraints>
@@ -158,7 +160,7 @@
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gDz-pt-bea">
-                        <rect key="frame" x="0.0" y="407" width="320" height="25"/>
+                        <rect key="frame" x="0.0" y="427.5" width="320" height="25"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+1345" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vVY-z1-vSX" customClass="LabelViewWithIcon" customModule="Think" customModuleProvider="target">
                                 <rect key="frame" x="195" y="0.0" width="80" height="25"/>
@@ -269,7 +271,7 @@
                 </constraints>
             </tableViewCellContentView>
             <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
-            <point key="canvasLocation" x="403" y="378"/>
+            <point key="canvasLocation" x="403" y="388"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -78,13 +78,13 @@ import ParseUI
     
     @IBAction func didTapDrafts() {
         var user = PFUser.currentUser()
-        let controller = DraftsViewController()
+        let controller = DraftsViewController.CreateWithModel(user!)
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
     @IBAction func didTapBookmarks() {
         var user = PFUser.currentUser()
-        let controller = BookmarksViewController()
+        let controller = BookmarksViewController.CreateWithModel(user!)
         self.navigationController?.pushViewController(controller, animated: true)
     }
 

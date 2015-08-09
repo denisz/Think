@@ -18,7 +18,7 @@ let kReusableNotificationsViewCell = "NotificationViewCell"
 @objc(NotificationsViewController) class NotificationsViewController: BaseQueryTableViewContoller {
     var owner: PFObject?
     var filterView: LGFilterView?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -59,7 +59,6 @@ let kReusableNotificationsViewCell = "NotificationViewCell"
     }
     
     func didTapSettingsBtn(sender: AnyObject?) {
-//        self.navigationController?.popViewControllerAnimated(true)
         self.didTapFilter()
     }
     
@@ -70,9 +69,10 @@ let kReusableNotificationsViewCell = "NotificationViewCell"
             self.filterView = nil
         } else {
             var innerView = NotificationFilterView()
-            innerView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 5 * 44)
+            innerView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 5 * 64)
             self.filterView = LGFilterView(view: innerView)
             filterView?.transitionStyle = LGFilterViewTransitionStyleTop
+            filterView?.heightMax = 5 * 64
             filterView?.borderWidth = 0
             filterView?.backgroundColor = UIColor.whiteColor()
             

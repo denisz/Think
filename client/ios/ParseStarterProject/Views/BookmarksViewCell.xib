@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="OpenSans-Light.ttf">
+            <string>OpenSans-Light</string>
+        </mutableArray>
+        <mutableArray key="OpenSans-Regular.ttf">
+            <string>OpenSans</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="GVh-oa-zCl" customClass="BookmarksViewCell" customModule="Think" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="140" height="209"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="140" height="209"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pic_post" translatesAutoresizingMaskIntoConstraints="NO" id="CfW-4F-1vs">
+                        <rect key="frame" x="0.0" y="0.0" width="140" height="90"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="90" id="sjE-At-CBY"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q4i-nI-emi">
+                        <rect key="frame" x="0.0" y="96" width="140" height="82"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="82" id="4jh-Nt-XaM"/>
+                        </constraints>
+                        <string key="text">There’s an old joke in which a tourist asks the way to some pleasant town and gets the answer: “Well, I wouldn’t start from here.” Deutsche Bank’s new leadership should appreciate that more than most.</string>
+                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="11"/>
+                        <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 min ago" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yPl-lI-k6K">
+                        <rect key="frame" x="0.0" y="178" width="140" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="KLB-09-SFb"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="11"/>
+                        <color key="textColor" red="0.64705997709999996" green="0.64705997709999996" blue="0.64705997709999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="CfW-4F-1vs" secondAttribute="trailing" id="06g-LD-dDK"/>
+                <constraint firstAttribute="trailing" secondItem="q4i-nI-emi" secondAttribute="trailing" id="INC-Xk-Hn7"/>
+                <constraint firstAttribute="trailing" secondItem="yPl-lI-k6K" secondAttribute="trailing" id="UWb-Wp-xmf"/>
+                <constraint firstItem="CfW-4F-1vs" firstAttribute="leading" secondItem="GVh-oa-zCl" secondAttribute="leading" id="Vbw-86-ekb"/>
+                <constraint firstItem="q4i-nI-emi" firstAttribute="leading" secondItem="GVh-oa-zCl" secondAttribute="leading" id="gda-E1-fz4"/>
+                <constraint firstItem="CfW-4F-1vs" firstAttribute="top" secondItem="GVh-oa-zCl" secondAttribute="top" id="hZ0-Rq-E6L"/>
+                <constraint firstItem="yPl-lI-k6K" firstAttribute="leading" secondItem="GVh-oa-zCl" secondAttribute="leading" id="mFP-2l-kkh"/>
+                <constraint firstItem="q4i-nI-emi" firstAttribute="top" secondItem="CfW-4F-1vs" secondAttribute="bottom" constant="6" id="tPN-h8-GoX"/>
+                <constraint firstItem="yPl-lI-k6K" firstAttribute="top" secondItem="q4i-nI-emi" secondAttribute="bottom" id="zEG-ZV-dfG"/>
+            </constraints>
+            <size key="customSize" width="212" height="209"/>
+            <point key="canvasLocation" x="252" y="237.5"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="pic_post" width="640" height="300"/>
+    </resources>
+</document>

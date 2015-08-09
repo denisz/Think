@@ -97,6 +97,22 @@
 		A9D385DC1B7780E000DD8492 /* NotificationsFilterViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9D385DB1B7780E000DD8492 /* NotificationsFilterViewCell.xib */; };
 		A9D385DE1B778EF600DD8492 /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D385DD1B778EF600DD8492 /* BookmarksViewController.swift */; };
 		A9D385E01B77A52000DD8492 /* DraftsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D385DF1B77A52000DD8492 /* DraftsViewController.swift */; };
+		A9D385E21B77E13300DD8492 /* DraftsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9D385E11B77E13300DD8492 /* DraftsViewController.xib */; };
+		A9D385E41B77EF4E00DD8492 /* BookmarkMainPostView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9D385E31B77EF4E00DD8492 /* BookmarkMainPostView.xib */; };
+		A9D385E61B77EF5800DD8492 /* BookmarkMainPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D385E51B77EF5800DD8492 /* BookmarkMainPostView.swift */; };
+		A9D385E81B77F23C00DD8492 /* BookmarksViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9D385E71B77F23C00DD8492 /* BookmarksViewCell.xib */; };
+		A9D385EA1B77F33C00DD8492 /* UIImage+Itunes11.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D385E91B77F33C00DD8492 /* UIImage+Itunes11.swift */; };
+		A9D385EC1B77F4CC00DD8492 /* BaseQueryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D385EB1B77F4CC00DD8492 /* BaseQueryCollectionViewController.swift */; };
+		A9D385EE1B77F5DB00DD8492 /* BookmarksViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D385ED1B77F5DB00DD8492 /* BookmarksViewCell.swift */; };
+		A9D385F01B77F91C00DD8492 /* DraftsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D385EF1B77F91C00DD8492 /* DraftsViewCell.swift */; };
+		A9D385F21B77F9A300DD8492 /* DraftsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9D385F11B77F9A300DD8492 /* DraftsViewCell.xib */; };
+		A9D385F41B77FA4900DD8492 /* BookmarksViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9D385F31B77FA4900DD8492 /* BookmarksViewController.xib */; };
+		A9D385F61B7807E800DD8492 /* NewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D385F51B7807E800DD8492 /* NewPostViewController.swift */; };
+		A9D385F81B7807FE00DD8492 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D385F71B7807FE00DD8492 /* PostViewController.swift */; };
+		A9D385FA1B78080E00DD8492 /* SettingsPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D385F91B78080E00DD8492 /* SettingsPostViewController.swift */; };
+		A9D385FC1B78081D00DD8492 /* NewPostViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9D385FB1B78081D00DD8492 /* NewPostViewController.xib */; };
+		A9D385FE1B78082A00DD8492 /* PostViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9D385FD1B78082A00DD8492 /* PostViewController.xib */; };
+		A9D386001B780A9A00DD8492 /* FollowersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D385FF1B780A9A00DD8492 /* FollowersViewController.swift */; };
 		A9D6EC571B7405A7002546A3 /* StatefulViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D6EC551B7405A7002546A3 /* StatefulViewController.swift */; };
 		A9D6EC581B7405A7002546A3 /* ViewStateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D6EC561B7405A7002546A3 /* ViewStateMachine.swift */; };
 		A9D6EC5A1B746BC7002546A3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D6EC591B746BC6002546A3 /* AVFoundation.framework */; };
@@ -224,6 +240,22 @@
 		A9D385DB1B7780E000DD8492 /* NotificationsFilterViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationsFilterViewCell.xib; sourceTree = "<group>"; };
 		A9D385DD1B778EF600DD8492 /* BookmarksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
 		A9D385DF1B77A52000DD8492 /* DraftsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraftsViewController.swift; sourceTree = "<group>"; };
+		A9D385E11B77E13300DD8492 /* DraftsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DraftsViewController.xib; sourceTree = "<group>"; };
+		A9D385E31B77EF4E00DD8492 /* BookmarkMainPostView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BookmarkMainPostView.xib; sourceTree = "<group>"; };
+		A9D385E51B77EF5800DD8492 /* BookmarkMainPostView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkMainPostView.swift; sourceTree = "<group>"; };
+		A9D385E71B77F23C00DD8492 /* BookmarksViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BookmarksViewCell.xib; sourceTree = "<group>"; };
+		A9D385E91B77F33C00DD8492 /* UIImage+Itunes11.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Itunes11.swift"; sourceTree = "<group>"; };
+		A9D385EB1B77F4CC00DD8492 /* BaseQueryCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseQueryCollectionViewController.swift; sourceTree = "<group>"; };
+		A9D385ED1B77F5DB00DD8492 /* BookmarksViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksViewCell.swift; sourceTree = "<group>"; };
+		A9D385EF1B77F91C00DD8492 /* DraftsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraftsViewCell.swift; sourceTree = "<group>"; };
+		A9D385F11B77F9A300DD8492 /* DraftsViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DraftsViewCell.xib; sourceTree = "<group>"; };
+		A9D385F31B77FA4900DD8492 /* BookmarksViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BookmarksViewController.xib; sourceTree = "<group>"; };
+		A9D385F51B7807E800DD8492 /* NewPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPostViewController.swift; sourceTree = "<group>"; };
+		A9D385F71B7807FE00DD8492 /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		A9D385F91B78080E00DD8492 /* SettingsPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsPostViewController.swift; sourceTree = "<group>"; };
+		A9D385FB1B78081D00DD8492 /* NewPostViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewPostViewController.xib; sourceTree = "<group>"; };
+		A9D385FD1B78082A00DD8492 /* PostViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostViewController.xib; sourceTree = "<group>"; };
+		A9D385FF1B780A9A00DD8492 /* FollowersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowersViewController.swift; sourceTree = "<group>"; };
 		A9D6EC551B7405A7002546A3 /* StatefulViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatefulViewController.swift; sourceTree = "<group>"; };
 		A9D6EC561B7405A7002546A3 /* ViewStateMachine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewStateMachine.swift; sourceTree = "<group>"; };
 		A9D6EC591B746BC6002546A3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -402,6 +434,10 @@
 				A9D385D51B77665800DD8492 /* SettingsViewController.swift */,
 				A9D385DD1B778EF600DD8492 /* BookmarksViewController.swift */,
 				A9D385DF1B77A52000DD8492 /* DraftsViewController.swift */,
+				A9D385F51B7807E800DD8492 /* NewPostViewController.swift */,
+				A9D385F71B7807FE00DD8492 /* PostViewController.swift */,
+				A9D385F91B78080E00DD8492 /* SettingsPostViewController.swift */,
+				A9D385FF1B780A9A00DD8492 /* FollowersViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -457,6 +493,13 @@
 				A99AE6331B77481B00085138 /* NotificationViewCell.xib */,
 				A9D385D71B777DBA00DD8492 /* NotificationFilterView.xib */,
 				A9D385DB1B7780E000DD8492 /* NotificationsFilterViewCell.xib */,
+				A9D385E11B77E13300DD8492 /* DraftsViewController.xib */,
+				A9D385E31B77EF4E00DD8492 /* BookmarkMainPostView.xib */,
+				A9D385E71B77F23C00DD8492 /* BookmarksViewCell.xib */,
+				A9D385F11B77F9A300DD8492 /* DraftsViewCell.xib */,
+				A9D385F31B77FA4900DD8492 /* BookmarksViewController.xib */,
+				A9D385FB1B78081D00DD8492 /* NewPostViewController.xib */,
+				A9D385FD1B78082A00DD8492 /* PostViewController.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -470,6 +513,7 @@
 				A9D6EC651B74D7D9002546A3 /* BaseQueryTableViewContoller.swift */,
 				A99AE6231B7686A700085138 /* BaseMessageCollectionView.swift */,
 				A99AE62B1B76A72C00085138 /* BaseSideMenuViewController.swift */,
+				A9D385EB1B77F4CC00DD8492 /* BaseQueryCollectionViewController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -524,6 +568,7 @@
 				A99AE6351B774BF600085138 /* UIButtonCircle.swift */,
 				A99AE6371B774C2800085138 /* UIButtonRoundedBorder.swift */,
 				A99AE6391B775DC400085138 /* SeperatorView.swift */,
+				A9D385E91B77F33C00DD8492 /* UIImage+Itunes11.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -660,6 +705,9 @@
 				A9D6ECA31B751B02002546A3 /* FeedPostViewCell.swift */,
 				A99AE6311B7747E800085138 /* NotificationViewCell.swift */,
 				A9D385D91B777DD300DD8492 /* NotificationFilterView.swift */,
+				A9D385E51B77EF5800DD8492 /* BookmarkMainPostView.swift */,
+				A9D385ED1B77F5DB00DD8492 /* BookmarksViewCell.swift */,
+				A9D385EF1B77F91C00DD8492 /* DraftsViewCell.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -752,20 +800,27 @@
 				A99AE6281B76952700085138 /* SideMenuVIewController.xib in Resources */,
 				81BA81501A49DA1800E65899 /* Main.storyboard in Resources */,
 				A9D385D21B77601800DD8492 /* PT_Serif-Web-BoldItalic.ttf in Resources */,
+				A9D385F21B77F9A300DD8492 /* DraftsViewCell.xib in Resources */,
 				A99AE6341B77481B00085138 /* NotificationViewCell.xib in Resources */,
+				A9D385FE1B78082A00DD8492 /* PostViewController.xib in Resources */,
 				A966EDA11B73A7E8002DFED8 /* OpenSans-Light.ttf in Resources */,
 				81BA81521A49DA1800E65899 /* Images.xcassets in Resources */,
 				A9D385D01B77601800DD8492 /* OFL.txt in Resources */,
+				A9D385E81B77F23C00DD8492 /* BookmarksViewCell.xib in Resources */,
 				A966EDA41B73A7E8002DFED8 /* OpenSans-Semibold.ttf in Resources */,
 				A966ED9F1B73A7E8002DFED8 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 				A966EDA31B73A7E8002DFED8 /* OpenSans-Regular.ttf in Resources */,
 				A966ED9D1B73A7E8002DFED8 /* OpenSans-BoldItalic.ttf in Resources */,
+				A9D385F41B77FA4900DD8492 /* BookmarksViewController.xib in Resources */,
 				A9D385DC1B7780E000DD8492 /* NotificationsFilterViewCell.xib in Resources */,
+				A9D385E41B77EF4E00DD8492 /* BookmarkMainPostView.xib in Resources */,
 				A99AE62A1B76988A00085138 /* SideMenuCellView.xib in Resources */,
 				A9D6EC9B1B7515B5002546A3 /* SignUpViewController.xib in Resources */,
+				A9D385FC1B78081D00DD8492 /* NewPostViewController.xib in Resources */,
 				A966EDA21B73A7E8002DFED8 /* OpenSans-LightItalic.ttf in Resources */,
 				A966ED881B73A15E002DFED8 /* view.xib in Resources */,
 				A9D385D31B77601800DD8492 /* PT_Serif-Web-Italic.ttf in Resources */,
+				A9D385E21B77E13300DD8492 /* DraftsViewController.xib in Resources */,
 				A9D6EC9A1B7515B5002546A3 /* ProfileViewController.xib in Resources */,
 				A9D385D81B777DBA00DD8492 /* NotificationFilterView.xib in Resources */,
 				A9D6EC991B7515B5002546A3 /* ProfilePostViewCell.xib in Resources */,
@@ -849,9 +904,12 @@
 				A9D6EC711B74D957002546A3 /* LoadingViewProfile.swift in Sources */,
 				81BA814D1A49DA1800E65899 /* ViewController.swift in Sources */,
 				A99AE61D1B7666DE00085138 /* UIImageExtensions.swift in Sources */,
+				A9D386001B780A9A00DD8492 /* FollowersViewController.swift in Sources */,
+				A9D385E61B77EF5800DD8492 /* BookmarkMainPostView.swift in Sources */,
 				A99AE6131B7666DE00085138 /* DefaultAsyncMessagesCollectionViewDataSource.swift in Sources */,
 				A99AE62E1B77466100085138 /* NotificationsViewController.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
+				A9D385FA1B78080E00DD8492 /* SettingsPostViewController.swift in Sources */,
 				A966EDAD1B73D5C9002DFED8 /* UIViewController+keyboard.swift in Sources */,
 				A966ED731B7384B9002DFED8 /* LogInViewController.swift in Sources */,
 				A99AE6191B7666DE00085138 /* MessageCellNode.swift in Sources */,
@@ -879,18 +937,22 @@
 				A9D6EC641B74D76F002546A3 /* BaseQueryViewController.swift in Sources */,
 				A966ED791B73891B002DFED8 /* AppViewController.swift in Sources */,
 				A99AE6361B774BF600085138 /* UIButtonCircle.swift in Sources */,
+				A9D385EA1B77F33C00DD8492 /* UIImage+Itunes11.swift in Sources */,
 				A966ED5F1B737D10002DFED8 /* BaseViewController.swift in Sources */,
 				A966ED771B73871D002DFED8 /* SignUpViewController.swift in Sources */,
+				A9D385F61B7807E800DD8492 /* NewPostViewController.swift in Sources */,
 				A9D385E01B77A52000DD8492 /* DraftsViewController.swift in Sources */,
 				A99AE6241B7686A700085138 /* BaseMessageCollectionView.swift in Sources */,
 				A9D6EC6D1B74D957002546A3 /* BasicPlaceholderView.swift in Sources */,
 				A9D6EC9E1B7515F6002546A3 /* ProfileHeaderView.swift in Sources */,
+				A9D385F01B77F91C00DD8492 /* DraftsViewCell.swift in Sources */,
 				A99AE61C1B7666DE00085138 /* MessageTextBubbleNode.swift in Sources */,
 				A9D6EC6F1B74D957002546A3 /* ErrorView.swift in Sources */,
 				A9D6EC571B7405A7002546A3 /* StatefulViewController.swift in Sources */,
 				A9D385DE1B778EF600DD8492 /* BookmarksViewController.swift in Sources */,
 				A99AE6111B7666DE00085138 /* AsyncMessagesCollectionViewDataSource.swift in Sources */,
 				A966EDB01B7402BF002DFED8 /* ProfileViewController.swift in Sources */,
+				A9D385F81B7807FE00DD8492 /* PostViewController.swift in Sources */,
 				A9D6EC7B1B74E66E002546A3 /* FeedViewController.swift in Sources */,
 				A99AE6381B774C2800085138 /* UIButtonRoundedBorder.swift in Sources */,
 				A99AE6171B7666DE00085138 /* MessageData.swift in Sources */,
@@ -899,7 +961,9 @@
 				A9B7D4601B75424B00E79F12 /* UImageVIewCircle.swift in Sources */,
 				A99AE6211B7666F800085138 /* Message.swift in Sources */,
 				A966ED851B73A0FE002DFED8 /* Constants.swift in Sources */,
+				A9D385EC1B77F4CC00DD8492 /* BaseQueryCollectionViewController.swift in Sources */,
 				A966ED8B1B73A23A002DFED8 /* UIButton+border.swift in Sources */,
+				A9D385EE1B77F5DB00DD8492 /* BookmarksViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

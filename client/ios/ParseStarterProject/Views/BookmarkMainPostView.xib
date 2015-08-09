@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="OpenSans-Bold.ttf">
+            <string>OpenSans-Bold</string>
+            <string>OpenSans-Bold</string>
+        </mutableArray>
+        <mutableArray key="OpenSans-Regular.ttf">
+            <string>OpenSans</string>
+        </mutableArray>
+        <mutableArray key="PT_Serif-Web-Bold.ttf">
+            <string>PTSerif-Bold</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BookmarkMainPostView" customModule="Think" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="201"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pic_post" translatesAutoresizingMaskIntoConstraints="NO" id="qFL-NB-306">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="201"/>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C09-22-DsT">
+                    <rect key="frame" x="0.0" y="121" width="320" height="80"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="July 30, 2015" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AZc-q8-Gc1">
+                            <rect key="frame" x="8" y="3" width="312" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="M7s-Jc-BH6"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="10"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Laura Owens at Capitain Petzel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fen-ss-gr0">
+                            <rect key="frame" x="8" y="28" width="312" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="aWS-BO-R3f"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="PTSerif-Bold" family="PT Serif" pointSize="16"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+1345" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jPG-ts-S7P" customClass="LabelViewWithIcon" customModule="Think" customModuleProvider="target">
+                            <rect key="frame" x="8" y="50" width="80" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="80" id="CWC-hV-J5W"/>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="N0j-Eo-h8x"/>
+                                <constraint firstAttribute="height" constant="25" id="svh-AV-SPY"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="12"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="ic_likes"/>
+                                <userDefinedRuntimeAttribute type="color" keyPath="iconColor">
+                                    <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="iconWidth">
+                                    <real key="value" value="14"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="iconHeight">
+                                    <real key="value" value="14"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="iconTop">
+                                    <real key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="iconLeft">
+                                    <real key="value" value="0.0"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="iconOffset">
+                                    <real key="value" value="18"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="184" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9tl-Vy-XSm" customClass="LabelViewWithIcon" customModule="Think" customModuleProvider="target">
+                            <rect key="frame" x="103" y="50" width="60" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="60" id="5qu-xf-5nL"/>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="FB9-UN-mkN"/>
+                                <constraint firstAttribute="height" constant="25" id="o7k-xx-0HD"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="12"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="ic_comments"/>
+                                <userDefinedRuntimeAttribute type="color" keyPath="iconColor">
+                                    <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="iconWidth">
+                                    <real key="value" value="15"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="iconHeight">
+                                    <real key="value" value="15"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="iconTop">
+                                    <real key="value" value="6"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="iconLeft">
+                                    <real key="value" value="0.0"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="iconOffset">
+                                    <integer key="value" value="18"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.23999999999999999" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="fen-ss-gr0" firstAttribute="leading" secondItem="C09-22-DsT" secondAttribute="leading" constant="8" id="7PO-PL-UIE"/>
+                        <constraint firstAttribute="height" constant="80" id="Kct-Fi-DQS"/>
+                        <constraint firstAttribute="trailing" secondItem="fen-ss-gr0" secondAttribute="trailing" id="PHG-R9-pjW"/>
+                        <constraint firstItem="9tl-Vy-XSm" firstAttribute="top" secondItem="fen-ss-gr0" secondAttribute="bottom" constant="1" id="Qck-vu-XS4"/>
+                        <constraint firstItem="jPG-ts-S7P" firstAttribute="leading" secondItem="C09-22-DsT" secondAttribute="leading" constant="8" id="a1L-eP-Ssf"/>
+                        <constraint firstItem="jPG-ts-S7P" firstAttribute="top" secondItem="fen-ss-gr0" secondAttribute="bottom" constant="1" id="bGi-0L-ohA"/>
+                        <constraint firstItem="fen-ss-gr0" firstAttribute="top" secondItem="AZc-q8-Gc1" secondAttribute="bottom" constant="4" id="elb-0a-WOD"/>
+                        <constraint firstItem="9tl-Vy-XSm" firstAttribute="leading" secondItem="jPG-ts-S7P" secondAttribute="trailing" constant="15" id="j1v-M6-N3y"/>
+                        <constraint firstAttribute="trailing" secondItem="AZc-q8-Gc1" secondAttribute="trailing" id="pZ9-7g-XTv"/>
+                        <constraint firstItem="AZc-q8-Gc1" firstAttribute="top" secondItem="C09-22-DsT" secondAttribute="top" constant="3" id="yP1-kg-mex"/>
+                        <constraint firstItem="AZc-q8-Gc1" firstAttribute="leading" secondItem="C09-22-DsT" secondAttribute="leading" constant="8" id="zDm-GT-RG7"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="C09-22-DsT" secondAttribute="trailing" id="2ym-RZ-h69"/>
+                <constraint firstItem="qFL-NB-306" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="4WA-mB-Glo"/>
+                <constraint firstItem="C09-22-DsT" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="7YC-ez-Lgh"/>
+                <constraint firstAttribute="bottom" secondItem="qFL-NB-306" secondAttribute="bottom" id="Aip-ik-Fku"/>
+                <constraint firstItem="qFL-NB-306" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ByO-ph-nyA"/>
+                <constraint firstAttribute="bottom" secondItem="C09-22-DsT" secondAttribute="bottom" id="XLl-jc-Wjp"/>
+                <constraint firstAttribute="trailing" secondItem="qFL-NB-306" secondAttribute="trailing" id="hdj-jH-mup"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="280" y="267.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic_comments" width="30" height="30"/>
+        <image name="ic_likes" width="14" height="14"/>
+        <image name="pic_post" width="640" height="300"/>
+    </resources>
+</document>

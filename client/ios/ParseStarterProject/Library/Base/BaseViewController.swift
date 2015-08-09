@@ -74,7 +74,7 @@ extension UIViewController {
         btnBack.addTarget(self, action: "didTapLeftBtn:", forControlEvents: UIControlEvents.TouchUpInside)
         btnBack.setImage(image, forState: UIControlState.Normal)
         btnBack.contentEdgeInsets = UIEdgeInsets(top: -5, left: 0, bottom: 0, right: 0)
-        btnBack.imageEdgeInsets = UIEdgeInsets(top: 9, left: 9, bottom: 9, right: 9)
+        btnBack.imageEdgeInsets = UIEdgeInsets(top: 9, left: 0, bottom: 9, right: 18)
         btnBack.setTitleColor(UIColor(red:0.2, green:0.2, blue:0.2, alpha:1), forState: UIControlState.Normal)
         btnBack.sizeToFit()
         var myCustomBackButtonItem:UIBarButtonItem = UIBarButtonItem(customView: btnBack)

@@ -74,6 +74,11 @@ extension NotificationFilterView: UITableViewDataSource {
         let cell = tableView.dequeueReusableCellWithIdentifier(kReusableNotificationsFilterViewCell) as! NotificationFilterViewCell
         
         cell.title.text = items[indexPath.row].uppercaseString
+        
+        if indexPath.row == items.count - 1  {
+            cell.separatorInset = UIEdgeInsetsMake(0, cell.bounds.size.width, 0, 0);
+        }
+        
         return cell
     }
 }

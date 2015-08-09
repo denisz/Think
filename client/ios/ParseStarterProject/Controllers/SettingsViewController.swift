@@ -89,7 +89,7 @@ class SettingsViewController: XLFormViewController, XLFormViewControllerDelegate
     
     func stylesRow(row: XLFormRowDescriptor) {
         row.cellConfig.setObject(UIColor(red:0.2, green:0.2, blue:0.2, alpha:1), forKey: "textLabel.textColor")
-        row.cellConfig.setObject(UIFont(name: "OpenSans-Semibold", size: 13)!, forKey: "textLabel.font")
+        row.cellConfig.setObject(UIFont(name: "OpenSans-Semibold", size: 12)!, forKey: "textLabel.font")
     }
     
     func logoutBtn() {
