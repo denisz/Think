@@ -17,7 +17,8 @@ import ParseCrashReporting
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    var sideMenuController: BaseSideMenuViewController?
+    
     var window: UIWindow?
 
     //--------------------------------------
@@ -82,7 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ViewController.globalApperence()
         return true
     }
-
+    
     //--------------------------------------
     // MARK: Push Notifications
     //--------------------------------------

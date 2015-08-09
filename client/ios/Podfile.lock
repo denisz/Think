@@ -8,14 +8,27 @@ PODS:
   - Kingfisher (1.4.3)
   - LGActionSheet (1.0.1)
   - LGAlertView (1.0.1)
+  - LGDrawer (1.0.0)
   - LGFilterView (1.0.1)
+  - LGHelper (1.0.1):
+    - Reachability (~> 3.2)
   - LGSideMenuController (1.0.3)
+  - LGViews (1.0.0):
+    - LGViews/LGButton (= 1.0.0)
+    - LGViews/LGLabel (= 1.0.0)
+    - LGViews/LGTextField (= 1.0.0)
+    - LGViews/LGTextView (= 1.0.0)
+  - LGViews/LGButton (1.0.0)
+  - LGViews/LGLabel (1.0.0)
+  - LGViews/LGTextField (1.0.0)
+  - LGViews/LGTextView (1.0.0)
   - LoremIpsum (1.0.0)
   - LTMorphingLabel (0.0.7)
   - MXSegmentedPager (1.2.1):
     - HMSegmentedControl (~> 1.5.2)
     - VGParallaxHeader (~> 0.0.6)
   - PureLayout (2.0.6)
+  - Reachability (3.2)
   - SlackTextViewController (1.6)
   - VGParallaxHeader (0.0.6):
     - PureLayout
@@ -28,8 +41,11 @@ DEPENDENCIES:
   - Kingfisher (~> 1.4)
   - LGActionSheet (~> 1.0.0)
   - LGAlertView (~> 1.0.0)
+  - LGDrawer (~> 1.0.0)
   - LGFilterView (~> 1.0.0)
+  - LGHelper (~> 1.0.0)
   - LGSideMenuController (~> 1.0.0)
+  - LGViews (~> 1.0.0)
   - LoremIpsum (~> 1.0)
   - LTMorphingLabel (~> 0.0.7)
   - MXSegmentedPager
@@ -54,12 +70,16 @@ SPEC CHECKSUMS:
   Kingfisher: 949bcfaebfd149c9a0306318ed6f2d2b743e5103
   LGActionSheet: fe609c9bdd4fd73465966f20b2b388f2c690ef30
   LGAlertView: 1dafa8bc05f33812d65e0b42ce824463e6c4acdc
+  LGDrawer: 14fa657d7e21842797a6187c44d5a913841d34a8
   LGFilterView: 7b9bd143ab4617e7c41b7795d66e1e590ff37a37
+  LGHelper: 54fd8c0437da034268a9987093289b3323eed2f5
   LGSideMenuController: 565ca94043437552cda5a88384e0a481169c3f32
+  LGViews: ff650166ae05bf429bf23b9d8b00655c663a21fb
   LoremIpsum: 9029c55d36501b2ee0b05cc9ecda11d3a0479160
   LTMorphingLabel: aef64d2adb1c659869a8fe22cf2dc7bbad2e28e5
   MXSegmentedPager: 80a19d4f72e39da48a8da2038f1240476b3f1c33
   PureLayout: f25f0bb904d5ccfe6e31da3cb869185259f02e0d
+  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   SlackTextViewController: 84e1e4b7f12a8e3691cf97ca61c934b99058a2e8
   VGParallaxHeader: 1213aba58c9b0aea84f9e81ad526fde57aa4fe48
   XLForm: 98ee32c6087e18186c78c4a9f7a00b1b728ca945

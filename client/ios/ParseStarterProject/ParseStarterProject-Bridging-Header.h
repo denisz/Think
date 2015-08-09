@@ -15,9 +15,15 @@
 #import <XLForm/XLForm.h>
 #import <VGParallaxHeader/UIScrollView+VGParallaxHeader.h>
 #import <FXBlurView/FXBlurView.h>
+
+//lg frameworks
 #import <LGActionSheet/LGActionSheet.h>
 #import <LGAlertView/LGAlertView.h>
 #import <LGFilterView/LGFilterView.h>
+#import <LGDrawer/LGDrawer.h>
+#import <LGViews/LGViews.h>
+
+
 
 
 //comments

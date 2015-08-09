@@ -20,6 +20,7 @@ let kReusableProfilePostViewCell = "ProfilePostViewCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         var header = ProfileHeaderView()
         header.object = self.owner
         self.tableView.setParallaxHeaderView(header, mode: VGParallaxHeaderMode.Fill, height: 240)
@@ -32,9 +33,10 @@ let kReusableProfilePostViewCell = "ProfilePostViewCell"
         self.tableView.tableFooterView = UIView()
         
         self.customizeNavigationBar()
+        self.configureNavigationBarBackBtn(UIColor.whiteColor())
     }
     
-    func customizeNavigationBar() {
+    override func customizeNavigationBar() {
         self.automaticallyAdjustsScrollViewInsets = false
         var navigationBar = self.navigationController?.navigationBar
         
@@ -44,6 +46,8 @@ let kReusableProfilePostViewCell = "ProfilePostViewCell"
         navigationBar?.shadowImage = UIImage()
         // Sets the translucent background color
         navigationBar?.backgroundColor = UIColor.clearColor()
+        //UIColor(red:0, green:0, blue:0, alpha:0.5)
+            //
         // Set translucent. (Default value is already true, so this can be removed if desired.)
         navigationBar?.translucent = true
         
@@ -54,7 +58,6 @@ let kReusableProfilePostViewCell = "ProfilePostViewCell"
         ]
         editBarButtonItem.setTitleTextAttributes(attributes, forState: UIControlState.Normal)
         self.navigationItem.rightBarButtonItem = editBarButtonItem
-        self.configureNavigationBarBackBtn(UIColor.whiteColor())
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -66,17 +69,8 @@ let kReusableProfilePostViewCell = "ProfilePostViewCell"
         self.navigationController?.popViewControllerAnimated(true)
     }
     
-    override func viewDidDisappear(animated: Bool) {
-//        UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation: UIStatusBarAnimation.Fade)
-        super.viewDidDisappear(animated)
-    }
-    
-    deinit {
-    }
-    
     override func scrollViewDidScroll(scrollView: UIScrollView) {
         self.tableView.shouldPositionParallaxHeader();
-//        super.scrollViewDidScroll(scrollView)
     }
     
     override func queryForTable() -> PFQuery {

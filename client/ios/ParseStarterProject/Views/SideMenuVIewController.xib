@@ -14,9 +14,10 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="jXe-9z-gj9">
+                <tableView contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="58" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="jXe-9z-gj9">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.23137000199999999" green="0.68234997990000001" blue="0.85490000249999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="sectionIndexBackgroundColor" red="0.23137000199999999" green="0.68234997990000001" blue="0.85490000249999998" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="1jU-dA-TSu"/>
                         <outlet property="delegate" destination="-1" id="SIA-8G-MSm"/>
@@ -24,6 +25,13 @@
                 </tableView>
             </subviews>
             <color key="backgroundColor" red="0.23137000199999999" green="0.68234997990000001" blue="0.85490000249999998" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="jXe-9z-gj9" secondAttribute="bottom" id="VVh-EO-eCW"/>
+                <constraint firstAttribute="trailing" secondItem="jXe-9z-gj9" secondAttribute="trailing" id="W7m-nQ-6ha"/>
+                <constraint firstItem="jXe-9z-gj9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="faz-fR-yHF"/>
+                <constraint firstItem="jXe-9z-gj9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="jY2-vB-lqT"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
 </document>

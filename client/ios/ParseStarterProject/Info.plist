@@ -47,6 +47,10 @@
 		<string>OpenSans-Regular.ttf</string>
 		<string>OpenSans-Semibold.ttf</string>
 		<string>OpenSans-SemiboldItalic.ttf</string>
+		<string>PT_Serif-Web-Bold.ttf</string>
+		<string>PT_Serif-Web-BoldItalic.ttf</string>
+		<string>PT_Serif-Web-Italic.ttf</string>
+		<string>PT_Serif-Web-Regular.ttf</string>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>
