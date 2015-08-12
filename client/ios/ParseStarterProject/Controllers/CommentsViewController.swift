@@ -20,7 +20,6 @@ class CommentsViewController: BaseMessageCollectionView {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default;
-//        generateMessages()
     }
     
     init() {
@@ -44,7 +43,7 @@ class CommentsViewController: BaseMessageCollectionView {
         super.viewDidLoad()
 //        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Change user", style: .Plain, target: self, action: "changeCurrentUser")
         
-        self.configureNavigationBarBackBtn(UIColor(red:0.2, green:0.2, blue:0.2, alpha:1))
+        self.configureNavigationBarBackBtn(kColorNavigationBar)
     }
     
     override func didPressRightButton(sender: AnyObject!) {

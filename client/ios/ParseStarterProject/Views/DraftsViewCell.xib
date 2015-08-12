@@ -3,16 +3,67 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="OpenSans-Light.ttf">
+            <string>OpenSans-Light</string>
+        </mutableArray>
+        <mutableArray key="PT_Serif-Web-Bold.ttf">
+            <string>PTSerif-Bold</string>
+        </mutableArray>
+        <mutableArray key="PT_Serif-Web-Regular.ttf">
+            <string>PTSerif-Regular</string>
+        </mutableArray>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DraftsViewCell" customModule="Think" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DraftsViewCell" rowHeight="277" id="sJv-Th-fwZ" customClass="DraftsViewCell" customModule="Think" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="376" height="277"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="DraftsViewCell" rowHeight="250" id="sJv-Th-fwZ" customClass="DraftsViewCell" customModule="Think" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="376" height="250"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sJv-Th-fwZ" id="sTV-uE-MkN">
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="July 9, 2015" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iMS-V2-P2H">
+                        <rect key="frame" x="0.0" y="59" width="376" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="3Mm-AQ-P7t"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="13"/>
+                        <color key="textColor" red="0.0" green="0.63921999929999995" blue="0.84706002469999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lGa-fd-kqA">
+                        <rect key="frame" x="0.0" y="16" width="376" height="43"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="43" id="FWP-7d-vo2"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="PTSerif-Bold" family="PT Serif" pointSize="20"/>
+                        <color key="textColor" red="0.0" green="0.63921999929999995" blue="0.84706002469999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="362" placeholderIntrinsicHeight="43" lineBreakMode="tailTruncation" numberOfLines="7" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1DP-nm-crZ">
+                        <rect key="frame" x="15" y="87" width="346" height="145"/>
+                        <string key="text">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</string>
+                        <fontDescription key="fontDescription" name="PTSerif-Regular" family="PT Serif" pointSize="14"/>
+                        <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="iMS-V2-P2H" firstAttribute="leading" secondItem="sTV-uE-MkN" secondAttribute="leading" id="Ae0-0K-Iug"/>
+                    <constraint firstItem="1DP-nm-crZ" firstAttribute="leading" secondItem="sTV-uE-MkN" secondAttribute="leading" constant="15" id="EWa-JW-cEz"/>
+                    <constraint firstAttribute="trailing" secondItem="lGa-fd-kqA" secondAttribute="trailing" id="F6e-u0-CDb"/>
+                    <constraint firstAttribute="bottom" secondItem="1DP-nm-crZ" secondAttribute="bottom" constant="17.5" id="OMO-MC-FpL"/>
+                    <constraint firstAttribute="trailing" secondItem="iMS-V2-P2H" secondAttribute="trailing" id="QwW-7j-bQB"/>
+                    <constraint firstItem="iMS-V2-P2H" firstAttribute="top" secondItem="lGa-fd-kqA" secondAttribute="bottom" id="Wxv-Pg-i37"/>
+                    <constraint firstItem="1DP-nm-crZ" firstAttribute="top" secondItem="iMS-V2-P2H" secondAttribute="bottom" constant="7" id="hmu-uY-3gX"/>
+                    <constraint firstItem="lGa-fd-kqA" firstAttribute="top" secondItem="sTV-uE-MkN" secondAttribute="top" constant="16" id="k7w-No-CSl"/>
+                    <constraint firstItem="lGa-fd-kqA" firstAttribute="leading" secondItem="sTV-uE-MkN" secondAttribute="leading" id="vEm-uE-hzG"/>
+                    <constraint firstAttribute="trailing" secondItem="1DP-nm-crZ" secondAttribute="trailing" constant="15" id="wJM-zf-6gs"/>
+                </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="274" y="12.5"/>
+            <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+            <point key="canvasLocation" x="274" y="0.5"/>
         </tableViewCell>
     </objects>
 </document>

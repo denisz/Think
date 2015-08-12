@@ -16,6 +16,9 @@
 #import <VGParallaxHeader/UIScrollView+VGParallaxHeader.h>
 #import <FXBlurView/FXBlurView.h>
 
+//ionic
+#import "FontAwesomeKit.h"
+
 //lg frameworks
 #import <LGActionSheet/LGActionSheet.h>
 #import <LGAlertView/LGAlertView.h>

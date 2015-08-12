@@ -17,7 +17,7 @@ import ParseUI
         
         self.title = "Lisa Carter"
         
-        self.view.backgroundColor = UIColor(red:0.96, green:0.96, blue:0.96, alpha:1)
+        self.view.backgroundColor = kColorBackgroundViewController
     }
     
     override var imageLeftBtn: String {
@@ -85,6 +85,41 @@ import ParseUI
     @IBAction func didTapBookmarks() {
         var user = PFUser.currentUser()
         let controller = BookmarksViewController.CreateWithModel(user!)
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    @IBAction func didTapNewPost() {
+        let controller = NewPostViewController()
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    @IBAction func didTapTunePost() {
+        let controller = SettingsPostViewController()
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    @IBAction func didTapPost() {
+        //id post
+        let controller = PostViewController.CreateWithId("")
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    @IBAction func didTapProfielEdit() {
+        var user = PFUser.currentUser()
+        let controller = ProfileEditViewController.CreateWithModel(user!)
+        
+        UIView.beginAnimations(nil, context: nil)
+        UIView.setAnimationCurve(UIViewAnimationCurve.EaseInOut)
+        UIView.setAnimationDuration(0.75)
+        self.navigationController?.pushViewController(controller, animated: false)
+        UIView.setAnimationTransition(UIViewAnimationTransition.CurlUp , forView: self.navigationController!.view , cache: false)
+        UIView.commitAnimations()
+    }
+    
+    
+    @IBAction func didTapMessages() {
+        var user = PFUser.currentUser()
+        let controller = MessagesViewController.CreateWithModel(user!)
         self.navigationController?.pushViewController(controller, animated: true)
     }
 

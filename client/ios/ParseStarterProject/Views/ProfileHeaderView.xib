@@ -72,9 +72,12 @@
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="didTapNewPost:" destination="-1" eventType="touchUpInside" id="vXk-he-VaW"/>
+                            </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P2A-0d-M5z">
-                            <rect key="frame" x="64" y="7" width="90" height="35"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P2A-0d-M5z">
+                            <rect key="frame" x="65" y="7" width="90" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="90" id="HG6-HV-R8y"/>
                             </constraints>
@@ -83,8 +86,11 @@
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="didTapDrafts:" destination="-1" eventType="touchUpInside" id="DBn-XI-Ead"/>
+                            </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qYK-9X-Rjm">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qYK-9X-Rjm">
                             <rect key="frame" x="154.5" y="7" width="411" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="35" id="ZfJ-3t-yJk"/>
@@ -94,6 +100,9 @@
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="didTapFollowers:" destination="-1" eventType="touchUpInside" id="Zt5-yU-gxF"/>
+                            </connections>
                         </button>
                     </subviews>
                     <constraints>

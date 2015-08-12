@@ -23,8 +23,8 @@ let kReusableNotificationsViewCell = "NotificationViewCell"
         super.viewDidLoad()
         
         self.title = "Notifications"
-        self.view.backgroundColor = UIColor(red:0.96, green:0.96, blue:0.96, alpha:1)
-        self.tableView.backgroundColor = UIColor(red:0.96, green:0.96, blue:0.96, alpha:1)
+        self.view.backgroundColor = kColorBackgroundViewController
+        self.tableView.backgroundColor = kColorBackgroundViewController
         self.tableView.registerNib(UINib(nibName: kReusableNotificationsViewCell, bundle: nil), forCellReuseIdentifier: kReusableNotificationsViewCell)
         
         self.tableView.dataSource = self
@@ -35,8 +35,8 @@ let kReusableNotificationsViewCell = "NotificationViewCell"
         
         self.configureTitleView()
         self.customizeNavigationBar()
-        self.configureNavigationBarSettingsBtn(UIColor(red:0.2, green:0.2, blue:0.2, alpha:1))
-        self.configureNavigationBarBackBtn(UIColor(red:0.2, green:0.2, blue:0.2, alpha:1))
+        self.configureNavigationBarSettingsBtn(kColorNavigationBar)
+        self.configureNavigationBarBackBtn(kColorNavigationBar)
     }
     
     override var imageLeftBtn: String {
@@ -51,8 +51,8 @@ let kReusableNotificationsViewCell = "NotificationViewCell"
         btnBack.addTarget(self, action: "didTapSettingsBtn:", forControlEvents: UIControlEvents.TouchUpInside)
         btnBack.setImage(image, forState: UIControlState.Normal)
         btnBack.contentEdgeInsets = UIEdgeInsets(top: -5, left: 0, bottom: 0, right: 0)
-        btnBack.imageEdgeInsets = UIEdgeInsets(top: 14, left: 14, bottom: 14, right: 14)
-        btnBack.setTitleColor(UIColor(red:0.2, green:0.2, blue:0.2, alpha:1), forState: UIControlState.Normal)
+        btnBack.imageEdgeInsets = UIEdgeInsets(top: 14, left: 28, bottom: 14, right: 0)
+        btnBack.setTitleColor(kColorNavigationBar, forState: UIControlState.Normal)
         btnBack.sizeToFit()
         var myCustomBackButtonItem:UIBarButtonItem = UIBarButtonItem(customView: btnBack)
         self.navigationItem.rightBarButtonItem  = myCustomBackButtonItem

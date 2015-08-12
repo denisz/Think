@@ -23,6 +23,7 @@ let kReusableProfilePostViewCell = "ProfilePostViewCell"
         
         var header = ProfileHeaderView()
         header.object = self.owner
+        header.delegate = self
         self.tableView.setParallaxHeaderView(header, mode: VGParallaxHeaderMode.Fill, height: 240)
         self.tableView.registerNib(UINib(nibName: kReusableProfilePostViewCell, bundle: nil), forCellReuseIdentifier: kReusableProfilePostViewCell)
 
@@ -66,7 +67,14 @@ let kReusableProfilePostViewCell = "ProfilePostViewCell"
     }
     
     func didTapEdit(sender: AnyObject?) {
-        self.navigationController?.popViewControllerAnimated(true)
+        let controller = ProfileEditViewController.CreateWithModel(owner!)
+        
+        UIView.beginAnimations(nil, context: nil)
+        UIView.setAnimationCurve(UIViewAnimationCurve.EaseInOut)
+        UIView.setAnimationDuration(0.75)
+        self.navigationController?.pushViewController(controller, animated: false)
+        UIView.setAnimationTransition(UIViewAnimationTransition.CurlUp , forView: self.navigationController!.view , cache: false)
+        UIView.commitAnimations()
     }
     
     override func scrollViewDidScroll(scrollView: UIScrollView) {
@@ -90,6 +98,7 @@ let kReusableProfilePostViewCell = "ProfilePostViewCell"
         return UIStatusBarStyle.LightContent
     }
     
+    
     class func CreateWithModel(model: PFObject) -> ProfileViewController{
         var profile = ProfileViewController()
         profile.owner = model
@@ -103,6 +112,26 @@ let kReusableProfilePostViewCell = "ProfilePostViewCell"
     
     class func CreateWithId(objectId: String) -> ProfileViewController {
         return CreateWithModel(PFObject(withoutDataWithClassName: "_User", objectId: objectId))
+    }
+}
+
+
+extension ProfileViewController: ProfileHeaderViewDelegate {
+    func profileView(view: ProfileHeaderView, didTapDrafts button: UIButton) {
+        let controller = DraftsViewController.CreateWithModel(owner!)
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func profileView(view: ProfileHeaderView, didTapNewPost button: UIButton) {
+        let controller = NewPostViewController()
+        controller.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
+        controller.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
+
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func profileView(view: ProfileHeaderView, didTapFollowers button: UIButton) {
+        
     }
 }
 

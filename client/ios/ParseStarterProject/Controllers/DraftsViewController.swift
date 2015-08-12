@@ -22,14 +22,17 @@ let kReusableDraftsViewCell = "DraftsViewCell"
         self.title = "Drafts"
         self.tableView.registerNib(UINib(nibName: kReusableDraftsViewCell, bundle: nil), forCellReuseIdentifier: kReusableDraftsViewCell)
         
+        self.view.backgroundColor = kColorBackgroundViewController
+        self.tableView.backgroundColor = kColorBackgroundViewController
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        self.tableView.estimatedRowHeight = 44.0;
+        self.tableView.estimatedRowHeight = 250.0;
         self.tableView.rowHeight = UITableViewAutomaticDimension;
+        self.tableView.separatorColor = UIColor(red:0, green:0.64, blue:0.85, alpha:1)
         self.tableView.tableFooterView = UIView()
         
         self.customizeNavigationBar()
-        self.configureNavigationBarBackBtn(UIColor(red:0.2, green:0.2, blue:0.2, alpha:1))
+        self.configureNavigationBarBackBtn(kColorNavigationBar)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -51,7 +54,22 @@ let kReusableDraftsViewCell = "DraftsViewCell"
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle  {
-        return UIStatusBarStyle.LightContent
+        return UIStatusBarStyle.Default
+    }
+    
+    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]?  {
+        var shareAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Public".localized , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+            tableView.editing = false;
+            
+        })
+        shareAction.backgroundColor = UIColor(red:0.22, green:0.79, blue:0.45, alpha:1)
+        
+        var rateAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Delete".localized , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+            tableView.editing = false;
+        })
+        rateAction.backgroundColor = UIColor(red:0.9, green:0.3, blue:0.26, alpha:1)
+        
+        return [shareAction,rateAction]
     }
     
     class func CreateWithModel(model: PFObject) -> DraftsViewController{

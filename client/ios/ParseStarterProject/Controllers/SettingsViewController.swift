@@ -13,7 +13,7 @@ import Parse
 import ParseUI
 
 
-class SettingsViewController: XLFormViewController, XLFormViewControllerDelegate {
+class SettingsViewController: BaseFormViewController {
     struct tag {
         static let facebook = "facebook"
         static let twitter = "twitter"
@@ -30,7 +30,10 @@ class SettingsViewController: XLFormViewController, XLFormViewControllerDelegate
         self.title = "Settings"
         self.form = XLFormDescriptor()
         
-        self.view.backgroundColor = UIColor(red:0.96, green:0.96, blue:0.96, alpha:1)
+        
+        self.view.backgroundColor = kColorBackgroundViewController
+        
+        self.tableView.backgroundColor = kColorBackgroundViewController
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         
         self.setupSectionSocial()
@@ -39,7 +42,12 @@ class SettingsViewController: XLFormViewController, XLFormViewControllerDelegate
         self.logoutBtn()
         
         self.customizeNavigationBar()
-        self.configureNavigationBarBackBtn(UIColor(red:0.2, green:0.2, blue:0.2, alpha:1))
+        self.configureNavigationBarBackBtn(kColorNavigationBar)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default
     }
     
     func setupSectionSocial() {
@@ -85,11 +93,6 @@ class SettingsViewController: XLFormViewController, XLFormViewControllerDelegate
         row = XLFormRowDescriptor(tag: tag.vibration, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Vibration".uppercaseString)
         self.stylesRow(row)
         section.addFormRow(row)
-    }
-    
-    func stylesRow(row: XLFormRowDescriptor) {
-        row.cellConfig.setObject(UIColor(red:0.2, green:0.2, blue:0.2, alpha:1), forKey: "textLabel.textColor")
-        row.cellConfig.setObject(UIFont(name: "OpenSans-Semibold", size: 12)!, forKey: "textLabel.font")
     }
     
     func logoutBtn() {

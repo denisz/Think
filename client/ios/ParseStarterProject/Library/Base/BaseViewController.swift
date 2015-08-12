@@ -14,6 +14,7 @@ import LGViews
 
 let kImageNamedForBackBtn = "ic_back"
 let kImageNamedForMenuBtn = "ic_menu"
+let kImageNamedForCloseBtn = "ic_close"
 
 extension UIViewController {
     var imageLeftBtn: String {
@@ -56,6 +57,10 @@ extension UIViewController {
         self.automaticallyAdjustsScrollViewInsets = true
         var navigationBar = self.navigationController?.navigationBar
         
+        navigationBar?.titleTextAttributes = [
+            NSForegroundColorAttributeName: kColorNavigationBar,
+            NSFontAttributeName: UIFont(name: "OpenSans-Light", size: 19)!
+        ]
         // Sets background to a blank/empty image
 //        navigationBar?.setBackgroundImage(UIImage(), forBarMetrics: .Default)
         // Sets shadow (line below the bar) to a blank image
@@ -75,7 +80,7 @@ extension UIViewController {
         btnBack.setImage(image, forState: UIControlState.Normal)
         btnBack.contentEdgeInsets = UIEdgeInsets(top: -5, left: 0, bottom: 0, right: 0)
         btnBack.imageEdgeInsets = UIEdgeInsets(top: 9, left: 0, bottom: 9, right: 18)
-        btnBack.setTitleColor(UIColor(red:0.2, green:0.2, blue:0.2, alpha:1), forState: UIControlState.Normal)
+        btnBack.setTitleColor(kColorNavigationBar, forState: UIControlState.Normal)
         btnBack.sizeToFit()
         var myCustomBackButtonItem:UIBarButtonItem = UIBarButtonItem(customView: btnBack)
         self.navigationItem.leftBarButtonItem  = myCustomBackButtonItem

@@ -31,5 +31,26 @@ class SeperatorView: UIView {
         menuBottomHairline.backgroundColor = self.tintColor
     }
     
+    
+    class func addHairline(view: UIView) {
+        if let hairline = view.viewWithTag(1200) {
+            return
+        }
+        
+        let menuBottomHairline: UIView = UIView()
+        menuBottomHairline.tag = 1200
+        
+        menuBottomHairline.setTranslatesAutoresizingMaskIntoConstraints(false)
+        
+        view.addSubview(menuBottomHairline)
+        
+        let menuBottomHairline_constraint_H:Array = NSLayoutConstraint.constraintsWithVisualFormat("H:|[menuBottomHairline]|", options: NSLayoutFormatOptions(0), metrics: nil, views: ["menuBottomHairline":menuBottomHairline])
+        let menuBottomHairline_constraint_V:Array = NSLayoutConstraint.constraintsWithVisualFormat("V:[menuBottomHairline(0.5)]|", options: NSLayoutFormatOptions(0), metrics: nil, views: ["menuBottomHairline":menuBottomHairline])
+        
+        view.addConstraints(menuBottomHairline_constraint_H)
+        view.addConstraints(menuBottomHairline_constraint_V)
+        
+        menuBottomHairline.backgroundColor = UIColor.lightGrayColor().colorWithAlphaComponent(0.8)
+    }
 }
 

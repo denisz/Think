@@ -48,13 +48,13 @@ class ViewController: UIViewController {
     }
     
     class func globalApperence() {
-        UITextField.appearance().tintColor = UIColor.whiteColor()
-        UISwitch.appearance().tintColor = UIColor(red:0, green:0.64, blue:0.85, alpha:1)
-        UISwitch.appearance().onTintColor = UIColor(red:0, green:0.64, blue:0.85, alpha:1)
+        UITextField.appearance().tintColor  = UIColor.whiteColor()
+        UISwitch.appearance().tintColor     = kColorSwitchTint
+        UISwitch.appearance().onTintColor   = kColorSwitchTint
         
         UINavigationBar.appearance().titleTextAttributes = [
-            NSForegroundColorAttributeName: UIColor(red:0.2, green:0.2, blue:0.2, alpha:1),
-            NSFontAttributeName: UIFont(name: "OpenSans-Light", size: 19)!
+            NSForegroundColorAttributeName: kColorNavigationBar,
+            NSFontAttributeName: kFontNavigationBarTitle
         ]
         
 //        // Sets background to a blank/empty image

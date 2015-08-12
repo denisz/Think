@@ -10,10 +10,18 @@ import Foundation
 import UIKit
 import Parse
 
+protocol ProfileHeaderViewDelegate {
+    func profileView(view: ProfileHeaderView, didTapFollowers button: UIButton)
+    func profileView(view: ProfileHeaderView, didTapDrafts button: UIButton)
+    func profileView(view: ProfileHeaderView, didTapNewPost button: UIButton)
+}
+
 class ProfileHeaderView: UIView {
     @IBOutlet weak var newPostButton: UIButton!
     @IBOutlet weak var draftsButton: UIButton!
     @IBOutlet weak var followersButton: UIButton!
+    
+    var delegate: ProfileHeaderViewDelegate?
     
     var object: PFObject?    
     var view: UIView!
@@ -42,6 +50,19 @@ class ProfileHeaderView: UIView {
         let nib = UINib(nibName: "ProfileHeaderView", bundle: bundle)
         let view = nib.instantiateWithOwner(self, options: nil)[0] as! UIView
         return view
+    }
+    
+    @IBAction func didTapFollowers(sender: AnyObject?) {
+        self.delegate?.profileView(self, didTapFollowers: self.followersButton)
+    }
+    
+    @IBAction func didTapNewPost(sender: AnyObject?) {
+        self.delegate?.profileView(self, didTapNewPost: self.newPostButton)
+        
+    }
+    
+    @IBAction func didTapDrafts(sender: AnyObject?) {
+        self.delegate?.profileView(self, didTapDrafts: self.draftsButton)
     }
     
     func setupView() {

@@ -30,11 +30,11 @@ let kReusableFeedPostViewCell = "FeedPostViewCell"
         self.configureTitleView()
         self.configureNavigationRightBtns()
         self.customizeNavigationBar()
-        self.configureNavigationBarBackBtn(UIColor(red:0.2, green:0.2, blue:0.2, alpha:1))
+        self.configureNavigationBarBackBtn(kColorNavigationBar)
     }
     
     func configureNavigationRightBtns() {
-        var newPost = self.configureNavigationBarNewPostBtn(UIColor(red:0.2, green:0.2, blue:0.2, alpha:1))
+        var newPost = self.configureNavigationBarNewPostBtn(kColorNavigationBar)
         var counterPost = configureCounterView()
         self.navigationItem.setRightBarButtonItems([newPost, counterPost], animated: true)
     }
@@ -60,7 +60,7 @@ let kReusableFeedPostViewCell = "FeedPostViewCell"
         btnBack.addTarget(self, action: "didTapNewPostBtn:", forControlEvents: UIControlEvents.TouchUpInside)
         btnBack.setImage(image, forState: UIControlState.Normal)
         btnBack.imageEdgeInsets = UIEdgeInsets(top: 1, left: 0, bottom: 2, right: 0)
-        btnBack.setTitleColor(UIColor(red:0.2, green:0.2, blue:0.2, alpha:1), forState: UIControlState.Normal)
+        btnBack.setTitleColor(kColorNavigationBar, forState: UIControlState.Normal)
         btnBack.frame = CGRectMake(0, 0, 30, 32)
         
         return UIBarButtonItem(customView: btnBack)
