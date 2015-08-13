@@ -13,7 +13,7 @@ import UIKit
 
 let kReusableFeedPostViewCell = "FeedPostViewCell"
 
-@objc(FeedViewController) class FeedViewController: BaseQueryTableViewContoller {
+@objc(FeedViewController) class FeedViewController: BaseQueryTableViewController {
     var owner: PFObject?
     
     override func viewDidLoad() {
@@ -27,6 +27,12 @@ let kReusableFeedPostViewCell = "FeedPostViewCell"
         self.tableView.rowHeight = UITableViewAutomaticDimension;
         self.tableView.tableFooterView = UIView()
         
+        self.setupNavigationBar()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
         self.configureTitleView()
         self.configureNavigationRightBtns()
         self.customizeNavigationBar()
@@ -34,9 +40,10 @@ let kReusableFeedPostViewCell = "FeedPostViewCell"
     }
     
     func configureNavigationRightBtns() {
-        var newPost = self.configureNavigationBarNewPostBtn(kColorNavigationBar)
-        var counterPost = configureCounterView()
-        self.navigationItem.setRightBarButtonItems([newPost, counterPost], animated: true)
+        let navigationItem  = self.defineNavigationItem()
+        let newPost         = self.configureNavigationBarRightBtn(kColorNavigationBar)
+        let counterPost     = self.configureCounterView()
+        navigationItem.setRightBarButtonItems([newPost, counterPost], animated: true)
     }
     
     func configureCounterView() -> UIBarButtonItem {
@@ -52,7 +59,7 @@ let kReusableFeedPostViewCell = "FeedPostViewCell"
         return UIBarButtonItem(customView: counterButton)
     }
     
-    func configureNavigationBarNewPostBtn(color: UIColor) -> UIBarButtonItem {
+    func configureNavigationBarRightBtn(color: UIColor) -> UIBarButtonItem {
         var image = UIImage(named: "ic_new_post") as UIImage!
         image = image.imageWithColor(color)
         

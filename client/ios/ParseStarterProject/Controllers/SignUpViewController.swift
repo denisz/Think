@@ -36,18 +36,17 @@ protocol SignUpViewControllerDelegate {
         
         let color = UIColor(red:0.47, green:0.87, blue:1, alpha:1)
         
-        self.emailAddress.changeColorPlaceholder(UIColor.whiteColor())
-        self.password.changeColorPlaceholder(UIColor.whiteColor())
-        self.nickname.changeColorPlaceholder(UIColor.whiteColor())
+        self.emailAddress   .changeColorPlaceholder(UIColor.whiteColor())
+        self.password       .changeColorPlaceholder(UIColor.whiteColor())
+        self.nickname       .changeColorPlaceholder(UIColor.whiteColor())
         
-        self.emailAddress.borderBottom(color)
-        self.password.borderBottom(color)
-        self.nickname.borderBottom(color)
+        self.emailAddress   .borderBottom(color)
+        self.password       .borderBottom(color)
+        self.nickname       .borderBottom(color)
         
-        self.signUp.cornerEdge()
-        
+        self.signUp         .cornerEdge()
+
         self.setupKeyboard()
-        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -61,15 +60,19 @@ protocol SignUpViewControllerDelegate {
 
     override func updateConstraintKeyboard(hide: Bool) {
         if hide {
+            
             self.topConstraint.constant = 60
-            self.betweenSigninAndNicknameConstraint.constant = 60
-            self.betweenSigninAndEmailConstraint.constant = 20
+            self.betweenSigninAndEmailConstraint.constant  = 20
             self.betweenEmailAndPasswordConstraint.constant = 20
+            self.betweenSigninAndNicknameConstraint.constant = 60
+            
         } else {
+            
             self.topConstraint.constant = 15
-            self.betweenSigninAndNicknameConstraint.constant = 10
-            self.betweenSigninAndEmailConstraint.constant = 10
+            self.betweenSigninAndEmailConstraint.constant  = 10
             self.betweenEmailAndPasswordConstraint.constant = 10
+            self.betweenSigninAndNicknameConstraint.constant = 10
+            
         }
     }
     

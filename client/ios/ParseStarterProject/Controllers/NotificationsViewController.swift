@@ -15,7 +15,7 @@ import LGFilterView
 
 let kReusableNotificationsViewCell = "NotificationViewCell"
 
-@objc(NotificationsViewController) class NotificationsViewController: BaseQueryTableViewContoller {
+@objc(NotificationsViewController) class NotificationsViewController: BaseQueryTableViewController {
     var owner: PFObject?
     var filterView: LGFilterView?
     
@@ -33,17 +33,30 @@ let kReusableNotificationsViewCell = "NotificationViewCell"
         self.tableView.rowHeight = UITableViewAutomaticDimension;
         self.tableView.tableFooterView = UIView()
         
+        self.setupNavigationBar()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
         self.configureTitleView()
         self.customizeNavigationBar()
-        self.configureNavigationBarSettingsBtn(kColorNavigationBar)
+        self.configureNavigationBarRightBtn(kColorNavigationBar)
         self.configureNavigationBarBackBtn(kColorNavigationBar)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default;
     }
     
     override var imageLeftBtn: String {
         return kImageNamedForMenuBtn
     }
     
-    func configureNavigationBarSettingsBtn(color: UIColor) {
+    func configureNavigationBarRightBtn(color: UIColor) {
+        let navigationItem = self.defineNavigationItem()
+        
         var image = UIImage(named: "ic_settings_notify") as UIImage!
         image = image.imageWithColor(color)
         
@@ -54,7 +67,8 @@ let kReusableNotificationsViewCell = "NotificationViewCell"
         btnBack.imageEdgeInsets = UIEdgeInsets(top: 14, left: 28, bottom: 14, right: 0)
         btnBack.setTitleColor(kColorNavigationBar, forState: UIControlState.Normal)
         btnBack.sizeToFit()
-        var myCustomBackButtonItem:UIBarButtonItem = UIBarButtonItem(customView: btnBack)
+        
+        let myCustomBackButtonItem:UIBarButtonItem = UIBarButtonItem(customView: btnBack)
         self.navigationItem.rightBarButtonItem  = myCustomBackButtonItem
     }
     
@@ -66,11 +80,11 @@ let kReusableNotificationsViewCell = "NotificationViewCell"
         
         if let filterView = self.filterView {
             filterView.dismissAnimated(true, completionHandler: nil)
-            self.filterView = nil
         } else {
             var innerView = NotificationFilterView()
             innerView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 5 * 64)
             self.filterView = LGFilterView(view: innerView)
+            filterView?.delegate = self
             filterView?.transitionStyle = LGFilterViewTransitionStyleTop
             filterView?.heightMax = 5 * 64
             filterView?.borderWidth = 0
@@ -87,11 +101,6 @@ let kReusableNotificationsViewCell = "NotificationViewCell"
         return query
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default;
-    }
-    
     override func didTapLeftBtn(sender: UIButton) {
         if let sideMenu = sideMenuController() {
             sideMenu.showLeftViewAnimated(true, completionHandler: nil)
@@ -105,6 +114,11 @@ let kReusableNotificationsViewCell = "NotificationViewCell"
 
         cell.prepareView(object!)
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) {
+        let controller = ProfileViewController.CreateWithModel(object!)
+        self.navigationController!.pushViewController(controller, animated: true)
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle  {
@@ -123,5 +137,16 @@ let kReusableNotificationsViewCell = "NotificationViewCell"
     
     class func CreateWithId(objectId: String) -> NotificationsViewController {
         return CreateWithModel(PFObject(withoutDataWithClassName: "_User", objectId: objectId))
+    }
+}
+
+extension NotificationsViewController: LGFilterViewDelegate {
+
+    func filterViewWillDismiss(filterView: LGFilterView!) {
+        self.filterView = nil
+    }
+    
+    func filterViewWillShow(filterView: LGFilterView!) {
+        
     }
 }

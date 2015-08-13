@@ -18,10 +18,15 @@ import UIKit
         super.viewDidLoad()
         
         self.title = "New post"
-        
         self.view.backgroundColor = kColorBackgroundViewController
+
+        self.setupNavigationBar()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         
-        self.configureNavigationBarSettingsBtn(kColorNavigationBar)
+        self.configureNavigationBarRightBtn(kColorNavigationBar)
         self.configureNavigationBarBackBtn(kColorNavigationBar)
     }
     
@@ -34,7 +39,9 @@ import UIKit
         return kImageNamedForCloseBtn
     }
 
-    func configureNavigationBarSettingsBtn(color: UIColor) {
+    func configureNavigationBarRightBtn(color: UIColor) {
+        let navigationItem = self.defineNavigationItem()
+        
         var image = UIImage(named: "ic_next") as UIImage!
         image = image.imageWithColor(color)
         
@@ -42,15 +49,20 @@ import UIKit
         btnBack.addTarget(self, action: "didTapNextBtn:", forControlEvents: UIControlEvents.TouchUpInside)
         btnBack.setImage(image, forState: UIControlState.Normal)
         btnBack.imageEdgeInsets = UIEdgeInsets(top: 9, left: 18, bottom: 9, right: 0)
-        btnBack.setTitleColor(kColorNavigationBar, forState: UIControlState.Normal)
+        btnBack.setTitleColor(color, forState: UIControlState.Normal)
         btnBack.sizeToFit()
-        var myCustomBackButtonItem:UIBarButtonItem = UIBarButtonItem(customView: btnBack)
-        self.navigationItem.rightBarButtonItem  = myCustomBackButtonItem
+        
+        let myCustomBackButtonItem:UIBarButtonItem = UIBarButtonItem(customView: btnBack)
+        navigationItem.rightBarButtonItem  = myCustomBackButtonItem
     }
     
     func didTapNextBtn(sender: AnyObject?) {
         let controller = SettingsPostViewController()
         self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    override func didTapLeftBtn(sender: UIButton) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle  {

@@ -49,6 +49,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <color key="backgroundColor" red="0.9607800245" green="0.9607800245" blue="0.9607800245" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
                     <constraint firstItem="iMS-V2-P2H" firstAttribute="leading" secondItem="sTV-uE-MkN" secondAttribute="leading" id="Ae0-0K-Iug"/>
                     <constraint firstItem="1DP-nm-crZ" firstAttribute="leading" secondItem="sTV-uE-MkN" secondAttribute="leading" constant="15" id="EWa-JW-cEz"/>
@@ -62,6 +63,7 @@
                     <constraint firstAttribute="trailing" secondItem="1DP-nm-crZ" secondAttribute="trailing" constant="15" id="wJM-zf-6gs"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" red="0.9607800245" green="0.9607800245" blue="0.9607800245" alpha="1" colorSpace="calibratedRGB"/>
             <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
             <point key="canvasLocation" x="274" y="0.5"/>
         </tableViewCell>

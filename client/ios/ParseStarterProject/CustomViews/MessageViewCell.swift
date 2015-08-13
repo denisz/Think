@@ -11,7 +11,7 @@ import Parse
 import ParseUI
 
 
-class MessageViewCell: SBGestureTableViewCell {
+class MessageViewCell: PFTableViewCell {
     @IBOutlet weak var body: UILabel!
     
     func prepareView(object: PFObject) {

@@ -41,6 +41,12 @@ class SettingsViewController: BaseFormViewController {
         self.setupNewMessage()
         self.logoutBtn()
         
+        self.setupNavigationBar()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
         self.customizeNavigationBar()
         self.configureNavigationBarBackBtn(kColorNavigationBar)
     }

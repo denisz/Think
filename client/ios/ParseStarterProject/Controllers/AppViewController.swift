@@ -18,14 +18,17 @@ import ParseUI
         self.title = "Lisa Carter"
         
         self.view.backgroundColor = kColorBackgroundViewController
+        
+        setupNavigationBar()
     }
     
     override var imageLeftBtn: String {
         return kImageNamedForMenuBtn
     }
-    
+
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation: UIStatusBarAnimation.Fade)
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default;
     }
     
@@ -61,7 +64,7 @@ import ParseUI
     }
     
     @IBAction func didTapComments() {
-        let controller = CommentsViewController()
+        let controller = ChannelViewController()
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
@@ -99,11 +102,24 @@ import ParseUI
     }
     
     @IBAction func didTapPost() {
-        //id post
-        let controller = PostViewController.CreateWithId("")
+        var postID = "AjqOwAuL06"
+        let controller = PostViewController.CreateWithId(postID)
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
+    @IBAction func  didTapFollowers() {
+        var user = PFUser.currentUser()
+        let controller = FollowersViewController.CreateWithModel(user!)
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    @IBAction func  didTapYouFollow() {
+        var user = PFUser.currentUser()
+        let controller = YouFollowViewController.CreateWithModel(user!)
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+
+
     @IBAction func didTapProfielEdit() {
         var user = PFUser.currentUser()
         let controller = ProfileEditViewController.CreateWithModel(user!)
@@ -120,6 +136,8 @@ import ParseUI
     @IBAction func didTapMessages() {
         var user = PFUser.currentUser()
         let controller = MessagesViewController.CreateWithModel(user!)
+//        let navigation = BaseNavigationController(rootViewController: controller)
+//        self.presentViewController(navigation, animated: true, completion: nil)
         self.navigationController?.pushViewController(controller, animated: true)
     }
 

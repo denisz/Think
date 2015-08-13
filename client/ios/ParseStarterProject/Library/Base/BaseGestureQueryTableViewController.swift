@@ -11,10 +11,10 @@ import Parse
 import ParseUI
 import UIKit
 
-class BaseGestureQueryTableViewController: PFQueryTableViewController {
+class BaseGestureQueryTableViewController: BaseQueryTableViewController {
     override func viewDidLoad() {
         self.tableView = SBGestureTableView(frame: self.view.frame, style: UITableViewStyle.Plain)
-        self.view = self.tableView
+//        self.view = self.tableView
         super.viewDidLoad()
     }
     

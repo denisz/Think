@@ -14,7 +14,12 @@
 
 #import <XLForm/XLForm.h>
 #import <VGParallaxHeader/UIScrollView+VGParallaxHeader.h>
+
+//blur view
 #import <FXBlurView/FXBlurView.h>
+
+//Progress Hud
+#import <JGProgressHUD/JGProgressHUD.h>
 
 //ionic
 #import "FontAwesomeKit.h"
@@ -25,9 +30,6 @@
 #import <LGFilterView/LGFilterView.h>
 #import <LGDrawer/LGDrawer.h>
 #import <LGViews/LGViews.h>
-
-
-
 
 //comments
 #import <AsyncDisplayKit/AsyncDisplayKit.h>

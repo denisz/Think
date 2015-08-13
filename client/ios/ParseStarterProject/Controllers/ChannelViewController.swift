@@ -7,19 +7,17 @@
 //
 
 import UIKit
+import Parse
+import ParseUI
 import AsyncDisplayKit
 import LoremIpsum
 
-class CommentsViewController: BaseMessageCollectionView {
+@objc(ChannelViewController) class ChannelViewController: BaseMessageCollectionView {
+    var owner: PFObject?
     
     private let users: [User]
     private var currentUser: User? {
         return users.filter({$0.ID == self.dataSource.currentUserID()}).first
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default;
     }
     
     init() {
@@ -41,9 +39,38 @@ class CommentsViewController: BaseMessageCollectionView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Change user", style: .Plain, target: self, action: "changeCurrentUser")
         
+        self.customizeTextField()
+        self.setupNavigationBar()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.customizeNavigationBar()
         self.configureNavigationBarBackBtn(kColorNavigationBar)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default;
+    }
+    
+    func customizeTextField() {
+        self.textInputbar.backgroundColor = UIColor.whiteColor()
+        self.textInputbar.contentInset = UIEdgeInsetsMake(8.0, 8.0, 8.0, 8.0);
+        self.textInputbar.autoHideRightButton = false
+        self.textInputbar.textView.layer.borderWidth = 0
+        self.textInputbar.textView.font = UIFont(name: "OpenSans", size: 16)!
+        self.textInputbar.layer.borderWidth = 0
+        self.textInputbar.layer.masksToBounds = true
+        self.textInputbar.setShadowImage(UIImage(), forToolbarPosition: UIBarPosition.Any)
+        
+        let sendImage = UIImage(named: "ic_send")
+        let rightButton = self.textInputbar.rightButton
+        rightButton.tintColor = kColorNavigationBar
+        rightButton.setImage(sendImage, forState: UIControlState.Normal)
+        rightButton.setTitle("", forState: UIControlState.Normal)
     }
     
     override func didPressRightButton(sender: AnyObject!) {
@@ -92,4 +119,14 @@ class CommentsViewController: BaseMessageCollectionView {
         dataSource.collectionView(collectionView, updateCurrentUserID: newUser.ID)
     }
     
+    
+    class func CreateWithModel(model: PFObject) -> ChannelViewController{
+        var channel = ChannelViewController()
+        channel.owner = model
+        return channel
+    }
+    
+    class func CreateWithId(objectId: String) -> ChannelViewController {
+        return CreateWithModel(PFObject(withoutDataWithClassName: "_User", objectId: objectId))
+    }
 }

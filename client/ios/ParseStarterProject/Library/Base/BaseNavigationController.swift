@@ -9,7 +9,16 @@
 import Foundation
 import UIKit
 
+//remove navigationBar
 class BaseNavigationController: UINavigationController {
+    var transitionDelegate = SwipeTransitionDeleagte()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.delegate = transitionDelegate
+        self.interactivePopGestureRecognizer.enabled = false
+        self.navigationBar.hidden = true
+    }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle  {
         return UIStatusBarStyle.LightContent

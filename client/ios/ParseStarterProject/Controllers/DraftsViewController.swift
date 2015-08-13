@@ -13,7 +13,7 @@ import UIKit
 
 let kReusableDraftsViewCell = "DraftsViewCell"
 
-@objc(DraftsViewController) class DraftsViewController: BaseQueryTableViewContoller {
+@objc(DraftsViewController) class DraftsViewController: BaseQueryTableViewController {
     var owner: PFObject?
     
     override func viewDidLoad() {
@@ -31,6 +31,11 @@ let kReusableDraftsViewCell = "DraftsViewCell"
         self.tableView.separatorColor = UIColor(red:0, green:0.64, blue:0.85, alpha:1)
         self.tableView.tableFooterView = UIView()
         
+        self.setupNavigationBar()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         self.customizeNavigationBar()
         self.configureNavigationBarBackBtn(kColorNavigationBar)
     }
@@ -70,6 +75,11 @@ let kReusableDraftsViewCell = "DraftsViewCell"
         rateAction.backgroundColor = UIColor(red:0.9, green:0.3, blue:0.26, alpha:1)
         
         return [shareAction,rateAction]
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) {
+        let controller = PostViewController.CreateWithModel(object!)
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     class func CreateWithModel(model: PFObject) -> DraftsViewController{

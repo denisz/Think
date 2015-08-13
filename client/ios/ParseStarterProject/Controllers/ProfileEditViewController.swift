@@ -29,6 +29,7 @@ import VGParallaxHeader
         
         var header = ProfileEditHeaderView()
         header.object = self.owner
+        header.parentController = self
         self.tableView.setParallaxHeaderView(header, mode: VGParallaxHeaderMode.Fill, height: 240)
         self.view.backgroundColor = kColorBackgroundViewController
         self.tableView.backgroundColor = kColorBackgroundViewController
@@ -37,40 +38,55 @@ import VGParallaxHeader
         self.form = XLFormDescriptor()
         
         self.setupSections()
+        self.setupNavigationBar()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         self.customizeNavigationBar()
+        self.configureNavigationBarBackBtn(UIColor.whiteColor())
+        self.configureNavigationBarRightBtn(UIColor.whiteColor())
     }
     
     override func scrollViewDidScroll(scrollView: UIScrollView) {
         self.tableView.shouldPositionParallaxHeader();
     }
     
-    override func customizeNavigationBar() {
-        self.automaticallyAdjustsScrollViewInsets = false
-        var navigationBar = self.navigationController?.navigationBar
-        
-        // Sets background to a blank/empty image
-        navigationBar?.setBackgroundImage(UIImage(), forBarMetrics: .Default)
-        // Sets shadow (line below the bar) to a blank image
-        navigationBar?.shadowImage = UIImage()
-        // Sets the translucent background color
-        navigationBar?.backgroundColor = UIColor.clearColor()
-        //UIColor(red:0, green:0, blue:0, alpha:0.5)
-        //
-        // Set translucent. (Default value is already true, so this can be removed if desired.)
-        navigationBar?.translucent = true
+    override func configureNavigationBarBackBtn(color: UIColor) {
+        let navigationItem  = self.defineNavigationItem()
         
         let attributes = [
-            NSForegroundColorAttributeName: UIColor.whiteColor(),
-            NSFontAttributeName: UIFont(name: "OpenSans-Light", size: 18)!
+            NSForegroundColorAttributeName: color,
+            NSFontAttributeName: kFontNavigationItem
         ]
         
         let cancelBarButtonItem = UIBarButtonItem(title: "Cancel".uppercaseString, style: UIBarButtonItemStyle.Plain, target: self, action: "didTapCancel:")
         cancelBarButtonItem.setTitleTextAttributes(attributes, forState: UIControlState.Normal)
-        self.navigationItem.leftBarButtonItem = cancelBarButtonItem
+        navigationItem.leftBarButtonItem = cancelBarButtonItem
+    }
+    
+    func configureNavigationBarRightBtn(color: UIColor) {
+        let navigationItem  = self.defineNavigationItem()
+        
+        let attributes = [
+            NSForegroundColorAttributeName: color,
+            NSFontAttributeName: kFontNavigationItem
+        ]
         
         let editBarButtonItem = UIBarButtonItem(title: "Done".uppercaseString, style: UIBarButtonItemStyle.Plain, target: self, action: "didTapDone:")
         editBarButtonItem.setTitleTextAttributes(attributes, forState: UIControlState.Normal)
-        self.navigationItem.rightBarButtonItem = editBarButtonItem
+        navigationItem.rightBarButtonItem = editBarButtonItem
+    }
+    
+    override func customizeNavigationBar() {
+        self.automaticallyAdjustsScrollViewInsets = false
+        
+        let navigationBar   = self.defineNavigationBar()
+        
+        navigationBar?.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        navigationBar?.shadowImage = UIImage()
+        navigationBar?.backgroundColor = UIColor.clearColor()
+        navigationBar?.translucent = true
     }
     
     override func viewDidAppear(animated: Bool) {

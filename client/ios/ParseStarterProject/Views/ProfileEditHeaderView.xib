@@ -13,7 +13,12 @@
         </mutableArray>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileEditHeaderView" customModule="Think" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileEditHeaderView" customModule="Think" customModuleProvider="target">
+            <connections>
+                <outlet property="buttonAvatar" destination="2fX-Dh-Qpf" id="mc2-TY-5kz"/>
+                <outlet property="buttonCover" destination="3ii-Gh-ael" id="lRw-ZA-YdL"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="5wf-Ms-56A">
             <rect key="frame" x="0.0" y="0.0" width="581" height="221"/>
@@ -53,11 +58,12 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zps-iw-xgA">
-                    <rect key="frame" x="195.5" y="179" width="190" height="40"/>
+                    <rect key="frame" x="195.5" y="182" width="190" height="28"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ii-Gh-ael" customClass="UIButtonRoundedBorder" customModule="Think" customModuleProvider="target">
-                            <rect key="frame" x="100" y="3" width="70" height="33"/>
+                            <rect key="frame" x="100" y="-3" width="70" height="33"/>
                             <constraints>
+                                <constraint firstAttribute="height" constant="33" id="VAe-Bj-h1z"/>
                                 <constraint firstAttribute="width" constant="70" id="wqb-eA-mlh"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="15"/>
@@ -78,7 +84,7 @@
                             </userDefinedRuntimeAttributes>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2fX-Dh-Qpf" customClass="UIButtonRoundedBorder" customModule="Think" customModuleProvider="target">
-                            <rect key="frame" x="15" y="3" width="70" height="33"/>
+                            <rect key="frame" x="15" y="-3" width="70" height="33"/>
                             <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="15"/>
                             <state key="normal" title="avatar">
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -103,7 +109,7 @@
                         <constraint firstAttribute="centerY" secondItem="3ii-Gh-ael" secondAttribute="centerY" id="940-ua-zdp"/>
                         <constraint firstAttribute="width" constant="190" id="GJx-vT-cm7"/>
                         <constraint firstItem="2fX-Dh-Qpf" firstAttribute="leading" secondItem="zps-iw-xgA" secondAttribute="leading" constant="15" id="TGz-sf-dDx"/>
-                        <constraint firstAttribute="height" constant="40" id="noD-tf-0PK"/>
+                        <constraint firstAttribute="height" constant="28" id="noD-tf-0PK"/>
                         <constraint firstItem="3ii-Gh-ael" firstAttribute="width" secondItem="2fX-Dh-Qpf" secondAttribute="width" id="sqT-xR-xzP"/>
                         <constraint firstItem="3ii-Gh-ael" firstAttribute="leading" secondItem="2fX-Dh-Qpf" secondAttribute="trailing" constant="15" id="zu6-DM-8QM"/>
                     </constraints>
@@ -119,7 +125,7 @@
                 <constraint firstItem="Ixn-Yb-mIk" firstAttribute="leading" secondItem="5wf-Ms-56A" secondAttribute="leading" id="byx-CF-2uK"/>
                 <constraint firstItem="8hg-bx-Hro" firstAttribute="top" secondItem="5wf-Ms-56A" secondAttribute="top" id="gmi-uI-jLV"/>
                 <constraint firstAttribute="trailing" secondItem="8hg-bx-Hro" secondAttribute="trailing" id="slf-rm-A99"/>
-                <constraint firstItem="zps-iw-xgA" firstAttribute="top" secondItem="Ixn-Yb-mIk" secondAttribute="bottom" constant="4" id="wk0-p9-fbP"/>
+                <constraint firstItem="zps-iw-xgA" firstAttribute="top" secondItem="Ixn-Yb-mIk" secondAttribute="bottom" constant="7" id="wk0-p9-fbP"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="270.5" y="90.5"/>

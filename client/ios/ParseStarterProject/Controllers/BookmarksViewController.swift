@@ -16,11 +16,11 @@ let kReusableBookmarksViewCell = "BookmarksViewCell"
 
 @objc(BookmarksViewController) class BookmarksViewController: BaseQueryCollectionViewContoller {
     var owner: PFObject?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Bookmarks"
+        //self.title = "Bookmarks"
         
         var header = BookmarkMainPostView()
         header.object = self.owner
@@ -30,41 +30,42 @@ let kReusableBookmarksViewCell = "BookmarksViewCell"
         self.collectionView!.dataSource = self
         self.collectionView!.delegate = self
         
+        self.setupNavigationBar()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let color = UIColor.whiteColor() //kColorNavigationBar
         self.customizeNavigationBar()
-        self.configureNavigationBarBackBtn(UIColor.whiteColor())
+        self.configureNavigationBarBackBtn(color)
+        self.configureNavigationBarRightBtn(color)
     }
     
     override func customizeNavigationBar() {
         self.automaticallyAdjustsScrollViewInsets = false
-        var navigationBar = self.navigationController?.navigationBar
+        let navigationBar = self.defineNavigationBar()
         
-        navigationBar?.titleTextAttributes = [
-            NSForegroundColorAttributeName: UIColor.whiteColor(),
-            NSFontAttributeName: kFontNavigationBarTitle
-        ]
-
-        // Sets background to a blank/empty image
         navigationBar?.setBackgroundImage(UIImage(), forBarMetrics: .Default)
-        // Sets shadow (line below the bar) to a blank image
         navigationBar?.shadowImage = UIImage()
-        // Sets the translucent background color
         navigationBar?.backgroundColor = UIColor.clearColor()
-        //UIColor(red:0, green:0, blue:0, alpha:0.5)
-        //
-        // Set translucent. (Default value is already true, so this can be removed if desired.)
         navigationBar?.translucent = true
+    }
+    
+    func configureNavigationBarRightBtn(color: UIColor) {
+        let navigationItem = defineNavigationItem()
         
         var image = UIImage(named: "ic_more2") as UIImage!
-        image = image.imageWithColor(UIColor.whiteColor())
+        image = image.imageWithColor(color)
         
         var btnBack:UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
         btnBack.addTarget(self, action: "didTapMoreBtn:", forControlEvents: UIControlEvents.TouchUpInside)
         btnBack.setImage(image, forState: UIControlState.Normal)
-        btnBack.imageEdgeInsets = UIEdgeInsets(top: 9, left: 18, bottom: 9, right: 0)
-        btnBack.setTitleColor(kColorNavigationBar, forState: UIControlState.Normal)
+        btnBack.imageEdgeInsets = UIEdgeInsets(top: 13, left: 26, bottom: 13, right: 0)
+        btnBack.setTitleColor(color, forState: UIControlState.Normal)
         btnBack.sizeToFit()
         var myCustomBackButtonItem:UIBarButtonItem = UIBarButtonItem(customView: btnBack)
-        self.navigationItem.rightBarButtonItem  = myCustomBackButtonItem
+        navigationItem.rightBarButtonItem  = myCustomBackButtonItem
     }
     
     func didTapMoreBtn(sender: AnyObject?) {
@@ -73,7 +74,7 @@ let kReusableBookmarksViewCell = "BookmarksViewCell"
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default
     }
     
     func didTapEdit(sender: AnyObject?) {
@@ -96,6 +97,11 @@ let kReusableBookmarksViewCell = "BookmarksViewCell"
         cell.prepareView(object!)
         
         return cell
+    }
+    
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath, object: PFObject?) {
+        let controller = PostViewController.CreateWithModel(object!)
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle  {

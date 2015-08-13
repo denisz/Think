@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="OpenSans-Light.ttf">
+            <string>OpenSans-Light</string>
+            <string>OpenSans-Light</string>
+        </mutableArray>
+        <mutableArray key="OpenSans-Semibold.ttf">
+            <string>OpenSans-Semibold</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileGuestHeaderView" customModule="Think" customModuleProvider="target">
+            <connections>
+                <outlet property="followButton" destination="bTd-l4-igA" id="yfp-Sh-hGR"/>
+                <outlet property="whisperButton" destination="Lx9-ju-AqF" id="J8E-sK-4mb"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="y2d-Hw-d2L">
+            <rect key="frame" x="0.0" y="0.0" width="581" height="221"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="profile_bg" translatesAutoresizingMaskIntoConstraints="NO" id="5LP-y3-TSK">
+                    <rect key="frame" x="0.0" y="0.0" width="581" height="250"/>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Sa-a1-YQO">
+                    <rect key="frame" x="0.0" y="45.5" width="581" height="130"/>
+                    <subviews>
+                        <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ava_profile" translatesAutoresizingMaskIntoConstraints="NO" id="FGl-yL-9NR" customClass="UIImageCircle" customModule="Think" customModuleProvider="target">
+                            <rect key="frame" x="240" y="0.0" width="100" height="100"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="100" id="PHY-n7-VVc"/>
+                                <constraint firstAttribute="height" constant="100" id="XhI-e4-U75"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ALEXANDER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dlI-D9-fD1">
+                            <rect key="frame" x="190" y="107" width="200" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="aXa-6Y-06x"/>
+                                <constraint firstAttribute="width" constant="200" id="ajL-yF-Pe2"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="centerX" secondItem="dlI-D9-fD1" secondAttribute="centerX" id="Hbq-cS-crI"/>
+                        <constraint firstItem="dlI-D9-fD1" firstAttribute="top" secondItem="FGl-yL-9NR" secondAttribute="bottom" constant="7" id="KVg-rN-Xi8"/>
+                        <constraint firstAttribute="centerX" secondItem="FGl-yL-9NR" secondAttribute="centerX" id="Zr2-fe-sJy"/>
+                        <constraint firstAttribute="height" constant="130" id="f7Q-O2-aFy"/>
+                        <constraint firstItem="FGl-yL-9NR" firstAttribute="top" secondItem="8Sa-a1-YQO" secondAttribute="top" id="hfe-ge-eXb"/>
+                        <constraint firstAttribute="centerX" secondItem="FGl-yL-9NR" secondAttribute="centerX" id="lPd-Jp-XTy"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BRu-yI-ZTv">
+                    <rect key="frame" x="195" y="183" width="190" height="28"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lx9-ju-AqF" customClass="UIButtonRoundedBorder" customModule="Think" customModuleProvider="target">
+                            <rect key="frame" x="100" y="-3" width="70" height="33"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="33" id="fUo-9m-RAR"/>
+                                <constraint firstAttribute="width" constant="70" id="ljo-tn-zfR"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="15"/>
+                            <state key="normal" title="whisper">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="borderRadius">
+                                    <real key="value" value="4"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                    <real key="value" value="0.5"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                    <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="didTapWhisper:" destination="-1" eventType="touchUpInside" id="lgP-u2-xmA"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bTd-l4-igA" customClass="UIButtonRoundedBorder" customModule="Think" customModuleProvider="target">
+                            <rect key="frame" x="15" y="-3" width="70" height="33"/>
+                            <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="15"/>
+                            <state key="normal" title="follow">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="borderRadius">
+                                    <real key="value" value="4"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                    <real key="value" value="0.5"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                    <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="didTapFollow:" destination="-1" eventType="touchUpInside" id="xjE-iO-fDU"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="Lx9-ju-AqF" firstAttribute="width" secondItem="bTd-l4-igA" secondAttribute="width" id="0qF-wP-gpK"/>
+                        <constraint firstItem="Lx9-ju-AqF" firstAttribute="height" secondItem="bTd-l4-igA" secondAttribute="height" id="0v9-o6-rPp"/>
+                        <constraint firstAttribute="centerY" secondItem="bTd-l4-igA" secondAttribute="centerY" id="652-aq-VZA"/>
+                        <constraint firstAttribute="height" constant="28" id="C5N-GV-hut"/>
+                        <constraint firstAttribute="width" constant="190" id="Oob-a6-oHH"/>
+                        <constraint firstAttribute="centerY" secondItem="Lx9-ju-AqF" secondAttribute="centerY" id="g7U-8N-icA"/>
+                        <constraint firstItem="bTd-l4-igA" firstAttribute="leading" secondItem="BRu-yI-ZTv" secondAttribute="leading" constant="15" id="hqT-Ed-h5e"/>
+                        <constraint firstItem="Lx9-ju-AqF" firstAttribute="leading" secondItem="bTd-l4-igA" secondAttribute="trailing" constant="15" id="rRq-ao-t9O"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="8Sa-a1-YQO" firstAttribute="leading" secondItem="y2d-Hw-d2L" secondAttribute="leading" id="7qH-rn-icV"/>
+                <constraint firstAttribute="trailing" secondItem="8Sa-a1-YQO" secondAttribute="trailing" id="9E9-MA-T13"/>
+                <constraint firstAttribute="trailing" secondItem="5LP-y3-TSK" secondAttribute="trailing" id="TT1-C2-V1i"/>
+                <constraint firstAttribute="bottom" secondItem="5LP-y3-TSK" secondAttribute="bottom" id="ZIg-B4-0Rr"/>
+                <constraint firstItem="BRu-yI-ZTv" firstAttribute="top" secondItem="8Sa-a1-YQO" secondAttribute="bottom" constant="7" id="aON-8R-MOm"/>
+                <constraint firstAttribute="centerY" secondItem="8Sa-a1-YQO" secondAttribute="centerY" id="jT1-Dw-FV9"/>
+                <constraint firstItem="5LP-y3-TSK" firstAttribute="top" secondItem="y2d-Hw-d2L" secondAttribute="top" id="ocR-uK-pqK"/>
+                <constraint firstAttribute="centerX" secondItem="BRu-yI-ZTv" secondAttribute="centerX" id="q4x-ab-aA1"/>
+                <constraint firstItem="5LP-y3-TSK" firstAttribute="leading" secondItem="y2d-Hw-d2L" secondAttribute="leading" id="rLw-nC-hTy"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="270.5" y="102"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ava_profile" width="170" height="170"/>
+        <image name="profile_bg" width="640" height="300"/>
+    </resources>
+</document>

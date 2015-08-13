@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "Think.MessagesViewController.objectsDidLoad (Think.MessagesViewController)(Swift.Optional&lt;ObjectiveC.NSError&gt;) -&gt; ():MessagesViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.objects!.count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Think.BaseQueryTableViewController.tableView (Think.BaseQueryTableViewController)(ObjectiveC.UITableView, didSelectRowAtIndexPath : ObjectiveC.NSIndexPath) -&gt; ():BaseQueryTableViewContoller.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.objects!">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Think.ProfileViewController.tableView (Think.ProfileViewController)(ObjectiveC.UITableView, didSelectRowAtIndexPath : ObjectiveC.NSIndexPath, object : Swift.Optional&lt;ObjectiveC.PFObject&gt;) -&gt; ():ProfileViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "object.objectId">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Think.MessagesViewController.viewDidLoad (Think.MessagesViewController)() -&gt; ():MessagesViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.tableView">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

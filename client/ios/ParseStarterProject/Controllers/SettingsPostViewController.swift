@@ -39,12 +39,20 @@ class SettingsPostViewController: BaseFormViewController {
         self.form = XLFormDescriptor()
         
         self.setupSections()
+        self.setupNavigationBar()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         
-        self.configureNavigationBarSendBtn(kColorNavigationBar)
+        self.customizeNavigationBar()
+        self.configureNavigationBarRightBtn(kColorNavigationBar)
         self.configureNavigationBarBackBtn(kColorNavigationBar)
     }
     
-    func configureNavigationBarSendBtn(color: UIColor) {
+    func configureNavigationBarRightBtn(color: UIColor) {
+        let navigationItem = self.defineNavigationItem()
+        
         var image = UIImage(named: "ic_send") as UIImage!
         image = image.imageWithColor(color)
         
@@ -55,8 +63,9 @@ class SettingsPostViewController: BaseFormViewController {
         btnBack.imageEdgeInsets = UIEdgeInsets(top: 14, left: 28, bottom: 14, right: 0)
         btnBack.setTitleColor(kColorNavigationBar, forState: UIControlState.Normal)
         btnBack.sizeToFit()
-        var myCustomBackButtonItem:UIBarButtonItem = UIBarButtonItem(customView: btnBack)
-        self.navigationItem.rightBarButtonItem  = myCustomBackButtonItem
+        
+        let myCustomBackButtonItem:UIBarButtonItem = UIBarButtonItem(customView: btnBack)
+        navigationItem.rightBarButtonItem  = myCustomBackButtonItem
     }
     
     func didTapSendBtn(sender: AnyObject?) {

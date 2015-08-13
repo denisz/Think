@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D8210626A9EA2D20FC49CC4D"
+               BlueprintIdentifier = "8E22D5E207B0898D4B9836B1"
                BuildableName = "LGViews.framework"
                BlueprintName = "Pods-Think-LGViews"
                ReferencedContainer = "container:Pods.xcodeproj">

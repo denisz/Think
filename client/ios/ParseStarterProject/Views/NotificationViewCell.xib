@@ -24,7 +24,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CRy-af-DPb" customClass="UIButtonRoundedBorder" customModule="Think" customModuleProvider="target">
-                        <rect key="frame" x="259" y="29.5" width="46" height="32"/>
+                        <rect key="frame" x="259" y="29" width="46" height="32"/>
                         <color key="backgroundColor" red="0.9607800245" green="0.9607800245" blue="0.9607800245" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="32" id="aMj-6v-TqC"/>
@@ -57,7 +57,7 @@
                         </constraints>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="paD-s5-625" customClass="UIButtonCircle" customModule="Think" customModuleProvider="target">
-                        <rect key="frame" x="37" y="36" width="32" height="32"/>
+                        <rect key="frame" x="36" y="36" width="32" height="32"/>
                         <color key="backgroundColor" red="0.9607800245" green="0.9607800245" blue="0.9607800245" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="32" id="6gg-Hm-u57"/>
@@ -68,14 +68,14 @@
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Mary Green" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="saX-qR-47D">
-                        <rect key="frame" x="83" y="10" width="169" height="20.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Mary Green" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="saX-qR-47D">
+                        <rect key="frame" x="83" y="7" width="169" height="24.5"/>
                         <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
                         <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="is now following you" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aog-kq-82u">
-                        <rect key="frame" x="83" y="30" width="169" height="19"/>
+                        <rect key="frame" x="83" y="26.5" width="169" height="18"/>
                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="13"/>
                         <color key="textColor" red="0.64705997709999996" green="0.64705997709999996" blue="0.64705997709999996" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -93,7 +93,7 @@
                     <constraint firstItem="paD-s5-625" firstAttribute="top" secondItem="Nv9-l9-8gc" secondAttribute="top" constant="36" id="5Wm-gl-PlB"/>
                     <constraint firstItem="znn-o7-5KC" firstAttribute="trailing" secondItem="aog-kq-82u" secondAttribute="trailing" id="7wz-eO-31L"/>
                     <constraint firstItem="saX-qR-47D" firstAttribute="leading" secondItem="WxI-Ew-RnA" secondAttribute="trailing" constant="30" id="CGv-2W-dfz"/>
-                    <constraint firstItem="paD-s5-625" firstAttribute="leading" secondItem="Nv9-l9-8gc" secondAttribute="leading" constant="37" id="Eic-na-h1H"/>
+                    <constraint firstItem="paD-s5-625" firstAttribute="leading" secondItem="Nv9-l9-8gc" secondAttribute="leading" constant="36" id="Eic-na-h1H"/>
                     <constraint firstItem="znn-o7-5KC" firstAttribute="leading" secondItem="saX-qR-47D" secondAttribute="leading" id="Mrk-s0-vmL"/>
                     <constraint firstItem="aog-kq-82u" firstAttribute="top" secondItem="saX-qR-47D" secondAttribute="bottom" id="VJl-ba-sAJ"/>
                     <constraint firstItem="WxI-Ew-RnA" firstAttribute="top" secondItem="Nv9-l9-8gc" secondAttribute="top" constant="15" id="f1b-cb-cQs"/>

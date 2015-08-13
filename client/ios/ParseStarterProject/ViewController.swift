@@ -39,7 +39,7 @@ class ViewController: UIViewController {
     
     func app() {
         let appController = AppViewController()
-        let navigationController = UINavigationController(rootViewController: appController)
+        let navigationController = BaseNavigationController(rootViewController: appController)
         let sideMenuController = BaseSideMenuViewController(rootViewController: navigationController)
         
         setSideMenuController(sideMenuController)
@@ -57,15 +57,7 @@ class ViewController: UIViewController {
             NSFontAttributeName: kFontNavigationBarTitle
         ]
         
-//        // Sets background to a blank/empty image
-//        UINavigationBar.appearance().setBackgroundImage(UIImage(), forBarMetrics: .Default)
-//        // Sets shadow (line below the bar) to a blank image
-//        UINavigationBar.appearance().shadowImage = UIImage()
-//        // Sets the translucent background color
         UINavigationBar.appearance().backgroundColor = UIColor.whiteColor()
-//        // Set translucent. (Default value is already true, so this can be removed if desired.)
-//        UINavigationBar.appearance().translucent = true
-        
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle  {

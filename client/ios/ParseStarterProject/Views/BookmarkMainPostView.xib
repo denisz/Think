@@ -46,7 +46,7 @@
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+1345" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jPG-ts-S7P" customClass="LabelViewWithIcon" customModule="Think" customModuleProvider="target">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+1345" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jPG-ts-S7P" userLabel="Likes" customClass="LabelViewWithIcon" customModule="Think" customModuleProvider="target">
                             <rect key="frame" x="8" y="50" width="80" height="25"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="80" id="CWC-hV-J5W"/>
@@ -78,7 +78,7 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="184" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9tl-Vy-XSm" customClass="LabelViewWithIcon" customModule="Think" customModuleProvider="target">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="184" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9tl-Vy-XSm" userLabel="comments" customClass="LabelViewWithIcon" customModule="Think" customModuleProvider="target">
                             <rect key="frame" x="103" y="50" width="60" height="25"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="60" id="5qu-xf-5nL"/>

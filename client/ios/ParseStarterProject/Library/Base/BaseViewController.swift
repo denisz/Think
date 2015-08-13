@@ -11,17 +11,19 @@ import UIKit
 import LGDrawer
 import LGViews
 
-
 let kImageNamedForBackBtn = "ic_back"
 let kImageNamedForMenuBtn = "ic_menu"
 let kImageNamedForCloseBtn = "ic_close"
 
+//create Navigation bar
 extension UIViewController {
     var imageLeftBtn: String {
         return kImageNamedForBackBtn
     }
     
     func configureTitleView() {
+        let navigationItem = defineNavigationItem()
+        
         var color = UIColor(red:0.2, green:0.2, blue:0.2, alpha:1)
         var arrowImage = LGDrawer.drawArrowWithImageSize(CGSizeMake(11, 10),
             size: CGSizeMake(11, 6),
@@ -48,21 +50,44 @@ extension UIViewController {
         _titleButton.addTarget(self, action: "didTapFilter", forControlEvents: UIControlEvents.TouchUpInside)
         _titleButton.sizeToFit()
         
-        self.navigationItem.titleView = _titleButton;
+        navigationItem.titleView = _titleButton;
     }
     
     func didTapFilter() {}
     
+    func setupFakeStatusBar(color: UIColor) {
+        let fakeView = UIView()
+        fakeView.backgroundColor = color
+        fakeView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        
+        self.view.addSubview(fakeView)
+        
+        let views = ["view": fakeView]
+        var hConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[view]|", options: .AlignAllCenterY, metrics: nil, views: views)
+        let vConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[view(20)]", options: .AlignAllCenterX, metrics: nil, views: views)
+        
+        self.view.addConstraints(hConstraints)
+        self.view.addConstraints(vConstraints)
+    }
+    
+    func defineNavigationBar() -> UINavigationBar? {
+        return self.navigationController?.navigationBar
+    }
+    
+    func defineNavigationItem() -> UINavigationItem {
+        return self.navigationItem
+    }
+    
     func customizeNavigationBar() {
         self.automaticallyAdjustsScrollViewInsets = true
-        var navigationBar = self.navigationController?.navigationBar
+        var navigationBar = self.defineNavigationBar()
         
         navigationBar?.titleTextAttributes = [
-            NSForegroundColorAttributeName: kColorNavigationBar,
-            NSFontAttributeName: UIFont(name: "OpenSans-Light", size: 19)!
+            NSFontAttributeName             : kFontNavigationBarTitle,
+            NSForegroundColorAttributeName  : kColorNavigationBar
         ]
         // Sets background to a blank/empty image
-//        navigationBar?.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        navigationBar?.setBackgroundImage(UIImage(), forBarMetrics: .Default)
         // Sets shadow (line below the bar) to a blank image
         navigationBar?.shadowImage = UIImage()
         // Sets the translucent background color
@@ -72,6 +97,12 @@ extension UIViewController {
     }
     
     func configureNavigationBarBackBtn(color: UIColor) {
+        configureNavigationBarBackBtn(color, animated: false)
+    }
+    
+    func configureNavigationBarBackBtn(color: UIColor, animated: Bool) {
+        let navigationItem = defineNavigationItem()
+        
         var image = UIImage(named: imageLeftBtn) as UIImage!
         image = image.imageWithColor(color)
         
@@ -82,18 +113,65 @@ extension UIViewController {
         btnBack.imageEdgeInsets = UIEdgeInsets(top: 9, left: 0, bottom: 9, right: 18)
         btnBack.setTitleColor(kColorNavigationBar, forState: UIControlState.Normal)
         btnBack.sizeToFit()
+        
         var myCustomBackButtonItem:UIBarButtonItem = UIBarButtonItem(customView: btnBack)
-        self.navigationItem.leftBarButtonItem  = myCustomBackButtonItem
+        navigationItem.setLeftBarButtonItem(myCustomBackButtonItem, animated: animated)
     }
     
     func didTapLeftBtn(sender: UIButton) {
         navigationController?.popViewControllerAnimated(true)
     }
+    
+    func createFakeNavigationBar() -> UINavigationBar {
+        //self.view.frame.size.width
+        let fakeNavigationBar = UINavigationBar(frame: CGRectMake(0, 20, 320, 44))
+        fakeNavigationBar.barStyle = UIBarStyle.Default
+        fakeNavigationBar.delegate = self
+
+        let navigationItem = UINavigationItem()
+        navigationItem.title = self.title
+        fakeNavigationBar.items = [navigationItem]
+        
+        view.addSubview(fakeNavigationBar)
+        
+//        fakeNavigationBar.setTranslatesAutoresizingMaskIntoConstraints(false)
+//        
+//        let views = ["view": fakeNavigationBar]
+//        let hConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[view]|", options: .AlignAllCenterY, metrics: nil, views: views)
+//        let vConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-20-[view(44)]", options: .AlignAllCenterX, metrics: nil, views: views)
+//        
+//        view.addConstraints(hConstraints)
+//        view.addConstraints(vConstraints)
+        
+        return fakeNavigationBar
+    }
+    
 }
 
-class BaseViewController: UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
+extension UIViewController: UINavigationBarDelegate {
+    public func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
+        return UIBarPosition.TopAttached
+    }
+}
+
+class BaseViewController: StatefulViewController {
+    var fakeNavigationBar: UINavigationBar?
+    
+    override func defineNavigationBar() -> UINavigationBar? {
+        return self.fakeNavigationBar
+    }
+    
+    override func defineNavigationItem() -> UINavigationItem {
+        let navBar = defineNavigationBar()
+        return navBar!.items[0] as! UINavigationItem
+    }
+    
+    func setupNavigationBar() {
+        self.fakeNavigationBar = createFakeNavigationBar()
+    }
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         customizeNavigationBar()
         configureNavigationBarBackBtn(UIColor(red:0.2, green:0.2, blue:0.2, alpha:1))
     }

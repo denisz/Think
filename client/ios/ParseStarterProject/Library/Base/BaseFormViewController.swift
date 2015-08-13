@@ -31,5 +31,19 @@ class BaseFormViewController: XLFormViewController, XLFormViewControllerDelegate
         
         return cell
     }
-
+    
+    var fakeNavigationBar: UINavigationBar?
+    
+    override func defineNavigationBar() -> UINavigationBar? {
+        return self.fakeNavigationBar
+    }
+    
+    override func defineNavigationItem() -> UINavigationItem {
+        let navBar = defineNavigationBar()
+        return navBar!.items[0] as! UINavigationItem
+    }
+    
+    func setupNavigationBar() {
+        self.fakeNavigationBar = createFakeNavigationBar()
+    }
 }

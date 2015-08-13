@@ -15,16 +15,23 @@ import VGParallaxHeader
 
 let kReusableProfilePostViewCell = "ProfilePostViewCell"
 
-@objc(ProfileViewController) class ProfileViewController: BaseQueryTableViewContoller {
+@objc(ProfileViewController) class ProfileViewController: BaseQueryTableViewController {
     var owner: PFObject?
+    var isGuest: Bool {
+        if let currentUser = PFUser.currentUser() {
+            if owner?.objectId == currentUser.objectId {
+                return false
+            }
+        }
+        
+        return true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var header = ProfileHeaderView()
-        header.object = self.owner
-        header.delegate = self
-        self.tableView.setParallaxHeaderView(header, mode: VGParallaxHeaderMode.Fill, height: 240)
+        self.setupHeaderView()
+        
         self.tableView.registerNib(UINib(nibName: kReusableProfilePostViewCell, bundle: nil), forCellReuseIdentifier: kReusableProfilePostViewCell)
 
         self.tableView.dataSource = self
@@ -33,37 +40,65 @@ let kReusableProfilePostViewCell = "ProfilePostViewCell"
         self.tableView.rowHeight = UITableViewAutomaticDimension;
         self.tableView.tableFooterView = UIView()
         
-        self.customizeNavigationBar()
-        self.configureNavigationBarBackBtn(UIColor.whiteColor())
+        self.setupNavigationBar()
+    }
+    
+    func setupHeaderView() {
+        var header: UIView?
+
+        if !self.isGuest {
+            var headerProfile = ProfileHeaderView()
+            headerProfile.delegate = self
+            headerProfile.object = self.owner
+            header = headerProfile
+        } else {
+            var headerProfileGuest = ProfileGuestHeaderView()
+            headerProfileGuest.delegate = self
+            headerProfileGuest.object = self.owner
+            header = headerProfileGuest
+        }
+        
+        self.tableView.setParallaxHeaderView(header!, mode: VGParallaxHeaderMode.Fill, height: 240)
     }
     
     override func customizeNavigationBar() {
         self.automaticallyAdjustsScrollViewInsets = false
-        var navigationBar = self.navigationController?.navigationBar
         
-        // Sets background to a blank/empty image
+        let navigationBar   = self.defineNavigationBar()
+        
         navigationBar?.setBackgroundImage(UIImage(), forBarMetrics: .Default)
-        // Sets shadow (line below the bar) to a blank image
         navigationBar?.shadowImage = UIImage()
-        // Sets the translucent background color
         navigationBar?.backgroundColor = UIColor.clearColor()
-        //UIColor(red:0, green:0, blue:0, alpha:0.5)
-            //
-        // Set translucent. (Default value is already true, so this can be removed if desired.)
         navigationBar?.translucent = true
+    }
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         
-        let editBarButtonItem = UIBarButtonItem(title: "Edit".uppercaseString, style: UIBarButtonItemStyle.Plain, target: self, action: "didTapEdit:")
-        let attributes = [
-            NSForegroundColorAttributeName: UIColor.whiteColor(),
-            NSFontAttributeName: UIFont(name: "OpenSans-Light", size: 18)!
-        ]
-        editBarButtonItem.setTitleTextAttributes(attributes, forState: UIControlState.Normal)
-        self.navigationItem.rightBarButtonItem = editBarButtonItem
+        self.customizeNavigationBar()
+        self.configureNavigationBarBackBtn(UIColor.whiteColor())
+        
+        if !self.isGuest {
+            self.configureNavigationBarRightBtn(UIColor.whiteColor())
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent;
+    }
+    
+    func configureNavigationBarRightBtn(color: UIColor) {
+        let navigationItem  = self.defineNavigationItem()
+
+        let editBarButtonItem = UIBarButtonItem(title: "Edit".uppercaseString, style: UIBarButtonItemStyle.Plain, target: self, action: "didTapEdit:")
+        
+        let attributes = [
+            NSForegroundColorAttributeName: color,
+            NSFontAttributeName: kFontNavigationItem
+        ]
+        editBarButtonItem.setTitleTextAttributes(attributes, forState: UIControlState.Normal)
+        navigationItem.rightBarButtonItem = editBarButtonItem
     }
     
     func didTapEdit(sender: AnyObject?) {
@@ -78,7 +113,7 @@ let kReusableProfilePostViewCell = "ProfilePostViewCell"
     }
     
     override func scrollViewDidScroll(scrollView: UIScrollView) {
-        self.tableView.shouldPositionParallaxHeader();
+        self.tableView.shouldPositionParallaxHeader()
     }
     
     override func queryForTable() -> PFQuery {
@@ -94,10 +129,15 @@ let kReusableProfilePostViewCell = "ProfilePostViewCell"
         return cell
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) {
+
+        let controller = PostViewController.CreateWithModel(object!)
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
     override func preferredStatusBarStyle() -> UIStatusBarStyle  {
         return UIStatusBarStyle.LightContent
     }
-    
     
     class func CreateWithModel(model: PFObject) -> ProfileViewController{
         var profile = ProfileViewController()
@@ -106,7 +146,6 @@ let kReusableProfilePostViewCell = "ProfilePostViewCell"
         profile.paginationEnabled = true
         profile.pullToRefreshEnabled = false
 
-        
         return profile
     }
     
@@ -115,6 +154,16 @@ let kReusableProfilePostViewCell = "ProfilePostViewCell"
     }
 }
 
+extension ProfileViewController: ProfileGuestHeaderViewDelegate {
+    func profileGuestView(view: ProfileGuestHeaderView, didTapFollow button: UIButton) {
+        //зафоллофим
+    }
+    
+    func profileGuestView(view: ProfileGuestHeaderView, didTapWhisper button: UIButton) {
+        let controller = ChannelViewController.CreateWithModel(self.owner!)
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+}
 
 extension ProfileViewController: ProfileHeaderViewDelegate {
     func profileView(view: ProfileHeaderView, didTapDrafts button: UIButton) {
@@ -126,8 +175,10 @@ extension ProfileViewController: ProfileHeaderViewDelegate {
         let controller = NewPostViewController()
         controller.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
         controller.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
-
-        self.navigationController?.pushViewController(controller, animated: true)
+        
+        let navigation = BaseNavigationController(rootViewController: controller)
+        
+        self.presentViewController(navigation, animated: true, completion: nil)
     }
     
     func profileView(view: ProfileHeaderView, didTapFollowers button: UIButton) {

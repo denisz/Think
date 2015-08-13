@@ -10,38 +10,36 @@ import Foundation
 import UIKit
 import Parse
 
-class ProfileEditHeaderView: UIView {
+class ProfileEditHeaderView: BaseUIView {
+    @IBOutlet weak var buttonAvatar: UIButton!
+    @IBOutlet weak var buttonCover: UIButton!
+
+    var parentController: UIViewController?
     var object: PFObject?
-    var view: UIView!
-    var showControls: Bool = true
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        xibSetup()
+    override var nibName: String? {
+        return "ProfileEditHeaderView"
     }
     
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        xibSetup()
+    func didTapChangeAvatar(sender: UITapGestureRecognizer) {
+        let btn = sender.view!
+        UploadFileHelper.selectAndUploadFile(self.parentController!, sourceView: btn, scenario: UploadFileHelperScenario.Avatar)
     }
     
-    func xibSetup() {
-        view = loadViewFromNib()
-        view.frame = bounds
-        view.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
-        addSubview(view)
-        
-        setupView()
+    func didTapChangeCover(sender: UITapGestureRecognizer) {
+        let btn = sender.view!
+        UploadFileHelper.selectAndUploadFile(self.parentController!, sourceView: btn, scenario: UploadFileHelperScenario.Cover)
     }
     
-    func loadViewFromNib() -> UIView {
-        let bundle = NSBundle(forClass: self.dynamicType)
-        let nib = UINib(nibName: "ProfileEditHeaderView", bundle: bundle)
-        let view = nib.instantiateWithOwner(self, options: nil)[0] as! UIView
-        return view
+    func setupButtons() {
+        let gestureAvatar = UITapGestureRecognizer(target: self, action: "didTapChangeAvatar:")
+        buttonAvatar.addGestureRecognizer(gestureAvatar)
+
+        let gestureCover = UITapGestureRecognizer(target: self, action: "didTapChangeCover:")
+        buttonCover.addGestureRecognizer(gestureCover)
     }
-    
-    func setupView() {
-        let color = UIColor.lightGrayColor()
+
+    override func viewDidLoad() {
+        setupButtons()
     }
 }

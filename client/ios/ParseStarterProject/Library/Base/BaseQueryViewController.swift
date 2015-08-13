@@ -11,11 +11,11 @@ import Parse
 import UIKit
 import Bolts
 
-
-class BaseQueryViewController: StatefulViewController, StatefulViewControllerDelegate {
+class BaseQueryViewController: BaseViewController, StatefulViewControllerDelegate {
     var object: PFObject?
     var className: String? { return nil }
     var objectID: String?
+    private var isRefreshing: Bool = false
     
     func hasContent() -> Bool {
         return true
@@ -24,12 +24,15 @@ class BaseQueryViewController: StatefulViewController, StatefulViewControllerDel
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureStateMachine()
-        self.createObject()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.refresh()
+        
+        if isRefreshing == false {
+            self.refresh()
+            isRefreshing = true
+        }        
     }
     
     func configureStateMachine() {
@@ -38,12 +41,6 @@ class BaseQueryViewController: StatefulViewController, StatefulViewControllerDel
         let failureView = ErrorView(frame: view.frame)
         failureView.tapGestureRecognizer.addTarget(self, action: Selector("refresh"))
         errorView = failureView
-    }
-    
-    func createObject() {
-        if self.object == nil {
-            self.object = PFObject(withoutDataWithClassName:self.className!, objectId:self.objectID)
-        }
     }
     
     func refresh() {
@@ -71,10 +68,12 @@ class BaseQueryViewController: StatefulViewController, StatefulViewControllerDel
     }
     
     func objectDidLoad(object: PFObject) {
-       self.endLoading(animated: true, error: nil)
+        self.endLoading(animated: true, error: nil)
     }
     
     func objectErrorLoad(object: PFObject, error: NSError?) {
        self.endLoading(animated: true, error: error)
     }
 }
+
+extension BaseQueryViewController: UIScrollViewDelegate {}

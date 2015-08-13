@@ -36,6 +36,12 @@
 #define COCOAPODS_VERSION_MINOR_HMSegmentedControl 5
 #define COCOAPODS_VERSION_PATCH_HMSegmentedControl 2
 
+// JGProgressHUD
+#define COCOAPODS_POD_AVAILABLE_JGProgressHUD
+#define COCOAPODS_VERSION_MAJOR_JGProgressHUD 1
+#define COCOAPODS_VERSION_MINOR_JGProgressHUD 3
+#define COCOAPODS_VERSION_PATCH_JGProgressHUD 0
+
 // Kingfisher
 #define COCOAPODS_POD_AVAILABLE_Kingfisher
 #define COCOAPODS_VERSION_MAJOR_Kingfisher 1
