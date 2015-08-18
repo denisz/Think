@@ -24,9 +24,8 @@ class BaseFormViewController: XLFormViewController, XLFormViewControllerDelegate
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath)
         
-        //let count = self.form.formSections.objectAtIndex(indexPath.section).formRows.count
+        var cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath)
         SeperatorView.addHairline(cell)
         
         return cell
@@ -45,5 +44,8 @@ class BaseFormViewController: XLFormViewController, XLFormViewControllerDelegate
     
     func setupNavigationBar() {
         self.fakeNavigationBar = createFakeNavigationBar()
+        if self.automaticallyAdjustsScrollViewInsets == true {
+            self.tableView.contentInset = UIEdgeInsetsMake(8, 0, 0, 0)
+        }
     }
 }

@@ -9,8 +9,10 @@
 import Foundation
 import UIKit
 
-@IBDesignable
 class SeperatorView: UIView {
+    @IBInspectable var dicrectionHorizontal: Bool = true
+    @IBInspectable var dicrectionVertical: Bool = false
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -22,8 +24,17 @@ class SeperatorView: UIView {
         
         self.addSubview(menuBottomHairline)
         
-        let menuBottomHairline_constraint_H:Array = NSLayoutConstraint.constraintsWithVisualFormat("H:|[menuBottomHairline]|", options: NSLayoutFormatOptions(0), metrics: nil, views: ["menuBottomHairline":menuBottomHairline])
-        let menuBottomHairline_constraint_V:Array = NSLayoutConstraint.constraintsWithVisualFormat("V:|[menuBottomHairline(0.5)]", options: NSLayoutFormatOptions(0), metrics: nil, views: ["menuBottomHairline":menuBottomHairline])
+        var menuBottomHairline_constraint_H: [AnyObject]
+        var menuBottomHairline_constraint_V: [AnyObject]
+        
+        if dicrectionVertical == true {
+            menuBottomHairline_constraint_H = NSLayoutConstraint.constraintsWithVisualFormat("H:[menuBottomHairline(0.5)]|", options: NSLayoutFormatOptions(0), metrics: nil, views: ["menuBottomHairline":menuBottomHairline])
+            menuBottomHairline_constraint_V = NSLayoutConstraint.constraintsWithVisualFormat(
+                "V:|[menuBottomHairline]|", options: NSLayoutFormatOptions(0), metrics: nil, views: ["menuBottomHairline":menuBottomHairline])
+        } else {
+            menuBottomHairline_constraint_H = NSLayoutConstraint.constraintsWithVisualFormat("H:|[menuBottomHairline]|", options: NSLayoutFormatOptions(0), metrics: nil, views: ["menuBottomHairline":menuBottomHairline])
+            menuBottomHairline_constraint_V = NSLayoutConstraint.constraintsWithVisualFormat("V:|[menuBottomHairline(0.5)]", options: NSLayoutFormatOptions(0), metrics: nil, views: ["menuBottomHairline":menuBottomHairline])
+        }
         
         self.addConstraints(menuBottomHairline_constraint_H)
         self.addConstraints(menuBottomHairline_constraint_V)

@@ -23,5 +23,6 @@ class BaseMessageCollectionView: AsyncMessagesViewController, ASCollectionViewDe
     
     func setupNavigationBar() {
         self.fakeNavigationBar = createFakeNavigationBar()
+        
     }
 }

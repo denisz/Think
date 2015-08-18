@@ -25,8 +25,6 @@ let kReusableMessageViewCell = "MessageViewCell"
         
         self.view.backgroundColor = UIColor.whiteColor()//kColorBackgroundViewController
         self.tableView.backgroundColor = kColorBackgroundViewController
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
         self.tableView.estimatedRowHeight = 44.0;
         self.tableView.rowHeight = UITableViewAutomaticDimension;
         self.tableView.tableFooterView = UIView()
@@ -44,10 +42,10 @@ let kReusableMessageViewCell = "MessageViewCell"
     
     func configureNavigationItem() {
         self.configureNavigationBarBackBtn(kColorNavigationBar, animated: true)
-        self.configureNavigationBarNewMessageBtn(kColorNavigationBar)
+        self.configureNavigationBarRightBtn(kColorNavigationBar)
     }
         
-    func configureNavigationBarNewMessageBtn(color: UIColor) {
+    func configureNavigationBarRightBtn(color: UIColor) {
         let navigationItem = defineNavigationItem()
         
         var image = UIImage(named: "ic_new_post") as UIImage!

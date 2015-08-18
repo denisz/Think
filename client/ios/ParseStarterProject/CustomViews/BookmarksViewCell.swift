@@ -10,7 +10,6 @@ import Foundation
 import Parse
 import ParseUI
 
-
 class BookmarksViewCell: PFCollectionViewCell {
     func prepareView(object: PFObject) {
         

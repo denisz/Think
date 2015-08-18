@@ -8,7 +8,7 @@
 
 import Foundation
 
-class User {
+class UserMessage {
     
     let ID: String
     let name: String

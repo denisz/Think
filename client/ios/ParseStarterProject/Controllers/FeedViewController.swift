@@ -21,8 +21,6 @@ let kReusableFeedPostViewCell = "FeedPostViewCell"
         self.title = "Feed"
         self.tableView.registerNib(UINib(nibName: kReusableProfilePostViewCell, bundle: nil), forCellReuseIdentifier: kReusableProfilePostViewCell)
         
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
         self.tableView.estimatedRowHeight = 44.0;
         self.tableView.rowHeight = UITableViewAutomaticDimension;
         self.tableView.tableFooterView = UIView()
@@ -34,8 +32,8 @@ let kReusableFeedPostViewCell = "FeedPostViewCell"
         super.viewWillAppear(animated)
         
         self.configureTitleView()
-        self.configureNavigationRightBtns()
         self.customizeNavigationBar()
+        self.configureNavigationRightBtns()
         self.configureNavigationBarBackBtn(kColorNavigationBar)
     }
     
@@ -83,7 +81,13 @@ let kReusableFeedPostViewCell = "FeedPostViewCell"
     }
     
     func didTapNewPostBtn(sender: AnyObject?) {
-        self.navigationController?.popViewControllerAnimated(true)
+        let controller = NewPostViewController()
+        controller.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
+        controller.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
+        
+        let navigation = BaseNavigationController(rootViewController: controller)
+        
+        self.presentViewController(navigation, animated: true, completion: nil)
     }
     
     override func scrollViewDidScroll(scrollView: UIScrollView) {
@@ -100,7 +104,14 @@ let kReusableFeedPostViewCell = "FeedPostViewCell"
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell? {
         let cell = tableView.dequeueReusableCellWithIdentifier(kReusableProfilePostViewCell) as! ProfilePostViewCell
         cell.prepareView(object!)
+       
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) {
+        
+        let controller = PostViewController.CreateWithModel(object!)
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle  {

@@ -21,6 +21,9 @@
 //Progress Hud
 #import <JGProgressHUD/JGProgressHUD.h>
 
+//szTextView
+#import "SZTextView.h"
+
 //ionic
 #import "FontAwesomeKit.h"
 

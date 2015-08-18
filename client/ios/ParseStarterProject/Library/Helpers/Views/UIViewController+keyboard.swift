@@ -39,7 +39,7 @@ extension UIViewController {
         return nil
     }
     
-    func updateConstraintKeyboard(hide: Bool) {
+    func updateConstraintKeyboard(hide: Bool, minY: CGFloat, maxY: CGFloat) {
     }
     
     func updateLayoutConstraintWithNotification(notification: NSNotification) {
@@ -52,7 +52,7 @@ extension UIViewController {
         let minY = CGRectGetMinY(convertedKeyboardEndFrame)
         let maxY = CGRectGetMaxY(view.bounds)
         
-        self.updateConstraintKeyboard(minY == maxY)
+        self.updateConstraintKeyboard(minY == maxY, minY: minY, maxY: maxY)
         
         UIView.animateWithDuration(animationDuration, delay: 0.0, options: .BeginFromCurrentState | animationCurve, animations: {
             self.view.layoutIfNeeded()

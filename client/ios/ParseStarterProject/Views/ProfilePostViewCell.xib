@@ -40,7 +40,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ALEXANDER" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zJO-yN-DMX" customClass="LabelViewWithIcon" customModule="Think" customModuleProvider="target">
-                                <rect key="frame" x="63" y="7" width="249" height="17"/>
+                                <rect key="frame" x="63" y="10" width="249" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="gJT-ib-p38"/>
                                 </constraints>
@@ -70,7 +70,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 min ago" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ht-5b-jBZ">
-                                <rect key="frame" x="63" y="24" width="249" height="15"/>
+                                <rect key="frame" x="63" y="27" width="249" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="9Ji-5s-gbu"/>
                                 </constraints>
@@ -89,16 +89,16 @@
                             <constraint firstAttribute="trailing" secondItem="3ht-5b-jBZ" secondAttribute="trailing" constant="8" id="l2t-io-ff1"/>
                             <constraint firstAttribute="trailing" secondItem="zJO-yN-DMX" secondAttribute="trailing" constant="8" id="tHW-2L-bqf"/>
                             <constraint firstAttribute="height" constant="54" id="v0j-bP-RXw"/>
-                            <constraint firstItem="weB-RS-N1u" firstAttribute="top" secondItem="zJO-yN-DMX" secondAttribute="top" constant="3" id="vNn-yq-JTa"/>
+                            <constraint firstItem="weB-RS-N1u" firstAttribute="top" secondItem="zJO-yN-DMX" secondAttribute="top" id="vNn-yq-JTa"/>
                         </constraints>
                     </view>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pic_post" translatesAutoresizingMaskIntoConstraints="NO" id="u4c-ui-RBz">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pic_post" translatesAutoresizingMaskIntoConstraints="NO" id="u4c-ui-RBz" customClass="PFImageView">
                         <rect key="frame" x="0.0" y="54" width="320" height="180"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="180" id="fVq-lK-vqL"/>
                         </constraints>
                     </imageView>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1DU-8A-xje">
+                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1DU-8A-xje">
                         <rect key="frame" x="0.0" y="54" width="320" height="27"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="formula one, 05 Jul 2015" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tQF-CC-ZGq" customClass="LabelViewWithIcon" customModule="Think" customModuleProvider="target">
@@ -140,13 +140,13 @@
                             <constraint firstAttribute="height" constant="27" id="wop-wP-DwD"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Red Bull: Spin cost Kvyat podium shot" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="czt-IF-oH2">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Red Bull: Spin cost Kvyat podium shot" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="czt-IF-oH2">
                         <rect key="frame" x="15" y="241" width="290" height="50"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="50" id="A7e-hc-Nc1"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="PTSerif-Bold" family="PT Serif" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="highlightedColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                     </label>
                     <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="290" placeholderIntrinsicHeight="120" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6pt-Ay-ybB">
@@ -160,9 +160,9 @@
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gDz-pt-bea">
-                        <rect key="frame" x="0.0" y="427.5" width="320" height="25"/>
+                        <rect key="frame" x="0.0" y="427" width="320" height="25"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+1345" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vVY-z1-vSX" customClass="LabelViewWithIcon" customModule="Think" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+1345" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vVY-z1-vSX" userLabel="likes" customClass="LabelViewWithIcon" customModule="Think" customModuleProvider="target">
                                 <rect key="frame" x="195" y="0.0" width="80" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="Btv-TF-7a0"/>
@@ -201,8 +201,11 @@
                                 <state key="normal" title="Button" image="ic_more">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="didTapMoreBtn:" destination="VM2-bt-t62" eventType="touchUpInside" id="QPf-Ae-xWB"/>
+                                </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="184" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dag-ZB-5TT" customClass="LabelViewWithIcon" customModule="Think" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="184" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dag-ZB-5TT" userLabel="comments" customClass="LabelViewWithIcon" customModule="Think" customModuleProvider="target">
                                 <rect key="frame" x="15" y="0.0" width="60" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="OH1-Vh-TLs"/>
@@ -271,6 +274,17 @@
                 </constraints>
             </tableViewCellContentView>
             <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+            <connections>
+                <outlet property="authorName" destination="zJO-yN-DMX" id="wM3-gj-dVa"/>
+                <outlet property="authorPicture" destination="weB-RS-N1u" id="FXn-2i-QCB"/>
+                <outlet property="commentsCounter" destination="dag-ZB-5TT" id="Agn-TX-GJS"/>
+                <outlet property="communityView" destination="1DU-8A-xje" id="tQg-d0-Ugn"/>
+                <outlet property="content" destination="6pt-Ay-ybB" id="uuB-QG-8fb"/>
+                <outlet property="coverImage" destination="u4c-ui-RBz" id="g1g-Mm-VWJ"/>
+                <outlet property="date" destination="3ht-5b-jBZ" id="fol-4j-JZ7"/>
+                <outlet property="likesCounter" destination="vVY-z1-vSX" id="gMg-5c-Srx"/>
+                <outlet property="title" destination="czt-IF-oH2" id="1zg-w0-MWI"/>
+            </connections>
             <point key="canvasLocation" x="403" y="388"/>
         </tableViewCell>
     </objects>

@@ -37,6 +37,10 @@ class ViewController: UIViewController {
         self.presentViewController(logInController, animated:false, completion: nil)
     }
     
+    func logout() {
+        self.unRegisterDevice()
+    }
+    
     func app() {
         let appController = AppViewController()
         let navigationController = BaseNavigationController(rootViewController: appController)
@@ -45,6 +49,21 @@ class ViewController: UIViewController {
         setSideMenuController(sideMenuController)
         
         self.presentViewController(sideMenuController, animated:true, completion: nil)
+    }
+    
+    func unRegisterDevice() {
+        let install = PFInstallation.currentInstallation()
+        install.removeObjectForKey(kInstallationUserKey)
+        install.saveInBackground()
+    }
+    
+    func registerDevice() {
+        let user = PFUser.currentUser()
+        let privateChannelName = "user_\(user!.objectId)"
+        let install = PFInstallation.currentInstallation()
+        install.setObject(user!, forKey: kInstallationUserKey)
+        install.addUniqueObject(privateChannelName, forKey: kInstallationChannelsKey)
+        install.saveEventually()
     }
     
     class func globalApperence() {
@@ -117,12 +136,14 @@ extension ViewController: LogInViewControllerDelegate {
         println("logIn \(user)")
         controller.dismissViewControllerAnimated(true, completion: nil)
         self.app()
+        self.registerDevice()
     }
     
     func logIn(controller: LogInViewController, facebook user: PFUser) {
         println("logIn \(user)")
         controller.dismissViewControllerAnimated(true, completion: nil)
         self.app()
+        self.registerDevice()
     }
     
     func logIn(controller: LogInViewController, skiped button: UIView) {

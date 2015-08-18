@@ -11,18 +11,24 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "Think.BaseQueryTableViewController.tableView (Think.BaseQueryTableViewController)(ObjectiveC.UITableView, didSelectRowAtIndexPath : ObjectiveC.NSIndexPath) -&gt; ():BaseQueryTableViewContoller.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "self.objects!">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "Think.ProfileViewController.tableView (Think.ProfileViewController)(ObjectiveC.UITableView, didSelectRowAtIndexPath : ObjectiveC.NSIndexPath, object : Swift.Optional&lt;ObjectiveC.PFObject&gt;) -&gt; ():ProfileViewController.swift">
          <PersistentStrings>
             <PersistentString
                value = "object.objectId">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Think.BaseQueryTableViewController.tableView (Think.BaseQueryTableViewController)(ObjectiveC.UITableView, didSelectRowAtIndexPath : ObjectiveC.NSIndexPath) -&gt; ():BaseQueryTableViewContoller.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.objects.count">
+            </PersistentString>
+            <PersistentString
+               value = "self.objects!">
+            </PersistentString>
+            <PersistentString
+               value = "indexPath.row">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

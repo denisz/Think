@@ -15,6 +15,12 @@ let kImageNamedForBackBtn = "ic_back"
 let kImageNamedForMenuBtn = "ic_menu"
 let kImageNamedForCloseBtn = "ic_close"
 
+
+enum MyNavigationBar: Int {
+    case Default
+    case Transparent
+}
+
 //create Navigation bar
 extension UIViewController {
     var imageLeftBtn: String {
@@ -77,23 +83,36 @@ extension UIViewController {
     func defineNavigationItem() -> UINavigationItem {
         return self.navigationItem
     }
-    
+
     func customizeNavigationBar() {
-        self.automaticallyAdjustsScrollViewInsets = true
-        var navigationBar = self.defineNavigationBar()
+        customizeNavigationBar(MyNavigationBar.Default)
+    }
+    
+    func customizeNavigationBar(style: MyNavigationBar ) {
+        let navigationBar = self.defineNavigationBar()
         
-        navigationBar?.titleTextAttributes = [
-            NSFontAttributeName             : kFontNavigationBarTitle,
-            NSForegroundColorAttributeName  : kColorNavigationBar
-        ]
-        // Sets background to a blank/empty image
-        navigationBar?.setBackgroundImage(UIImage(), forBarMetrics: .Default)
-        // Sets shadow (line below the bar) to a blank image
-        navigationBar?.shadowImage = UIImage()
-        // Sets the translucent background color
-        navigationBar?.backgroundColor = UIColor.whiteColor()
-        // Set translucent. (Default value is already true, so this can be removed if desired.)
-        navigationBar?.translucent = false
+        if style == .Transparent {
+            self.automaticallyAdjustsScrollViewInsets = false
+            navigationBar?.titleTextAttributes = [
+                NSFontAttributeName             : kFontNavigationBarTitle,
+                NSForegroundColorAttributeName  : kColorNavigationBar
+            ]
+            navigationBar?.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+            navigationBar?.shadowImage = UIImage()
+            navigationBar?.backgroundColor = UIColor.clearColor()
+            navigationBar?.translucent = true
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = true
+            
+            navigationBar?.titleTextAttributes = [
+                NSFontAttributeName             : kFontNavigationBarTitle,
+                NSForegroundColorAttributeName  : kColorNavigationBar
+            ]
+            navigationBar?.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+            navigationBar?.shadowImage = UIImage()
+            navigationBar?.backgroundColor = UIColor.whiteColor()
+            navigationBar?.translucent = false
+        }
     }
     
     func configureNavigationBarBackBtn(color: UIColor) {
@@ -123,7 +142,6 @@ extension UIViewController {
     }
     
     func createFakeNavigationBar() -> UINavigationBar {
-        //self.view.frame.size.width
         let fakeNavigationBar = UINavigationBar(frame: CGRectMake(0, 20, 320, 44))
         fakeNavigationBar.barStyle = UIBarStyle.Default
         fakeNavigationBar.delegate = self
@@ -134,18 +152,8 @@ extension UIViewController {
         
         view.addSubview(fakeNavigationBar)
         
-//        fakeNavigationBar.setTranslatesAutoresizingMaskIntoConstraints(false)
-//        
-//        let views = ["view": fakeNavigationBar]
-//        let hConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[view]|", options: .AlignAllCenterY, metrics: nil, views: views)
-//        let vConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-20-[view(44)]", options: .AlignAllCenterX, metrics: nil, views: views)
-//        
-//        view.addConstraints(hConstraints)
-//        view.addConstraints(vConstraints)
-        
         return fakeNavigationBar
     }
-    
 }
 
 extension UIViewController: UINavigationBarDelegate {
@@ -168,6 +176,9 @@ class BaseViewController: StatefulViewController {
     
     func setupNavigationBar() {
         self.fakeNavigationBar = createFakeNavigationBar()
+        if self.automaticallyAdjustsScrollViewInsets == true {
+            
+        }
     }
 
     override func viewWillAppear(animated: Bool) {

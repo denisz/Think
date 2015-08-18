@@ -116,6 +116,9 @@ class SettingsViewController: BaseFormViewController {
     
     func didTapLogout(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: { () -> Void in
+            let install = PFInstallation.currentInstallation()
+            install.removeObjectForKey(kInstallationUserKey)
+            install.saveInBackground()
         });
         PFUser.logOut()
     }

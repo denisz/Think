@@ -23,12 +23,12 @@ class ProfileEditHeaderView: BaseUIView {
     
     func didTapChangeAvatar(sender: UITapGestureRecognizer) {
         let btn = sender.view!
-        UploadFileHelper.selectAndUploadFile(self.parentController!, sourceView: btn, scenario: UploadFileHelperScenario.Avatar)
+        SelectImageHelper.selectAndUploadFile(self.parentController!, sourceView: btn, scenario: .AvatarProfile)
     }
     
     func didTapChangeCover(sender: UITapGestureRecognizer) {
         let btn = sender.view!
-        UploadFileHelper.selectAndUploadFile(self.parentController!, sourceView: btn, scenario: UploadFileHelperScenario.Cover)
+        SelectImageHelper.selectAndUploadFile(self.parentController!, sourceView: btn, scenario: .CoverProfile)
     }
     
     func setupButtons() {

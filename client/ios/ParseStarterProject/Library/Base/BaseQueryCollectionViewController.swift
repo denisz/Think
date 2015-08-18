@@ -35,16 +35,22 @@ class BaseQueryCollectionViewContoller: PFQueryCollectionViewController {
     func setupNavigationBar() {
         self.fakeNavigationBar = createFakeNavigationBar()
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.collectionView!.dataSource = self
+        self.collectionView!.delegate = self
+    }
 }
 
 extension BaseQueryCollectionViewContoller: BaseQueryCollectionViewContollerProtocol {
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let count = self.objects.count
         
-        if let object = self.objectAtIndexPath(indexPath) {
-            self.collectionView(self.collectionView!, didSelectItemAtIndexPath: indexPath, object: object)
+        if count > indexPath.row {
+            self.collectionView(collectionView, didSelectItemAtIndexPath: indexPath, object: self.objectAtIndexPath(indexPath))
         }
-        
-        super.collectionView(collectionView, didSelectItemAtIndexPath: indexPath)
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath, object: PFObject?) {

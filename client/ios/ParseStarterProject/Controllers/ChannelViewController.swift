@@ -15,8 +15,8 @@ import LoremIpsum
 @objc(ChannelViewController) class ChannelViewController: BaseMessageCollectionView {
     var owner: PFObject?
     
-    private let users: [User]
-    private var currentUser: User? {
+    private let users: [UserMessage]
+    private var currentUser: UserMessage? {
         return users.filter({$0.ID == self.dataSource.currentUserID()}).first
     }
     
@@ -24,7 +24,7 @@ import LoremIpsum
         let avatarImageSize = CGSizeMake(kAMMessageCellNodeAvatarImageSize, kAMMessageCellNodeAvatarImageSize)
         users = (0..<5).map() {
             let avatarURL = LoremIpsum.URLForPlaceholderImageFromService(.LoremPixel, withSize: avatarImageSize)
-            return User(ID: "user-\($0)", name: LoremIpsum.name(), avatarURL: avatarURL)
+            return UserMessage(ID: "user-\($0)", name: LoremIpsum.name(), avatarURL: avatarURL)
         }
         
         let dataSource = DefaultAsyncMessagesCollectionViewDataSource(currentUserID: users[0].ID)
@@ -40,6 +40,8 @@ import LoremIpsum
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "Lise Carter"
+        
         self.customizeTextField()
         self.setupNavigationBar()
     }
@@ -49,11 +51,28 @@ import LoremIpsum
         
         self.customizeNavigationBar()
         self.configureNavigationBarBackBtn(kColorNavigationBar)
+        self.configureNavigationBarRightBtn(kColorNavigationBar)
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default;
+    }
+    
+    func configureNavigationBarRightBtn(color: UIColor) {
+        let navigationItem = self.defineNavigationItem()
+        let image = UIImage(named: "ava_profile")
+        
+        let btnBack = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+        btnBack.addTarget(self, action: "didTapNewPostBtn:", forControlEvents: UIControlEvents.TouchUpInside)
+        btnBack.setImage(image, forState: UIControlState.Normal)
+        btnBack.imageEdgeInsets = UIEdgeInsets(top: -4, left: -4, bottom: -4, right: -4)
+        btnBack.setTitleColor(kColorNavigationBar, forState: UIControlState.Normal)
+        btnBack.frame = CGRectMake(0, 0, 36, 36)
+        btnBack.cornerEdge()
+        
+        let bar = UIBarButtonItem(customView: btnBack)
+        navigationItem.rightBarButtonItem = bar
     }
     
     func customizeTextField() {

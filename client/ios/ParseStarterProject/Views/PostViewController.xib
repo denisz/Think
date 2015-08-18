@@ -28,6 +28,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PostViewController">
             <connections>
+                <outlet property="followAuthor" destination="OxS-BU-EZO" id="hqn-XM-g2r"/>
+                <outlet property="likesCounter" destination="BPn-bQ-KI1" id="UXG-pM-XI9"/>
                 <outlet property="scrollView" destination="PIA-d5-ufa" id="845-kN-5eg"/>
                 <outlet property="view" destination="iN0-l3-epB" id="TNT-oS-5IR"/>
             </connections>
@@ -166,8 +168,9 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u1B-7k-xk2">
                             <rect key="frame" x="0.0" y="911.5" width="320" height="40"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+1345" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BPn-bQ-KI1" userLabel="Likes" customClass="LabelViewWithIcon" customModule="Think" customModuleProvider="target">
+                                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+1345" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BPn-bQ-KI1" userLabel="Likes" customClass="LabelViewWithIcon" customModule="Think" customModuleProvider="target">
                                     <rect key="frame" x="15" y="8" width="154" height="25"/>
+                                    <gestureRecognizers/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="25" id="GH1-fg-HR8"/>
                                         <constraint firstAttribute="width" constant="154" id="Oi1-vt-HF3"/>
@@ -196,6 +199,9 @@
                                             <real key="value" value="18"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <outletCollection property="gestureRecognizers" destination="ger-Nc-t2K" appends="YES" id="ILp-91-3Tv"/>
+                                    </connections>
                                 </label>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -225,7 +231,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sam Roberts" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lef-Ck-cKF">
-                                    <rect key="frame" x="69" y="36" width="189" height="21"/>
+                                    <rect key="frame" x="69" y="32" width="189" height="21"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="21" id="zb6-hJ-wNa"/>
                                     </constraints>
@@ -236,6 +242,7 @@
                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OxS-BU-EZO" customClass="UIButtonRoundedBorder" customModule="Think" customModuleProvider="target">
                                     <rect key="frame" x="266" y="15" width="46" height="32"/>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <gestureRecognizers/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="46" id="0f8-wK-Dbo"/>
                                         <constraint firstAttribute="height" constant="32" id="rhH-2V-o3z"/>
@@ -244,6 +251,7 @@
                                     <state key="normal" image="ic_add_follow">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <state key="selected" image="ic_add_follow"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="borderRadius">
                                             <real key="value" value="4"/>
@@ -257,7 +265,19 @@
                                         <userDefinedRuntimeAttribute type="color" keyPath="imageColor">
                                             <color key="value" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="imageColorSelected">
+                                            <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="backgroundColorDefault">
+                                            <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="backgroundColorSelected">
+                                            <color key="value" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <outletCollection property="gestureRecognizers" destination="Zrg-ZE-w00" appends="YES" id="Q5k-6e-x3E"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -267,7 +287,7 @@
                                 <constraint firstAttribute="height" constant="68" id="7bU-jk-9Qb"/>
                                 <constraint firstItem="OxS-BU-EZO" firstAttribute="top" secondItem="3Ed-fD-4ML" secondAttribute="top" constant="15" id="Bkx-i8-ZVh"/>
                                 <constraint firstItem="g2W-rU-0eW" firstAttribute="trailing" secondItem="lef-Ck-cKF" secondAttribute="trailing" id="Nju-Ov-BbW"/>
-                                <constraint firstItem="lef-Ck-cKF" firstAttribute="top" secondItem="g2W-rU-0eW" secondAttribute="bottom" constant="4" id="OEs-2Z-5xj"/>
+                                <constraint firstItem="lef-Ck-cKF" firstAttribute="top" secondItem="g2W-rU-0eW" secondAttribute="bottom" id="OEs-2Z-5xj"/>
                                 <constraint firstItem="g2W-rU-0eW" firstAttribute="leading" secondItem="lef-Ck-cKF" secondAttribute="leading" id="PX8-4t-7jo"/>
                                 <constraint firstItem="g2W-rU-0eW" firstAttribute="top" secondItem="3Ed-fD-4ML" secondAttribute="top" constant="11" id="gUV-v1-ylJ"/>
                                 <constraint firstItem="qQ8-Ow-Bk2" firstAttribute="leading" secondItem="3Ed-fD-4ML" secondAttribute="leading" constant="15" id="h7M-bO-P32"/>
@@ -315,6 +335,16 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="172" y="420.5"/>
         </view>
+        <tapGestureRecognizer id="ger-Nc-t2K" userLabel="Tap likes">
+            <connections>
+                <action selector="didTapLikePost" destination="-1" id="M6B-Qv-rDJ"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="Zrg-ZE-w00" userLabel="Tap follow">
+            <connections>
+                <action selector="didTapFollowAuthor" destination="-1" id="kMw-yy-Dv0"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="ava_profile" width="170" height="170"/>

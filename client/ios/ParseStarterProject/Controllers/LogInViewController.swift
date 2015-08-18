@@ -57,7 +57,7 @@ protocol LogInViewControllerDelegate {
         self.unsetupKeyboard()
     }
     
-    override func updateConstraintKeyboard(hide: Bool) {
+    override func updateConstraintKeyboard(hide: Bool, minY: CGFloat, maxY: CGFloat) {
         if hide {
             self.topConstraint.constant = 60
             self.betweenSigninAndNicknameConstraint.constant = 60

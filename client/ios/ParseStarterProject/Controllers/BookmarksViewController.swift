@@ -19,16 +19,12 @@ let kReusableBookmarksViewCell = "BookmarksViewCell"
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Bookrmarks".localized
+//        self.automaticallyAdjustsScrollViewInsets = false
         
-        //self.title = "Bookmarks"
+        self.setupHeaderView()
         
-        var header = BookmarkMainPostView()
-        header.object = self.owner
-        self.collectionView!.setParallaxHeaderView(header, mode: VGParallaxHeaderMode.Fill, height: 240)
         self.collectionView!.registerNib(UINib(nibName: kReusableBookmarksViewCell, bundle: nil), forCellWithReuseIdentifier: kReusableBookmarksViewCell)
-        
-        self.collectionView!.dataSource = self
-        self.collectionView!.delegate = self
         
         self.setupNavigationBar()
     }
@@ -36,20 +32,15 @@ let kReusableBookmarksViewCell = "BookmarksViewCell"
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        let color = UIColor.whiteColor() //kColorNavigationBar
         self.customizeNavigationBar()
-        self.configureNavigationBarBackBtn(color)
-        self.configureNavigationBarRightBtn(color)
+        self.configureNavigationBarBackBtn(kColorNavigationBar)
+        self.configureNavigationBarRightBtn(kColorNavigationBar)
     }
     
-    override func customizeNavigationBar() {
-        self.automaticallyAdjustsScrollViewInsets = false
-        let navigationBar = self.defineNavigationBar()
-        
-        navigationBar?.setBackgroundImage(UIImage(), forBarMetrics: .Default)
-        navigationBar?.shadowImage = UIImage()
-        navigationBar?.backgroundColor = UIColor.clearColor()
-        navigationBar?.translucent = true
+    func setupHeaderView() {
+        let header = BookmarkMainPostView()
+        header.object = self.owner
+        self.collectionView!.setParallaxHeaderView(header, mode: VGParallaxHeaderMode.Fill, height: 240)
     }
     
     func configureNavigationBarRightBtn(color: UIColor) {
@@ -64,7 +55,8 @@ let kReusableBookmarksViewCell = "BookmarksViewCell"
         btnBack.imageEdgeInsets = UIEdgeInsets(top: 13, left: 26, bottom: 13, right: 0)
         btnBack.setTitleColor(color, forState: UIControlState.Normal)
         btnBack.sizeToFit()
-        var myCustomBackButtonItem:UIBarButtonItem = UIBarButtonItem(customView: btnBack)
+        
+        let myCustomBackButtonItem:UIBarButtonItem = UIBarButtonItem(customView: btnBack)
         navigationItem.rightBarButtonItem  = myCustomBackButtonItem
     }
     
@@ -87,21 +79,28 @@ let kReusableBookmarksViewCell = "BookmarksViewCell"
     
     override func queryForCollection() -> PFQuery {
         var query = PFQuery(className: self.parseClassName!)
-        query.whereKey("owner", equalTo: owner!)
+        query.whereKey("user", equalTo: owner!)
+        query.includeKey("post")
+        query.includeKey("user")
         query.orderByDescending("createdAt")
         return query
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFCollectionViewCell? {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kReusableBookmarksViewCell, forIndexPath: indexPath) as! BookmarksViewCell
-        cell.prepareView(object!)
+        
+        if let post = object!["post"] as? PFObject {
+            cell.prepareView(post)
+        }
         
         return cell
     }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath, object: PFObject?) {
-        let controller = PostViewController.CreateWithModel(object!)
-        self.navigationController?.pushViewController(controller, animated: true)
+        if let post = object!["post"] as? PFObject {
+            let controller = PostViewController.CreateWithModel(post)
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle  {
@@ -122,7 +121,7 @@ let kReusableBookmarksViewCell = "BookmarksViewCell"
     class func CreateWithModel(model: PFObject) -> BookmarksViewController {
         var bookmarks = BookmarksViewController(collectionViewLayout: CreateLayout(), className: "Post")
         bookmarks.owner = model
-        bookmarks.parseClassName = "Post"
+        bookmarks.parseClassName = "Bookmark"
         bookmarks.paginationEnabled = true
         bookmarks.pullToRefreshEnabled = false
         

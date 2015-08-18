@@ -23,9 +23,8 @@ let kReusableDraftsViewCell = "DraftsViewCell"
         self.tableView.registerNib(UINib(nibName: kReusableDraftsViewCell, bundle: nil), forCellReuseIdentifier: kReusableDraftsViewCell)
         
         self.view.backgroundColor = kColorBackgroundViewController
+        
         self.tableView.backgroundColor = kColorBackgroundViewController
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
         self.tableView.estimatedRowHeight = 250.0;
         self.tableView.rowHeight = UITableViewAutomaticDimension;
         self.tableView.separatorColor = UIColor(red:0, green:0.64, blue:0.85, alpha:1)
@@ -62,7 +61,7 @@ let kReusableDraftsViewCell = "DraftsViewCell"
         return UIStatusBarStyle.Default
     }
     
-    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]?  {
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]?  {
         var shareAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Public".localized , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
             tableView.editing = false;
             

@@ -15,6 +15,7 @@ import ParseUI
 
 class SettingsPostViewController: BaseFormViewController {
     var model: PFObject?
+    var data: [String: AnyObject]?
     
     struct tag {
         static let tags             = "tags"
@@ -31,6 +32,7 @@ class SettingsPostViewController: BaseFormViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Tune post"
+        self.data = [String: AnyObject]()
         
         self.view.backgroundColor = kColorBackgroundViewController
         self.tableView.backgroundColor = kColorBackgroundViewController
@@ -51,25 +53,21 @@ class SettingsPostViewController: BaseFormViewController {
     }
     
     func configureNavigationBarRightBtn(color: UIColor) {
-        let navigationItem = self.defineNavigationItem()
+        let navigationItem  = self.defineNavigationItem()
         
-        var image = UIImage(named: "ic_send") as UIImage!
-        image = image.imageWithColor(color)
+        let editBarButtonItem = UIBarButtonItem(title: "Send".uppercaseString, style: UIBarButtonItemStyle.Plain, target: self, action: "didTapSendBtn:")
         
-        var btnBack:UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
-        btnBack.addTarget(self, action: "didTapSendBtn:", forControlEvents: UIControlEvents.TouchUpInside)
-        btnBack.setImage(image, forState: UIControlState.Normal)
-        btnBack.contentEdgeInsets = UIEdgeInsets(top: -5, left: 0, bottom: 0, right: 0)
-        btnBack.imageEdgeInsets = UIEdgeInsets(top: 14, left: 28, bottom: 14, right: 0)
-        btnBack.setTitleColor(kColorNavigationBar, forState: UIControlState.Normal)
-        btnBack.sizeToFit()
-        
-        let myCustomBackButtonItem:UIBarButtonItem = UIBarButtonItem(customView: btnBack)
-        navigationItem.rightBarButtonItem  = myCustomBackButtonItem
+        let attributes = [
+            NSForegroundColorAttributeName: color,
+            NSFontAttributeName: kFontNavigationItem
+        ]
+        editBarButtonItem.setTitleTextAttributes(attributes, forState: UIControlState.Normal)
+        navigationItem.rightBarButtonItem = editBarButtonItem
     }
     
     func didTapSendBtn(sender: AnyObject?) {
-        self.navigationController?.popToRootViewControllerAnimated(true)
+        self.dismissViewControllerAnimated(true, completion: nil)
+//        self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
     func setupSections() {
@@ -79,7 +77,7 @@ class SettingsPostViewController: BaseFormViewController {
         section = XLFormSectionDescriptor()
         self.form.addFormSection(section)
         
-        row = XLFormRowDescriptor(tag: tag.adultContent, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Adult content".uppercaseString)
+        row = XLFormRowDescriptor(tag: tag.adultContent, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "adult content".uppercaseString)
         self.stylesRow(row)
         section.addFormRow(row)
         
@@ -87,8 +85,8 @@ class SettingsPostViewController: BaseFormViewController {
         self.form.addFormSection(section)
         
         //tags
-        row = XLFormRowDescriptor(tag: tag.tags, rowType: XLFormRowDescriptorTypeMultipleSelector, title: "Tags".uppercaseString)
-        row.selectorOptions = self.selectorsTags()
+        row = XLFormRowDescriptor(tag: tag.tags, rowType: XLFormRowDescriptorTypeSelectorPush, title: "tags".uppercaseString)
+        row.action.viewControllerClass = RRTagController.self
         self.stylesRow(row)
         section.addFormRow(row)
         
@@ -152,14 +150,7 @@ class SettingsPostViewController: BaseFormViewController {
         return options
     }
     
-    func selectorsTags() -> [XLFormOptionsObject] {
-        var tags: [String] = ["tag1", "tag2"]
-        var options = [XLFormOptionsObject]()
-        
-        for tag in tags {
-            options.append(XLFormOptionsObject(value: tag, displayText: tag.uppercaseString))
-        }
-        
-        return options
+    override func formRowDescriptorValueHasChanged(formRow: XLFormRowDescriptor!, oldValue: AnyObject!, newValue: AnyObject!) {
+    
     }
 }

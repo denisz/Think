@@ -35,6 +35,7 @@ class BaseUIView: UIView {
             addSubview(view)
             
             self.view = view
+            self.userInteractionEnabled = true
             viewDidLoad()
         }
     }

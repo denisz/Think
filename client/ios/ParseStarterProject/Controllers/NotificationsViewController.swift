@@ -11,13 +11,11 @@ import Parse
 import ParseUI
 import UIKit
 import Bolts
-import LGFilterView
 
 let kReusableNotificationsViewCell = "NotificationViewCell"
 
 @objc(NotificationsViewController) class NotificationsViewController: BaseQueryTableViewController {
     var owner: PFObject?
-    var filterView: LGFilterView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +25,6 @@ let kReusableNotificationsViewCell = "NotificationViewCell"
         self.tableView.backgroundColor = kColorBackgroundViewController
         self.tableView.registerNib(UINib(nibName: kReusableNotificationsViewCell, bundle: nil), forCellReuseIdentifier: kReusableNotificationsViewCell)
         
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
         self.tableView.estimatedRowHeight = 44.0;
         self.tableView.rowHeight = UITableViewAutomaticDimension;
         self.tableView.tableFooterView = UIView()
@@ -69,7 +65,7 @@ let kReusableNotificationsViewCell = "NotificationViewCell"
         btnBack.sizeToFit()
         
         let myCustomBackButtonItem:UIBarButtonItem = UIBarButtonItem(customView: btnBack)
-        self.navigationItem.rightBarButtonItem  = myCustomBackButtonItem
+        navigationItem.rightBarButtonItem  = myCustomBackButtonItem
     }
     
     func didTapSettingsBtn(sender: AnyObject?) {
@@ -77,21 +73,9 @@ let kReusableNotificationsViewCell = "NotificationViewCell"
     }
     
     override func didTapFilter() {
-        
-        if let filterView = self.filterView {
-            filterView.dismissAnimated(true, completionHandler: nil)
-        } else {
-            var innerView = NotificationFilterView()
-            innerView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 5 * 64)
-            self.filterView = LGFilterView(view: innerView)
-            filterView?.delegate = self
-            filterView?.transitionStyle = LGFilterViewTransitionStyleTop
-            filterView?.heightMax = 5 * 64
-            filterView?.borderWidth = 0
-            filterView?.backgroundColor = UIColor.whiteColor()
-            
-            filterView?.showInView(self.view, animated: true, completionHandler: nil)
-        }
+        let innerView = NotificationFilterView()
+        innerView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 5 * 64)
+        self.showFilterUnderTitle(innerView)
     }
     
     override func queryForTable() -> PFQuery {
@@ -137,16 +121,5 @@ let kReusableNotificationsViewCell = "NotificationViewCell"
     
     class func CreateWithId(objectId: String) -> NotificationsViewController {
         return CreateWithModel(PFObject(withoutDataWithClassName: "_User", objectId: objectId))
-    }
-}
-
-extension NotificationsViewController: LGFilterViewDelegate {
-
-    func filterViewWillDismiss(filterView: LGFilterView!) {
-        self.filterView = nil
-    }
-    
-    func filterViewWillShow(filterView: LGFilterView!) {
-        
     }
 }

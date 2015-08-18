@@ -6,14 +6,44 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewPostViewController">
             <connections>
+                <outlet property="tableView" destination="LHG-9E-0hc" id="6DX-Wz-meU"/>
+                <outlet property="tableViewBottomLayoutContraint" destination="Qlf-z6-xzw" id="mQB-pd-tJg"/>
+                <outlet property="toolbar" destination="4C2-7q-WU7" id="TYZ-H8-xV7"/>
+                <outlet property="toolbarBottomLayoutContraint" destination="eCU-Zz-WzT" id="aGd-Ho-fqI"/>
                 <outlet property="view" destination="iN0-l3-epB" id="tvF-x8-DGU"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="LHG-9E-0hc">
+                    <rect key="frame" x="0.0" y="44" width="320" height="496"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="227-Ya-e9D"/>
+                        <outlet property="delegate" destination="-1" id="vBT-m7-oHH"/>
+                    </connections>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4C2-7q-WU7" customClass="ToolbarNewPostView" customModule="Think" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="540" width="320" height="60"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="cbT-Cs-KE1"/>
+                    </constraints>
+                </view>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="LHG-9E-0hc" secondAttribute="trailing" id="16M-qG-TBX"/>
+                <constraint firstAttribute="trailing" secondItem="4C2-7q-WU7" secondAttribute="trailing" id="1cE-Qp-OQq"/>
+                <constraint firstAttribute="bottom" secondItem="LHG-9E-0hc" secondAttribute="bottom" constant="60" id="Qlf-z6-xzw"/>
+                <constraint firstItem="4C2-7q-WU7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="V9b-K9-jjR"/>
+                <constraint firstAttribute="bottom" secondItem="4C2-7q-WU7" secondAttribute="bottom" id="eCU-Zz-WzT"/>
+                <constraint firstItem="LHG-9E-0hc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="fbs-pI-Dqk"/>
+                <constraint firstItem="LHG-9E-0hc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="44" id="h3g-M4-atX"/>
+            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>

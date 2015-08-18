@@ -13,9 +13,9 @@ import Foundation
     private let _contentType: MessageDataContentType
     private let _content: String
     private let _date: NSDate
-    private let sender: User
+    private let sender: UserMessage
     
-    init(contentType: MessageDataContentType, content: String, date: NSDate, sender: User) {
+    init(contentType: MessageDataContentType, content: String, date: NSDate, sender: UserMessage) {
         _contentType = contentType
         _content = content
         _date = date

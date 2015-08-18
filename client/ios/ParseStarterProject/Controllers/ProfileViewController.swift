@@ -17,6 +17,7 @@ let kReusableProfilePostViewCell = "ProfilePostViewCell"
 
 @objc(ProfileViewController) class ProfileViewController: BaseQueryTableViewController {
     var owner: PFObject?
+    
     var isGuest: Bool {
         if let currentUser = PFUser.currentUser() {
             if owner?.objectId == currentUser.objectId {
@@ -30,12 +31,12 @@ let kReusableProfilePostViewCell = "ProfilePostViewCell"
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.automaticallyAdjustsScrollViewInsets = false
+        
         self.setupHeaderView()
         
         self.tableView.registerNib(UINib(nibName: kReusableProfilePostViewCell, bundle: nil), forCellReuseIdentifier: kReusableProfilePostViewCell)
 
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
         self.tableView.estimatedRowHeight = 44.0;
         self.tableView.rowHeight = UITableViewAutomaticDimension;
         self.tableView.tableFooterView = UIView()
@@ -61,21 +62,10 @@ let kReusableProfilePostViewCell = "ProfilePostViewCell"
         self.tableView.setParallaxHeaderView(header!, mode: VGParallaxHeaderMode.Fill, height: 240)
     }
     
-    override func customizeNavigationBar() {
-        self.automaticallyAdjustsScrollViewInsets = false
-        
-        let navigationBar   = self.defineNavigationBar()
-        
-        navigationBar?.setBackgroundImage(UIImage(), forBarMetrics: .Default)
-        navigationBar?.shadowImage = UIImage()
-        navigationBar?.backgroundColor = UIColor.clearColor()
-        navigationBar?.translucent = true
-    }
-
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.customizeNavigationBar()
+        self.customizeNavigationBar(.Transparent)
         self.configureNavigationBarBackBtn(UIColor.whiteColor())
         
         if !self.isGuest {
@@ -126,6 +116,7 @@ let kReusableProfilePostViewCell = "ProfilePostViewCell"
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell? {
         let cell = tableView.dequeueReusableCellWithIdentifier(kReusableProfilePostViewCell) as! ProfilePostViewCell
         cell.prepareView(object!)
+        cell.parentViewController = self
         return cell
     }
     

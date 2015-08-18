@@ -1,5 +1,5 @@
 //
-//  UploadFileHelper.swift
+//  SelectImageHelper.swift
 //  Think
 //
 //  Created by denis zaytcev on 8/12/15.
@@ -11,15 +11,37 @@ import Parse
 import ParseUI
 import JGProgressHUD
 import Photos
+import Bolts
 
-enum UploadFileHelperScenario : UInt {
-    case Avatar
-    case Cover
+enum SeletImageHelperScenario : UInt {
+    case AvatarProfile
+    case CoverProfile
+    case CoverPost
 }
 
-class UploadFileHelper {
-    class func selectAndUploadFile(controller: UIViewController, sourceView: UIView, scenario: UploadFileHelperScenario) {
+class SelectImageHelper {
+    class func selectAndUploadFile(controller: UIViewController, sourceView: UIView, scenario: SeletImageHelperScenario) {
         controller.presentImagePickerSheet(sourceView, sourceRect: sourceView.frame)
+    }
+    
+    class func uploadImage(image: UIImage, imageName: String) -> PFFile {
+        let imageData   = UIImagePNGRepresentation(image)
+        let imageFile   = PFFile(name: imageName, data:imageData)
+        var hud         = SelectImageHelper.createHudProgress()
+        
+        imageFile.saveInBackgroundWithProgressBlock ({ (progress: Int32) -> Void in
+            SelectImageHelper.progressHudProgress(hud, progress: Float(progress))
+        }).continueWithBlock({ (task: BFTask!) -> AnyObject! in
+            if (task.error != nil) {
+                SelectImageHelper.failedHudProgress(hud)
+            } else {
+                SelectImageHelper.successHudProgress(hud)
+            }
+            
+            return nil
+        })
+        
+        return imageFile
     }
     
     class func createHudProgress() -> JGProgressHUD {
@@ -29,7 +51,7 @@ class UploadFileHelper {
         HUD.showInView(window)//может сделать показ на window
         self.progressHudProgress(HUD, progress: 0)
         HUD.indicatorView = JGProgressHUDPieIndicatorView(HUDStyle: JGProgressHUDStyle.Dark)
-        HUD.textLabel.text = "Загрузка...".localized
+        HUD.textLabel.text = "loading...".localized
         HUD.detailTextLabel.text = nil
         HUD.layoutChangeAnimationDuration = 0.0
         
@@ -41,7 +63,7 @@ class UploadFileHelper {
     }
     
     class func successHudProgress(HUD: JGProgressHUD) {
-        HUD.textLabel.text = "Загружено".localized
+        HUD.textLabel.text = "loaded".localized
         HUD.detailTextLabel.text = nil
         HUD.layoutChangeAnimationDuration = 0.3
         HUD.indicatorView = JGProgressHUDSuccessIndicatorView()
@@ -55,7 +77,7 @@ class UploadFileHelper {
     }
     
     class func failedHudProgress(HUD: JGProgressHUD) {
-        HUD.textLabel.text = "Ошибка".localized
+        HUD.textLabel.text = "Error".localized
         HUD.detailTextLabel.text = nil
         HUD.layoutChangeAnimationDuration = 0.3
         HUD.indicatorView = JGProgressHUDErrorIndicatorView()
@@ -89,11 +111,13 @@ extension UIViewController: UIImagePickerControllerDelegate, UINavigationControl
                 let controller = UIImagePickerController()
                 controller.delegate = self
                 var sourceType = source
-                
+
                 if (!UIImagePickerController.isSourceTypeAvailable(sourceType)) {
                     sourceType = .PhotoLibrary
                     println("Fallback to camera roll as a source since the simulator doesn't support taking pictures")
                 }
+                
+                controller.allowsEditing = true
                 
                 controller.sourceType = sourceType
                 self.presentViewController(controller, animated: true, completion: nil)

@@ -27,10 +27,10 @@ import VGParallaxHeader
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var header = ProfileEditHeaderView()
-        header.object = self.owner
-        header.parentController = self
-        self.tableView.setParallaxHeaderView(header, mode: VGParallaxHeaderMode.Fill, height: 240)
+        self.automaticallyAdjustsScrollViewInsets = false
+        
+        self.setupHeaderView()
+        
         self.view.backgroundColor = kColorBackgroundViewController
         self.tableView.backgroundColor = kColorBackgroundViewController
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
@@ -41,9 +41,17 @@ import VGParallaxHeader
         self.setupNavigationBar()
     }
     
+    func setupHeaderView() {
+        var header = ProfileEditHeaderView()
+        header.object = self.owner
+        header.parentController = self
+        self.tableView.setParallaxHeaderView(header, mode: VGParallaxHeaderMode.Fill, height: 240)
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.customizeNavigationBar()
+        
+        self.customizeNavigationBar(.Transparent)
         self.configureNavigationBarBackBtn(UIColor.whiteColor())
         self.configureNavigationBarRightBtn(UIColor.whiteColor())
     }
@@ -76,17 +84,6 @@ import VGParallaxHeader
         let editBarButtonItem = UIBarButtonItem(title: "Done".uppercaseString, style: UIBarButtonItemStyle.Plain, target: self, action: "didTapDone:")
         editBarButtonItem.setTitleTextAttributes(attributes, forState: UIControlState.Normal)
         navigationItem.rightBarButtonItem = editBarButtonItem
-    }
-    
-    override func customizeNavigationBar() {
-        self.automaticallyAdjustsScrollViewInsets = false
-        
-        let navigationBar   = self.defineNavigationBar()
-        
-        navigationBar?.setBackgroundImage(UIImage(), forBarMetrics: .Default)
-        navigationBar?.shadowImage = UIImage()
-        navigationBar?.backgroundColor = UIColor.clearColor()
-        navigationBar?.translucent = true
     }
     
     override func viewDidAppear(animated: Bool) {

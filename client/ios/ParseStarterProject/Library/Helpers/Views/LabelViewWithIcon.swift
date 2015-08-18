@@ -20,6 +20,9 @@ class LabelViewWithIcon: UILabel {
     @IBInspectable var iconLeft:    CGFloat = 0.0
     @IBInspectable var iconOffset:  CGFloat = 0.0
     
+    var _iconLayer: CALayer?
+    var _iconImage: UIImage?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.definePositionX()
@@ -29,6 +32,18 @@ class LabelViewWithIcon: UILabel {
         iconLayer.contents = iconImage.imageWithColor(iconColor).CGImage
         
         self.layer.addSublayer(iconLayer)
+        self._iconLayer = iconLayer
+        self._iconImage = iconImage
+    }
+    
+    func setColor(color: UIColor) {
+        if let iconLayer = self._iconLayer {
+            if let iconImage = self._iconImage {
+                iconLayer.contents = iconImage.imageWithColor(color).CGImage
+            }
+        }
+        
+        self.textColor = color
     }
     
     func definePositionX() {

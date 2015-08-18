@@ -9,6 +9,7 @@
 import Foundation
 import Parse
 import Bolts
+import LoremIpsum
 import ParseUI
 
 @objc(AppViewController) class AppViewController: BaseViewController {
@@ -136,31 +137,19 @@ import ParseUI
     @IBAction func didTapMessages() {
         var user = PFUser.currentUser()
         let controller = MessagesViewController.CreateWithModel(user!)
-//        let navigation = BaseNavigationController(rootViewController: controller)
-//        self.presentViewController(navigation, animated: true, completion: nil)
         self.navigationController?.pushViewController(controller, animated: true)
     }
 
     
     @IBAction func didTapPosts() {
-        var user = PFUser.currentUser()
+        let title = LoremIpsum.wordsWithNumber((random() % 10) + 1)
+        let content = LoremIpsum.wordsWithNumber((random() % 100) + 1)
+        let myPost = Post.createWith(title, content: content)
+        let message = LoremIpsum.wordsWithNumber((random() % 10) + 1)
         
-        var myPost = PFObject(className:"Post")
-        myPost["title"] = "I'm Hungry"
-        myPost["content"] = "Where should we go for lunch?"
-        myPost["owner"] = user//PFObject(withoutDataWithClassName:"_User", objectId:user?.objectId)
-//        myPost.saveInBackground()
-
-        // Create the comment
-        var myComment = PFObject(className:"Comment")
-        myComment["content"] = "Let's do Sushirrito."
-//
-//        // Add a relation between the Post and Comment
-        myComment["parent"] = myPost
-        myComment["owner"] = user
+//        let myComment = Comment.createWith(message: message, post: myPost)
         
-        // This will save both myPost and myComment
-        myComment.saveInBackground()
+//        myComment.saveInBackground()
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle  {
