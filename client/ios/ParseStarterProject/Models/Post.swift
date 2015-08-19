@@ -48,14 +48,22 @@ class Post: PFObject, PFSubclassing {
         })
     }
     
-    
-    class func createWith(title: String, content: String) -> BFTask {
+    class func createWith() -> PFObject {
         let post = PFObject(className: kPostClassKey)
         let user = PFUser.currentUser()
         post.ACL = PFACL(user: user!)
+        post.setObject(user!,   forKey: kPostOwnerKey)
+        post.setObject(0, forKey: kPostCounterCommentsKey)
+        post.setObject(0, forKey: kPostCounterLikesKey)
+        
+        return post
+    }
+    
+    class func createWith(title: String, content: String) -> BFTask {
+        var post = Post.createWith()
+        
         post.setObject(title,   forKey: kPostTitleKey)
         post.setObject(content, forKey: kPostContentKey)
-        post.setObject(user!,   forKey: kPostOwnerKey)
         
         return post.saveInBackground()
     }

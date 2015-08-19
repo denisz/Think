@@ -8,9 +8,6 @@
             <string>OpenSans-Light</string>
             <string>OpenSans-Light</string>
         </mutableArray>
-        <mutableArray key="OpenSans-Semibold.ttf">
-            <string>OpenSans-Semibold</string>
-        </mutableArray>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileEditHeaderView" customModule="Think" customModuleProvider="target">
@@ -37,21 +34,9 @@
                                 <constraint firstAttribute="height" constant="100" id="x2J-5t-o2F"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ALEXANDER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Bv-lL-fs8">
-                            <rect key="frame" x="190" y="107" width="200" height="21"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="21" id="Hzu-CP-BhI"/>
-                                <constraint firstAttribute="width" constant="200" id="zJw-Bg-Ffl"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
-                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="centerX" secondItem="VKM-ye-xJW" secondAttribute="centerX" id="2Qk-dh-uG4"/>
-                        <constraint firstItem="8Bv-lL-fs8" firstAttribute="top" secondItem="VKM-ye-xJW" secondAttribute="bottom" constant="7" id="HJq-pn-1ew"/>
-                        <constraint firstAttribute="centerX" secondItem="8Bv-lL-fs8" secondAttribute="centerX" id="KzD-5t-5qE"/>
                         <constraint firstAttribute="height" constant="130" id="Yxs-iW-j35"/>
                         <constraint firstAttribute="centerX" secondItem="VKM-ye-xJW" secondAttribute="centerX" id="dlr-jN-44M"/>
                         <constraint firstItem="VKM-ye-xJW" firstAttribute="top" secondItem="Ixn-Yb-mIk" secondAttribute="top" id="qWv-ds-4jQ"/>

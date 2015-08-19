@@ -46,7 +46,7 @@ protocol SignUpViewControllerDelegate {
         
         self.signUp         .cornerEdge()
 
-        self.setupKeyboard()
+        self.setupKeyboard(true)
     }
     
     override func viewDidAppear(animated: Bool) {

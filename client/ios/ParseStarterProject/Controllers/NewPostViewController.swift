@@ -10,59 +10,38 @@ import Foundation
 import Parse
 import ParseUI
 import UIKit
-
-enum PostBlockType: Int {
-    case Text
-    case Title
-    case Picture
-    case Cover
-    case Unknown
-}
-
-class PostBlock: NSObject {
-    var type: PostBlockType
-    var content: String = ""
-    var picture: PFFile?
-    var backgroundColor: UIColor?
-    var textColor: UIColor?
-    
-    init(type: PostBlockType) {
-        self.type = type
-    }
-}
-
-let kReusableTitlePostViewCell      = "TitlePostViewCell"
-let kReusableTextPostViewCell       = "TextPostViewCell"
-let kReusablePicturePostViewCell    = "PicturePostViewCell"
-let kReusableCoverPostViewCell      = "CoverPostViewCell"
+import Bolts
 
 @objc(NewPostViewController) class NewPostViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewBottomLayoutContraint: NSLayoutConstraint!
     @IBOutlet weak var toolbarBottomLayoutContraint: NSLayoutConstraint!
     @IBOutlet weak var toolbar: ToolbarNewPostView!
+    @IBOutlet weak var overlay: UIView!
 
-    
     var blocks: [PostBlock]?
+    var currentEditingBlock: PostBlock?
+    var object: PFObject?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.blocks = [PostBlock]()
+        self.title  = "New post"
         
-        self.title = "New post"
-
+        self.object = Post.createWith()
+        
         self.setupTableView()
         self.setupNavigationBar()
         self.setupToolbar()
 
-        //сразу добавляем блок с заголовком и один блок с текстом
+        //сразу добавляем блок с заголовком и один блок с текстом и ковер
         self.blocks?.append(PostBlock(type: PostBlockType.Cover))
         self.blocks?.append(PostBlock(type: PostBlockType.Title))
         self.blocks?.append(PostBlock(type: PostBlockType.Text))
         
         self.tableView.reloadData()
-        self.setupKeyboard()
+        self.setupKeyboard(false)
     }
     
     deinit {
@@ -76,6 +55,7 @@ let kReusableCoverPostViewCell      = "CoverPostViewCell"
     
     func setupToolbar() {
         self.toolbar.delegate = self
+        self.toolbar.parentController = self
     }
     
     func setupTableView() {
@@ -123,14 +103,60 @@ let kReusableCoverPostViewCell      = "CoverPostViewCell"
     }
     
     func didTapNextBtn(sender: AnyObject?) {
-        let controller = SettingsPostViewController()
-        self.navigationController?.pushViewController(controller, animated: true)
+        self.hideKeyboard()
+        self.overlay.alpha = 0
+        self.overlay.hidden = false
+        self.view.bringSubviewToFront(self.overlay)
+        
+        UIView.animateWithDuration(0.3, animations: { () -> Void in
+            self.overlay.alpha = 1
+        })
+        
+        self.preparePost()
+        
+        self.object?.saveInBackground().continueWithBlock({ (task: BFTask!) -> AnyObject! in
+            dispatch_async(dispatch_get_main_queue()) {
+                self.overlay.hidden = true
+            }
+            
+            if (task.error != nil) {
+                let alertView = UIAlertView(
+                   title: "Error save your post",
+                   message: "Post error save",
+                   delegate: nil,
+                   cancelButtonTitle: "Not Now",
+                   otherButtonTitles: "OK"
+                 )
+                 alertView.show()
+            } else {
+                dispatch_async(dispatch_get_main_queue()) {
+                    let controller = SettingsPostViewController()
+                    self.navigationController?.pushViewController(controller, animated: true)
+                }
+            }
+            
+            return nil
+        })
+        
     }
     
-    func getReadyPost() -> [String]{
+    func blockByType(type: PostBlockType) -> [PostBlock]{
+        return self.blocks!.filter{ $0.type == type }
+    }
+    
+    func titlePost() -> String{
+        return self.blockByType(PostBlockType.Title)[0].toObject()[kPostBlockTextKey]!
+    }
+    
+    func preparePost(){
         var result = [String]()
         
-        return result
+        let title           = self.titlePost()
+        let contentObject   = self.blockByType(PostBlockType.Text).map({ $0.toObject() })
+        let content         = JSONStringify(contentObject)
+        
+        self.object?.setObject(content, forKey: kPostContentObjKey)
+        self.object?.setObject(title,   forKey: kPostTitleKey)
     }
     
     override func didTapLeftBtn(sender: UIButton) {
@@ -142,17 +168,42 @@ let kReusableCoverPostViewCell      = "CoverPostViewCell"
     }
 }
 
-
 extension NewPostViewController: UITableViewDelegate {
     func insertNewBlockAfterBlock(block: PostBlock, type: PostBlockType) {
         var index = self.blocks?.find{$0 == block}
         
         if let idx = index {
-            let newBlock = PostBlock(type: PostBlockType.Unknown)
+            let newBlock = PostBlock(type: type)
             self.blocks!.insert(newBlock, atIndex: idx)
+            let indexPath = NSIndexPath(forRow: idx, inSection: 0)
+            
+            self.tableView.beginUpdates()
+            self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+            self.tableView.endUpdates()
         } else {
-            self.blocks!.append(PostBlock(type: PostBlockType.Unknown))
+            self.appendBlock(type)
         }
+    }
+    
+    func appendBlock(type: PostBlockType) {
+        let block = PostBlock(type: type)
+        self.blocks!.append(block)
+        let index = self.blocks?.find{$0 == block}
+        let indexPath = NSIndexPath(forRow: index!, inSection: 0)
+        
+        self.tableView.beginUpdates()
+        self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+        self.tableView.endUpdates()
+        
+        if type == PostBlockType.Text {
+            if let cell = self.cellByBlock(block)  {
+                let textCell = cell as! TextBlockPostViewCell
+                textCell.textView.becomeFirstResponder()
+            }
+        }
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     }
 }
 
@@ -176,6 +227,20 @@ extension NewPostViewController: UITableViewDataSource {
         }
     }
     
+    func blockByIndexPath(indexPath: NSIndexPath) -> PostBlock {
+        return self.blocks![indexPath.row]
+    }
+    
+    func cellByBlock(block: PostBlock) -> UITableViewCell? {
+        let index = self.blocks?.find({$0 == block })
+        if let idx = index {
+            let indexPath = NSIndexPath(forRow: idx, inSection: 0)
+            return self.tableView.cellForRowAtIndexPath(indexPath)
+        }
+        
+        return nil
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.blocks!.count
     }
@@ -193,6 +258,7 @@ extension NewPostViewController: UITableViewDataSource {
         let cellIndentifier = self.parseReuseIdentifierByType(block.type)
         var cell = tableView.dequeueReusableCellWithIdentifier(cellIndentifier) as? BlockPostViewCell
         
+        cell!.clearView()
         cell!.parentViewController = self
         cell!.delegate = self
         cell!.prepareView(block)
@@ -200,13 +266,8 @@ extension NewPostViewController: UITableViewDataSource {
         return cell!
     }
     
-    func blockByIndexPath(indexPath: NSIndexPath) -> PostBlock {
-        return self.blocks![indexPath.row]
-    }
-    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        var block = blockByIndexPath(indexPath)
+        let block = blockByIndexPath(indexPath)
         
         if block.type == PostBlockType.Title {
             return self.tableView(tableView, cellForTitleAtIndexPath: indexPath, block: block)
@@ -220,13 +281,21 @@ extension NewPostViewController: UITableViewDataSource {
 extension NewPostViewController: BlockPostViewCellDelegate {
     func block(cell: UITableViewCell, didTapNextBlock block: PostBlock) {
         self.insertNewBlockAfterBlock(block, type: PostBlockType.Text)
-        //сделать анимацию
-        self.tableView.reloadData()
+    }
+    
+    func block(cell: UITableViewCell, shouldActiveBlock block: PostBlock) {
+        self.currentEditingBlock = block
     }
 }
 
 extension NewPostViewController: ToolbarNewPostViewDelegate {
-    func toolbar(view: ToolbarNewPostView, didTapNewBlock sender: UIButton) {
-        
+    func toolbar(view: ToolbarNewPostView, didTapNewBlock sender: UIView) {
+        self.appendBlock(PostBlockType.Text)
+    }
+    
+    func toolbar(view: ToolbarNewPostView, didTapChangeStyle sender: UIView) {
+        if let block = self.currentEditingBlock {
+            block.style = PostBlockStyle.Gray
+        }
     }
 }

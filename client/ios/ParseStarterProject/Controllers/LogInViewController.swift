@@ -50,7 +50,7 @@ protocol LogInViewControllerDelegate {
         self.facebook.cornerEdge()
         self.signUp.cornerEdge()
         
-        self.setupKeyboard()
+        self.setupKeyboard(true)
     }
     
     deinit {

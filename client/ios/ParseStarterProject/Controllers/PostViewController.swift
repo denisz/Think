@@ -16,6 +16,8 @@ import VGParallaxHeader
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var likesCounter: LabelViewWithIcon!
     @IBOutlet weak var followAuthor: UIButtonRoundedBorder!
+    @IBOutlet weak var contentView: PostContentView!
+    @IBOutlet weak var titleView: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +27,6 @@ import VGParallaxHeader
         
         self.setupScrollView()
         self.setupNavigationBar()
-        
-        self.setupView()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -58,8 +58,10 @@ import VGParallaxHeader
     override func objectDidLoad(object: PFObject) {
         super.objectDidLoad(object)
         
-        let countLikes = self.object![kPostCounterLikesKey] as! Int
-        likesCounter.text = "+\(countLikes)"
+        let countLikes = object[kPostCounterLikesKey] as! Int
+        self.likesCounter.text = "+\(countLikes)"
+        self.titleView.text = object[kPostTitleKey] as? String
+        self.contentView.updateObject(object)
     }
     
     func updateColorAndCountLikes(like: Bool) {
@@ -132,13 +134,6 @@ import VGParallaxHeader
         self.presentViewController(actionSheet, animated: true, completion: nil)
     }
     
-    func setupView() {
-        self.setupViewCover()
-    }
-    
-    func setupViewCover() {
-    }
-    
     func didTapBookmarkPost() {
         Bookmark.createWith(self.object!)
     }
@@ -164,7 +159,6 @@ import VGParallaxHeader
     }
     
     dynamic func userLikedOrUnlikedPost(notification: NSNotification) {
-        
         self.updateColorAndCountLikes(Activity.isLikePost(self.object!))
     }
     

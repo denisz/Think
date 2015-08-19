@@ -17,6 +17,7 @@ enum SeletImageHelperScenario : UInt {
     case AvatarProfile
     case CoverProfile
     case CoverPost
+    case MessagePhoto
 }
 
 class SelectImageHelper {

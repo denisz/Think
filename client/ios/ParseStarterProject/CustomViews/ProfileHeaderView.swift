@@ -34,7 +34,6 @@ class ProfileHeaderView: BaseProfileHeaderView {
     
     @IBAction func didTapNewPost(sender: AnyObject?) {
         self.delegate?.profileView(self, didTapNewPost: self.newPostButton)
-        
     }
     
     @IBAction func didTapDrafts(sender: AnyObject?) {

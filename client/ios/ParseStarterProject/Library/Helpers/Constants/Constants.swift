@@ -51,6 +51,7 @@ let kPostClassKey               = "Post"
 
 //fields
 let kPostContentKey             = "content"
+let kPostContentObjKey          = "content_obj"
 let kPostContentShortKey        = "content_short"
 let kPostTitleKey               = "title"
 let kPostOwnerKey               = "owner"
@@ -61,6 +62,10 @@ let kPostSettingsKey            = "settings"
 let kPostCounterLikesKey        = "counter_likes"
 let kPostCounterCommentsKey     = "counter_comments"
 
+
+//fields Post block
+let kPostBlockTextKey           = "text"
+let kPostBlockStyleKey          = "style"
 
 
 //MARK: Bookmark
@@ -96,6 +101,15 @@ let kUserUnlikedPost        = "com.think.user.unliked.post"
 let kUserLikedPost          = "com.think.user.liked.post"
 let kUserFollowingUser      = "com.think.following.user"
 let kUserUnfollowUser       = "com.think.unfollow.user"
+
+
+// MARK: Post blocks
+let kReusableTitlePostViewCell      = "TitlePostViewCell"
+let kReusableTextPostViewCell       = "TextPostViewCell"
+let kReusablePicturePostViewCell    = "PicturePostViewCell"
+let kReusableCoverPostViewCell      = "CoverPostViewCell"
+
+
 
 
 

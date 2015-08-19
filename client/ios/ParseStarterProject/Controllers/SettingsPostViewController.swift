@@ -67,7 +67,6 @@ class SettingsPostViewController: BaseFormViewController {
     
     func didTapSendBtn(sender: AnyObject?) {
         self.dismissViewControllerAnimated(true, completion: nil)
-//        self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
     func setupSections() {

@@ -13,14 +13,21 @@ import UIKit
 let kReusableToolbarNewPost = "ToolbarNewPostViewCell"
 
 @objc protocol ToolbarNewPostViewDelegate {
-    func toolbar(view: ToolbarNewPostView, didTapNewBlock sender: UIButton)
+    func toolbar(view: ToolbarNewPostView, didTapNewBlock sender: UIView)
+    func toolbar(view: ToolbarNewPostView, didTapChangeStyle sender: UIView)
+}
+
+enum kCommandToolbarNewPost: Int {
+    case newBlock
+    case changeStyle
 }
 
 class ToolbarNewPostView: BaseUIView {
     @IBOutlet weak var collectionView: UICollectionView!
     
+    var parentController: UIViewController?
     var delegate: ToolbarNewPostViewDelegate?
-    var commands = ["newBlock", "changeBackgroundColor", "changeTextColor", "newBlock", "changeBackgroundColor", "changeTextColor", "newBlock", "changeBackgroundColor", "changeTextColor"]
+    var commands:[kCommandToolbarNewPost] = [.newBlock, .changeStyle]
     
     override var nibName: String? {
         return "ToolbarNewPostView"
@@ -28,16 +35,26 @@ class ToolbarNewPostView: BaseUIView {
     
     override func viewDidLoad() {
         self.collectionView.registerNib(UINib(nibName: kReusableToolbarNewPost, bundle: nil), forCellWithReuseIdentifier: kReusableToolbarNewPost)
+
         self.collectionView.reloadData()
     }
     
-    func handlerCommand(command: String, sender: UIView) {
-        println(command)
+    func handlerCommand(command: kCommandToolbarNewPost, sender: UIView) {
+        switch(command) {
+        case .newBlock:
+            self.delegate?.toolbar(self, didTapNewBlock: sender)
+            break;
+        case .changeStyle:
+            self.delegate?.toolbar(self,  didTapChangeStyle: sender)
+            break;
+        default:
+            println("")
+        }
     }
 }
 
 extension ToolbarNewPostView: UICollectionViewDelegate {
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+   func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let command = commandByIndexPath(indexPath)
         let cell = collectionView.cellForItemAtIndexPath(indexPath)
         self.handlerCommand(command, sender: cell!)
@@ -45,8 +62,12 @@ extension ToolbarNewPostView: UICollectionViewDelegate {
 }
 
 extension ToolbarNewPostView: UICollectionViewDataSource {
-    func commandByIndexPath(indexPath: NSIndexPath) -> String {
+    func commandByIndexPath(indexPath: NSIndexPath) -> kCommandToolbarNewPost {
         return self.commands[indexPath.row]
+    }
+    
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -69,10 +90,21 @@ extension ToolbarNewPostView: UICollectionViewDataSource {
 
 
 class ToolbarNewPostViewCell: UICollectionViewCell {
-    var command: String?
+    @IBOutlet weak var icon: UIButton!
+    var command: kCommandToolbarNewPost?
     
-    func prepareView(command: String) {
+    func prepareView(command: kCommandToolbarNewPost) {
+        icon.titleLabel?.font = UIFont.ioniconOfSize(30)
         
+        switch(command) {
+        case .newBlock:
+            icon.setTitle(String.ioniconWithName(.Document), forState: .Normal)
+            break;
+        case .changeStyle:
+            icon.setTitle(String.ioniconWithName(.Paintbrush), forState: .Normal)
+        break;
+        }
+
+        self.command = command
     }
-    
 }

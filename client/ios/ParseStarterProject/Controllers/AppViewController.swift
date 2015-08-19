@@ -145,11 +145,6 @@ import ParseUI
         let title = LoremIpsum.wordsWithNumber((random() % 10) + 1)
         let content = LoremIpsum.wordsWithNumber((random() % 100) + 1)
         let myPost = Post.createWith(title, content: content)
-        let message = LoremIpsum.wordsWithNumber((random() % 10) + 1)
-        
-//        let myComment = Comment.createWith(message: message, post: myPost)
-        
-//        myComment.saveInBackground()
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle  {

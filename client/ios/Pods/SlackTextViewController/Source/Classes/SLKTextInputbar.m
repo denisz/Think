@@ -23,15 +23,6 @@
 
 @interface SLKTextInputbar ()
 
-@property (nonatomic, strong) NSLayoutConstraint *leftButtonWC;
-@property (nonatomic, strong) NSLayoutConstraint *leftButtonHC;
-@property (nonatomic, strong) NSLayoutConstraint *leftMarginWC;
-@property (nonatomic, strong) NSLayoutConstraint *bottomMarginWC;
-@property (nonatomic, strong) NSLayoutConstraint *rightButtonWC;
-@property (nonatomic, strong) NSLayoutConstraint *rightMarginWC;
-@property (nonatomic, strong) NSLayoutConstraint *rightButtonTopMarginC;
-@property (nonatomic, strong) NSLayoutConstraint *rightButtonBottomMarginC;
-@property (nonatomic, strong) NSLayoutConstraint *editorContentViewHC;
 @property (nonatomic, strong) NSArray *charCountLabelVCs;
 
 @property (nonatomic, strong) UILabel *charCountLabel;
@@ -649,10 +640,10 @@
             self.bottomMarginWC.constant = roundf((self.intrinsicContentSize.height - leftButtonSize.height) / 2.0);
         }
         
-        self.leftButtonWC.constant = roundf(leftButtonSize.width);
+        self.leftButtonWC.constant = 40;
         self.leftMarginWC.constant = (leftButtonSize.width > 0) ? self.contentInset.left : zero;
         
-        self.rightButtonWC.constant = [self slk_appropriateRightButtonWidth];
+        self.rightButtonWC.constant = 40;
         self.rightMarginWC.constant = [self slk_appropriateRightButtonMargin];
         
         [self.rightButton sizeToFit];

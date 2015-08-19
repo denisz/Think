@@ -64,15 +64,16 @@ class BaseQueryViewController: BaseViewController, StatefulViewControllerDelegat
     }
     
     func objectWillLoad(object: PFObject) {
+        //сделать задержку
         self.startLoading(animated: false)
     }
     
     func objectDidLoad(object: PFObject) {
-        self.endLoading(animated: true, error: nil)
+        self.endLoading(animated: false, error: nil)
     }
     
     func objectErrorLoad(object: PFObject, error: NSError?) {
-       self.endLoading(animated: true, error: error)
+       self.endLoading(animated: false, error: error)
     }
 }
 

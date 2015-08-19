@@ -101,6 +101,16 @@ typedef NS_ENUM(NSUInteger, SLKCounterPosition) {
 /** A Boolean value indicating whether the control is in edit mode. */
 @property (nonatomic, getter = isEditing) BOOL editing;
 
+@property (nonatomic, strong) NSLayoutConstraint *leftButtonWC;
+@property (nonatomic, strong) NSLayoutConstraint *leftButtonHC;
+@property (nonatomic, strong) NSLayoutConstraint *leftMarginWC;
+@property (nonatomic, strong) NSLayoutConstraint *bottomMarginWC;
+@property (nonatomic, strong) NSLayoutConstraint *rightButtonWC;
+@property (nonatomic, strong) NSLayoutConstraint *rightMarginWC;
+@property (nonatomic, strong) NSLayoutConstraint *rightButtonTopMarginC;
+@property (nonatomic, strong) NSLayoutConstraint *rightButtonBottomMarginC;
+@property (nonatomic, strong) NSLayoutConstraint *editorContentViewHC;
+
 /**
  Verifies if the text can be edited.
  

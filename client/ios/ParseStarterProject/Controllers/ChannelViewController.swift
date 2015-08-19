@@ -64,7 +64,7 @@ import LoremIpsum
         let image = UIImage(named: "ava_profile")
         
         let btnBack = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
-        btnBack.addTarget(self, action: "didTapNewPostBtn:", forControlEvents: UIControlEvents.TouchUpInside)
+        btnBack.addTarget(self, action: "didTapAvatarBtn:", forControlEvents: UIControlEvents.TouchUpInside)
         btnBack.setImage(image, forState: UIControlState.Normal)
         btnBack.imageEdgeInsets = UIEdgeInsets(top: -4, left: -4, bottom: -4, right: -4)
         btnBack.setTitleColor(kColorNavigationBar, forState: UIControlState.Normal)
@@ -77,7 +77,7 @@ import LoremIpsum
     
     func customizeTextField() {
         self.textInputbar.backgroundColor = UIColor.whiteColor()
-        self.textInputbar.contentInset = UIEdgeInsetsMake(8.0, 8.0, 8.0, 8.0);
+        self.textInputbar.contentInset = UIEdgeInsetsMake(8.0, 8.0, 0.0, 8.0);
         self.textInputbar.autoHideRightButton = false
         self.textInputbar.textView.layer.borderWidth = 0
         self.textInputbar.textView.font = UIFont(name: "OpenSans", size: 16)!
@@ -87,9 +87,24 @@ import LoremIpsum
         
         let sendImage = UIImage(named: "ic_send")
         let rightButton = self.textInputbar.rightButton
+        self.textInputbar.rightButtonWC.constant = 40
         rightButton.tintColor = kColorNavigationBar
         rightButton.setImage(sendImage, forState: UIControlState.Normal)
         rightButton.setTitle("", forState: UIControlState.Normal)
+        
+        
+        let attachImage = UIImage(named: "ic_attach")
+        let leftButton = self.textInputbar.leftButton
+        self.textInputbar.leftButtonWC.constant = 40
+        leftButton.tintColor = kColorNavigationBar
+        leftButton.setImage(attachImage, forState: UIControlState.Normal)
+        leftButton.setTitle("", forState: UIControlState.Normal)
+    }
+    
+    override func didPressLeftButton(sender: AnyObject!) {
+        super.didPressLeftButton(sender)
+        
+        SelectImageHelper.selectAndUploadFile(self, sourceView: sender as! UIView, scenario: SeletImageHelperScenario.MessagePhoto)
     }
     
     override func didPressRightButton(sender: AnyObject!) {
@@ -104,6 +119,12 @@ import LoremIpsum
             }
         }
         super.didPressRightButton(sender)
+    }
+    
+    func didTapAvatarBtn(sender: AnyObject?) {
+        var user = PFUser.currentUser()
+        let controller = ProfileViewController.CreateWithModel(user!)
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     private func generateMessages() {

@@ -16,8 +16,8 @@ let kAMMessageCellNodeContentTopTextAttributes = [NSForegroundColorAttributeName
 let kAMMessageCellNodeBottomTextAttributes = [NSForegroundColorAttributeName: UIColor.lightGrayColor(),
     NSFontAttributeName: UIFont.systemFontOfSize(11)]
 
-private let kContentHorizontalInset: CGFloat = 12
-private let kContentVerticalInset: CGFloat = 15
+private let kContentHorizontalInset: CGFloat = 3
+private let kContentVerticalInset: CGFloat = 3
 
 class MessageCellNode: ASCellNode {
     

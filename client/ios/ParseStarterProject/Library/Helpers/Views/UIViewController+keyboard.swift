@@ -10,12 +10,20 @@ import Foundation
 
 extension UIViewController {
 
-    func setupKeyboard() {
+    func setupKeyboard(autoHide: Bool) {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShowNotification:"), name: UIKeyboardWillShowNotification, object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHideNotification:"), name: UIKeyboardWillHideNotification, object: nil)
         
-        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "hideKeyboard"))
+        if autoHide == true {
+            self.tapForHideKeyboard()
+        }
+    }
+    
+    func tapForHideKeyboard() {
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: "hideKeyboard")
+        gestureRecognizer.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(gestureRecognizer)
     }
     
     func hideKeyboard(){

@@ -173,7 +173,10 @@ extension ProfileViewController: ProfileHeaderViewDelegate {
     }
     
     func profileView(view: ProfileHeaderView, didTapFollowers button: UIButton) {
-        
+        var user = PFUser.currentUser()
+        let controller = FollowersViewController.CreateWithModel(user!)
+        self.navigationController?.pushViewController(controller, animated: true)
+
     }
 }
 

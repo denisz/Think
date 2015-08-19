@@ -47,8 +47,8 @@ class MessageCellNodeMetadataFactory {
         for var i = 0; i < messages.count; ++i {
             let metadata = MessageCellNodeMetadata(
                 isOutgoing: (messages[i].senderID() == currentUserID),
-                showsSenderName: showSenderNameFlags[i],
-                showsSenderAvatar: showSenderAvatarFlags[i],
+                showsSenderName: false,//showSenderNameFlags[i],
+                showsSenderAvatar: false,//showSenderAvatarFlags[i],
                 showsTailForBubbleImage: showTailFlags[i],
                 showsDate: showDateFlags[i]
             )

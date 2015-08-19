@@ -10,9 +10,7 @@ import Foundation
 import UIKit
 
 
-class TextPostViewCell: BlockPostViewCell {
-    @IBOutlet weak var textView: SZTextView!
-    
+class TextPostViewCell: TextBlockPostViewCell {
     override func prepareView(block: PostBlock) {
         super.prepareView(block)
         let attributedPlaceholder = [
@@ -21,24 +19,5 @@ class TextPostViewCell: BlockPostViewCell {
         ]
         
         self.textView.attributedPlaceholder = NSAttributedString(string: self.textView.placeholder, attributes: attributedPlaceholder)
-    }
-}
-
-extension TextPostViewCell: UITextViewDelegate {
-    func textViewDidChange(textView: UITextView) {
-        let size = textView.bounds.size
-        let newSize = textView.sizeThatFits(CGSize(width: size.width, height: CGFloat.max))
-
-        // Resize the cell only when cell's size is changed
-        if size.height != newSize.height {
-            UIView.setAnimationsEnabled(false)
-            tableView?.beginUpdates()
-            tableView?.endUpdates()
-            UIView.setAnimationsEnabled(true)
-            
-            if let thisIndexPath = tableView?.indexPathForCell(self) {
-                tableView?.scrollToRowAtIndexPath(thisIndexPath, atScrollPosition: .Bottom, animated: false)
-            }
-        }
     }
 }

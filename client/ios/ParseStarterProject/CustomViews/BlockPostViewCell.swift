@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 
 protocol BlockPostViewCellDelegate {
-    //добавить после этого блока еще один
     func block(cell: UITableViewCell, didTapNextBlock block: PostBlock);
+    func block(cell: UITableViewCell, shouldActiveBlock block: PostBlock);
 }
 
 class BlockPostViewCell: UITableViewCell {
@@ -21,5 +21,22 @@ class BlockPostViewCell: UITableViewCell {
     
     func prepareView(block: PostBlock) {
         self.block = block
+        block.addObserver(self, forKeyPath: kvoBlockPropertyStyle, options: NSKeyValueObservingOptions.New, context: nil)
+    }
+    
+    func clearView() {
+        if let block = self.block {
+            block.removeObserver(self, forKeyPath: kvoBlockPropertyStyle)
+        }
+    }
+    
+    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+        if keyPath == kvoBlockPropertyStyle {
+            self.backgroundColor = self.block?.backgroundColor
+        }
+    }
+    
+    func makeActiveBlock() {
+        self.delegate?.block(self, shouldActiveBlock: self.block!)
     }
 }
