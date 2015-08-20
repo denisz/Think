@@ -15,11 +15,13 @@ let kReusableToolbarNewPost = "ToolbarNewPostViewCell"
 @objc protocol ToolbarNewPostViewDelegate {
     func toolbar(view: ToolbarNewPostView, didTapNewBlock sender: UIView)
     func toolbar(view: ToolbarNewPostView, didTapChangeStyle sender: UIView)
+    func toolbar(view: ToolbarNewPostView, didTapHideKeyboard sender: UIView)
 }
 
 enum kCommandToolbarNewPost: Int {
     case newBlock
     case changeStyle
+    case hideKeyboard
 }
 
 class ToolbarNewPostView: BaseUIView {
@@ -27,7 +29,7 @@ class ToolbarNewPostView: BaseUIView {
     
     var parentController: UIViewController?
     var delegate: ToolbarNewPostViewDelegate?
-    var commands:[kCommandToolbarNewPost] = [.newBlock, .changeStyle]
+    var commands:[kCommandToolbarNewPost] = [.hideKeyboard, .newBlock, .changeStyle]
     
     override var nibName: String? {
         return "ToolbarNewPostView"
@@ -43,10 +45,13 @@ class ToolbarNewPostView: BaseUIView {
         switch(command) {
         case .newBlock:
             self.delegate?.toolbar(self, didTapNewBlock: sender)
-            break;
+            break
         case .changeStyle:
             self.delegate?.toolbar(self,  didTapChangeStyle: sender)
-            break;
+            break
+        case .hideKeyboard:
+            self.delegate?.toolbar(self,  didTapHideKeyboard: sender)
+            break
         default:
             println("")
         }
@@ -102,6 +107,9 @@ class ToolbarNewPostViewCell: UICollectionViewCell {
             break;
         case .changeStyle:
             icon.setTitle(String.ioniconWithName(.Paintbrush), forState: .Normal)
+        break;
+        case .hideKeyboard:
+            icon.setTitle(String.ioniconWithName(.IosArrowDown), forState: .Normal)
         break;
         }
 

@@ -22,12 +22,15 @@ class BlockPostViewCell: UITableViewCell {
     func prepareView(block: PostBlock) {
         self.block = block
         block.addObserver(self, forKeyPath: kvoBlockPropertyStyle, options: NSKeyValueObservingOptions.New, context: nil)
+        
+        self.backgroundColor = block.backgroundColor
     }
     
     func clearView() {
         if let block = self.block {
             block.removeObserver(self, forKeyPath: kvoBlockPropertyStyle)
         }
+        self.backgroundColor = UIColor.clearColor()
     }
     
     override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {

@@ -19,6 +19,13 @@ import ParseUI
         
         self.title = "Followers"
         
+        self.tableView.backgroundColor = kColorBackgroundViewController
+        self.tableView.registerNib(UINib(nibName: kReusableFollowUserViewCell, bundle: nil), forCellReuseIdentifier: kReusableFollowUserViewCell)
+        
+        self.tableView.estimatedRowHeight = 44.0;
+        self.tableView.rowHeight = UITableViewAutomaticDimension;
+        self.tableView.tableFooterView = UIView()
+        
         self.setupNavigationBar()
     }
     
@@ -36,9 +43,22 @@ import ParseUI
 
     override func queryForTable() -> PFQuery {
         var query = PFQuery(className: self.parseClassName!)
-        query.whereKey("owner", equalTo: owner!)
+        query.whereKey(kActivityToUserKey, equalTo: owner!)
+        query.whereKey(kActivityTypeKey, equalTo: kActivityTypeFollow)
         query.orderByDescending("createdAt")
+        query.includeKey(kActivityFromUserKey)
+        
         return query
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell? {
+        let cell = tableView.dequeueReusableCellWithIdentifier(kReusableFollowUserViewCell) as! FollowUserViewCell
+        
+        if let user = object![kActivityFromUserKey] as? PFObject {
+            cell.prepareView(user)
+        }
+
+        return cell
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle  {
@@ -48,7 +68,7 @@ import ParseUI
     class func CreateWithModel(model: PFObject) -> FollowersViewController{
         var followers = FollowersViewController()
         followers.owner = model
-        followers.parseClassName = "Post"
+        followers.parseClassName = kActivityClassKey
         followers.paginationEnabled = true
         followers.pullToRefreshEnabled = false
         

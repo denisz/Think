@@ -11,6 +11,12 @@ import Foundation
 class TextBlockPostViewCell: BlockPostViewCell {
     @IBOutlet weak var textView: SZTextView!
     
+    override func prepareView(block: PostBlock) {
+        super.prepareView(block)
+        self.textView.textColor = block.textColor
+        self.textView.text = block.content
+    }
+    
     func scrollToCursorForTextView(textView: UITextView) {
         var cursorRect = textView.caretRectForPosition(textView.selectedTextRange!.end)
         cursorRect = self.tableView!.convertRect(cursorRect, fromView: textView)
@@ -21,8 +27,10 @@ class TextBlockPostViewCell: BlockPostViewCell {
     
     func rectVisible(rect: CGRect) -> Bool {
         var visibleRect = CGRect()
+        
         visibleRect.origin = self.tableView!.contentOffset
         visibleRect.origin.y += self.tableView!.contentInset.top
+        
         visibleRect.size = self.tableView!.bounds.size
         visibleRect.size.height -= self.tableView!.contentInset.top + self.tableView!.contentInset.bottom
         

@@ -11,22 +11,22 @@ import UIKit
 import XLForm
 import Parse
 import ParseUI
-
+import Bolts
 
 class SettingsPostViewController: BaseFormViewController {
-    var model: PFObject?
+    var object: PFObject?
     var data: [String: AnyObject]?
     
     struct tag {
-        static let tags             = "tags"
-        static let postTo           = "postTo"
-        static let visibleTo        = "visibleTo"
-        static let comments         = "comments"
-        static let exportTo         = "exportTo"
-        static let location         = "location"
-        static let hideComments     = "hideComments"
-        static let socialCounter    = "socialCounter"
-        static let adultContent     = "adultContent"
+        static let tags             = kPostTagsKey
+        static let postTo           = kPostOptPostTo        //"postTo"
+        static let visibleTo        = kPostOptVisibleTo     //"visibleTo"
+        static let comments         = kPostOptComments      //"comments"
+        static let exportTo         = kPostOptExportTo      //"exportTo"
+        static let location         = kPostOptLocation      //"location"
+        static let hideComments     = kPostOptHideComments  //"hideComments"
+        static let socialCounter    = kPostOptSocialCounter //"socialCounter"
+        static let adultContent     = kPostOptAdultContent  //"adultContent"
     }
     
     override func viewDidLoad() {
@@ -55,7 +55,7 @@ class SettingsPostViewController: BaseFormViewController {
     func configureNavigationBarRightBtn(color: UIColor) {
         let navigationItem  = self.defineNavigationItem()
         
-        let editBarButtonItem = UIBarButtonItem(title: "Send".uppercaseString, style: UIBarButtonItemStyle.Plain, target: self, action: "didTapSendBtn:")
+        let editBarButtonItem = UIBarButtonItem(title: "Public".uppercaseString, style: UIBarButtonItemStyle.Plain, target: self, action: "didTapSendBtn:")
         
         let attributes = [
             NSForegroundColorAttributeName: color,
@@ -66,7 +66,35 @@ class SettingsPostViewController: BaseFormViewController {
     }
     
     func didTapSendBtn(sender: AnyObject?) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        let overlay = self.createOverlay()
+        println(self.data!)
+        println(self.data![kPostTagsKey])
+        Post.publicPost(self.object!, withSettings: self.data!).continueWithBlock { (task: BFTask!) -> AnyObject! in
+            
+            dispatch_async(dispatch_get_main_queue()) {
+                overlay.removeFromSuperview()
+            }
+            
+            if task.error != nil {
+                let alertView = UIAlertView(
+                    title: "Error public your post",
+                    message: "Post error public",
+                    delegate: nil,
+                    cancelButtonTitle: "Not Now",
+                    otherButtonTitles: "OK"
+                )
+                dispatch_async(dispatch_get_main_queue()) {
+                    alertView.show()
+                }
+            } else {
+                //successful new post
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                }
+            }
+            
+            return nil
+        }
     }
     
     func setupSections() {
@@ -104,7 +132,6 @@ class SettingsPostViewController: BaseFormViewController {
         row.selectorOptions = self.selectorsComments()
         self.stylesRow(row)
         section.addFormRow(row)
-
         
         row = XLFormRowDescriptor(tag: tag.exportTo, rowType: XLFormRowDescriptorTypeMultipleSelector, title: "export to".uppercaseString)
         row.selectorOptions = self.selectorsExportTo()
@@ -150,6 +177,8 @@ class SettingsPostViewController: BaseFormViewController {
     }
     
     override func formRowDescriptorValueHasChanged(formRow: XLFormRowDescriptor!, oldValue: AnyObject!, newValue: AnyObject!) {
-    
+        if let tag = formRow.tag {
+            self.data![tag] = newValue
+        }
     }
 }

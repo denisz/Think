@@ -18,6 +18,11 @@ import VGParallaxHeader
     @IBOutlet weak var followAuthor: UIButtonRoundedBorder!
     @IBOutlet weak var contentView: PostContentView!
     @IBOutlet weak var titleView: UILabel!
+    @IBOutlet weak var dateView: UILabel!
+    @IBOutlet weak var tagsView: UILabel!
+    @IBOutlet weak var authorName: UILabel!
+    @IBOutlet weak var authorPicture: UIImageView!
+    @IBOutlet weak var communityView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -113,6 +118,7 @@ import VGParallaxHeader
 
         
         let reportAction = UIAlertAction(title: "Report".localized, style: .Default) { (action) -> Void in
+            self.didTapReport()
         }
         
         let shareAction = UIAlertAction(title: "Share via socials".localized, style: .Default) { (action) -> Void in
@@ -120,22 +126,43 @@ import VGParallaxHeader
         }
         
         let bookmarkAction = UIAlertAction(title: "Save to read later".localized, style: .Default) { (action) -> Void in
-                self.didTapBookmarkPost()
+            self.didTapBookmarkPost()
+        }
+        
+        let raiseAction = UIAlertAction(title: "Raise post public".localized, style: .Default) { (action) -> Void in
+            self.didTapRaisePost()
+        }
+        
+        let followAction = UIAlertAction(title: "Follow author".localized, style: .Default) { (action) -> Void in
+            self.didTapFollowAuthor()
         }
         
         let cancelAction = UIAlertAction(title: "Cancel".localized, style: .Cancel, handler: nil)
         
         actionSheet.addAction(shareAction)
-        actionSheet.addAction(bookmarkAction)
-        actionSheet.addAction(reportAction)
+
+        if Post.determineCurrentUserAuthor(self.object!) {
+            actionSheet.addAction(raiseAction)
+        } else {
+            actionSheet.addAction(bookmarkAction)
+            actionSheet.addAction(reportAction)
+            actionSheet.addAction(followAction)
+        }
+
         actionSheet.addAction(cancelAction)
-        
         
         self.presentViewController(actionSheet, animated: true, completion: nil)
     }
     
     func didTapBookmarkPost() {
         Bookmark.createWith(self.object!)
+    }
+    
+    func didTapRaisePost() {
+        Post.raisePost(self.object!)
+    }
+    
+    func didTapReport() {
     }
     
     @IBAction func didTapLikePost() {
@@ -146,14 +173,14 @@ import VGParallaxHeader
     
     @IBAction func didTapFollowAuthor() {
         if let object = self.object {
-            let owner = object["owner"] as! PFObject
+            let owner = object[kPostOwnerKey] as! PFObject
             Activity.handlerFollowUser(owner)
         }
     }
     
     func didTapShare() {
         let post = self.object!
-        let textToShare = post["content"] as! String
+        let textToShare = Post.stringForShare(post)
         let activityVC = UIActivityViewController(activityItems: [textToShare], applicationActivities: nil)
         self.presentViewController(activityVC, animated: true, completion: nil)
     }

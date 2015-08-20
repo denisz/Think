@@ -3,15 +3,9 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <mutableArray key="OpenSans-Semibold.ttf">
-            <string>OpenSans-Semibold</string>
-        </mutableArray>
-    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewPostViewController">
             <connections>
-                <outlet property="overlay" destination="sa2-NJ-zlB" id="BTQ-SU-Vl0"/>
                 <outlet property="tableView" destination="LHG-9E-0hc" id="6DX-Wz-meU"/>
                 <outlet property="tableViewBottomLayoutContraint" destination="Qlf-z6-xzw" id="mQB-pd-tJg"/>
                 <outlet property="toolbar" destination="4C2-7q-WU7" id="TYZ-H8-xV7"/>
@@ -39,45 +33,13 @@
                         <constraint firstAttribute="height" constant="60" id="cbT-Cs-KE1"/>
                     </constraints>
                 </view>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sa2-NJ-zlB">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="600"/>
-                    <subviews>
-                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="GQn-HZ-fY4">
-                            <rect key="frame" x="104.5" y="289" width="20" height="20"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="20" id="Eha-Mr-byM"/>
-                                <constraint firstAttribute="width" constant="20" id="yzZ-LU-pgy"/>
-                            </constraints>
-                        </activityIndicatorView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saving..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Njn-0N-QgE">
-                            <rect key="frame" x="132.5" y="289.5" width="55.5" height="21"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="21" id="41B-YS-gaH"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
-                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <color key="backgroundColor" red="0.1176470588" green="0.1176470588" blue="0.1176470588" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstItem="Njn-0N-QgE" firstAttribute="leading" secondItem="GQn-HZ-fY4" secondAttribute="trailing" constant="8" id="0tK-dB-iTs"/>
-                        <constraint firstAttribute="centerY" secondItem="Njn-0N-QgE" secondAttribute="centerY" id="3dd-iB-zfe"/>
-                        <constraint firstAttribute="centerX" secondItem="Njn-0N-QgE" secondAttribute="centerX" id="6Ea-Yj-Bbs"/>
-                        <constraint firstItem="GQn-HZ-fY4" firstAttribute="top" secondItem="Njn-0N-QgE" secondAttribute="top" id="pSH-CV-cb2"/>
-                    </constraints>
-                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="LHG-9E-0hc" secondAttribute="trailing" id="16M-qG-TBX"/>
                 <constraint firstAttribute="trailing" secondItem="4C2-7q-WU7" secondAttribute="trailing" id="1cE-Qp-OQq"/>
-                <constraint firstAttribute="trailing" secondItem="sa2-NJ-zlB" secondAttribute="trailing" id="38x-fX-I2S"/>
-                <constraint firstItem="sa2-NJ-zlB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="6nE-1t-DvU"/>
                 <constraint firstAttribute="bottom" secondItem="LHG-9E-0hc" secondAttribute="bottom" constant="60" id="Qlf-z6-xzw"/>
-                <constraint firstAttribute="bottom" secondItem="sa2-NJ-zlB" secondAttribute="bottom" id="Rg4-9E-dwi"/>
                 <constraint firstItem="4C2-7q-WU7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="V9b-K9-jjR"/>
-                <constraint firstItem="sa2-NJ-zlB" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="YV2-wG-Tp3"/>
                 <constraint firstAttribute="bottom" secondItem="4C2-7q-WU7" secondAttribute="bottom" id="eCU-Zz-WzT"/>
                 <constraint firstItem="LHG-9E-0hc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="fbs-pI-Dqk"/>
                 <constraint firstItem="LHG-9E-0hc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="44" id="h3g-M4-atX"/>

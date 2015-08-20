@@ -11,6 +11,12 @@ let kWidthScreen = 320
 let kUserDefaultCacheFollowingKey = "com.think.userDefaults.cache.following"
 
 
+//common Fields
+let kClassCreatedAt = "createdAt"
+let kClassUpdatedAt = "updatedAt"
+let kClassObjectId  = "objectId"
+
+
 // MARK: - User
 let kUserClassKey               = "User"
 
@@ -59,8 +65,25 @@ let kPostCretedAtKey            = "created_at"
 let kPostTagsKey                = "tags"
 let kPostCoverKey               = "cover"
 let kPostSettingsKey            = "settings"
+let kPostStatusKey              = "ACL"
 let kPostCounterLikesKey        = "counter_likes"
 let kPostCounterCommentsKey     = "counter_comments"
+
+
+//post status
+
+let kPostStatusPublic       = "public"
+let kPostStatusDraft        = "draft"
+
+//fields settings
+let kPostOptPostTo        = "postTo"
+let kPostOptVisibleTo     = "visibleTo"
+let kPostOptComments      = "comments"
+let kPostOptExportTo      = "exportTo"
+let kPostOptLocation      = "location"
+let kPostOptHideComments  = "hideComments"
+let kPostOptSocialCounter = "socialCounter"
+let kPostOptAdultContent  = "adultContent"
 
 
 //fields Post block
@@ -74,11 +97,13 @@ let kBookmarkClassKey           = "Bookmark"
 //fields
 let kBookmarkUserKey            = "user"
 let kBookmarkPostKey            = "post"
+let kBookmarkPostOwnerKey       = "post.owner"
 
-//MARK: Installation
+// MARK: Installation
 let kInstallationUserKey        = "user"
 let kInstallationChannelsKey    = "channels"
 
+// MARK: Notification
 let kAPNSAlertKey = "alert"
 let kAPNSBadgeKey = "badge"
 let kAPNSSoundKey = "sound"
@@ -108,6 +133,26 @@ let kReusableTitlePostViewCell      = "TitlePostViewCell"
 let kReusableTextPostViewCell       = "TextPostViewCell"
 let kReusablePicturePostViewCell    = "PicturePostViewCell"
 let kReusableCoverPostViewCell      = "CoverPostViewCell"
+
+
+// MARK: reusable cells
+let kReusableFollowUserViewCell     = "FollowUserViewCell"
+let kReusableFeedPostViewCell       = "FeedPostViewCell"
+let kReusableProfilePostViewCell    = "ProfilePostViewCell"
+let kReusableNotificationsViewCell  = "NotificationViewCell"
+let kReusableBookmarksViewCell      = "BookmarksViewCell"
+let kReusableDraftsViewCell         = "DraftsViewCell"
+let kReusableMessageViewCell        = "MessageViewCell"
+
+
+
+
+
+
+
+
+
+
 
 
 

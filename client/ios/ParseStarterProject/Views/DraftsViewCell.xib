@@ -65,6 +65,11 @@
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.9607800245" green="0.9607800245" blue="0.9607800245" alpha="1" colorSpace="calibratedRGB"/>
             <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+            <connections>
+                <outlet property="content" destination="1DP-nm-crZ" id="xX6-9J-bA4"/>
+                <outlet property="date" destination="iMS-V2-P2H" id="pPr-rb-dKO"/>
+                <outlet property="title" destination="lGa-fd-kqA" id="y4E-Sx-AIh"/>
+            </connections>
             <point key="canvasLocation" x="274" y="0.5"/>
         </tableViewCell>
     </objects>

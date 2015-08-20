@@ -24,10 +24,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PostViewController">
             <connections>
+                <outlet property="authorName" destination="lef-Ck-cKF" id="z71-S2-8Bm"/>
+                <outlet property="authorPicture" destination="qQ8-Ow-Bk2" id="nE3-xO-bbn"/>
                 <outlet property="contentView" destination="fuS-BX-FWV" id="5jg-FX-X1N"/>
                 <outlet property="followAuthor" destination="OxS-BU-EZO" id="hqn-XM-g2r"/>
                 <outlet property="likesCounter" destination="BPn-bQ-KI1" id="UXG-pM-XI9"/>
                 <outlet property="scrollView" destination="PIA-d5-ufa" id="845-kN-5eg"/>
+                <outlet property="tagsView" destination="ESt-yg-6Eb" id="h8A-0F-2y5"/>
                 <outlet property="titleView" destination="RPW-06-Kxe" id="Pky-P1-J0A"/>
                 <outlet property="view" destination="iN0-l3-epB" id="TNT-oS-5IR"/>
             </connections>
@@ -50,8 +53,8 @@
                             <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="24a-UO-aFl">
-                            <rect key="frame" x="0.0" y="73" width="320" height="78"/>
+                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="24a-UO-aFl" userLabel="community">
+                            <rect key="frame" x="0.0" y="73" width="320" height="0.0"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ava_profile" translatesAutoresizingMaskIntoConstraints="NO" id="VfX-FR-sKX" customClass="UIImageCircle" customModule="Think" customModuleProvider="target">
                                     <rect key="frame" x="15" y="15" width="38" height="38"/>
@@ -100,14 +103,14 @@
                                 <constraint firstItem="VfX-FR-sKX" firstAttribute="top" secondItem="24a-UO-aFl" secondAttribute="top" constant="15" id="Nj6-10-fqR"/>
                                 <constraint firstItem="ETJ-xX-8IT" firstAttribute="leading" secondItem="ZTg-AM-4Oa" secondAttribute="leading" id="jOm-3f-WgS"/>
                                 <constraint firstItem="ZTg-AM-4Oa" firstAttribute="top" secondItem="24a-UO-aFl" secondAttribute="top" constant="8" id="jSD-j0-2sp"/>
-                                <constraint firstAttribute="height" constant="78" id="uIw-tN-Kq1"/>
+                                <constraint firstAttribute="height" id="uIw-tN-Kq1"/>
                                 <constraint firstItem="fwv-pn-1iI" firstAttribute="leading" secondItem="24a-UO-aFl" secondAttribute="leading" constant="36" id="vQX-Ti-PJ8"/>
                                 <constraint firstAttribute="trailing" secondItem="ETJ-xX-8IT" secondAttribute="trailing" constant="8" id="vdE-hm-rod"/>
                                 <constraint firstItem="ZTg-AM-4Oa" firstAttribute="leading" secondItem="VfX-FR-sKX" secondAttribute="trailing" constant="30" id="wez-9L-cJT"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JCd-FN-KEC">
-                            <rect key="frame" x="0.0" y="317" width="320" height="34"/>
+                            <rect key="frame" x="0.0" y="239" width="320" height="34"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#F1 #KVYAT #HORNER #REDBULL" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ESt-yg-6Eb">
                                     <rect key="frame" x="15" y="6" width="297" height="18"/>
@@ -125,7 +128,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u1B-7k-xk2">
-                            <rect key="frame" x="0.0" y="419" width="320" height="40"/>
+                            <rect key="frame" x="0.0" y="341" width="320" height="40"/>
                             <subviews>
                                 <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+1345" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BPn-bQ-KI1" userLabel="Likes" customClass="LabelViewWithIcon" customModule="Think" customModuleProvider="target">
                                     <rect key="frame" x="15" y="8" width="154" height="25"/>
@@ -170,8 +173,8 @@
                                 <constraint firstAttribute="height" constant="40" id="p1v-Pb-TgA"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ed-fD-4ML">
-                            <rect key="frame" x="0.0" y="351" width="320" height="68"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ed-fD-4ML" userLabel="Community">
+                            <rect key="frame" x="0.0" y="273" width="320" height="68"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ava_profile" translatesAutoresizingMaskIntoConstraints="NO" id="qQ8-Ow-Bk2" customClass="UIImageCircle" customModule="Think" customModuleProvider="target">
                                     <rect key="frame" x="15" y="15" width="38" height="38"/>
@@ -255,7 +258,7 @@
                             </constraints>
                         </view>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="290" placeholderIntrinsicHeight="150" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fuS-BX-FWV" customClass="PostContentView" customModule="Think" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="159" width="320" height="150"/>
+                            <rect key="frame" x="0.0" y="81" width="320" height="150"/>
                             <color key="tintColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="150" id="6Je-0l-3DO"/>

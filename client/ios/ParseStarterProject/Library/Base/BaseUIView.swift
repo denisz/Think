@@ -51,5 +51,16 @@ class BaseUIView: UIView {
         return nil
     }
     
+    func constraintToFit() {
+        self.setTranslatesAutoresizingMaskIntoConstraints(false)
+        
+        let views = ["view": self]
+        let hConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[view]|", options: .AlignAllCenterY, metrics: nil, views: views)
+        let vConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[view]|", options: .AlignAllCenterX, metrics: nil, views: views)
+        
+        self.superview?.addConstraints(hConstraints)
+        self.superview?.addConstraints(vConstraints)
+    }
+    
     func viewDidLoad() {}
 }

@@ -10,7 +10,6 @@ import Foundation
 import Parse
 import ParseUI
 
-
 @objc(YouFollowViewController) class YouFollowViewController: BaseQuerySearchTableViewController {
     var owner: PFObject?
     
@@ -18,6 +17,12 @@ import ParseUI
         super.viewDidLoad()
         
         self.title = "You follow"
+        self.tableView.backgroundColor = kColorBackgroundViewController
+        self.tableView.registerNib(UINib(nibName: kReusableFollowUserViewCell, bundle: nil), forCellReuseIdentifier: kReusableFollowUserViewCell)
+        
+        self.tableView.estimatedRowHeight = 44.0;
+        self.tableView.rowHeight = UITableViewAutomaticDimension;
+        self.tableView.tableFooterView = UIView()
         
         self.setupNavigationBar()
     }
@@ -31,9 +36,22 @@ import ParseUI
     
     override func queryForTable() -> PFQuery {
         var query = PFQuery(className: self.parseClassName!)
-        query.whereKey("owner", equalTo: owner!)
+        query.whereKey(kActivityFromUserKey, equalTo: owner!)
+        query.whereKey(kActivityTypeKey, equalTo: kActivityTypeFollow)
         query.orderByDescending("createdAt")
+        query.includeKey(kActivityToUserKey)
+        
         return query
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell? {
+        let cell = tableView.dequeueReusableCellWithIdentifier(kReusableDraftsViewCell) as! FollowUserViewCell
+        
+        if let user = object![kActivityToUserKey] as? PFObject {
+            cell.prepareView(user)
+        }
+        
+        return cell
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle  {
@@ -43,7 +61,7 @@ import ParseUI
     class func CreateWithModel(model: PFObject) -> YouFollowViewController{
         var follow = YouFollowViewController()
         follow.owner = model
-        follow.parseClassName = "Post"
+        follow.parseClassName = kActivityClassKey
         follow.paginationEnabled = true
         follow.pullToRefreshEnabled = false
         

@@ -12,8 +12,6 @@ import ParseUI
 import UIKit
 import VGParallaxHeader
 
-let kReusableBookmarksViewCell = "BookmarksViewCell"
-
 @objc(BookmarksViewController) class BookmarksViewController: BaseQueryCollectionViewContoller {
     var owner: PFObject?
 
@@ -79,10 +77,9 @@ let kReusableBookmarksViewCell = "BookmarksViewCell"
     
     override func queryForCollection() -> PFQuery {
         var query = PFQuery(className: self.parseClassName!)
-        query.whereKey("user", equalTo: owner!)
-        query.includeKey("post")
-        query.includeKey("user")
-        query.orderByDescending("createdAt")
+        query.whereKey(kBookmarkUserKey, equalTo: owner!)
+        query.selectKeys([kBookmarkPostKey, kBookmarkPostOwnerKey])
+        query.orderByDescending(kClassCreatedAt)
         return query
     }
     

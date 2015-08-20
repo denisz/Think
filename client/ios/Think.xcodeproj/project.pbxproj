@@ -128,6 +128,14 @@
 		A99AE6361B774BF600085138 /* UIButtonCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99AE6351B774BF600085138 /* UIButtonCircle.swift */; };
 		A99AE6381B774C2800085138 /* UIButtonRoundedBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99AE6371B774C2800085138 /* UIButtonRoundedBorder.swift */; };
 		A99AE63A1B775DC400085138 /* SeperatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99AE6391B775DC400085138 /* SeperatorView.swift */; };
+		A9B5D4BF1B85BC50003B2E78 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B5D4BE1B85BC50003B2E78 /* OverlayView.swift */; };
+		A9B5D4C11B85BC9B003B2E78 /* OverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9B5D4C01B85BC9B003B2E78 /* OverlayView.xib */; };
+		A9B5D4C31B85C16C003B2E78 /* UIViewController+Overlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B5D4C21B85C16C003B2E78 /* UIViewController+Overlay.swift */; };
+		A9B5D4C51B85C55A003B2E78 /* FollowUserViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9B5D4C41B85C55A003B2E78 /* FollowUserViewCell.xib */; };
+		A9B5D4C71B85C574003B2E78 /* FollowUserViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B5D4C61B85C574003B2E78 /* FollowUserViewCell.swift */; };
+		A9B5D4C91B85D357003B2E78 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B5D4C81B85D357003B2E78 /* UserModel.swift */; };
+		A9B5D4CB1B85D6BC003B2E78 /* TransformDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B5D4CA1B85D6BC003B2E78 /* TransformDate.swift */; };
+		A9B5D4CD1B861D4F003B2E78 /* String+truncate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B5D4CC1B861D4F003B2E78 /* String+truncate.swift */; };
 		A9B7D45A1B752C5D00E79F12 /* UIImageView+corderEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B7D4591B752C5D00E79F12 /* UIImageView+corderEdge.swift */; };
 		A9B7D45C1B752E1700E79F12 /* LabelViewWithIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B7D45B1B752E1700E79F12 /* LabelViewWithIcon.swift */; };
 		A9B7D45E1B752ED400E79F12 /* UIImage+tintColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B7D45D1B752ED400E79F12 /* UIImage+tintColor.swift */; };
@@ -353,6 +361,14 @@
 		A99AE6351B774BF600085138 /* UIButtonCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonCircle.swift; sourceTree = "<group>"; };
 		A99AE6371B774C2800085138 /* UIButtonRoundedBorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonRoundedBorder.swift; sourceTree = "<group>"; };
 		A99AE6391B775DC400085138 /* SeperatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeperatorView.swift; sourceTree = "<group>"; };
+		A9B5D4BE1B85BC50003B2E78 /* OverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
+		A9B5D4C01B85BC9B003B2E78 /* OverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverlayView.xib; sourceTree = "<group>"; };
+		A9B5D4C21B85C16C003B2E78 /* UIViewController+Overlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Overlay.swift"; sourceTree = "<group>"; };
+		A9B5D4C41B85C55A003B2E78 /* FollowUserViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FollowUserViewCell.xib; sourceTree = "<group>"; };
+		A9B5D4C61B85C574003B2E78 /* FollowUserViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowUserViewCell.swift; sourceTree = "<group>"; };
+		A9B5D4C81B85D357003B2E78 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		A9B5D4CA1B85D6BC003B2E78 /* TransformDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransformDate.swift; sourceTree = "<group>"; };
+		A9B5D4CC1B861D4F003B2E78 /* String+truncate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+truncate.swift"; sourceTree = "<group>"; };
 		A9B7D4591B752C5D00E79F12 /* UIImageView+corderEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+corderEdge.swift"; sourceTree = "<group>"; };
 		A9B7D45B1B752E1700E79F12 /* LabelViewWithIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelViewWithIcon.swift; sourceTree = "<group>"; };
 		A9B7D45D1B752ED400E79F12 /* UIImage+tintColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+tintColor.swift"; sourceTree = "<group>"; };
@@ -598,6 +614,7 @@
 				A9BF09601B7BB70D00A1D7E8 /* SelectImageHelper.swift */,
 				A92106841B84CB82009C0B08 /* JSONStringify.swift */,
 				A92106891B84FBFA009C0B08 /* JSONParse.swift */,
+				A9B5D4CA1B85D6BC003B2E78 /* TransformDate.swift */,
 			);
 			path = Singleton;
 			sourceTree = "<group>";
@@ -610,6 +627,7 @@
 				A92106681B834541009C0B08 /* HSL.swift */,
 				A921066A1B835BD8009C0B08 /* UITableViewCel.swift */,
 				A921066C1B835C0C009C0B08 /* Extension+String.swift */,
+				A9B5D4CC1B861D4F003B2E78 /* String+truncate.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -694,6 +712,7 @@
 				A92390221B7FD7DB004E3ECD /* Activity.swift */,
 				A9244C261B807A10005D3678 /* Cache.swift */,
 				A92106821B84C89D009C0B08 /* PostBlock.swift */,
+				A9B5D4C81B85D357003B2E78 /* UserModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -753,6 +772,8 @@
 				A92106761B8378B1009C0B08 /* ToolbarNewPostView.xib */,
 				A921067A1B837D34009C0B08 /* ToolbarNewPostViewCell.xib */,
 				A921069D1B8503D5009C0B08 /* PostBlockViewCell.xib */,
+				A9B5D4C01B85BC9B003B2E78 /* OverlayView.xib */,
+				A9B5D4C41B85C55A003B2E78 /* FollowUserViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -841,6 +862,7 @@
 				A9D385E91B77F33C00DD8492 /* UIImage+Itunes11.swift */,
 				A92897B81B7CE16F00A1A754 /* SLKTextInputbar+height.swift */,
 				A92390181B7FB5A3004E3ECD /* UIViewController+FilterView.swift */,
+				A9B5D4C21B85C16C003B2E78 /* UIViewController+Overlay.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1006,6 +1028,7 @@
 				A9D6EC691B74D957002546A3 /* EmptyView.swift */,
 				A9D6EC6A1B74D957002546A3 /* ErrorView.swift */,
 				A9D6EC6B1B74D957002546A3 /* LoadingView.swift */,
+				A9B5D4BE1B85BC50003B2E78 /* OverlayView.swift */,
 			);
 			path = PlaceholderViews;
 			sourceTree = "<group>";
@@ -1034,6 +1057,7 @@
 				A92106781B8378BB009C0B08 /* ToolbarNewPostView.swift */,
 				A921067C1B83A142009C0B08 /* CoverPostViewCell.swift */,
 				A92106871B84FB94009C0B08 /* PostContentView.swift */,
+				A9B5D4C61B85C574003B2E78 /* FollowUserViewCell.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -1118,6 +1142,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9B5D4C51B85C55A003B2E78 /* FollowUserViewCell.xib in Resources */,
 				A921069B1B8503AF009C0B08 /* TextPostViewCell.xib in Resources */,
 				A966EDA51B73A7E8002DFED8 /* OpenSans-SemiboldItalic.ttf in Resources */,
 				A92897B51B7CD6AC00A1A754 /* ProfileGuestHeaderView.xib in Resources */,
@@ -1171,6 +1196,7 @@
 				A9D385F41B77FA4900DD8492 /* BookmarksViewController.xib in Resources */,
 				A9D385DC1B7780E000DD8492 /* NotificationsFilterViewCell.xib in Resources */,
 				A9BF09681B7BEA9100A1D7E8 /* ionicons.ttf in Resources */,
+				A9B5D4C11B85BC9B003B2E78 /* OverlayView.xib in Resources */,
 				A9D385E41B77EF4E00DD8492 /* BookmarkMainPostView.xib in Resources */,
 				A99AE62A1B76988A00085138 /* SideMenuCellView.xib in Resources */,
 				A9D6EC9B1B7515B5002546A3 /* SignUpViewController.xib in Resources */,
@@ -1266,6 +1292,7 @@
 				A9B7D4741B76628300E79F12 /* ChannelViewController.swift in Sources */,
 				A966ED611B737D31002DFED8 /* BaseNavigationController.swift in Sources */,
 				A92897A91B7C931900A1A754 /* PostViewHeaderView.swift in Sources */,
+				A9B5D4CD1B861D4F003B2E78 /* String+truncate.swift in Sources */,
 				A99AE61D1B7666DE00085138 /* UIImageExtensions.swift in Sources */,
 				A9D386411B7A897400DD8492 /* FAKIonIcons.m in Sources */,
 				A9D386001B780A9A00DD8492 /* FollowersViewController.swift in Sources */,
@@ -1287,6 +1314,7 @@
 				A9D386401B7A897400DD8492 /* FAKIcon.m in Sources */,
 				A9D6EC701B74D957002546A3 /* LoadingView.swift in Sources */,
 				A9D3860A1B79253A00DD8492 /* EMPartialModalViewController.swift in Sources */,
+				A9B5D4C31B85C16C003B2E78 /* UIViewController+Overlay.swift in Sources */,
 				A99AE62C1B76A72C00085138 /* BaseSideMenuViewController.swift in Sources */,
 				A921067D1B83A142009C0B08 /* CoverPostViewCell.swift in Sources */,
 				A9D386121B7A722200DD8492 /* MessagesViewController.swift in Sources */,
@@ -1308,6 +1336,7 @@
 				A9D386281B7A83E000DD8492 /* SBGestureTableViewCell.swift in Sources */,
 				A9244C271B807A10005D3678 /* Cache.swift in Sources */,
 				A9D385D61B77665800DD8492 /* SettingsViewController.swift in Sources */,
+				A9B5D4C71B85C574003B2E78 /* FollowUserViewCell.swift in Sources */,
 				A92106651B833887009C0B08 /* Array+find.swift in Sources */,
 				A99AE6221B7666F800085138 /* User.swift in Sources */,
 				A99AE61A1B7666DE00085138 /* MessageContentNode.swift in Sources */,
@@ -1320,6 +1349,7 @@
 				A9D6EC791B74DCA6002546A3 /* String+localized.swift in Sources */,
 				A99AE63A1B775DC400085138 /* SeperatorView.swift in Sources */,
 				A9D6EC661B74D7D9002546A3 /* BaseQueryTableViewContoller.swift in Sources */,
+				A9B5D4C91B85D357003B2E78 /* UserModel.swift in Sources */,
 				A92390191B7FB5A3004E3ECD /* UIViewController+FilterView.swift in Sources */,
 				A9D386041B78F36100DD8492 /* ProfileEditViewController.swift in Sources */,
 				A99AE61B1B7666DE00085138 /* MessageNetworkImageBubbleNode.swift in Sources */,
@@ -1353,7 +1383,9 @@
 				A9F607A21B7D054200FC1832 /* SwipeTransitionDelegate.swift in Sources */,
 				A99AE61C1B7666DE00085138 /* MessageTextBubbleNode.swift in Sources */,
 				A9D6EC6F1B74D957002546A3 /* ErrorView.swift in Sources */,
+				A9B5D4CB1B85D6BC003B2E78 /* TransformDate.swift in Sources */,
 				A9D6EC571B7405A7002546A3 /* StatefulViewController.swift in Sources */,
+				A9B5D4BF1B85BC50003B2E78 /* OverlayView.swift in Sources */,
 				A90B28091B822E8700A8D3E7 /* BlockPostViewCell.swift in Sources */,
 				A9D385DE1B778EF600DD8492 /* BookmarksViewController.swift in Sources */,
 				A99AE6111B7666DE00085138 /* AsyncMessagesCollectionViewDataSource.swift in Sources */,

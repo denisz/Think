@@ -12,6 +12,8 @@ import ParseUI
 
 
 class PostViewHeaderView: BaseUIView {
+    @IBOutlet weak var cover: PFImageView!
+    
     var parentController: UIViewController?
     var object: PFObject?
     

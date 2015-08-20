@@ -13,8 +13,6 @@ import UIKit
 import Bolts
 import VGParallaxHeader
 
-let kReusableProfilePostViewCell = "ProfilePostViewCell"
-
 @objc(ProfileViewController) class ProfileViewController: BaseQueryTableViewController {
     var owner: PFObject?
     
@@ -108,8 +106,10 @@ let kReusableProfilePostViewCell = "ProfilePostViewCell"
     
     override func queryForTable() -> PFQuery {
         var query = PFQuery(className: self.parseClassName!)
-        query.whereKey("owner", equalTo: owner!)
-        query.orderByDescending("createdAt")
+        query.whereKey(kPostOwnerKey, equalTo: owner!)
+        query.whereKey(kPostStatusKey, equalTo: kPostStatusPublic)
+        query.selectKeys([kPostTitleKey, kPostContentShortKey, kPostCounterCommentsKey, kPostCounterLikesKey, kPostOwnerKey, kPostCoverKey, kClassCreatedAt])
+        query.orderByDescending(kClassCreatedAt)
         return query
     }
     

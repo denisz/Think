@@ -11,8 +11,6 @@ import Parse
 import ParseUI
 import UIKit
 
-let kReusableFeedPostViewCell = "FeedPostViewCell"
-
 @objc(FeedViewController) class FeedViewController: BaseQueryTableViewController {
     var owner: PFObject?
     

@@ -17,7 +17,6 @@ import Bolts
     @IBOutlet weak var tableViewBottomLayoutContraint: NSLayoutConstraint!
     @IBOutlet weak var toolbarBottomLayoutContraint: NSLayoutConstraint!
     @IBOutlet weak var toolbar: ToolbarNewPostView!
-    @IBOutlet weak var overlay: UIView!
 
     var blocks: [PostBlock]?
     var currentEditingBlock: PostBlock?
@@ -104,19 +103,12 @@ import Bolts
     
     func didTapNextBtn(sender: AnyObject?) {
         self.hideKeyboard()
-        self.overlay.alpha = 0
-        self.overlay.hidden = false
-        self.view.bringSubviewToFront(self.overlay)
-        
-        UIView.animateWithDuration(0.3, animations: { () -> Void in
-            self.overlay.alpha = 1
-        })
-        
+        let overlay = self.createOverlay()
         self.preparePost()
         
         self.object?.saveInBackground().continueWithBlock({ (task: BFTask!) -> AnyObject! in
             dispatch_async(dispatch_get_main_queue()) {
-                self.overlay.hidden = true
+                overlay.removeFromSuperview()
             }
             
             if (task.error != nil) {
@@ -127,10 +119,13 @@ import Bolts
                    cancelButtonTitle: "Not Now",
                    otherButtonTitles: "OK"
                  )
-                 alertView.show()
+                dispatch_async(dispatch_get_main_queue()) {
+                    alertView.show()
+                }
             } else {
                 dispatch_async(dispatch_get_main_queue()) {
                     let controller = SettingsPostViewController()
+                    controller.object = self.object!
                     self.navigationController?.pushViewController(controller, animated: true)
                 }
             }
@@ -153,9 +148,9 @@ import Bolts
         
         let title           = self.titlePost()
         let contentObject   = self.blockByType(PostBlockType.Text).map({ $0.toObject() })
-        let content         = JSONStringify(contentObject)
+//        let content         = JSONStringify(contentObject)
         
-        self.object?.setObject(content, forKey: kPostContentObjKey)
+        self.object?.setObject(contentObject, forKey: kPostContentObjKey)
         self.object?.setObject(title,   forKey: kPostTitleKey)
     }
     
@@ -195,12 +190,12 @@ extension NewPostViewController: UITableViewDelegate {
         self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         self.tableView.endUpdates()
         
-        if type == PostBlockType.Text {
-            if let cell = self.cellByBlock(block)  {
-                let textCell = cell as! TextBlockPostViewCell
-                textCell.textView.becomeFirstResponder()
-            }
-        }
+//        if type == PostBlockType.Text {
+//            if let cell = self.cellByBlock(block)  {
+//                let textCell = cell as! TextBlockPostViewCell
+//                textCell.textView.becomeFirstResponder()
+//            }
+//        }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -256,14 +251,14 @@ extension NewPostViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, cellForBlockAtIndexPath indexPath: NSIndexPath, block: PostBlock) -> UITableViewCell  {
         
         let cellIndentifier = self.parseReuseIdentifierByType(block.type)
-        var cell = tableView.dequeueReusableCellWithIdentifier(cellIndentifier) as? BlockPostViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier(cellIndentifier, forIndexPath: indexPath) as! BlockPostViewCell
         
-        cell!.clearView()
-        cell!.parentViewController = self
-        cell!.delegate = self
-        cell!.prepareView(block)
+        cell.clearView()
+        cell.parentViewController = self
+        cell.delegate = self
+        cell.prepareView(block)
         
-        return cell!
+        return cell
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -291,6 +286,10 @@ extension NewPostViewController: BlockPostViewCellDelegate {
 extension NewPostViewController: ToolbarNewPostViewDelegate {
     func toolbar(view: ToolbarNewPostView, didTapNewBlock sender: UIView) {
         self.appendBlock(PostBlockType.Text)
+    }
+    
+    func toolbar(view: ToolbarNewPostView, didTapHideKeyboard sender: UIView) {
+        self.hideKeyboard()
     }
     
     func toolbar(view: ToolbarNewPostView, didTapChangeStyle sender: UIView) {

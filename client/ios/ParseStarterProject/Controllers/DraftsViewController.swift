@@ -11,8 +11,6 @@ import Parse
 import ParseUI
 import UIKit
 
-let kReusableDraftsViewCell = "DraftsViewCell"
-
 @objc(DraftsViewController) class DraftsViewController: BaseQueryTableViewController {
     var owner: PFObject?
     
@@ -46,8 +44,10 @@ let kReusableDraftsViewCell = "DraftsViewCell"
     
     override func queryForTable() -> PFQuery {
         var query = PFQuery(className: self.parseClassName!)
-        query.whereKey("owner", equalTo: owner!)
-        query.orderByDescending("createdAt")
+        query.whereKey(kPostOwnerKey, equalTo: owner!)
+        query.whereKey(kPostStatusKey, equalTo: kPostStatusDraft)
+        query.selectKeys([kPostTitleKey, kPostContentShortKey, kClassCreatedAt])
+        query.orderByDescending(kClassCreatedAt)
         return query
     }
     

@@ -9,7 +9,7 @@
 import UIKit
 
 class SwipeTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
-    let animationDuration = 0.25
+    let animationDuration = 0.3
     var tabBarIndex: Int?
     
     func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {

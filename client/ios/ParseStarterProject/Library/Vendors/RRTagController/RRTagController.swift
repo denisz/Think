@@ -95,8 +95,6 @@ class RRTagController: XLFormViewController, XLFormRowDescriptorViewController, 
         let attributesCancel = NSAttributedString(string: "Cancel".localized, attributes: attributes)
         buttonCancel.setAttributedTitle(attributesCancel, forState: UIControlState.Normal)
         
-        buttonCancel.layer.borderColor = UIColor.lightGrayColor().CGColor
-        buttonCancel.layer.borderWidth = 0.5
         buttonCancel.backgroundColor = UIColor.whiteColor()
         buttonCancel.addTarget(self, action: "cancelEditTag", forControlEvents: UIControlEvents.TouchUpInside)
 
@@ -104,8 +102,6 @@ class RRTagController: XLFormViewController, XLFormRowDescriptorViewController, 
         let attributesAccept = NSAttributedString(string: "Create".localized, attributes: attributes)
         buttonAccept.setAttributedTitle(attributesAccept, forState: UIControlState.Normal)
         
-        buttonAccept.layer.borderColor = UIColor.lightGrayColor().CGColor
-        buttonAccept.layer.borderWidth = 0.5
         buttonAccept.backgroundColor = UIColor.whiteColor()
         buttonAccept.addTarget(self, action: "createNewTag", forControlEvents: UIControlEvents.TouchUpInside)
         
@@ -130,23 +126,16 @@ class RRTagController: XLFormViewController, XLFormRowDescriptorViewController, 
     }
     
     func finishTagController() {
-        var selected: Array<Tag> = Array()
-        var unSelected: Array<Tag> = Array()
+        var selected = [String]()
         
         for currentTag in tags {
             if currentTag._isSelected {
-                selected.append(currentTag)
-            }
-            else {
-                unSelected.append(currentTag)
+                selected.append(currentTag.textContent)
             }
         }
         
-        self.rowDescriptor?.value = selected as? AnyObject
+        self.rowDescriptor?.value = selected
         self.navigationController?.popViewControllerAnimated(true)
-//        self.dismissViewControllerAnimated(true, completion: { () -> Void in
-//            self.blockFinih(selectedTags: selected, unSelectedTags: unSelected)
-//        })
     }
     
     func cancelEditTag() {

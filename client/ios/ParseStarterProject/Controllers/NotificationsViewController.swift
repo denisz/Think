@@ -12,8 +12,6 @@ import ParseUI
 import UIKit
 import Bolts
 
-let kReusableNotificationsViewCell = "NotificationViewCell"
-
 @objc(NotificationsViewController) class NotificationsViewController: BaseQueryTableViewController {
     var owner: PFObject?
     

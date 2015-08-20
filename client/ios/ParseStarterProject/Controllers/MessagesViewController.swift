@@ -12,8 +12,6 @@ import ParseUI
 import LoremIpsum
 import VGParallaxHeader
 
-let kReusableMessageViewCell = "MessageViewCell"
-
 @objc(MessagesViewController) class MessagesViewController: BaseQuerySearchTableViewController {
     var owner: PFObject?
 

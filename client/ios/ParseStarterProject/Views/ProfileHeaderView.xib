@@ -40,10 +40,9 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ALEXANDER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgn-4L-fJl">
-                            <rect key="frame" x="190" y="107" width="200" height="21"/>
+                            <rect key="frame" x="0.0" y="107" width="581" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="UcX-mW-2vJ"/>
-                                <constraint firstAttribute="width" constant="200" id="opc-Tl-TeH"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -51,10 +50,11 @@
                         </label>
                     </subviews>
                     <constraints>
-                        <constraint firstAttribute="centerX" secondItem="dgn-4L-fJl" secondAttribute="centerX" id="7YI-NA-la6"/>
+                        <constraint firstAttribute="trailing" secondItem="dgn-4L-fJl" secondAttribute="trailing" id="2yi-ns-Kh7"/>
                         <constraint firstAttribute="centerX" secondItem="20i-cX-Won" secondAttribute="centerX" id="AVG-Gs-T7p"/>
                         <constraint firstAttribute="height" constant="130" id="EJ2-8R-h1R"/>
                         <constraint firstItem="20i-cX-Won" firstAttribute="top" secondItem="ejp-AG-yOf" secondAttribute="top" id="J3c-IK-37Z"/>
+                        <constraint firstItem="dgn-4L-fJl" firstAttribute="leading" secondItem="ejp-AG-yOf" secondAttribute="leading" id="iKN-wm-XXu"/>
                         <constraint firstItem="dgn-4L-fJl" firstAttribute="top" secondItem="20i-cX-Won" secondAttribute="bottom" constant="7" id="tJd-xv-eaI"/>
                         <constraint firstAttribute="centerX" secondItem="20i-cX-Won" secondAttribute="centerX" id="uZj-Pw-cdN"/>
                     </constraints>
@@ -91,7 +91,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qYK-9X-Rjm">
-                            <rect key="frame" x="154.5" y="7" width="411" height="35"/>
+                            <rect key="frame" x="155" y="7" width="411" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="35" id="ZfJ-3t-yJk"/>
                             </constraints>

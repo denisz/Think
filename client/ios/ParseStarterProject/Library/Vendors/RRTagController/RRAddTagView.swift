@@ -12,7 +12,7 @@ class RRAddTagView: UIView, UITextViewDelegate {
 
     lazy var title: UILabel = {
         let title = UILabel(frame: CGRectMake(10, 10, UIScreen.mainScreen().bounds.size.width - 20, 20))
-        title.font = UIFont.boldSystemFontOfSize(18)
+        title.font = UIFont(name: "OpenSans", size: 17)
         title.textAlignment = NSTextAlignment.Center
         return title
     }()
