@@ -15,6 +15,7 @@ import VGParallaxHeader
 @objc(PostViewController) class PostViewController: BaseQueryViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var likesCounter: LabelViewWithIcon!
+    @IBOutlet weak var commentsCounter: UILabel!
     @IBOutlet weak var followAuthor: UIButtonRoundedBorder!
     @IBOutlet weak var contentView: PostContentView!
     @IBOutlet weak var titleView: UILabel!
@@ -22,7 +23,7 @@ import VGParallaxHeader
     @IBOutlet weak var tagsView: UILabel!
     @IBOutlet weak var authorName: UILabel!
     @IBOutlet weak var authorPicture: UIImageView!
-    @IBOutlet weak var communityView: UIView!
+    @IBOutlet weak var commentsTableView: CommentsTableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,21 +58,25 @@ import VGParallaxHeader
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+        UIApplication.sharedApplication().setStatusBarStyle(.LightContent, animated: true)
     }
     
     override func objectDidLoad(object: PFObject) {
         super.objectDidLoad(object)
         
-        let countLikes = object[kPostCounterLikesKey] as! Int
-        self.likesCounter.text = "+\(countLikes)"
-        self.titleView.text = object[kPostTitleKey] as? String
+        self.authorName.text        = Post.usernameOwner(object)
+        self.likesCounter.text      = TransformString.likesCounter(object)
+        self.commentsCounter.text   = TransformString.commentsCounter(object, suffix: "comments".uppercaseString)
+        self.titleView.text         = object[kPostTitleKey] as? String
+        self.titleView.sizeToFit()
+        self.commentsTableView.object = self.object
+        self.commentsTableView.loadObjects()
+        
         self.contentView.updateObject(object)
     }
     
     func updateColorAndCountLikes(like: Bool) {
-        let countLikes = self.object![kPostCounterLikesKey] as! Int
-        self.likesCounter.text = "+\(countLikes)"
+        self.likesCounter.text = TransformString.likesCounter(self.object!)
 
         if like {
             likesCounter.setColor(UIColor(red:0, green:0.64, blue:0.85, alpha:1))
@@ -84,16 +89,20 @@ import VGParallaxHeader
        let header = PostViewHeaderView()
         header.object = self.object
         header.parentController = self
+        
         self.scrollView.delegate = self
         self.scrollView.setParallaxHeaderView(header, mode: VGParallaxHeaderMode.Fill, height: 245)
         
-        let doubleTapGesture = UITapGestureRecognizer(target: self, action: "didTapBookmarkPost")
+        let doubleTapGesture = UITapGestureRecognizer(target: self, action: "didDoubleTapBookmarkPost")
         doubleTapGesture.numberOfTapsRequired = 2
         header.addGestureRecognizer(doubleTapGesture)
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
         self.scrollView.shouldPositionParallaxHeader()
+        
+        //загрузка комментариев
+        //если комментарии видны начинаем загружать
     }
     
     func configureNavigationBarRightBtn(color: UIColor) {
@@ -154,6 +163,12 @@ import VGParallaxHeader
         self.presentViewController(actionSheet, animated: true, completion: nil)
     }
     
+    func didDoubleTapBookmarkPost() {
+        if let header = self.scrollView.parallaxHeader {
+            BookmarkMarkView.showInCenterView(header)
+        }
+    }
+    
     func didTapBookmarkPost() {
         Bookmark.createWith(self.object!)
     }
@@ -176,6 +191,11 @@ import VGParallaxHeader
             let owner = object[kPostOwnerKey] as! PFObject
             Activity.handlerFollowUser(owner)
         }
+    }
+    
+    @IBAction func didTapComments() {
+        let comments = CommentsViewController.CreateWithModel(self.object!)
+        self.navigationController?.pushViewController(comments, animated: true)
     }
     
     func didTapShare() {

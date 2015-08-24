@@ -10,8 +10,4 @@ import Foundation
 import UIKit
 
 extension UIImageView {
-    func cornerEdge() {
-        self.layer.cornerRadius = CGRectGetHeight(self.frame) * 0.5
-        self.layer.masksToBounds = true
-    }
 }

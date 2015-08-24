@@ -103,7 +103,7 @@ import Bolts
     
     func didTapNextBtn(sender: AnyObject?) {
         self.hideKeyboard()
-        let overlay = self.createOverlay()
+        let overlay = OverlayView.createInView(self.view)
         self.preparePost()
         
         self.object?.saveInBackground().continueWithBlock({ (task: BFTask!) -> AnyObject! in

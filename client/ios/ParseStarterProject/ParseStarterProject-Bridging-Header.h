@@ -24,6 +24,9 @@
 //szTextView
 #import "SZTextView.h"
 
+//dgtextField
+#import "DGTextField.h"
+
 //ionic
 #import "FontAwesomeKit.h"
 

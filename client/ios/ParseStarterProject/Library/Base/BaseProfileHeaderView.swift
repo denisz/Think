@@ -14,4 +14,8 @@ import UIKit
 class BaseProfileHeaderView: BaseUIView {
     var parentController: UIViewController?
     var object: PFObject?
+    
+    func viewDidLoadObject(object: PFObject) {
+        self.object = object
+    }
 }

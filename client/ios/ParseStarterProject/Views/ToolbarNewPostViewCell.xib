@@ -32,7 +32,7 @@
             <connections>
                 <outlet property="icon" destination="k7S-7q-c4g" id="vvI-UY-5yw"/>
             </connections>
-            <point key="canvasLocation" x="-170" y="256"/>
+            <point key="canvasLocation" x="-97" y="55"/>
         </collectionViewCell>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
     </objects>

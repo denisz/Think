@@ -13,6 +13,7 @@ import UIKit
 
 @objc(FeedViewController) class FeedViewController: BaseQueryTableViewController {
     var owner: PFObject?
+    var scrollDirection = ScrollDirection()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,7 +72,8 @@ import UIKit
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default;
+        UIApplication.sharedApplication().setStatusBarStyle(.Default, animated: true)
+//        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default;
     }
     
     func didTapCounterBtn(sender: AnyObject?) {
@@ -88,14 +90,11 @@ import UIKit
         self.presentViewController(navigation, animated: true, completion: nil)
     }
     
-    override func scrollViewDidScroll(scrollView: UIScrollView) {
-        self.tableView.shouldPositionParallaxHeader();
-    }
-    
     override func queryForTable() -> PFQuery {
         var query = PFQuery(className: self.parseClassName!)
         query.whereKey("owner", equalTo: owner!)
         query.orderByDescending("createdAt")
+        query.includeKey(kPostOwnerKey)
         return query
     }
     
@@ -116,10 +115,15 @@ import UIKit
         return UIStatusBarStyle.LightContent
     }
     
+    class func CreateWith() -> FeedViewController {
+        let user = PFUser.currentUser()!
+        return CreateWithModel(user)
+    }
+    
     class func CreateWithModel(model: PFObject) -> FeedViewController{
         var feed = FeedViewController()
         feed.owner = model
-        feed.parseClassName = "Post"
+        feed.parseClassName = "Activity"
         feed.paginationEnabled = true
         feed.pullToRefreshEnabled = false
         

@@ -41,11 +41,8 @@ import Bolts
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default;
-    }
-    
-    override var imageLeftBtn: String {
-        return kImageNamedForMenuBtn
+        UIApplication.sharedApplication().setStatusBarStyle(.Default, animated: true)
+//        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default;
     }
     
     func configureNavigationBarRightBtn(color: UIColor) {

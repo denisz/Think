@@ -16,6 +16,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileGuestHeaderView" customModule="Think" customModuleProvider="target">
             <connections>
                 <outlet property="followButton" destination="bTd-l4-igA" id="yfp-Sh-hGR"/>
+                <outlet property="profileCover" destination="5LP-y3-TSK" id="NFV-Pl-HQp"/>
+                <outlet property="profileName" destination="dlI-D9-fD1" id="vvJ-lt-i7b"/>
+                <outlet property="profilePicture" destination="FGl-yL-9NR" id="fgK-Tq-sEq"/>
                 <outlet property="whisperButton" destination="Lx9-ju-AqF" id="J8E-sK-4mb"/>
             </connections>
         </placeholder>
@@ -24,13 +27,13 @@
             <rect key="frame" x="0.0" y="0.0" width="581" height="221"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_bg" translatesAutoresizingMaskIntoConstraints="NO" id="5LP-y3-TSK">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_bg" translatesAutoresizingMaskIntoConstraints="NO" id="5LP-y3-TSK" customClass="PFImageView">
                     <rect key="frame" x="0.0" y="0.0" width="581" height="221"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Sa-a1-YQO">
                     <rect key="frame" x="0.0" y="45" width="581" height="130"/>
                     <subviews>
-                        <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ava_profile" translatesAutoresizingMaskIntoConstraints="NO" id="FGl-yL-9NR" customClass="UIImageCircle" customModule="Think" customModuleProvider="target">
+                        <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ava_profile" translatesAutoresizingMaskIntoConstraints="NO" id="FGl-yL-9NR" customClass="PFImageView">
                             <rect key="frame" x="240" y="0.0" width="100" height="100"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="100" id="PHY-n7-VVc"/>

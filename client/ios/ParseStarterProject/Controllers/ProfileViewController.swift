@@ -48,12 +48,12 @@ import VGParallaxHeader
         if !self.isGuest {
             var headerProfile = ProfileHeaderView()
             headerProfile.delegate = self
-            headerProfile.object = self.owner
+            headerProfile.viewDidLoadObject(self.owner!)
             header = headerProfile
         } else {
             var headerProfileGuest = ProfileGuestHeaderView()
             headerProfileGuest.delegate = self
-            headerProfileGuest.object = self.owner
+            headerProfileGuest.viewDidLoadObject(self.owner!)
             header = headerProfileGuest
         }
         
@@ -73,7 +73,7 @@ import VGParallaxHeader
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent;
+        UIApplication.sharedApplication().setStatusBarStyle(.LightContent, animated: true)
     }
     
     func configureNavigationBarRightBtn(color: UIColor) {
@@ -108,8 +108,9 @@ import VGParallaxHeader
         var query = PFQuery(className: self.parseClassName!)
         query.whereKey(kPostOwnerKey, equalTo: owner!)
         query.whereKey(kPostStatusKey, equalTo: kPostStatusPublic)
-        query.selectKeys([kPostTitleKey, kPostContentShortKey, kPostCounterCommentsKey, kPostCounterLikesKey, kPostOwnerKey, kPostCoverKey, kClassCreatedAt])
+        query.selectKeys([kPostTitleKey, kPostContentShortKey, kPostCounterCommentsKey, kPostCounterLikesKey, kPostOwnerKey, kPostOwnerUserNameKey, kPostCoverKey, kClassCreatedAt])
         query.orderByDescending(kClassCreatedAt)
+        
         return query
     }
     

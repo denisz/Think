@@ -16,6 +16,8 @@ func attributesStyles(style: PostBlockStyle) -> (UIColor, UIColor) {
 enum PostBlockStyle: String {
     case Default    = "1"
     case Gray       = "2"
+    
+    static let allValues = [Default, Gray]
 }
 
 let kPostBlockStyles = [

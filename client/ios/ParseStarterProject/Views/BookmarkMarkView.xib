@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BookmarkMarkView" customModule="Think" customModuleProvider="target">
+            <connections>
+                <outlet property="label" destination="zGv-bL-ruv" id="ARs-0T-NL7"/>
+                <outlet property="wrapper" destination="hP5-8V-DXx" id="2Qa-Yw-dAr"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view userInteractionEnabled="NO" contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hP5-8V-DXx" userLabel="wrapper">
+                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zGv-bL-ruv">
+                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.0" green="0.63921999929999995" blue="0.84706002469999997" alpha="0.70999999999999996" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="zGv-bL-ruv" firstAttribute="leading" secondItem="hP5-8V-DXx" secondAttribute="leading" id="2rx-T8-YLn"/>
+                        <constraint firstItem="zGv-bL-ruv" firstAttribute="top" secondItem="hP5-8V-DXx" secondAttribute="top" id="eK6-R5-R6W"/>
+                        <constraint firstAttribute="trailing" secondItem="zGv-bL-ruv" secondAttribute="trailing" id="f1s-fH-Dzi"/>
+                        <constraint firstAttribute="bottom" secondItem="zGv-bL-ruv" secondAttribute="bottom" id="iij-fJ-cjq"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="hP5-8V-DXx" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Cfk-4n-otj"/>
+                <constraint firstAttribute="bottom" secondItem="hP5-8V-DXx" secondAttribute="bottom" id="PJa-ej-yjN"/>
+                <constraint firstItem="hP5-8V-DXx" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Zg1-WL-yGX"/>
+                <constraint firstAttribute="trailing" secondItem="hP5-8V-DXx" secondAttribute="trailing" id="wJU-DB-Tdl"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="125" y="10"/>
+        </view>
+    </objects>
+</document>

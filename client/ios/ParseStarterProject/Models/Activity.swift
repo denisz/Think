@@ -67,10 +67,13 @@ class Activity: PFObject, PFSubclassing {
                 activity.deleteEventually()
                 post.incrementKey(kPostCounterLikesKey, byAmount: -1)
                 post.saveEventually()
-                NSNotificationCenter.defaultCenter().postNotificationName(kUserUnlikedPost, object: post)
+                
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    NSNotificationCenter.defaultCenter().postNotificationName(kUserUnlikedPost, object: post)
+                })
             }
             
-            return nil
+            return task
         }
     }
     
@@ -119,10 +122,12 @@ class Activity: PFObject, PFSubclassing {
             } else {
                 let activity = task.result as! PFObject
                 activity.deleteEventually()
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    NSNotificationCenter.defaultCenter().postNotificationName(kUserUnfollowUser, object: otherUser)
+                })
             }
             
-            NSNotificationCenter.defaultCenter().postNotificationName(kUserUnfollowUser, object: otherUser)
-            return nil
+            return task
         }
     }
     
@@ -135,10 +140,16 @@ class Activity: PFObject, PFSubclassing {
         activity.setObject(post["owner"]!, forKey: kActivityToUserKey)
         activity.setObject(kActivityTypeComment, forKey: kActivityTypeKey)
         
-        return activity.saveInBackground().continueWithBlock { (taks: BFTask!) -> AnyObject! in
-            post.incrementKey(kPostCounterCommentsKey, byAmount: 1)
-            post.saveEventually()
-            return nil
+        return activity.saveInBackground().continueWithBlock { (task: BFTask!) -> AnyObject! in
+            if task.error == nil {
+                post.incrementKey(kPostCounterCommentsKey, byAmount: 1)
+                post.saveEventually()
+                
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    NSNotificationCenter.defaultCenter().postNotificationName(kUserSendComment, object: activity)
+                })
+            }
+            return task
         }
     }
     
@@ -151,11 +162,17 @@ class Activity: PFObject, PFSubclassing {
         activity.setObject(post["owner"]!,          forKey: kActivityToUserKey)
         activity.setObject(kActivityTypeComment,    forKey: kActivityTypeKey)
         
-        return activity.saveInBackground().continueWithBlock { (taks: BFTask!) -> AnyObject! in
-            post.incrementKey(kPostCounterCommentsKey, byAmount: 1)
-            post.saveEventually()
+        return activity.saveInBackground().continueWithBlock { (task: BFTask!) -> AnyObject! in
+            if task.error == nil {
+                post.incrementKey(kPostCounterCommentsKey, byAmount: 1)
+                post.saveEventually()
+                
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    NSNotificationCenter.defaultCenter().postNotificationName(kUserSendComment, object: activity)
+                })
+            }
             
-            return nil
+            return task
         }
     }
 }

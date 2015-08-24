@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CommentsViewController">
+            <connections>
+                <outlet property="inputBar" destination="Nny-vF-KJB" id="RA4-8j-rzr"/>
+                <outlet property="inputBarHC" destination="DTp-wr-pfO" id="VAi-MB-FWQ"/>
+                <outlet property="tableView" destination="ltw-AC-IsM" id="pMO-m0-czP"/>
+                <outlet property="tableViewHC" destination="IRK-u4-rV1" id="0vh-ca-P7t"/>
+                <outlet property="tableViewTopConstraint" destination="c6O-sP-YKw" id="xwA-7d-aEX"/>
+                <outlet property="view" destination="iN0-l3-epB" id="Wyv-6T-ZtI"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ltw-AC-IsM">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="540"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="Nmb-iy-Srf"/>
+                        <outlet property="delegate" destination="-1" id="Qvq-Ka-aQZ"/>
+                    </connections>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nny-vF-KJB" customClass="InputBarView" customModule="Think" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="540" width="320" height="60"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="D08-FT-VA8"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="ltw-AC-IsM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="1Ml-vZ-gXV"/>
+                <constraint firstAttribute="trailing" secondItem="ltw-AC-IsM" secondAttribute="trailing" id="CLp-0T-USf"/>
+                <constraint firstAttribute="bottom" secondItem="Nny-vF-KJB" secondAttribute="bottom" id="DTp-wr-pfO"/>
+                <constraint firstAttribute="bottom" secondItem="ltw-AC-IsM" secondAttribute="bottom" constant="60" id="IRK-u4-rV1"/>
+                <constraint firstAttribute="trailing" secondItem="Nny-vF-KJB" secondAttribute="trailing" id="Rmk-Wd-3l2"/>
+                <constraint firstItem="ltw-AC-IsM" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="c6O-sP-YKw"/>
+                <constraint firstItem="Nny-vF-KJB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="jKD-b1-Rbr"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+    </objects>
+</document>

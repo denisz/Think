@@ -12,7 +12,11 @@ import ParseUI
 
 
 class MessageViewCell: PFTableViewCell {
+    @IBOutlet weak var authorName: UILabel!
+    @IBOutlet weak var authorPicture: UIImageView!
     @IBOutlet weak var body: UILabel!
+    @IBOutlet weak var dateView: UILabel!
+
     
     func prepareView(object: PFObject) {
         body.text = object["body"] as? String

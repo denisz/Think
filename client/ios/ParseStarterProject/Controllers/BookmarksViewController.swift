@@ -17,9 +17,8 @@ import VGParallaxHeader
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Bookrmarks".localized
-//        self.automaticallyAdjustsScrollViewInsets = false
-        
+        self.title = "Bookmarks".localized
+
         self.setupHeaderView()
         
         self.collectionView!.registerNib(UINib(nibName: kReusableBookmarksViewCell, bundle: nil), forCellWithReuseIdentifier: kReusableBookmarksViewCell)
@@ -64,11 +63,7 @@ import VGParallaxHeader
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default
-    }
-    
-    func didTapEdit(sender: AnyObject?) {
-        self.navigationController?.popViewControllerAnimated(true)
+        UIApplication.sharedApplication().setStatusBarStyle(.Default, animated: true)
     }
     
     override func scrollViewDidScroll(scrollView: UIScrollView) {

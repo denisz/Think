@@ -9,8 +9,6 @@
 import Foundation
 import UIKit
 
-
-
 class BaseUIView: UIView {
     var view: UIView!
     
@@ -51,16 +49,67 @@ class BaseUIView: UIView {
         return nil
     }
     
-    func constraintToFit() {
-        self.setTranslatesAutoresizingMaskIntoConstraints(false)
+    func viewDidLoad() {}
+    
+    
+    class func constraintToFit(view: UIView) {
+        view.setTranslatesAutoresizingMaskIntoConstraints(false)
         
-        let views = ["view": self]
+        let views = ["view": view]
         let hConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[view]|", options: .AlignAllCenterY, metrics: nil, views: views)
         let vConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[view]|", options: .AlignAllCenterX, metrics: nil, views: views)
         
-        self.superview?.addConstraints(hConstraints)
-        self.superview?.addConstraints(vConstraints)
+        view.superview?.addConstraints(hConstraints)
+        view.superview?.addConstraints(vConstraints)
     }
     
-    func viewDidLoad() {}
+    class func constraintToTop(view: UIView, size: CGSize, offset: CGFloat) {
+        view.setTranslatesAutoresizingMaskIntoConstraints(false)
+        
+        let views = ["view": view]
+        let metrics = ["height": size.height, "top": offset ]
+        
+        let hConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[view]|", options: .AlignAllCenterY, metrics: nil, views: views)
+        let vConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-(top)-[view(height)]", options: .AlignAllCenterX, metrics: metrics, views: views)
+        
+        view.superview?.addConstraints(hConstraints)
+        view.superview?.addConstraints(vConstraints)
+    }
+    
+    class func constraintToBottom(view: UIView, size: CGSize, offset: CGFloat) {
+        view.setTranslatesAutoresizingMaskIntoConstraints(false)
+        
+        let views = ["view": view]
+        let metrics = ["height": size.height, "bottom": offset]
+        
+        let hConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[view]|", options: .AlignAllCenterY, metrics: nil, views: views)
+        let vConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:[view(height)]-(bottom)-|", options: .AlignAllCenterX, metrics: metrics, views: views)
+        
+        view.superview?.addConstraints(hConstraints)
+        view.superview?.addConstraints(vConstraints)
+    }
+    
+    class func constraintToCenter(view: UIView, size: CGSize) {
+        view.setTranslatesAutoresizingMaskIntoConstraints(false)
+        let superview = view.superview!
+        let metrics = ["width": size.width, "height": size.height]
+        
+        // Center horizontally
+        var constraints = NSLayoutConstraint.constraintsWithVisualFormat(
+            "V:[superview]-(<=1)-[view(width)]",
+            options: NSLayoutFormatOptions.AlignAllCenterX,
+            metrics: metrics,
+            views: ["superview": superview, "view": view])
+        
+        superview.addConstraints(constraints)
+        
+        // Center vertically
+        constraints = NSLayoutConstraint.constraintsWithVisualFormat(
+            "H:[superview]-(<=1)-[view(height)]",
+            options: NSLayoutFormatOptions.AlignAllCenterY,
+            metrics: metrics,
+            views: ["superview":superview, "view":view])
+        
+        superview.addConstraints(constraints)
+    }
 }

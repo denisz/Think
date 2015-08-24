@@ -31,7 +31,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 min ago" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OaQ-Ro-zeW">
-                        <rect key="frame" x="233" y="11" width="80" height="21"/>
+                        <rect key="frame" x="225" y="11" width="80" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="80" id="5pO-5o-whY"/>
                         </constraints>
@@ -40,7 +40,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MARY GREEN" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Uo-cC-i42">
-                        <rect key="frame" x="64" y="11" width="162" height="21"/>
+                        <rect key="frame" x="64" y="11" width="154" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="VLB-Lm-ubs"/>
                         </constraints>
@@ -48,8 +48,8 @@
                         <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7mh-4x-22B">
-                        <rect key="frame" x="64" y="39" width="249" height="75.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="It would be great to see Dany on podium first time." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7mh-4x-22B">
+                        <rect key="frame" x="64" y="39" width="241" height="75.5"/>
                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="13"/>
                         <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -64,7 +64,7 @@
                     <constraint firstItem="OaQ-Ro-zeW" firstAttribute="top" secondItem="4Uo-cC-i42" secondAttribute="top" id="CRh-tk-R32"/>
                     <constraint firstItem="OaQ-Ro-zeW" firstAttribute="leading" secondItem="4Uo-cC-i42" secondAttribute="trailing" constant="7" id="EdF-eY-1vn"/>
                     <constraint firstItem="OaQ-Ro-zeW" firstAttribute="leading" secondItem="4Uo-cC-i42" secondAttribute="trailing" constant="7" id="Hm7-CI-PZY"/>
-                    <constraint firstAttribute="trailing" secondItem="OaQ-Ro-zeW" secondAttribute="trailing" constant="7" id="Ivj-QC-2Js"/>
+                    <constraint firstAttribute="trailing" secondItem="OaQ-Ro-zeW" secondAttribute="trailing" constant="15" id="Ivj-QC-2Js"/>
                     <constraint firstItem="ihj-pc-2dJ" firstAttribute="top" secondItem="4Uo-cC-i42" secondAttribute="top" constant="4" id="eLp-ti-mrM"/>
                     <constraint firstItem="OaQ-Ro-zeW" firstAttribute="trailing" secondItem="7mh-4x-22B" secondAttribute="trailing" id="kek-wh-b0W"/>
                     <constraint firstItem="ihj-pc-2dJ" firstAttribute="leading" secondItem="jeM-bV-XFm" secondAttribute="leading" constant="15" id="mmb-jj-lYh"/>
@@ -74,7 +74,9 @@
             </tableViewCellContentView>
             <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
             <connections>
+                <outlet property="authorPicture" destination="ihj-pc-2dJ" id="CG0-dl-ezz"/>
                 <outlet property="body" destination="7mh-4x-22B" id="yEi-9N-tEU"/>
+                <outlet property="dateView" destination="OaQ-Ro-zeW" id="ptb-FI-CLb"/>
             </connections>
             <point key="canvasLocation" x="247" y="208"/>
         </tableViewCell>

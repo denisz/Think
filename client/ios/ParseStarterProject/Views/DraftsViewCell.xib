@@ -24,7 +24,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="July 9, 2015" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iMS-V2-P2H">
-                        <rect key="frame" x="0.0" y="59" width="376" height="21"/>
+                        <rect key="frame" x="0.0" y="66" width="376" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="3Mm-AQ-P7t"/>
                         </constraints>
@@ -32,17 +32,19 @@
                         <color key="textColor" red="0.0" green="0.63921999929999995" blue="0.84706002469999997" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lGa-fd-kqA">
-                        <rect key="frame" x="0.0" y="16" width="376" height="43"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="346" placeholderIntrinsicHeight="43" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lGa-fd-kqA">
+                        <rect key="frame" x="15" y="16" width="346" height="50"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="43" id="FWP-7d-vo2"/>
+                            <constraint firstAttribute="height" constant="50" id="FWP-7d-vo2"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="PTSerif-Bold" family="PT Serif" pointSize="20"/>
+                        <string key="text">Push notifications are not supported in the iOS Simulator.
+</string>
+                        <fontDescription key="fontDescription" name="PTSerif-Bold" family="PT Serif" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.63921999929999995" blue="0.84706002469999997" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="362" placeholderIntrinsicHeight="43" lineBreakMode="tailTruncation" numberOfLines="7" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1DP-nm-crZ">
-                        <rect key="frame" x="15" y="87" width="346" height="145"/>
+                        <rect key="frame" x="15" y="94" width="346" height="138"/>
                         <string key="text">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</string>
                         <fontDescription key="fontDescription" name="PTSerif-Regular" family="PT Serif" pointSize="14"/>
                         <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -53,13 +55,13 @@
                 <constraints>
                     <constraint firstItem="iMS-V2-P2H" firstAttribute="leading" secondItem="sTV-uE-MkN" secondAttribute="leading" id="Ae0-0K-Iug"/>
                     <constraint firstItem="1DP-nm-crZ" firstAttribute="leading" secondItem="sTV-uE-MkN" secondAttribute="leading" constant="15" id="EWa-JW-cEz"/>
-                    <constraint firstAttribute="trailing" secondItem="lGa-fd-kqA" secondAttribute="trailing" id="F6e-u0-CDb"/>
+                    <constraint firstAttribute="trailing" secondItem="lGa-fd-kqA" secondAttribute="trailing" constant="15" id="F6e-u0-CDb"/>
                     <constraint firstAttribute="bottom" secondItem="1DP-nm-crZ" secondAttribute="bottom" constant="17.5" id="OMO-MC-FpL"/>
                     <constraint firstAttribute="trailing" secondItem="iMS-V2-P2H" secondAttribute="trailing" id="QwW-7j-bQB"/>
                     <constraint firstItem="iMS-V2-P2H" firstAttribute="top" secondItem="lGa-fd-kqA" secondAttribute="bottom" id="Wxv-Pg-i37"/>
                     <constraint firstItem="1DP-nm-crZ" firstAttribute="top" secondItem="iMS-V2-P2H" secondAttribute="bottom" constant="7" id="hmu-uY-3gX"/>
                     <constraint firstItem="lGa-fd-kqA" firstAttribute="top" secondItem="sTV-uE-MkN" secondAttribute="top" constant="16" id="k7w-No-CSl"/>
-                    <constraint firstItem="lGa-fd-kqA" firstAttribute="leading" secondItem="sTV-uE-MkN" secondAttribute="leading" id="vEm-uE-hzG"/>
+                    <constraint firstItem="lGa-fd-kqA" firstAttribute="leading" secondItem="sTV-uE-MkN" secondAttribute="leading" constant="15" id="vEm-uE-hzG"/>
                     <constraint firstAttribute="trailing" secondItem="1DP-nm-crZ" secondAttribute="trailing" constant="15" id="wJM-zf-6gs"/>
                 </constraints>
             </tableViewCellContentView>

@@ -15,14 +15,15 @@ import Bolts
 
 @objc(MyQueryTableViewController) class MyQueryTableViewController: UIViewController, NSObjectProtocol {
     @IBOutlet weak var tableView: UITableView!
-    var objects:NSMutableArray?
     
+    var objects:NSMutableArray?
     var currentPage: Int = 0
     var firstLoad: Bool = true
     var objectsPerPage: Int = 25
     var loadingViewEnabled: Bool = true
     var paginationEnabled: Bool = true
     var pullToRefreshEnabled: Bool = true
+    var reverseViewCell: Bool = false
     var lastLoadCount: Int = -1
     var parseClassName: String?
     var _loadingView: UIView?
@@ -34,14 +35,12 @@ import Bolts
     }
     var loading: Bool = false
     var savedSeparatorStyle: UITableViewCellSeparatorStyle?
-    
     var refreshControl: UIRefreshControl?
     
-    
-    var tableViewTopConstraint      : NSLayoutConstraint?
-    var tableViewLeadingConstraint   : NSLayoutConstraint?
-    var tableViewWidthConstraint     : NSLayoutConstraint?
-    var tableViewHeightConstraint    : NSLayoutConstraint?
+    @IBOutlet weak var tableViewTopConstraint       : NSLayoutConstraint!
+    @IBOutlet weak var tableViewLeadingConstraint   : NSLayoutConstraint!
+    @IBOutlet weak var tableViewWidthConstraint     : NSLayoutConstraint!
+    @IBOutlet weak var tableViewHeightConstraint    : NSLayoutConstraint!
     
     var shouldShowPaginationCell: Bool {
         return self.paginationEnabled
@@ -52,11 +51,15 @@ import Bolts
     }
     
     var indexPathForPaginationCell: NSIndexPath {
+        if self.reverseViewCell {
+            return NSIndexPath(forRow: 0, inSection: 0)
+        }
+        
         return NSIndexPath(forRow: self.objects!.count, inSection: 0)
     }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        super.init(nibName: NSStringFromClass(self.dynamicType), bundle: nibBundleOrNil)
         self.setupWithClassName(nil)
     }
     
@@ -73,6 +76,7 @@ import Bolts
         self.loadingViewEnabled = true
         self.paginationEnabled = true
         self.pullToRefreshEnabled = true
+        self.reverseViewCell = false
         self.lastLoadCount = -1
         self.parseClassName = otherClassName
     }
@@ -115,10 +119,10 @@ import Bolts
 
         tableViewHeightConstraint = NSLayoutConstraint(item: tableView, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: 0)
 
-        self.view.addConstraint(tableViewTopConstraint!)
-        self.view.addConstraint(tableViewLeadingConstraint!)
-        self.view.addConstraint(tableViewWidthConstraint!)
-        self.view.addConstraint(tableViewHeightConstraint!)
+        self.view.addConstraint(tableViewTopConstraint)
+        self.view.addConstraint(tableViewLeadingConstraint)
+        self.view.addConstraint(tableViewWidthConstraint)
+        self.view.addConstraint(tableViewHeightConstraint)
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -328,6 +332,23 @@ extension MyQueryTableViewController: UITableViewDataSource {
     }
     
     func objectAtIndexPath(indexPath: NSIndexPath) -> PFObject? {
+        if self.reverseViewCell {
+            var index = -1
+            let count = self.objects!.count
+            
+            if self.shouldShowPaginationCell {
+                index = count - indexPath.row
+            } else {
+                index = count - indexPath.row - 1
+            }
+
+            if index >= 0 && index < count {
+                return self.objects![index] as? PFObject
+            } else {
+                return nil
+            }
+        }
+        
         return self.objects![indexPath.row] as? PFObject
     }
     
@@ -391,6 +412,14 @@ extension MyQueryTableViewController: UITableViewDataSource {
         return cell
     }
     
+    func checkLastCell(indexPath: NSIndexPath) -> Bool {
+        if (self.shouldShowPaginationCell) {
+            return self.objects!.count == indexPath.row
+        }
+        
+        return self.objects!.count == (indexPath.row + 1)
+    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell: PFTableViewCell?
         
@@ -411,6 +440,10 @@ extension MyQueryTableViewController: UITableViewDataSource {
             })
         }
         
+//        if self.reverseViewCell && self.checkLastCell(indexPath) {
+//            cell!.separatorInset = UIEdgeInsetsMake(0, cell!.bounds.size.width, 0, 0);
+//        }
+        
         return cell!
     }
 }
@@ -430,8 +463,19 @@ extension MyQueryTableViewController: UITableViewDelegate {
             self.paginationEnabled &&
             indexPath.isEqual(self.indexPathForPaginationCell)) {
                 self.loadNextPage();
+        } else {
+            let count = self.objects!.count
+            
+            if count > indexPath.row {
+                if let object = self.objectAtIndexPath(indexPath) {
+                    self.tableView(self.tableView, didSelectRowAtIndexPath: indexPath, object: object)
+                }
+            }
         }
-
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) {
+        
     }
     
     func tableView(tableView: UITableView, shouldIndentWhileEditingRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -440,6 +484,26 @@ extension MyQueryTableViewController: UITableViewDelegate {
         }
         
         return true
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+    }
+    
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]?  {
+        if  indexPath.isEqual(self.indexPathForPaginationCell) {
+            return nil
+        }
+        
+        let result = self.tableView(tableView,
+            editActionsForRowAtIndexPath: indexPath,
+            object: self.objectAtIndexPath(indexPath))
+        
+        return result
+    }
+    
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> [AnyObject]? {
+        return nil
     }
 }
 

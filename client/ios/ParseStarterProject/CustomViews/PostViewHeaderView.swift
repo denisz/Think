@@ -22,6 +22,6 @@ class PostViewHeaderView: BaseUIView {
     }
 
     override func viewDidLoad() {
-        
+        super.viewDidLoad()
     }
 }

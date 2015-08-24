@@ -39,7 +39,8 @@ import UIKit
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default;
+        UIApplication.sharedApplication().setStatusBarStyle(.Default, animated: true)
+//        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default;
     }
     
     override func queryForTable() -> PFQuery {
@@ -59,21 +60,6 @@ import UIKit
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle  {
         return UIStatusBarStyle.Default
-    }
-    
-    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]?  {
-        var shareAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Public".localized , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
-            tableView.editing = false;
-            
-        })
-        shareAction.backgroundColor = UIColor(red:0.22, green:0.79, blue:0.45, alpha:1)
-        
-        var rateAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Delete".localized , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
-            tableView.editing = false;
-        })
-        rateAction.backgroundColor = UIColor(red:0.9, green:0.3, blue:0.26, alpha:1)
-        
-        return [shareAction,rateAction]
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) {

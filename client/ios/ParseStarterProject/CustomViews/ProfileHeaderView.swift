@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import Parse
+import ParseUI
 
 
 protocol ProfileHeaderViewDelegate {
@@ -21,6 +22,9 @@ class ProfileHeaderView: BaseProfileHeaderView {
     @IBOutlet weak var newPostButton: UIButton!
     @IBOutlet weak var draftsButton: UIButton!
     @IBOutlet weak var followersButton: UIButton!
+    @IBOutlet weak var profileName: UILabel!
+    @IBOutlet weak var profilePicture: PFImageView!
+    @IBOutlet weak var profileCover: PFImageView!
     
     var delegate: ProfileHeaderViewDelegate?
     
@@ -40,10 +44,17 @@ class ProfileHeaderView: BaseProfileHeaderView {
         self.delegate?.profileView(self, didTapDrafts: self.draftsButton)
     }
     
+    override func viewDidLoadObject(object: PFObject) {
+        super.viewDidLoadObject(object)
+        self.profileName.text = object[kUserUsernameKey] as? String
+    }
+    
     override func viewDidLoad() {
-        let color = UIColor.lightGrayColor()
+        super.viewDidLoad()
         
-        self.newPostButton.borderLeft(color)
-        self.draftsButton.borderLeft(color)
+        self.newPostButton.borderLeft(UIColor.lightGrayColor())
+        self.draftsButton.borderLeft(UIColor.lightGrayColor())
+        
+        self.profilePicture.cornerEdge()
     }
 }

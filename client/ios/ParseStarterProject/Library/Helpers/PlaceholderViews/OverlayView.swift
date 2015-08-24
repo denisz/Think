@@ -20,4 +20,17 @@ class OverlayView: BaseUIView {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    class func createInView(view: UIView) -> OverlayView {
+        let overlay = OverlayView()
+        view.addSubview(overlay)
+        BaseUIView.constraintToFit(overlay)
+        overlay.alpha = 0
+        
+        UIView.animateWithDuration(0.3, animations: { () -> Void in
+            overlay.alpha = 1
+        })
+        
+        return overlay
+    }
 }

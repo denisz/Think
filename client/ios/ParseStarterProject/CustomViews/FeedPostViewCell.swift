@@ -11,8 +11,4 @@ import UIKit
 import Parse
 import ParseUI
 
-class FeedPostViewCell: PFTableViewCell {
-    func prepareView(object: PFObject) {
-        
-    }
-}
+class FeedPostViewCell: ProfilePostViewCell {}

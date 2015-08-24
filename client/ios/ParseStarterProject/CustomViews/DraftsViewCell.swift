@@ -19,6 +19,6 @@ class DraftsViewCell: PFTableViewCell {
     func prepareView(object: PFObject) {
         self.title.text     = object[kPostTitleKey] as? String
         self.content.text   = object[kPostContentShortKey] as? String
-        self.date.text      = TransformDate.timeString(object[kClassCreatedAt] as! String)
+        self.date.text      = TransformDate.timeString(object.createdAt!)
     }
 }

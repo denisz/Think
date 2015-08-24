@@ -9,10 +9,13 @@
 import Foundation
 import UIKit
 import Parse
+import ParseUI
 
 class ProfileEditHeaderView: BaseUIView {
     @IBOutlet weak var buttonAvatar: UIButton!
     @IBOutlet weak var buttonCover: UIButton!
+    @IBOutlet weak var profilePicture: UIImageView!
+    @IBOutlet weak var profileCover: PFImageView!
 
     var parentController: UIViewController?
     var object: PFObject?
@@ -40,6 +43,9 @@ class ProfileEditHeaderView: BaseUIView {
     }
 
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.profilePicture.cornerEdge()
         setupButtons()
     }
 }

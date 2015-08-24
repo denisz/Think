@@ -36,6 +36,8 @@ class ToolbarNewPostView: BaseUIView {
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
         self.collectionView.registerNib(UINib(nibName: kReusableToolbarNewPost, bundle: nil), forCellWithReuseIdentifier: kReusableToolbarNewPost)
 
         self.collectionView.reloadData()

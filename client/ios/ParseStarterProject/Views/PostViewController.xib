@@ -16,6 +16,7 @@
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
+            <string>OpenSans-Semibold</string>
         </mutableArray>
         <mutableArray key="PT_Serif-Web-Bold.ttf">
             <string>PTSerif-Bold</string>
@@ -26,6 +27,8 @@
             <connections>
                 <outlet property="authorName" destination="lef-Ck-cKF" id="z71-S2-8Bm"/>
                 <outlet property="authorPicture" destination="qQ8-Ow-Bk2" id="nE3-xO-bbn"/>
+                <outlet property="commentsCounter" destination="Z3k-2o-Ct9" id="Pzy-CN-FjP"/>
+                <outlet property="commentsTableView" destination="vN6-vr-p2p" id="6MC-HO-B3k"/>
                 <outlet property="contentView" destination="fuS-BX-FWV" id="5jg-FX-X1N"/>
                 <outlet property="followAuthor" destination="OxS-BU-EZO" id="hqn-XM-g2r"/>
                 <outlet property="likesCounter" destination="BPn-bQ-KI1" id="UXG-pM-XI9"/>
@@ -130,8 +133,8 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u1B-7k-xk2">
                             <rect key="frame" x="0.0" y="341" width="320" height="40"/>
                             <subviews>
-                                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+1345" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BPn-bQ-KI1" userLabel="Likes" customClass="LabelViewWithIcon" customModule="Think" customModuleProvider="target">
-                                    <rect key="frame" x="15" y="8" width="154" height="25"/>
+                                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+1345" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BPn-bQ-KI1" userLabel="Likes" customClass="LabelViewWithIcon" customModule="Think" customModuleProvider="target">
+                                    <rect key="frame" x="83" y="8" width="154" height="25"/>
                                     <gestureRecognizers/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="25" id="GH1-fg-HR8"/>
@@ -168,8 +171,8 @@
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstItem="BPn-bQ-KI1" firstAttribute="leading" secondItem="u1B-7k-xk2" secondAttribute="leading" constant="15" id="3hi-nJ-KRD"/>
                                 <constraint firstItem="BPn-bQ-KI1" firstAttribute="top" secondItem="u1B-7k-xk2" secondAttribute="topMargin" id="5cs-jC-czc"/>
+                                <constraint firstAttribute="centerX" secondItem="BPn-bQ-KI1" secondAttribute="centerX" id="8n4-eB-ZaD"/>
                                 <constraint firstAttribute="height" constant="40" id="p1v-Pb-TgA"/>
                             </constraints>
                         </view>
@@ -192,12 +195,12 @@
                                     <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sam Roberts" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lef-Ck-cKF">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sam Roberts" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="lef-Ck-cKF">
                                     <rect key="frame" x="69" y="32" width="189" height="21"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="21" id="zb6-hJ-wNa"/>
+                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="zb6-hJ-wNa"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="16"/>
+                                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
                                     <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -238,7 +241,7 @@
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                     <connections>
-                                        <outletCollection property="gestureRecognizers" destination="Zrg-ZE-w00" appends="YES" id="Q5k-6e-x3E"/>
+                                        <action selector="didTapFollowAuthor" destination="-1" eventType="touchDragInside" id="Dee-9C-pVd"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -267,14 +270,55 @@
                                 <outlet property="heightLayoutConstraint" destination="6Je-0l-3DO" id="pDO-zQ-B0Y"/>
                             </connections>
                         </tableView>
+                        <view contentMode="scaleToFill" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="184" translatesAutoresizingMaskIntoConstraints="NO" id="bRl-ZT-ced">
+                            <rect key="frame" x="0.0" y="389" width="320" height="178"/>
+                            <subviews>
+                                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="184 COMMENTS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z3k-2o-Ct9">
+                                    <rect key="frame" x="15" y="8" width="290" height="21"/>
+                                    <gestureRecognizers/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="21" id="iDG-by-8GA"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
+                                    <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                    <connections>
+                                        <outletCollection property="gestureRecognizers" destination="n53-ez-uxp" appends="YES" id="wJx-Et-yQC"/>
+                                    </connections>
+                                </label>
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="vN6-vr-p2p" customClass="CommentsTableView" customModule="Think" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="31" width="320" height="147"/>
+                                    <color key="backgroundColor" red="0.9607800245" green="0.9607800245" blue="0.9607800245" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="900" constant="20" id="OdD-zT-qdL"/>
+                                        <constraint firstAttribute="height" constant="147" id="nvd-RX-gor"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="heightLayoutConstraint" destination="nvd-RX-gor" id="FyZ-sq-Ja1"/>
+                                    </connections>
+                                </tableView>
+                            </subviews>
+                            <color key="backgroundColor" red="0.9607800245" green="0.9607800245" blue="0.9607800245" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="1V7-xU-e6B"/>
+                                <constraint firstAttribute="trailing" secondItem="vN6-vr-p2p" secondAttribute="trailing" id="3a3-Rf-xAV"/>
+                                <constraint firstAttribute="bottom" secondItem="vN6-vr-p2p" secondAttribute="bottom" id="8Ts-00-HBt"/>
+                                <constraint firstItem="Z3k-2o-Ct9" firstAttribute="top" secondItem="bRl-ZT-ced" secondAttribute="top" constant="8" id="JbA-wq-pD1"/>
+                                <constraint firstItem="Z3k-2o-Ct9" firstAttribute="leading" secondItem="bRl-ZT-ced" secondAttribute="leading" constant="15" id="hNK-C6-9zB"/>
+                                <constraint firstAttribute="trailing" secondItem="Z3k-2o-Ct9" secondAttribute="trailing" constant="15" id="kAP-G2-3yz"/>
+                                <constraint firstItem="vN6-vr-p2p" firstAttribute="leading" secondItem="bRl-ZT-ced" secondAttribute="leading" id="xj7-Zo-1Pg"/>
+                                <constraint firstItem="vN6-vr-p2p" firstAttribute="top" secondItem="Z3k-2o-Ct9" secondAttribute="bottom" constant="2" id="yAH-I5-gdO"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="3Ed-fD-4ML" firstAttribute="top" secondItem="JCd-FN-KEC" secondAttribute="bottom" id="2EV-J8-fCF"/>
                         <constraint firstAttribute="trailing" secondItem="3Ed-fD-4ML" secondAttribute="trailing" id="2t9-m9-bEH"/>
                         <constraint firstAttribute="trailing" secondItem="24a-UO-aFl" secondAttribute="trailing" id="3Dh-lY-6Ya"/>
+                        <constraint firstItem="bRl-ZT-ced" firstAttribute="leading" secondItem="PIA-d5-ufa" secondAttribute="leading" id="4MW-pS-xfq"/>
                         <constraint firstItem="3Ed-fD-4ML" firstAttribute="leading" secondItem="PIA-d5-ufa" secondAttribute="leading" id="4RQ-OG-EAs"/>
-                        <constraint firstAttribute="bottom" secondItem="u1B-7k-xk2" secondAttribute="bottom" constant="15" id="BdZ-Gt-Te4"/>
+                        <constraint firstAttribute="trailing" secondItem="bRl-ZT-ced" secondAttribute="trailing" id="DKu-Jo-2pU"/>
                         <constraint firstAttribute="trailing" secondItem="RPW-06-Kxe" secondAttribute="trailing" constant="15" id="Eln-kk-6b1"/>
                         <constraint firstItem="RPW-06-Kxe" firstAttribute="leading" secondItem="PIA-d5-ufa" secondAttribute="leading" constant="15" id="K4E-5n-3Uc"/>
                         <constraint firstAttribute="trailing" secondItem="u1B-7k-xk2" secondAttribute="trailing" id="L0K-Hk-hjh"/>
@@ -285,6 +329,8 @@
                         <constraint firstAttribute="trailing" secondItem="fuS-BX-FWV" secondAttribute="trailing" id="bhC-e2-VMc"/>
                         <constraint firstItem="RPW-06-Kxe" firstAttribute="top" secondItem="PIA-d5-ufa" secondAttribute="top" constant="8" id="btL-xw-U4k"/>
                         <constraint firstItem="fuS-BX-FWV" firstAttribute="leading" secondItem="PIA-d5-ufa" secondAttribute="leading" id="eJ3-Ko-fXp"/>
+                        <constraint firstAttribute="bottom" secondItem="bRl-ZT-ced" secondAttribute="bottom" id="eoE-rD-YGW"/>
+                        <constraint firstItem="bRl-ZT-ced" firstAttribute="top" secondItem="u1B-7k-xk2" secondAttribute="bottom" constant="8" id="fWD-ps-6nK"/>
                         <constraint firstAttribute="trailing" secondItem="JCd-FN-KEC" secondAttribute="trailing" id="gwU-By-ScU"/>
                         <constraint firstItem="u1B-7k-xk2" firstAttribute="leading" secondItem="PIA-d5-ufa" secondAttribute="leading" id="jFZ-pO-Ena"/>
                         <constraint firstItem="24a-UO-aFl" firstAttribute="top" secondItem="RPW-06-Kxe" secondAttribute="bottom" id="lE4-mX-rkm"/>
@@ -309,9 +355,9 @@
                 <action selector="didTapLikePost" destination="-1" id="M6B-Qv-rDJ"/>
             </connections>
         </tapGestureRecognizer>
-        <tapGestureRecognizer id="Zrg-ZE-w00" userLabel="Tap follow">
+        <tapGestureRecognizer id="n53-ez-uxp" userLabel="Tap comments">
             <connections>
-                <action selector="didTapFollowAuthor" destination="-1" id="kMw-yy-Dv0"/>
+                <action selector="didTapComments" destination="-1" id="gXN-v0-KeV"/>
             </connections>
         </tapGestureRecognizer>
     </objects>

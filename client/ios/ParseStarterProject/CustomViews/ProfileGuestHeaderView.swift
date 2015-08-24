@@ -18,6 +18,10 @@ protocol ProfileGuestHeaderViewDelegate {
 class ProfileGuestHeaderView: BaseProfileHeaderView {
     @IBOutlet weak var followButton: UIButton!
     @IBOutlet weak var whisperButton: UIButton!
+    @IBOutlet weak var profileName: UILabel!
+    @IBOutlet weak var profilePicture: UIImageView!
+    @IBOutlet weak var profileCover: PFImageView!
+
     
     var delegate: ProfileGuestHeaderViewDelegate?
     

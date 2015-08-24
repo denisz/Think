@@ -15,14 +15,14 @@ import ParseUI
 
 class SettingsViewController: BaseFormViewController {
     struct tag {
-        static let facebook = "facebook"
-        static let twitter = "twitter"
-        static let apn = "apn"
-        static let events = "events"
-        static let sound = "sound"
-        static let vibration = "vibration"
-        static let alert = "alert"
-        static let logout = "logout"
+        static let facebook     = "facebook"
+        static let twitter      = "twitter"
+        static let apn          = "apn"
+        static let events       = "events"
+        static let sound        = "sound"
+        static let vibration    = "vibration"
+        static let alert        = "alert"
+        static let logout       = "logout"
     }
     
     override func viewDidLoad() {
@@ -116,9 +116,7 @@ class SettingsViewController: BaseFormViewController {
     
     func didTapLogout(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: { () -> Void in
-            let install = PFInstallation.currentInstallation()
-            install.removeObjectForKey(kInstallationUserKey)
-            install.saveInBackground()
+            Installation.unRegisterPushDevice()
         });
         PFUser.logOut()
     }

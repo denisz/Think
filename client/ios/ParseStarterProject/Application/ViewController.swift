@@ -10,7 +10,8 @@ import ParseUI
 
 class ViewController: UIViewController {
     static var started: Bool = false
-
+    var navigationControllerApp: BaseNavigationController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent;
@@ -42,28 +43,74 @@ class ViewController: UIViewController {
     }
     
     func app() {
-        let appController = AppViewController()
-        let navigationController = BaseNavigationController(rootViewController: appController)
-        let sideMenuController = BaseSideMenuViewController(rootViewController: navigationController)
+        let mainController          = FeedViewController.CreateWith()
+        let navigationController    = BaseNavigationController(rootViewController: mainController)
+        let sideMenuController      = BaseSideMenuViewController(rootViewController: navigationController)
         
         setSideMenuController(sideMenuController)
         
         self.presentViewController(sideMenuController, animated:true, completion: nil)
+        self.navigationControllerApp = navigationController
+        self.bindEventMenu()
+    }
+    
+    func bindEventMenu() {
+        self.unbindEventMenu()
+        
+        for name in kSideMenu.allValues {
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: "handlerSequeNavigation:", name: name.rawValue as String, object: nil)
+        }
+    }
+    
+    func unbindEventMenu() {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    func handlerSequeNavigation(notification: NSNotification) {
+        if let menu = kSideMenu(rawValue: notification.name) {
+            var controller: UIViewController?
+            
+            switch(menu) {
+            case .Settings:
+                controller = FactoryControllers.settings()
+                break
+            case .Notificaiton:
+                controller = FactoryControllers.notifications()
+                break
+            case .Messages:
+                controller = FactoryControllers.messages()
+                break
+            case .Feed:
+                controller = FactoryControllers.feed()
+                break
+            case .Top:
+                controller = FactoryControllers.top()
+                break
+            case .Profile:
+                controller = FactoryControllers.myProfile()
+                break
+            case .Drafts:
+                controller = FactoryControllers.drafts()
+                break
+            case .Bookmarks:
+                controller = FactoryControllers.bookmarks()
+                break
+            default:
+                controller = FactoryControllers.feed()
+            }
+            
+            if controller != nil {
+                self.navigationControllerApp?.replaceViewController(controller!, animated: true)
+            }
+        }
     }
     
     func unRegisterDevice() {
-        let install = PFInstallation.currentInstallation()
-        install.removeObjectForKey(kInstallationUserKey)
-        install.saveInBackground()
+        Installation.unRegisterPushDevice()
     }
     
     func registerDevice() {
-        let user = PFUser.currentUser()
-        let privateChannelName = "user_\(user!.objectId)"
-        let install = PFInstallation.currentInstallation()
-        install.setObject(user!, forKey: kInstallationUserKey)
-        install.addUniqueObject(privateChannelName, forKey: kInstallationChannelsKey)
-        install.saveEventually()
+        Installation.registerPushDevice()
     }
     
     class func globalApperence() {

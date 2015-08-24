@@ -29,6 +29,6 @@ class BookmarkMainPostView: BaseUIView {
     }
     
     override func viewDidLoad() {
-        
+        super.viewDidLoad()
     }
 }

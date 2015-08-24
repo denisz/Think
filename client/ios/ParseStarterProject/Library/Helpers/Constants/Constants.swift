@@ -23,11 +23,13 @@ let kUserClassKey               = "User"
 //fields
 let kUserFirstNameKey           = "first_name"
 let kUserLastNameKey            = "last_name"
+let kUserUsernameKey            = "username"
 let kUserProfilePictureKey      = "profile_picture"
 let kUserProfileCoverKey        = "profile_cover"
 let kUserSettingsKey            = "settings"
-
-
+let kUserDateOfBirthKey         = "date_of_birth"
+let kUserCountryKey             = "country"
+let kUserCityKey                = "city"
 
 //MARK: - Activity Class
 let kActivityClassKey           = "Activity"
@@ -61,11 +63,12 @@ let kPostContentObjKey          = "content_obj"
 let kPostContentShortKey        = "content_short"
 let kPostTitleKey               = "title"
 let kPostOwnerKey               = "owner"
+let kPostOwnerUserNameKey       = "owner.username"
 let kPostCretedAtKey            = "created_at"
 let kPostTagsKey                = "tags"
 let kPostCoverKey               = "cover"
 let kPostSettingsKey            = "settings"
-let kPostStatusKey              = "ACL"
+let kPostStatusKey              = "status"
 let kPostCounterLikesKey        = "counter_likes"
 let kPostCounterCommentsKey     = "counter_comments"
 
@@ -124,18 +127,48 @@ let kPushPayloadPoseObjectIdKey         = "pid"
 //notifications
 let kUserUnlikedPost        = "com.think.user.unliked.post"
 let kUserLikedPost          = "com.think.user.liked.post"
+let kUserAddBookmark        = "com.think.user.add.bookmark"
 let kUserFollowingUser      = "com.think.following.user"
 let kUserUnfollowUser       = "com.think.unfollow.user"
+let kUserRaisePost          = "com.think.raise.post"
+let kUserSendComment        = "com.think.send.comment"
+let kUserUpdateProfile      = "com.think.update.profile"
 
+//side menu notifications
+enum kSideMenu: String {
+    case Notificaiton       = "com.think.side.noitification"
+    case Feed               = "com.think.side.feed"
+    case Top                = "com.think.side.top"
+    case Bookmarks          = "com.think.side.bookmarks"
+    case Settings           = "com.think.side.settings"
+    case Drafts             = "com.think.side.drafts"
+    case Profile            = "com.think.side.profile"
+    case Digest             = "com.think.side.digest"
+    case Messages           = "com.think.side.messages"
+    case Logout             = "com.think.side.logout"
+    
+    static let allValues = [Notificaiton, Feed, Top, Bookmarks, Settings, Drafts, Profile, Digest, Messages]
+}
+
+enum ScrollDirection {
+    case ScrollDirectionNone
+    case ScrollDirectionRight
+    case ScrollDirectionLeft
+    case ScrollDirectionUp
+    case ScrollDirectionDown
+    case ScrollDirectionCrazy
+    
+    init() {
+        self = .ScrollDirectionUp
+    }
+}
 
 // MARK: Post blocks
 let kReusableTitlePostViewCell      = "TitlePostViewCell"
 let kReusableTextPostViewCell       = "TextPostViewCell"
 let kReusablePicturePostViewCell    = "PicturePostViewCell"
 let kReusableCoverPostViewCell      = "CoverPostViewCell"
-
-
-// MARK: reusable cells
+let kReusablePostBlockViewCell      =  "PostBlockViewCell"
 let kReusableFollowUserViewCell     = "FollowUserViewCell"
 let kReusableFeedPostViewCell       = "FeedPostViewCell"
 let kReusableProfilePostViewCell    = "ProfilePostViewCell"
@@ -143,6 +176,8 @@ let kReusableNotificationsViewCell  = "NotificationViewCell"
 let kReusableBookmarksViewCell      = "BookmarksViewCell"
 let kReusableDraftsViewCell         = "DraftsViewCell"
 let kReusableMessageViewCell        = "MessageViewCell"
+let kReusableSideMenuViewCell       = "SideMenuViewCell"
+let kReusableCommentViewCell        = "CommentViewCell"
 
 
 

@@ -9,24 +9,25 @@
 import Foundation
 import UIKit
 
-let kReusableSideMenuCell = "SideMenuCell"
-
+typealias SideMenuTuple = (String, String, kSideMenu)
 class SideMenuViewConroller: UITableViewController, UITableViewDataSource {
-    let items: [(String, String)] = [
-        ("Notifications", "ic_notifications"),
-        ("Feed", "ic_feed"),
-        ("Bookmarks", "ic_bookmarks"),
-        ("Top", "ic_top"),
-        ("Digest", "ic_digest"),
-        ("Drafts", "ic_drafts"),
-        ("Messages", "ic_messages"),
-        ("Profile", "ic_profile_menu"),
-        ("Settings", "ic_settings")
+    var activeItem: String = "Feed"
+    
+    let items: [SideMenuTuple] = [
+        ("Notifications",   "ic_notifications",   .Notificaiton),
+        ("Feed",            "ic_feed",                    .Feed),
+        ("Bookmarks",       "ic_bookmarks",          .Bookmarks),
+        ("Top",             "ic_top",                      .Top),
+        ("Digest",          "ic_digest",                .Digest),
+        ("Drafts",          "ic_drafts",                .Drafts),
+        ("Messages",        "ic_messages",            .Messages),
+        ("Profile",         "ic_profile_menu",         .Profile),
+        ("Settings",        "ic_settings",            .Settings)
     ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.registerNib(UINib(nibName: "SideMenuCellView", bundle: nil), forCellReuseIdentifier: kReusableSideMenuCell)
+        self.tableView.registerNib(UINib(nibName: kReusableSideMenuViewCell, bundle: nil), forCellReuseIdentifier: kReusableSideMenuViewCell)
         
         self.tableView.reloadData()
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
@@ -41,31 +42,51 @@ class SideMenuViewConroller: UITableViewController, UITableViewDataSource {
         return image!.imageWithColor(UIColor.whiteColor())
     }
     
+    func prepareCounter(name: kSideMenu) -> Int {
+        return 0
+    }
+    
+    func propsByIndexPath(indexPath: NSIndexPath) -> SideMenuTuple? {
+        return self.items[indexPath.row]
+    }
+    
+    func makeActiveItem(item: String) {
+        self.activeItem = item
+    }
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if let sideMenu = sideMenuController() {
-            sideMenu.hideLeftViewAnimated(true, completionHandler: { () -> Void in
-                
-            })
+        if let props = self.propsByIndexPath(indexPath) {
+            if let sideMenu = sideMenuController() {
+                sideMenu.hideLeftViewAnimated(true, completionHandler: { () -> Void in
+                    if self.activeItem != props.0 {
+                        self.makeActiveItem(props.0)
+                        NSNotificationCenter.defaultCenter().postNotificationName(props.2.rawValue as String, object: nil)
+                    }
+                })
+            }
         }
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier(kReusableSideMenuCell) as! SideMenuCellView
+        var cell = tableView.dequeueReusableCellWithIdentifier(kReusableSideMenuViewCell) as! SideMenuViewCell
         
-        var obj = items[indexPath.row]
-        cell.iconMenu.image = prepareIcon(obj.1)
-        cell.titleMenu.text = obj.0
-        cell.counterMenu.hidden = true
+        if let obj = self.propsByIndexPath(indexPath) {
+            let countNotify = self.prepareCounter(obj.2)
+            cell.iconMenu.image = self.prepareIcon(obj.1)
+            cell.titleMenu.text = obj.0
+            cell.counterMenu.hidden = countNotify == 0
+            cell.counterMenu.titleLabel!.text = "\(countNotify)"
+        }
+        
         return cell
     }
 }
 
-
-class SideMenuCellView: UITableViewCell {
+class SideMenuViewCell: UITableViewCell {
     @IBOutlet weak var titleMenu:   UILabel!
     @IBOutlet weak var iconMenu:    UIImageView!
     @IBOutlet weak var counterMenu: UIButton!

@@ -32,11 +32,12 @@ class ProfilePostViewCell: PFTableViewCell {
     func prepareView(object: PFObject) {
         self.object = object
         
-        let countLikes = object[kPostCounterLikesKey] as! Int
-        let countComments = object[kPostCounterCommentsKey] as! Int
-        
-        likesCounter.text = "+\(countLikes)"
-        commentsCounter.text = "\(countComments)"
+        self.title.text             = object[kPostTitleKey] as? String
+        self.date.text              = TransformDate.timeString(object.createdAt!)
+        self.authorName.text        = Post.usernameOwner(object)
+        self.content.text           = object[kPostContentShortKey] as! String
+        self.likesCounter.text      = TransformString.likesCounter(object)
+        self.commentsCounter.text   = TransformString.commentsCounter(object)
         
         self.setupViewCover()
     }

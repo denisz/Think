@@ -11,18 +11,22 @@ import UIKit
 import XLForm
 import Parse
 import ParseUI
+import Bolts
 import VGParallaxHeader
 
 @objc(ProfileEditViewController) class ProfileEditViewController: BaseFormViewController {
     var owner: PFObject?
     
     struct tag {
-        static let firstName        = "firstName"
-        static let lastName         = "lastName"
-        static let country          = "country"
-        static let city             = "city"
-        static let dateOfBirth      = "dateOfBirth"
+        static let firstName        = kUserFirstNameKey     //"firstName"
+        static let lastName         = kUserLastNameKey      //"lastName"
+        static let userName         = kUserUsernameKey      //"userName"
+        static let country          = kUserCountryKey       //"country"
+        static let city             = kUserCityKey          //"city"
+        static let dateOfBirth      = kUserDateOfBirthKey   //"dateOfBirth"
     }
+    
+    var data: [String: AnyObject]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +34,8 @@ import VGParallaxHeader
         self.automaticallyAdjustsScrollViewInsets = false
         
         self.setupHeaderView()
+        
+        self.data = [String: AnyObject]()//храним данные
         
         self.view.backgroundColor = kColorBackgroundViewController
         self.tableView.backgroundColor = kColorBackgroundViewController
@@ -94,41 +100,94 @@ import VGParallaxHeader
     func setupSections() {
         var row: XLFormRowDescriptor
         var section: XLFormSectionDescriptor
+        var owner = self.owner!
         
         section = XLFormSectionDescriptor()
         self.form.addFormSection(section)
         
         row = XLFormRowDescriptor(tag: tag.firstName, rowType: XLFormRowDescriptorTypeText, title: "First Name".uppercaseString)
+        row.value = owner[kUserFirstNameKey] as? String
         self.stylesRow(row)
+        self.stylesTextFieldRow(row)
         section.addFormRow(row)
+        
 
         row = XLFormRowDescriptor(tag: tag.lastName, rowType: XLFormRowDescriptorTypeText, title: "Last Name".uppercaseString)
+        row.value = owner[kUserLastNameKey] as? String
         self.stylesRow(row)
+        self.stylesTextFieldRow(row)
         section.addFormRow(row)
+        
+        
+        row = XLFormRowDescriptor(tag: tag.userName, rowType: XLFormRowDescriptorTypeText, title: "User Name".uppercaseString)
+        row.value = owner[kUserUsernameKey] as? String
+        self.stylesRow(row)
+        self.stylesTextFieldRow(row)
+        section.addFormRow(row)
+        
         
         section = XLFormSectionDescriptor()
         self.form.addFormSection(section)
 
         row = XLFormRowDescriptor(tag: tag.country, rowType: XLFormRowDescriptorTypeText, title: "Country".uppercaseString)
+        row.value = owner[kUserCountryKey] as? String
         self.stylesRow(row)
-        section.addFormRow(row)
-
-        row = XLFormRowDescriptor(tag: tag.country, rowType: XLFormRowDescriptorTypeText, title: "City".uppercaseString)
-        self.stylesRow(row)
+        self.stylesTextFieldRow(row)
         section.addFormRow(row)
         
-        row = XLFormRowDescriptor(tag: tag.dateOfBirth, rowType: XLFormRowDescriptorTypeDate, title: "Date of birth".uppercaseString)
+
+        row = XLFormRowDescriptor(tag: tag.city, rowType: XLFormRowDescriptorTypeText, title: "City".uppercaseString)
+        row.value = owner[kUserCityKey] as? String
         self.stylesRow(row)
+        self.stylesTextFieldRow(row)
         section.addFormRow(row)
-    
+        
+        
+        row = XLFormRowDescriptor(tag: tag.dateOfBirth, rowType: XLFormRowDescriptorTypeDate, title: "Date of birth".uppercaseString)
+        row.value = owner[kUserDateOfBirthKey] as? NSDate
+        self.stylesRow(row)
+//        self.stylesTextFieldRow(row)
+        section.addFormRow(row)
     }
     
+    func stylesTextFieldRow(row: XLFormRowDescriptor) {
+//        var t = UITextField()
+//        t.clearButtonMode = UITextFieldViewMode.Never
+        
+        row.cellConfig.setObject(UIFont(name: "OpenSans", size: 12)!, forKey: "textField.font")
+        row.cellConfig.setObject(UIColor(red:0.33, green:0.39, blue:0.42, alpha:1), forKey: "textField.textColor")
+//        row.cellConfig.setObject(NSTextAlignment.Right.rawValue, forKey: "textField.textAlignment")
+        row.cellConfig.setObject(UITextFieldViewMode.Never.rawValue, forKey: "textField.clearButtonMode")
+    }
+    
+    
     func didTapDone(sender: AnyObject?) {
-        popViewController()
+        
+        for (key, value) in self.data! {
+            self.owner?.setObject(value, forKey: key)
+        }
+        
+        let overlay = OverlayView.createInView(self.view)
+        self.owner!.saveInBackground().continueWithBlock { (task: BFTask!) -> AnyObject! in
+            dispatch_async(dispatch_get_main_queue()) {
+                overlay.removeFromSuperview()
+                self.popViewController()
+                NSNotificationCenter.defaultCenter().postNotificationName(kUserUpdateProfile, object: self.owner!)
+            }
+            
+            return task
+        }
     }
 
     func didTapCancel(sender: AnyObject?) {
        popViewController()
+    }
+    
+    override func formRowDescriptorValueHasChanged(formRow: XLFormRowDescriptor!, oldValue: AnyObject!, newValue: AnyObject!) {
+        
+        if let tag = formRow.tag {
+            self.data![tag] = newValue
+        }
     }
     
     func popViewController() {
@@ -149,9 +208,5 @@ import VGParallaxHeader
         profile.owner = model
         
         return profile
-    }
-    
-    class func CreateWithId(objectId: String) -> ProfileEditViewController {
-        return CreateWithModel(PFObject(withoutDataWithClassName: "_User", objectId: objectId))
     }
 }

@@ -23,8 +23,23 @@ enum MyNavigationBar: Int {
 
 //create Navigation bar
 extension UIViewController {
+    
+    var sideMenuView: Bool {
+        if let nc = self.navigationController {
+            let controllers = nc.viewControllers as! [UIViewController]
+            if controllers.count > 1 {
+                return false
+            }
+        }
+        return true
+    }
+    
     var imageLeftBtn: String {
-        return kImageNamedForBackBtn
+        if self.sideMenuView {
+            return kImageNamedForMenuBtn
+        } else {
+            return kImageNamedForBackBtn
+        }
     }
     
     func configureTitleView() {
@@ -138,11 +153,19 @@ extension UIViewController {
     }
     
     func didTapLeftBtn(sender: UIButton) {
-        navigationController?.popViewControllerAnimated(true)
+        
+        if self.sideMenuView {
+            if let sideMenu = sideMenuController() {
+                sideMenu.showLeftViewAnimated(true, completionHandler: nil)
+            }
+        } else {
+            navigationController?.popViewControllerAnimated(true)
+        }
     }
     
     func createFakeNavigationBar() -> UINavigationBar {
-        let fakeNavigationBar = UINavigationBar(frame: CGRectMake(0, 20, 320, 44))
+        let frame = CGRectMake(0, 20, 320, 44)
+        let fakeNavigationBar = UINavigationBar(frame: frame)
         fakeNavigationBar.barStyle = UIBarStyle.Default
         fakeNavigationBar.delegate = self
 
@@ -151,6 +174,8 @@ extension UIViewController {
         fakeNavigationBar.items = [navigationItem]
         
         view.addSubview(fakeNavigationBar)
+        
+        BaseUIView.constraintToTop(fakeNavigationBar, size: frame.size, offset: 20)
         
         return fakeNavigationBar
     }

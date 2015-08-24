@@ -47,9 +47,4 @@ extension UIButton {
         
         menuBottomHairline.backgroundColor = color
     }
-    
-    func cornerEdge() {
-        self.layer.cornerRadius = CGRectGetHeight(self.frame) * 0.5
-        self.layer.masksToBounds = true
-    }
 }

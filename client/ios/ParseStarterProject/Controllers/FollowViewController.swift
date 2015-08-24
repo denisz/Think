@@ -34,6 +34,11 @@ import ParseUI
         self.configureNavigationBarBackBtn(kColorNavigationBar)
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        UIApplication.sharedApplication().setStatusBarStyle(.Default, animated: true)
+    }
+    
     override func queryForTable() -> PFQuery {
         var query = PFQuery(className: self.parseClassName!)
         query.whereKey(kActivityFromUserKey, equalTo: owner!)

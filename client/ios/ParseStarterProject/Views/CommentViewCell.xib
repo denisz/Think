@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="OpenSans-Light.ttf">
+            <string>OpenSans-Light</string>
+        </mutableArray>
+        <mutableArray key="OpenSans-Regular.ttf">
+            <string>OpenSans</string>
+        </mutableArray>
+        <mutableArray key="OpenSans-Semibold.ttf">
+            <string>OpenSans-Semibold</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentViewCell" rowHeight="130" id="nfC-ul-y6E" customClass="CommentViewCell" customModule="Think" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="130"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nfC-ul-y6E" id="Mfc-gs-x6a">
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ava_profile" translatesAutoresizingMaskIntoConstraints="NO" id="azf-B7-h6h" customClass="UIImageCircle" customModule="Think" customModuleProvider="target">
+                        <rect key="frame" x="15" y="15" width="34" height="34"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="34" id="6sR-tl-ht5"/>
+                            <constraint firstAttribute="width" constant="34" id="vkL-ug-3fF"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 min ago" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rLf-dB-bY2">
+                        <rect key="frame" x="225" y="11" width="80" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="Ouf-xs-0cA"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="11"/>
+                        <color key="textColor" red="0.64705997709999996" green="0.64705997709999996" blue="0.64705997709999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MARY GREEN" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kdk-nG-p7w">
+                        <rect key="frame" x="64" y="11" width="154" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="l7G-Vn-hNK"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
+                        <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="It would be great to see Dany on podium first time." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lZy-Yo-LfQ" userLabel="Message">
+                        <rect key="frame" x="64" y="39" width="241" height="75.5"/>
+                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="13"/>
+                        <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstItem="azf-B7-h6h" firstAttribute="top" secondItem="Mfc-gs-x6a" secondAttribute="top" constant="15" id="4jy-8b-08h"/>
+                    <constraint firstItem="Kdk-nG-p7w" firstAttribute="leading" secondItem="azf-B7-h6h" secondAttribute="trailing" constant="15" id="6Dl-Km-OsA"/>
+                    <constraint firstItem="rLf-dB-bY2" firstAttribute="top" secondItem="Kdk-nG-p7w" secondAttribute="top" id="8tt-B8-S5C"/>
+                    <constraint firstItem="azf-B7-h6h" firstAttribute="top" secondItem="Kdk-nG-p7w" secondAttribute="top" constant="4" id="CsS-aK-Ugb"/>
+                    <constraint firstItem="lZy-Yo-LfQ" firstAttribute="leading" secondItem="Kdk-nG-p7w" secondAttribute="leading" id="D3X-RP-ddY"/>
+                    <constraint firstItem="rLf-dB-bY2" firstAttribute="trailing" secondItem="lZy-Yo-LfQ" secondAttribute="trailing" id="K1Z-WU-zIS"/>
+                    <constraint firstItem="rLf-dB-bY2" firstAttribute="leading" secondItem="Kdk-nG-p7w" secondAttribute="trailing" constant="7" id="PW3-T9-tJi"/>
+                    <constraint firstItem="rLf-dB-bY2" firstAttribute="bottom" secondItem="Kdk-nG-p7w" secondAttribute="bottom" id="SEX-GI-ZJH"/>
+                    <constraint firstAttribute="bottom" secondItem="lZy-Yo-LfQ" secondAttribute="bottom" constant="15" id="dDB-BH-AEz"/>
+                    <constraint firstAttribute="trailing" secondItem="rLf-dB-bY2" secondAttribute="trailing" constant="15" id="g9r-62-tpy"/>
+                    <constraint firstItem="lZy-Yo-LfQ" firstAttribute="top" secondItem="Kdk-nG-p7w" secondAttribute="bottom" constant="7" id="oym-3M-mFl"/>
+                    <constraint firstItem="azf-B7-h6h" firstAttribute="leading" secondItem="Mfc-gs-x6a" secondAttribute="leading" constant="15" id="s2X-1N-5Y6"/>
+                    <constraint firstItem="rLf-dB-bY2" firstAttribute="leading" secondItem="Kdk-nG-p7w" secondAttribute="trailing" constant="7" id="zCd-uu-lwj"/>
+                </constraints>
+            </tableViewCellContentView>
+            <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+            <connections>
+                <outlet property="authorName" destination="Kdk-nG-p7w" id="Tbu-zT-8li"/>
+                <outlet property="authorPicture" destination="azf-B7-h6h" id="Co6-tI-TG7"/>
+                <outlet property="body" destination="lZy-Yo-LfQ" id="Xc8-iI-mbN"/>
+                <outlet property="dateView" destination="rLf-dB-bY2" id="J0c-S8-WXF"/>
+            </connections>
+            <point key="canvasLocation" x="247" y="208"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ava_profile" width="170" height="170"/>
+    </resources>
+</document>

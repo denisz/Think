@@ -52,6 +52,12 @@ class SettingsPostViewController: BaseFormViewController {
         self.configureNavigationBarBackBtn(kColorNavigationBar)
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        UIApplication.sharedApplication().setStatusBarStyle(.Default, animated: true)
+    }
+    
     func configureNavigationBarRightBtn(color: UIColor) {
         let navigationItem  = self.defineNavigationItem()
         
@@ -66,9 +72,7 @@ class SettingsPostViewController: BaseFormViewController {
     }
     
     func didTapSendBtn(sender: AnyObject?) {
-        let overlay = self.createOverlay()
-        println(self.data!)
-        println(self.data![kPostTagsKey])
+        let overlay = OverlayView.createInView(self.view)
         Post.publicPost(self.object!, withSettings: self.data!).continueWithBlock { (task: BFTask!) -> AnyObject! in
             
             dispatch_async(dispatch_get_main_queue()) {

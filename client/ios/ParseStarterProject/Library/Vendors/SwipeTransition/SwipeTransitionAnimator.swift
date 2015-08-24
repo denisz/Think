@@ -84,7 +84,7 @@ class SwipeTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     }
     
     func addShadowLayerTo(view: UIView) {
-        let shadowRect = CGRectMake(-3, 0, 6, view.frame.height)
+        let shadowRect = CGRectMake(-5, 0, 6, view.frame.height)
         let shadowBezier = UIBezierPath(rect: shadowRect)
         view.layer.shadowPath = shadowBezier.CGPath
         view.layer.shadowOpacity = 0.2

@@ -28,6 +28,14 @@ class Post: PFObject, PFSubclassing {
         return kPostClassKey
     }
     
+    class func usernameOwner(post: PFObject) ->String {
+        if let user = post[kPostOwnerKey] as? PFObject {
+             return user[kUserUsernameKey] as! String
+        }
+        
+        return ""
+    }
+    
     class func stringForShare(post: PFObject) -> String {
         if let contentShort = post[kPostContentShortKey] as? String {
             return contentShort
@@ -52,14 +60,14 @@ class Post: PFObject, PFSubclassing {
         return false
     }
     
-    class func raisePost(post: PFObject) -> BFTask {
+    class func raisePost(post: PFObject) {
         let user = PFUser.currentUser()
         let postACL = PFACL(user: user!)
         postACL.setPublicReadAccess(false)
         post.ACL = postACL
         post.setObject(kPostStatusDraft, forKey: kPostStatusKey)
         
-        return post.saveInBackground()
+        NSNotificationCenter.defaultCenter().postNotificationName(kUserRaisePost, object: post)
     }
     
     class func publicPost(post: PFObject, var withSettings: [String: AnyObject]) -> BFTask {

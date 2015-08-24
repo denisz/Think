@@ -3,18 +3,10 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "Think.MessagesViewController.objectsDidLoad (Think.MessagesViewController)(Swift.Optional&lt;ObjectiveC.NSError&gt;) -&gt; ():MessagesViewController.swift">
+         contextName = "Think.MyQueryTableViewController.objectAtIndexPath (Think.MyQueryTableViewController)(ObjectiveC.NSIndexPath) -&gt; Swift.Optional&lt;ObjectiveC.PFObject&gt;:MyQueryTableViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "self.objects!.count">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "Think.ProfileViewController.tableView (Think.ProfileViewController)(ObjectiveC.UITableView, didSelectRowAtIndexPath : ObjectiveC.NSIndexPath, object : Swift.Optional&lt;ObjectiveC.PFObject&gt;) -&gt; ():ProfileViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "object.objectId">
+               value = "self.objects!.count - indexPath.row - 1">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -33,10 +25,32 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "Think.CommentsViewController.setupInputBar (Think.CommentsViewController)() -&gt; ():CommentsViewController.swift">
+      </ContextState>
+      <ContextState
          contextName = "Think.MessagesViewController.viewDidLoad (Think.MessagesViewController)() -&gt; ():MessagesViewController.swift">
          <PersistentStrings>
             <PersistentString
                value = "self.tableView">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Think.MessagesViewController.objectsDidLoad (Think.MessagesViewController)(Swift.Optional&lt;ObjectiveC.NSError&gt;) -&gt; ():MessagesViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.objects!.count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Think.InputBarView.didTapRightButton (Think.InputBarView)() -&gt; ():InputBarView.swift">
+      </ContextState>
+      <ContextState
+         contextName = "Think.ProfileViewController.tableView (Think.ProfileViewController)(ObjectiveC.UITableView, didSelectRowAtIndexPath : ObjectiveC.NSIndexPath, object : Swift.Optional&lt;ObjectiveC.PFObject&gt;) -&gt; ():ProfileViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "object.objectId">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

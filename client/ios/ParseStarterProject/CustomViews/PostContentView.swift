@@ -11,8 +11,6 @@ import Parse
 import ParseUI
 import UIKit
 
-let kReusablePostBlockViewCell =  "PostBlockViewCell"
-
 class PostContentView: UITableView  {
     @IBOutlet weak var heightLayoutConstraint: NSLayoutConstraint!
     
