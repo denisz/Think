@@ -31,6 +31,7 @@ PODS:
   - PureLayout (2.0.6)
   - Reachability (3.2)
   - SlackTextViewController (1.6)
+  - TOCropViewController (1.0.6)
   - VGParallaxHeader (0.0.6):
     - PureLayout
   - XLForm (3.0.1)
@@ -52,6 +53,7 @@ DEPENDENCIES:
   - LTMorphingLabel (~> 0.0.7)
   - MXSegmentedPager
   - SlackTextViewController (~> 1.5)
+  - TOCropViewController
   - VGParallaxHeader
   - XLForm (from `https://github.com/xmartlabs/XLForm.git`)
 
@@ -84,6 +86,7 @@ SPEC CHECKSUMS:
   PureLayout: f25f0bb904d5ccfe6e31da3cb869185259f02e0d
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   SlackTextViewController: 84e1e4b7f12a8e3691cf97ca61c934b99058a2e8
+  TOCropViewController: a8589f4a62e633fc0fbf13a113b3dff042932d67
   VGParallaxHeader: 1213aba58c9b0aea84f9e81ad526fde57aa4fe48
   XLForm: 98ee32c6087e18186c78c4a9f7a00b1b728ca945
 

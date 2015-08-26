@@ -150,6 +150,12 @@
 #define COCOAPODS_VERSION_MINOR_SlackTextViewController 6
 #define COCOAPODS_VERSION_PATCH_SlackTextViewController 0
 
+// TOCropViewController
+#define COCOAPODS_POD_AVAILABLE_TOCropViewController
+#define COCOAPODS_VERSION_MAJOR_TOCropViewController 1
+#define COCOAPODS_VERSION_MINOR_TOCropViewController 0
+#define COCOAPODS_VERSION_PATCH_TOCropViewController 6
+
 // VGParallaxHeader
 #define COCOAPODS_POD_AVAILABLE_VGParallaxHeader
 #define COCOAPODS_VERSION_MAJOR_VGParallaxHeader 0

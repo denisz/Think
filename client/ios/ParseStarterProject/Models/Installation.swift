@@ -21,11 +21,15 @@ class Installation {
     
     class func registerPushDevice() {
         let user = PFUser.currentUser()
-        let privateChannelName = "user_\(user!.objectId)"
         let install = PFInstallation.currentInstallation()
         install.setObject(user!, forKey: kInstallationUserKey)
-        install.addUniqueObject(privateChannelName, forKey: kInstallationChannelsKey)
+//        install.addUniqueObject(privateChannelName, forKey: kInstallationChannelsKey)
         install.saveEventually()
+    }
+    
+    class func eventsPush() {
+       let install = PFInstallation.currentInstallation()
+        install.setObject([kActivityTypeComment, kActivityTypeFollow, kActivityTypeLike], forKey: kInstallationEventsKey)
     }
 
 }

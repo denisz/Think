@@ -44,9 +44,21 @@ class ProfileHeaderView: BaseProfileHeaderView {
         self.delegate?.profileView(self, didTapDrafts: self.draftsButton)
     }
     
-    override func viewDidLoadObject(object: PFObject) {
-        super.viewDidLoadObject(object)
+    override func objectDidLoad(object: PFObject) {
+        super.objectDidLoad(object)
+        
         self.profileName.text = object[kUserUsernameKey] as? String
+        
+        self.profilePicture.image = kUserPlaceholder
+        self.profilePicture.file = UserModel.pictureImage(object)
+        
+        self.profileCover.image = kUserCoverPlaceholder
+        self.profileCover.file = UserModel.coverImage(object)
+        
+        self.profileCover.loadInBackground()
+        self.profilePicture.loadInBackground()
+        
+        self.profilePicture.cornerEdge()
     }
     
     override func viewDidLoad() {
@@ -54,7 +66,5 @@ class ProfileHeaderView: BaseProfileHeaderView {
         
         self.newPostButton.borderLeft(UIColor.lightGrayColor())
         self.draftsButton.borderLeft(UIColor.lightGrayColor())
-        
-        self.profilePicture.cornerEdge()
     }
 }

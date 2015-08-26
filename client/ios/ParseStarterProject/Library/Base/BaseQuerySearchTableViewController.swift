@@ -12,33 +12,20 @@ import ParseUI
 import Bolts
 
 class BaseQuerySearchTableViewController: BaseQueryTableViewController {
-    var searchController: UISearchController?
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var searchBarTopLayoutConstraint: NSLayoutConstraint!
+    
     private var searchText: String = ""
 
     func getSearchText() -> String? {
         return searchText.isEmpty ? nil: searchText.lowercaseString
     }
     
-    func configureSearchBar() {
-        self.extendedLayoutIncludesOpaqueBars = true
-        self.definesPresentationContext = true
-        
-        searchController = UISearchController(searchResultsController: nil)
-//        searchController?.view.backgroundColor = UIColor.whiteColor()
-        searchController?.searchResultsUpdater = self
-        searchController?.hidesNavigationBarDuringPresentation = false
-        searchController?.dimsBackgroundDuringPresentation = false
-        searchController?.searchBar.sizeToFit()
-        searchController?.searchBar.showsCancelButton = false
-        searchController?.searchBar.tintColor = kColorNavigationBar
-        searchController?.searchBar.translucent = false
-        searchController?.searchBar.barTintColor = UIColor.whiteColor()
-        searchController?.searchBar.searchBarStyle = UISearchBarStyle.Default
-        searchController?.searchBar.delegate = self
-        searchController?.searchBar.setBackgroundImage(UIImage(), forBarPosition: UIBarPosition.Any, barMetrics: UIBarMetrics.Default)
-        
-        self.tableView.tableHeaderView = searchController!.searchBar
+    override func topConstraintForNavigationBar() -> NSLayoutConstraint? {
+        return self.searchBarTopLayoutConstraint
     }
+    
+    func customizeSearchBar() {}
 }
 
 extension BaseQuerySearchTableViewController: UISearchResultsUpdating {

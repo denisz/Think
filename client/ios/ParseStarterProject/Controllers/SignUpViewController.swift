@@ -17,13 +17,16 @@ protocol SignUpViewControllerDelegate {
 }
 
 @objc(SignUpViewController) class SignUpViewController: UIViewController {
-    @IBOutlet weak var message: UILabel!
-    @IBOutlet weak var fadeActivity: UIView!
-    @IBOutlet weak var nickname: UITextField!
-    @IBOutlet weak var emailAddress: UITextField!
-    @IBOutlet weak var password: UITextField!
-    @IBOutlet weak var login: UIButton!
-    @IBOutlet weak var signUp: UIButton!
+    @IBOutlet weak var message      : UILabel!
+    @IBOutlet weak var fadeActivity : UIView!
+    
+    @IBOutlet weak var nickname         : UITextField!
+    @IBOutlet weak var emailAddress     : UITextField!
+    @IBOutlet weak var password         : UITextField!
+    
+    @IBOutlet weak var login    : UIButton!
+    @IBOutlet weak var signUp   : UIButton!
+    
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
     @IBOutlet weak var betweenSigninAndNicknameConstraint: NSLayoutConstraint!
     @IBOutlet weak var betweenSigninAndEmailConstraint: NSLayoutConstraint!
@@ -43,6 +46,10 @@ protocol SignUpViewControllerDelegate {
         self.emailAddress   .borderBottom(color)
         self.password       .borderBottom(color)
         self.nickname       .borderBottom(color)
+        
+        self.emailAddress.delegate  = self
+        self.password.delegate      = self
+        self.nickname.delegate      = self
         
         self.signUp         .cornerEdge()
 
@@ -89,7 +96,31 @@ protocol SignUpViewControllerDelegate {
         self.processSignUp()
     }
     
+    func validation() -> Bool {
+        var userEmailAddress = emailAddress.text
+        let userPassword = password.text
+        let userName = nickname.text
+        if userName.isEmpty {
+            return false
+        }
+        
+        if userPassword.isEmpty {
+            return false
+        }
+        
+        if userEmailAddress.isEmpty {
+            return false
+        }
+        
+        return true
+    }
+    
     func processSignUp() {
+        if self.validation() {
+            self._processSignUp()
+        }
+    }
+    func _processSignUp() {
         // Start activity indicator
         self.fadeActivity.hidden = false
         self.hideKeyboard()
@@ -98,6 +129,7 @@ protocol SignUpViewControllerDelegate {
         let userPassword = password.text
         let userName = nickname.text
         
+        
         // Ensure username is lowercase
         userEmailAddress = userEmailAddress.lowercaseString
         
@@ -105,9 +137,19 @@ protocol SignUpViewControllerDelegate {
         
         // Create the user
         var user = PFUser()
-        user.username = userName
         user.password = userPassword
         user.email = userEmailAddress
+        user.username = userName
+        
+        user.setObject("", forKey: kUserLastNameKey)
+        user.setObject("", forKey: kUserFirstNameKey)
+        user.setObject("", forKey: kUserCountryKey)
+        user.setObject("", forKey: kUserCityKey)
+        
+        
+//        user.username = userName
+//        user.password = userPassword
+//        user.email = userEmailAddress
         
         user.signUpInBackgroundWithBlock {
             (succeeded: Bool, error: NSError?) -> Void in

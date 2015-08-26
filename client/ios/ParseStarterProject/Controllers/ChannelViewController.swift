@@ -13,7 +13,7 @@ import AsyncDisplayKit
 import LoremIpsum
 
 @objc(ChannelViewController) class ChannelViewController: BaseMessageCollectionView {
-    var owner: PFObject?
+    var owner: PFObject? //Thread
     
     private let users: [UserMessage]
     private var currentUser: UserMessage? {
@@ -104,7 +104,7 @@ import LoremIpsum
     override func didPressLeftButton(sender: AnyObject!) {
         super.didPressLeftButton(sender)
         
-        SelectImageHelper.selectAndUploadFile(self, sourceView: sender as! UIView, scenario: SeletImageHelperScenario.MessagePhoto)
+        SelectImageHelper.selectAndUploadFile(self, sourceView: sender as! UIView, scenario: .MessagePhoto)
     }
     
     override func didPressRightButton(sender: AnyObject!) {
@@ -153,6 +153,10 @@ import LoremIpsum
         dataSource.collectionView(collectionView, insertMessages: messages, completion: nil)
     }
     
+    func sendMessage(message: String) {
+        
+    }
+    
     func changeCurrentUser() {
         let otherUsers = users.filter({$0.ID != self.dataSource.currentUserID()})
         let newUser = otherUsers[random() % otherUsers.count]
@@ -167,6 +171,6 @@ import LoremIpsum
     }
     
     class func CreateWithId(objectId: String) -> ChannelViewController {
-        return CreateWithModel(PFObject(withoutDataWithClassName: "_User", objectId: objectId))
+        return CreateWithModel(PFObject(withoutDataWithClassName: "Thread", objectId: objectId))
     }
 }

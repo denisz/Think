@@ -146,4 +146,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 sourceApplication: sourceApplication,
                 annotation: annotation)
     }
+    
+    func applicationDidBecomeActive(application: UIApplication) {
+        if application.applicationIconBadgeNumber != 0 {
+           application.applicationIconBadgeNumber = 0
+            PFInstallation.currentInstallation().saveInBackground()
+        }
+
+        UIApplication.sharedApplication().cancelAllLocalNotifications()
+        application.applicationIconBadgeNumber = 1;
+        application.applicationIconBadgeNumber = 0;
+    }
 }

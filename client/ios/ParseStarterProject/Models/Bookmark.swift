@@ -32,7 +32,7 @@ class Bookmark: PFObject, PFSubclassing {
         let user = PFUser.currentUser()
         
         bookmark.setObject(user!, forKey: kBookmarkUserKey)
-        bookmark.setObject(post, forKey: kBookmarkPostKey)
+        bookmark.setObject(post,  forKey: kBookmarkPostKey)
         
         return bookmark.saveInBackground()
     }

@@ -22,8 +22,11 @@ import VGParallaxHeader
     @IBOutlet weak var dateView: UILabel!
     @IBOutlet weak var tagsView: UILabel!
     @IBOutlet weak var authorName: UILabel!
-    @IBOutlet weak var authorPicture: UIImageView!
+    @IBOutlet weak var authorPicture: PFImageView!
     @IBOutlet weak var commentsTableView: CommentsTableView!
+    
+    var headerView: PostViewHeaderView?
+    var stickyView: UIView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +36,25 @@ import VGParallaxHeader
         
         self.setupScrollView()
         self.setupNavigationBar()
+        self.setupStickyView()
+    }
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        self.scrollView.shouldPositionParallaxHeader()
+        self.fakeNavigationBar?.alpha   = self.scrollView.parallaxHeader.progress
+        self.stickyView?.alpha          = 1 - self.scrollView.parallaxHeader.progress
+    }
+    
+    func setupStickyView() {
+        let frame = CGRectMake(0, 0, 320, 20)
+        let view = UIView(frame: frame)
+        view.backgroundColor = UIColor(red:0.33, green:0.39, blue:0.42, alpha:1)
+        view.alpha = 0
+        
+        self.view.addSubview(view)
+        self.stickyView = view
+        
+        BaseUIView.constraintToTop(view, size: frame.size, offset: 0)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -65,18 +87,33 @@ import VGParallaxHeader
         super.objectDidLoad(object)
         
         self.authorName.text        = Post.usernameOwner(object)
-        self.likesCounter.text      = TransformString.likesCounter(object)
-        self.commentsCounter.text   = TransformString.commentsCounter(object, suffix: "comments".uppercaseString)
-        self.titleView.text         = object[kPostTitleKey] as? String
-        self.titleView.sizeToFit()
+        self.likesCounter.text      = Post.likesCounter(object)
+        self.commentsCounter.text   = Post.commentsCounter(object, suffix: "comments".uppercaseString)
+        self.titleView.text         = Post.title(object)
+        
+        self.authorPicture.image          = kUserPlaceholder
+        self.authorPicture.file           = Post.pictureOwner(object)
+        
+        self.authorPicture.loadInBackground()
+        self.authorPicture.cornerEdge()
+        
+        self.tagsView.text = Post.tagsString(object)
+        
         self.commentsTableView.object = self.object
         self.commentsTableView.loadObjects()
         
+        self.headerView?.objectDidLoad(object)
         self.contentView.updateObject(object)
     }
     
+    override func queryForView() -> PFQuery {
+        let query = PFQuery(className: self.parseClassName!)
+        query.includeKey(kPostOwnerKey)
+        return query;
+    }
+    
     func updateColorAndCountLikes(like: Bool) {
-        self.likesCounter.text = TransformString.likesCounter(self.object!)
+        self.likesCounter.text = Post.likesCounter(self.object!)
 
         if like {
             likesCounter.setColor(UIColor(red:0, green:0.64, blue:0.85, alpha:1))
@@ -86,23 +123,14 @@ import VGParallaxHeader
     }
     
     func setupScrollView() {
-       let header = PostViewHeaderView()
-        header.object = self.object
-        header.parentController = self
+        self.headerView = PostViewHeaderView()
         
         self.scrollView.delegate = self
-        self.scrollView.setParallaxHeaderView(header, mode: VGParallaxHeaderMode.Fill, height: 245)
+        self.scrollView.setParallaxHeaderView(self.headerView!, mode: VGParallaxHeaderMode.Fill, height: 245)
         
         let doubleTapGesture = UITapGestureRecognizer(target: self, action: "didDoubleTapBookmarkPost")
         doubleTapGesture.numberOfTapsRequired = 2
-        header.addGestureRecognizer(doubleTapGesture)
-    }
-    
-    func scrollViewDidScroll(scrollView: UIScrollView) {
-        self.scrollView.shouldPositionParallaxHeader()
-        
-        //загрузка комментариев
-        //если комментарии видны начинаем загружать
+        self.headerView!.addGestureRecognizer(doubleTapGesture)
     }
     
     func configureNavigationBarRightBtn(color: UIColor) {
@@ -166,6 +194,7 @@ import VGParallaxHeader
     func didDoubleTapBookmarkPost() {
         if let header = self.scrollView.parallaxHeader {
             BookmarkMarkView.showInCenterView(header)
+            Bookmark.createWith(self.object!)
         }
     }
     
@@ -210,14 +239,13 @@ import VGParallaxHeader
     }
     
     dynamic func userFollowOrUnFollowAuthorPost(notification: NSNotification) {
-        println("userFollowOrUnFollowAuthorPost \(notification)")
-//        notification
         followAuthor.selectedOnSet(true)
     }
     
     class func CreateWithModel(model: PFObject) -> PostViewController {
         var post = PostViewController()
         post.object = model
+        post.parseClassName = kPostClassKey
         
         return post
     }

@@ -12,7 +12,7 @@ import ParseUI
 import LoremIpsum
 import VGParallaxHeader
 
-@objc(MessagesViewController) class MessagesViewController: BaseQuerySearchTableViewController {
+@objc(MessagesViewController) class MessagesViewController: BaseQueryTableViewController {
     var owner: PFObject?
 
     override func viewDidLoad() {
@@ -26,8 +26,7 @@ import VGParallaxHeader
         self.tableView.estimatedRowHeight = 44.0;
         self.tableView.rowHeight = UITableViewAutomaticDimension;
         self.tableView.tableFooterView = UIView()
-        
-        self.configureSearchBar()
+
         self.setupNavigationBar()
     }
     
@@ -75,19 +74,14 @@ import VGParallaxHeader
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         UIApplication.sharedApplication().setStatusBarStyle(.Default, animated: true)
-//        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default;
     }
     
     override func queryForTable() -> PFQuery {
         let query = PFQuery(className: self.parseClassName!)
         
-        query.whereKey("owner", equalTo: owner!)
-        
-        if let searchText = self.getSearchText() {
-            query.whereKey("content_search", hasPrefix: searchText)
-        }
-
+        query.whereKey(kThreadParticipantsKey, containedIn: [self.owner!])
         query.orderByDescending("createdAt")
+        
         return query
     }
     
@@ -109,7 +103,7 @@ import VGParallaxHeader
     class func CreateWithModel(model: PFObject) -> MessagesViewController{
         var messages = MessagesViewController()
         messages.owner = model
-        messages.parseClassName = "Post"
+        messages.parseClassName = kThreadClassKey
         messages.paginationEnabled = true
         messages.pullToRefreshEnabled = false
         

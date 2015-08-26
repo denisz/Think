@@ -11,7 +11,7 @@ import UIKit
 import Parse
 import ParseUI
 
-@objc(FollowersViewController) class FollowersViewController: BaseQuerySearchTableViewController {
+@objc(FollowersViewController) class FollowersViewController: BaseQueryTableViewController {
     var owner: PFObject?
     
     override func viewDidLoad() {
@@ -44,7 +44,7 @@ import ParseUI
 
     override func queryForTable() -> PFQuery {
         var query = PFQuery(className: self.parseClassName!)
-        query.whereKey(kActivityToUserKey, equalTo: owner!)
+        query.whereKey(kActivityToUserKey, equalTo: self.owner!)
         query.whereKey(kActivityTypeKey, equalTo: kActivityTypeFollow)
         query.orderByDescending("createdAt")
         query.includeKey(kActivityFromUserKey)
@@ -71,7 +71,7 @@ import ParseUI
         followers.owner = model
         followers.parseClassName = kActivityClassKey
         followers.paginationEnabled = true
-        followers.pullToRefreshEnabled = false
+        followers.pullToRefreshEnabled = true
         
         return followers
     }

@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AD0A7B28EE68525854AE4D74"
+               BlueprintIdentifier = "A1A6CE996B4630157F1440F7"
                BuildableName = "LGFilterView.framework"
                BlueprintName = "Pods-Think-LGFilterView"
                ReferencedContainer = "container:Pods.xcodeproj">

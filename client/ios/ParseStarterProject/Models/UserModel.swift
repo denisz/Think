@@ -21,4 +21,29 @@ class UserModel: PFUser {
     class func Anonymous() -> Bool {
         return PFAnonymousUtils.isLinkedWithUser(PFUser.currentUser())
     }
+    
+    class func username(user: PFObject) -> String {
+        if let name = user[kUserUsernameKey] as? String {
+            return name.uppercaseString
+        }
+        
+        return kUserHiddenName
+    }
+
+    class func pictureImage(user: PFObject) -> PFFile? {
+        if let picture = user[kUserProfilePictureKey] as? PFFile {
+            return picture
+        }
+        
+        return  nil
+    }
+    
+    class func coverImage(user: PFObject) -> PFFile? {
+        if let picture = user[kUserProfileCoverKey] as? PFFile {
+            return picture
+        }
+        
+        return  nil
+    }
+
 }

@@ -15,6 +15,7 @@ target 'Think' do
     	pod 'LGHelper', '~> 1.0.0'
 	pod 'LoremIpsum', '~> 1.0'
 	pod 'JGProgressHUD'
+	pod 'TOCropViewController'
 	pod 'AsyncDisplayKit', '~> 1.2.3'
 	pod 'SlackTextViewController', '~> 1.5' 
 	pod 'VGParallaxHeader'

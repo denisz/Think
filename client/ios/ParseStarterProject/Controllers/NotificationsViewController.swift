@@ -14,6 +14,8 @@ import Bolts
 
 @objc(NotificationsViewController) class NotificationsViewController: BaseQueryTableViewController {
     var owner: PFObject?
+    var filterTypeNotifications: [AnyObject] = [kActivityTypeFollow, kActivityTypeComment, kActivityTypeLike]
+    var notificationFilterView: NotificationFilterView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +44,6 @@ import Bolts
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         UIApplication.sharedApplication().setStatusBarStyle(.Default, animated: true)
-//        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default;
     }
     
     func configureNavigationBarRightBtn(color: UIColor) {
@@ -64,19 +65,27 @@ import Bolts
     }
     
     func didTapSettingsBtn(sender: AnyObject?) {
-        self.didTapFilter()
+        self.didTapTitle()
     }
     
-    override func didTapFilter() {
+    override func didTapTitle() {
         let innerView = NotificationFilterView()
-        innerView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 5 * 64)
+        innerView.selectedItems = self.filterTypeNotifications as? [String]
+        innerView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 3 * 64)
         self.showFilterUnderTitle(innerView)
+        self.notificationFilterView = innerView
     }
     
+    //todo: добавить список типов активности
     override func queryForTable() -> PFQuery {
-        var query = PFQuery(className: self.parseClassName!)
-        query.whereKey("owner", equalTo: owner!)
-        query.orderByDescending("createdAt")
+        let query = PFQuery(className: kActivityClassKey)
+        //чекаем кто меняет лайкает следит комментирует мои посты
+        query.whereKey(kActivityTypeKey, containedIn: self.filterTypeNotifications)
+        query.whereKey(kActivityToUserKey, equalTo: self.owner!)
+        query.whereKey(kActivityFromUserKey, notEqualTo: self.owner!)
+        query.includeKey(kActivityFromUserKey)
+        query.orderByDescending(kClassCreatedAt)
+        
         return query
     }
     
@@ -104,17 +113,30 @@ import Bolts
         return UIStatusBarStyle.Default
     }
     
+    override func filterViewWillDismiss() {
+        let newFilters = self.notificationFilterView?.selectedItems
+        let oldFilters = self.filterTypeNotifications as? [String]
+        
+        
+        if newFilters?.count != oldFilters?.count {
+            self.filterTypeNotifications = newFilters!
+            self.loadObjects()
+        }
+        
+        self.notificationFilterView = nil
+    }
+    
     class func CreateWithModel(model: PFObject) -> NotificationsViewController {
         var notifications = NotificationsViewController()
         notifications.owner = model
-        notifications.parseClassName = "Post"
+        notifications.parseClassName = kActivityClassKey
         notifications.paginationEnabled = true
-        notifications.pullToRefreshEnabled = false
+        notifications.pullToRefreshEnabled = true
         
         return notifications
     }
     
     class func CreateWithId(objectId: String) -> NotificationsViewController {
-        return CreateWithModel(PFObject(withoutDataWithClassName: "_User", objectId: objectId))
+        return CreateWithModel(PFObject(withoutDataWithClassName: kUserClassKey, objectId: objectId))
     }
 }

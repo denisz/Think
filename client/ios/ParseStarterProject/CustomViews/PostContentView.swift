@@ -48,19 +48,19 @@ class PostContentView: UITableView  {
     
     func prepareBlocks() {
         if let object = self.object {
-            let blocks = object[kPostContentObjKey] as! NSArray //проверить что тут именно массив иначе упадет
-            for obj in blocks {
-                let postBlock = PostBlock(type: PostBlockType.Text)
-                postBlock.fromObject(obj as! [String : String])
-                self.blocks?.append(postBlock)
+            if let blocks = object[kPostContentObjKey] as? NSArray {
+                for obj in blocks {
+                    let postBlock = PostBlock(type: PostBlockType.Text)
+                    postBlock.fromObject(obj as! [String : String])
+                    self.blocks?.append(postBlock)
+                }
             }
         }
     }
 }
 
 
-extension PostContentView: UITableViewDelegate {
-}
+extension PostContentView: UITableViewDelegate {}
 
 extension PostContentView: UITableViewDataSource {
     func blockByIndexPath(indexPath: NSIndexPath) -> PostBlock {

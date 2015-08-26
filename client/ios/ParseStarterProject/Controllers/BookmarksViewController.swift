@@ -36,7 +36,7 @@ import VGParallaxHeader
     
     func setupHeaderView() {
         let header = BookmarkMainPostView()
-        header.object = self.owner
+//        header.objectDidLoad(self.owner!)
         self.collectionView!.setParallaxHeaderView(header, mode: VGParallaxHeaderMode.Fill, height: 240)
     }
     
@@ -73,7 +73,8 @@ import VGParallaxHeader
     override func queryForCollection() -> PFQuery {
         var query = PFQuery(className: self.parseClassName!)
         query.whereKey(kBookmarkUserKey, equalTo: owner!)
-        query.selectKeys([kBookmarkPostKey, kBookmarkPostOwnerKey])
+        query.includeKey(kBookmarkPostKey)
+        query.selectKeys([kBookmarkPostKey])
         query.orderByDescending(kClassCreatedAt)
         return query
     }
@@ -81,7 +82,7 @@ import VGParallaxHeader
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFCollectionViewCell? {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kReusableBookmarksViewCell, forIndexPath: indexPath) as! BookmarksViewCell
         
-        if let post = object!["post"] as? PFObject {
+        if let post = object![kBookmarkPostKey] as? PFObject {
             cell.prepareView(post)
         }
         
@@ -89,7 +90,8 @@ import VGParallaxHeader
     }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath, object: PFObject?) {
-        if let post = object!["post"] as? PFObject {
+        
+        if let post = object![kBookmarkPostKey] as? PFObject {
             let controller = PostViewController.CreateWithModel(post)
             self.navigationController?.pushViewController(controller, animated: true)
         }

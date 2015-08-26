@@ -1,5 +1,5 @@
+var _ = require('underscore');
 var Post = Parse.Object.extend("Post");
-
 var kPostContentObjKey 	= "content_obj";
 var kPostTitleKey 		= "title";
 

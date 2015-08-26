@@ -23,6 +23,9 @@ class SettingsViewController: BaseFormViewController {
         static let vibration    = "vibration"
         static let alert        = "alert"
         static let logout       = "logout"
+        static let privacy      = "privacy"
+        static let clearCache   = "clearCache"
+        static let feedback     = "feedback"
     }
     
     override func viewDidLoad() {
@@ -31,14 +34,14 @@ class SettingsViewController: BaseFormViewController {
         self.form = XLFormDescriptor()
         
         
-        self.view.backgroundColor = kColorBackgroundViewController
+        self.view.backgroundColor       = kColorBackgroundViewController
+        self.tableView.backgroundColor  = kColorBackgroundViewController
+        self.tableView.separatorStyle   = UITableViewCellSeparatorStyle.None
         
-        self.tableView.backgroundColor = kColorBackgroundViewController
-        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
-        
-        self.setupSectionSocial()
+//        self.setupSectionSocial()
         self.setupNotify()
-        self.setupNewMessage()
+//        self.setupNewMessage()
+        self.setupPrivacy()
         self.logoutBtn()
         
         self.setupNavigationBar()
@@ -61,49 +64,97 @@ class SettingsViewController: BaseFormViewController {
         var row: XLFormRowDescriptor
         self.form.addFormSection(section)
         
-        row = XLFormRowDescriptor(tag: tag.facebook, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Facebook".uppercaseString)
+        row = XLFormRowDescriptor(tag: tag.facebook, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Facebook".uppercaseString.localized)
         self.stylesRow(row)
         section.addFormRow(row)
         
-        row = XLFormRowDescriptor(tag: tag.twitter, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Twitter".uppercaseString)
+        row = XLFormRowDescriptor(tag: tag.twitter, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Twitter".uppercaseString.localized)
         self.stylesRow(row)
         section.addFormRow(row)
     }
     
+    func selectorsByArray(options: [(String, String)]) -> [XLFormOptionsObject]{
+        var result = [XLFormOptionsObject]()
+        var option: [String: String]
+        
+        for option in options {
+            var obj = XLFormOptionsObject(value: option.0, displayText: option.1)
+            result.append(obj)
+        }
+        
+        return result
+    }
+    
     func setupNotify() {
+        let install = PFInstallation.currentInstallation()
+        
         var section = XLFormSectionDescriptor()
         var row: XLFormRowDescriptor
         self.form.addFormSection(section)
         
-        row = XLFormRowDescriptor(tag: tag.apn, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Push notifications".uppercaseString)
+        row = XLFormRowDescriptor(tag: tag.apn, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Push notifications".uppercaseString.localized)
+        
+        if let connect = install[kInstallationUserKey] as? PFObject {
+            row.value = true
+        }
+        
         self.stylesRow(row)
         section.addFormRow(row)
         
-        row = XLFormRowDescriptor(tag: tag.events, rowType: XLFormRowDescriptorTypeSelectorActionSheet, title: "events".uppercaseString)
-        row.selectorOptions = ["Followers", "Messages"]
+        row = XLFormRowDescriptor(tag: tag.events, rowType: XLFormRowDescriptorTypeMultipleSelector, title: "events".uppercaseString.localized)
+        row.selectorOptions = self.selectorsByArray([
+            (kActivityTypeFollow,       "Followers".localized),
+            (kActivityTypeLike,         "Likes".localized),
+            (kActivityTypeComment,      "Comments".localized),
+        ])
+        row.value = install[kInstallationEventsKey] as? [AnyObject]
         self.stylesRow(row)
+        section.addFormRow(row)
+    }
+    
+    func setupPrivacy() {
+        var section = XLFormSectionDescriptor()
+        var row: XLFormRowDescriptor
+        self.form.addFormSection(section)
+        
+        row = XLFormRowDescriptor(tag: tag.privacy, rowType: XLFormRowDescriptorTypeButton, title: "Privacy".uppercaseString.localized)
+        self.styleButtonsRow(row)
+        section.addFormRow(row)
+        
+        row = XLFormRowDescriptor(tag: tag.feedback, rowType: XLFormRowDescriptorTypeButton, title: "Feedback".uppercaseString.localized)
+        self.styleButtonsRow(row)
+        section.addFormRow(row)
+        
+        row = XLFormRowDescriptor(tag: tag.clearCache, rowType: XLFormRowDescriptorTypeButton, title: "Clear cache".uppercaseString.localized)
+        self.styleButtonsRow(row)
         section.addFormRow(row)
     }
     
     func setupNewMessage() {
         var section = XLFormSectionDescriptor()
-        section.title = "New messages".uppercaseString
+        section.title = "New messages".uppercaseString.localized
         var row: XLFormRowDescriptor
         
         self.form.addFormSection(section)
 
-        row = XLFormRowDescriptor(tag: tag.sound, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "sound".uppercaseString)
+        row = XLFormRowDescriptor(tag: tag.sound, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "sound".uppercaseString.localized)
         self.stylesRow(row)
         section.addFormRow(row)
         
-        row = XLFormRowDescriptor(tag: tag.vibration, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Vibration".uppercaseString)
+        row = XLFormRowDescriptor(tag: tag.vibration, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Vibration".uppercaseString.localized)
         self.stylesRow(row)
         section.addFormRow(row)
     }
     
+    func styleButtonsRow(row: XLFormRowDescriptor) {
+        row.cellConfig.setObject(UIColor(red:0.33, green:0.39, blue:0.42, alpha:1), forKey: "textLabel.textColor")
+        row.cellConfig.setObject(NSTextAlignment.Left.rawValue, forKey: "textLabel.textAlignment")
+        row.cellConfig.setObject(UIFont(name: "OpenSans-Semibold", size: 14)!, forKey: "textLabel.font")
+    }
+    
     func logoutBtn() {
         var section = XLFormSectionDescriptor()
-        var row = XLFormRowDescriptor(tag: tag.logout, rowType: XLFormRowDescriptorTypeButton, title: "logout".uppercaseString)
+        var row = XLFormRowDescriptor(tag: tag.logout, rowType: XLFormRowDescriptorTypeButton, title: "logout".uppercaseString.localized)
         
         self.form.addFormSection(section)
         
@@ -118,6 +169,56 @@ class SettingsViewController: BaseFormViewController {
         self.dismissViewControllerAnimated(true, completion: { () -> Void in
             Installation.unRegisterPushDevice()
         });
+        
+        PFQuery.clearAllCachedResults()
         PFUser.logOut()
+    }
+    
+    func performApn(newValue: AnyObject) {
+        if let access = newValue as? Bool {
+            if access  == true {
+                Installation.registerPushDevice()
+            } else {
+                Installation.unRegisterPushDevice()
+            }
+        }
+    }
+    
+    func performApnEvents(newValue: AnyObject) {
+        let install = PFInstallation.currentInstallation()
+        var events = [AnyObject]()
+        var values = newValue as! [AnyObject]
+        
+        for options in values {
+            var event: String
+            if options is XLFormOptionObject {
+                event = options.formValue() as! String
+            } else {
+                event = options as! String
+            }
+            
+            if !event.isEmpty {
+                events.append(event)
+            }
+        }
+        
+        install.setObject(events, forKey: kInstallationEventsKey)
+        install.saveInBackground()
+    }
+    
+    override func formRowDescriptorValueHasChanged(formRow: XLFormRowDescriptor!, oldValue: AnyObject!, newValue: AnyObject!) {
+        
+        if let rowTag = formRow.tag {
+            switch rowTag {
+            case tag.events:
+                self.performApnEvents(newValue)
+                break
+            case tag.apn:
+                self.performApn(newValue)
+                break
+            default:
+                println("settings is not perform")
+            }
+        }
     }
 }

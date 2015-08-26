@@ -4,13 +4,13 @@ Parse.Cloud.beforeSave("Bookmark", function(request, response) {
 	var post = request.object.get("post")
 	var user = request.object.get("user")
 	
-	var query = new Parse.Query(Bookmark);
+  var query = new Parse.Query(Bookmark);
     query.equalTo("user", user);
     query.equalTo("post", post);
     query.first({
       success: function(object) {
         if (object) {
-          response.error("A Bookmark with this stopId already exists.");
+          response.error("A Bookmark with this postId already exists.");
         } else {
           response.success();
         }

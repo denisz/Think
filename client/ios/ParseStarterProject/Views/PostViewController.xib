@@ -179,7 +179,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ed-fD-4ML" userLabel="Community">
                             <rect key="frame" x="0.0" y="273" width="320" height="68"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ava_profile" translatesAutoresizingMaskIntoConstraints="NO" id="qQ8-Ow-Bk2" customClass="UIImageCircle" customModule="Think" customModuleProvider="target">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ava_profile" translatesAutoresizingMaskIntoConstraints="NO" id="qQ8-Ow-Bk2" customClass="PFImageView">
                                     <rect key="frame" x="15" y="15" width="38" height="38"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="38" id="WKC-sW-3Nm"/>
@@ -271,7 +271,7 @@
                             </connections>
                         </tableView>
                         <view contentMode="scaleToFill" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="184" translatesAutoresizingMaskIntoConstraints="NO" id="bRl-ZT-ced">
-                            <rect key="frame" x="0.0" y="389" width="320" height="178"/>
+                            <rect key="frame" x="0.0" y="389" width="320" height="180"/>
                             <subviews>
                                 <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="184 COMMENTS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z3k-2o-Ct9">
                                     <rect key="frame" x="15" y="8" width="290" height="21"/>
@@ -287,7 +287,7 @@
                                     </connections>
                                 </label>
                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="vN6-vr-p2p" customClass="CommentsTableView" customModule="Think" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="31" width="320" height="147"/>
+                                    <rect key="frame" x="0.0" y="33" width="320" height="147"/>
                                     <color key="backgroundColor" red="0.9607800245" green="0.9607800245" blue="0.9607800245" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="900" constant="20" id="OdD-zT-qdL"/>
@@ -307,7 +307,7 @@
                                 <constraint firstItem="Z3k-2o-Ct9" firstAttribute="leading" secondItem="bRl-ZT-ced" secondAttribute="leading" constant="15" id="hNK-C6-9zB"/>
                                 <constraint firstAttribute="trailing" secondItem="Z3k-2o-Ct9" secondAttribute="trailing" constant="15" id="kAP-G2-3yz"/>
                                 <constraint firstItem="vN6-vr-p2p" firstAttribute="leading" secondItem="bRl-ZT-ced" secondAttribute="leading" id="xj7-Zo-1Pg"/>
-                                <constraint firstItem="vN6-vr-p2p" firstAttribute="top" secondItem="Z3k-2o-Ct9" secondAttribute="bottom" constant="2" id="yAH-I5-gdO"/>
+                                <constraint firstItem="vN6-vr-p2p" firstAttribute="top" secondItem="Z3k-2o-Ct9" secondAttribute="bottom" constant="4" id="yAH-I5-gdO"/>
                             </constraints>
                         </view>
                     </subviews>

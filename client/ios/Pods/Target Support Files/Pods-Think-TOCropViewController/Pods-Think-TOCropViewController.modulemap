@@ -1,0 +1,6 @@
+framework module TOCropViewController {
+  umbrella header "Pods-Think-TOCropViewController-umbrella.h"
+
+  export *
+  module * { export * }
+}

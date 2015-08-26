@@ -13,25 +13,29 @@ import JGProgressHUD
 import Photos
 import Bolts
 
-enum SeletImageHelperScenario : UInt {
-    case AvatarProfile
+enum SelectImageHelperScenario {
+    case PictureProfile
     case CoverProfile
     case CoverPost
     case MessagePhoto
 }
 
 class SelectImageHelper {
-    class func selectAndUploadFile(controller: UIViewController, sourceView: UIView, scenario: SeletImageHelperScenario) {
+    static var lastPresentScenario: SelectImageHelperScenario?
+    
+    class func selectAndUploadFile(controller: UIViewController, sourceView: UIView, scenario: SelectImageHelperScenario) {
+        lastPresentScenario = scenario
         controller.presentImagePickerSheet(sourceView, sourceRect: sourceView.frame)
     }
     
-    class func uploadImage(image: UIImage, imageName: String) -> PFFile {
+    class func uploadImage(image: UIImage, imageName: String, cb: (file: PFFile, error: NSError?)-> Void) -> PFFile {
         let imageData   = UIImagePNGRepresentation(image)
         let imageFile   = PFFile(name: imageName, data:imageData)
         var hud         = SelectImageHelper.createHudProgress()
         
         imageFile.saveInBackgroundWithProgressBlock ({ (progress: Int32) -> Void in
-            SelectImageHelper.progressHudProgress(hud, progress: Float(progress))
+            println(progress)
+            SelectImageHelper.progressHudProgress(hud, progress: Float(progress) / 100)
         }).continueWithBlock({ (task: BFTask!) -> AnyObject! in
             if (task.error != nil) {
                 SelectImageHelper.failedHudProgress(hud)
@@ -39,7 +43,9 @@ class SelectImageHelper {
                 SelectImageHelper.successHudProgress(hud)
             }
             
-            return nil
+            cb(file: imageFile, error: task.error)
+            
+            return task
         })
         
         return imageFile
@@ -93,7 +99,6 @@ class SelectImageHelper {
 }
 
 extension UIViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
     func presentImagePickerSheet(sourceView: UIView, sourceRect: CGRect) {
         let authorization = PHPhotoLibrary.authorizationStatus()
         
@@ -118,7 +123,7 @@ extension UIViewController: UIImagePickerControllerDelegate, UINavigationControl
                     println("Fallback to camera roll as a source since the simulator doesn't support taking pictures")
                 }
                 
-                controller.allowsEditing = true
+                controller.allowsEditing = false
                 
                 controller.sourceType = sourceType
                 self.presentViewController(controller, animated: true, completion: nil)
@@ -147,5 +152,9 @@ extension UIViewController: UIImagePickerControllerDelegate, UINavigationControl
             let alertView = UIAlertView(title: NSLocalizedString("An error occurred", comment: "An error occurred"), message: NSLocalizedString("ImagePickerSheet needs access to the camera roll", comment: "ImagePickerSheet needs access to the camera roll"), delegate: nil, cancelButtonTitle: NSLocalizedString("OK", comment: "OK"))
             alertView.show()
         }
+    }
+    
+    public func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        picker.dismissViewControllerAnimated(true, completion: nil)
     }
 }

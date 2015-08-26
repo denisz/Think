@@ -21,7 +21,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="140" height="209"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pic_post" translatesAutoresizingMaskIntoConstraints="NO" id="CfW-4F-1vs">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pic_post" translatesAutoresizingMaskIntoConstraints="NO" id="CfW-4F-1vs" customClass="PFImageView">
                         <rect key="frame" x="0.0" y="0.0" width="140" height="90"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="90" id="sjE-At-CBY"/>
@@ -61,6 +61,11 @@
                 <constraint firstItem="yPl-lI-k6K" firstAttribute="top" secondItem="q4i-nI-emi" secondAttribute="bottom" id="zEG-ZV-dfG"/>
             </constraints>
             <size key="customSize" width="212" height="209"/>
+            <connections>
+                <outlet property="coverImage" destination="CfW-4F-1vs" id="xKp-h6-Vub"/>
+                <outlet property="date" destination="yPl-lI-k6K" id="eH4-SA-r06"/>
+                <outlet property="shortContent" destination="q4i-nI-emi" id="X0m-AV-FGa"/>
+            </connections>
             <point key="canvasLocation" x="252" y="237.5"/>
         </collectionViewCell>
     </objects>

@@ -17,8 +17,8 @@ class DraftsViewCell: PFTableViewCell {
     @IBOutlet weak var date     : UILabel!
     
     func prepareView(object: PFObject) {
-        self.title.text     = object[kPostTitleKey] as? String
-        self.content.text   = object[kPostContentShortKey] as? String
-        self.date.text      = TransformDate.timeString(object.createdAt!)
+        self.title.text     = Post.title(object)
+        self.content.text   = Post.shortContent(object)
+        self.date.text      = Post.createdAtDate(object)
     }
 }

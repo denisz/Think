@@ -11,41 +11,68 @@ import UIKit
 import Parse
 import ParseUI
 
-class ProfileEditHeaderView: BaseUIView {
+protocol ProfileEditHeaderViewDelegate {
+    func profileView(view: ProfileEditHeaderView, didTapChangePicture button: UIButton)
+    func profileView(view: ProfileEditHeaderView, didTapChangeCover button: UIButton)
+}
+
+class ProfileEditHeaderView: BaseProfileHeaderView {
     @IBOutlet weak var buttonAvatar: UIButton!
     @IBOutlet weak var buttonCover: UIButton!
-    @IBOutlet weak var profilePicture: UIImageView!
+    @IBOutlet weak var profilePicture: PFImageView!
     @IBOutlet weak var profileCover: PFImageView!
 
-    var parentController: UIViewController?
-    var object: PFObject?
+    var delegate: ProfileEditHeaderViewDelegate?
     
     override var nibName: String? {
         return "ProfileEditHeaderView"
     }
     
-    func didTapChangeAvatar(sender: UITapGestureRecognizer) {
-        let btn = sender.view!
-        SelectImageHelper.selectAndUploadFile(self.parentController!, sourceView: btn, scenario: .AvatarProfile)
+    func didTapChangePicture(sender: UITapGestureRecognizer) {
+        self.delegate?.profileView(self, didTapChangePicture: self.buttonAvatar)
     }
     
     func didTapChangeCover(sender: UITapGestureRecognizer) {
-        let btn = sender.view!
-        SelectImageHelper.selectAndUploadFile(self.parentController!, sourceView: btn, scenario: .CoverProfile)
+        self.delegate?.profileView(self, didTapChangeCover: self.buttonCover)
     }
     
     func setupButtons() {
-        let gestureAvatar = UITapGestureRecognizer(target: self, action: "didTapChangeAvatar:")
+        let gestureAvatar = UITapGestureRecognizer(target: self, action: "didTapChangePicture:")
         buttonAvatar.addGestureRecognizer(gestureAvatar)
 
         let gestureCover = UITapGestureRecognizer(target: self, action: "didTapChangeCover:")
         buttonCover.addGestureRecognizer(gestureCover)
     }
+    
+    func updateCover(file: PFFile?) {
+        self.profileCover.image = kUserCoverPlaceholder
+        self.profileCover.file = file
+        self.profileCover.loadInBackground()
+    }
+    
+    func updatePicture(file: PFFile?) {
+        self.profilePicture.image = kUserPlaceholder
+        self.profilePicture.file = file
+        self.profilePicture.loadInBackground()
+    }
+    
+    override func objectDidLoad(object: PFObject) {
+        super.objectDidLoad(object)
+        
+        self.profilePicture.image = kUserPlaceholder
+        self.profilePicture.file = UserModel.pictureImage(object)
+        
+        self.profileCover.image = kUserCoverPlaceholder
+        self.profileCover.file = UserModel.coverImage(object)
+        
+        self.profileCover.loadInBackground()
+        self.profilePicture.loadInBackground()
+        
+        self.profilePicture.cornerEdge()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.profilePicture.cornerEdge()
         setupButtons()
     }
 }

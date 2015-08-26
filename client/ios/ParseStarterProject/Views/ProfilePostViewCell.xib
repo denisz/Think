@@ -32,7 +32,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eEp-mI-vbj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="54"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ava_profile" translatesAutoresizingMaskIntoConstraints="NO" id="weB-RS-N1u" customClass="UIImageCircle" customModule="Think" customModuleProvider="target">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ava_profile" translatesAutoresizingMaskIntoConstraints="NO" id="weB-RS-N1u" customClass="PFImageView">
                                 <rect key="frame" x="15" y="10" width="33" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="33" id="JJb-f1-hCt"/>
@@ -288,7 +288,7 @@
             <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
             <connections>
                 <outlet property="authorName" destination="zJO-yN-DMX" id="wM3-gj-dVa"/>
-                <outlet property="authorPicture" destination="weB-RS-N1u" id="FXn-2i-QCB"/>
+                <outlet property="authorPicture" destination="weB-RS-N1u" id="b2N-Za-nxn"/>
                 <outlet property="commentsCounter" destination="dag-ZB-5TT" id="Agn-TX-GJS"/>
                 <outlet property="communityView" destination="1DU-8A-xje" id="tQg-d0-Ugn"/>
                 <outlet property="content" destination="6pt-Ay-ybB" id="uuB-QG-8fb"/>

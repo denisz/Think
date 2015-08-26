@@ -73,7 +73,6 @@ import UIKit
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         UIApplication.sharedApplication().setStatusBarStyle(.Default, animated: true)
-//        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default;
     }
     
     func didTapCounterBtn(sender: AnyObject?) {
@@ -91,10 +90,22 @@ import UIKit
     }
     
     override func queryForTable() -> PFQuery {
-        var query = PFQuery(className: self.parseClassName!)
-        query.whereKey("owner", equalTo: owner!)
-        query.orderByDescending("createdAt")
+
+        let followingActivitiesQuery = PFQuery(className: kActivityClassKey)
+        followingActivitiesQuery.whereKey(kActivityTypeKey, equalTo: kActivityTypeFollow)
+        followingActivitiesQuery.whereKey(kActivityFromUserKey, equalTo: self.owner!)
+        
+        let postsFromFollowedUsersQuery = PFQuery(className: kPostClassKey)
+        postsFromFollowedUsersQuery.whereKey(kPostOwnerKey, matchesKey: kActivityToUserKey, inQuery: followingActivitiesQuery)
+        
+        let postsFromCurrentUserQuery = PFQuery(className: kPostClassKey)
+        postsFromCurrentUserQuery.whereKey(kPostOwnerKey, equalTo: self.owner!)
+        postsFromCurrentUserQuery.whereKey(kPostStatusKey, equalTo: kPostStatusPublic)
+        
+        let query = PFQuery.orQueryWithSubqueries([postsFromFollowedUsersQuery, postsFromCurrentUserQuery])
         query.includeKey(kPostOwnerKey)
+        query.orderByDescending(kClassCreatedAt)
+        
         return query
     }
     
@@ -123,15 +134,15 @@ import UIKit
     class func CreateWithModel(model: PFObject) -> FeedViewController{
         var feed = FeedViewController()
         feed.owner = model
-        feed.parseClassName = "Activity"
+        feed.parseClassName = kActivityClassKey
         feed.paginationEnabled = true
-        feed.pullToRefreshEnabled = false
+        feed.pullToRefreshEnabled = true
         
         
         return feed
     }
     
     class func CreateWithId(objectId: String) -> FeedViewController {
-        return CreateWithModel(PFObject(withoutDataWithClassName: "_User", objectId: objectId))
+        return CreateWithModel(PFObject(withoutDataWithClassName: kUserClassKey, objectId: objectId))
     }
 }

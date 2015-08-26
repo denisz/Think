@@ -28,12 +28,71 @@ class Post: PFObject, PFSubclassing {
         return kPostClassKey
     }
     
-    class func usernameOwner(post: PFObject) ->String {
-        if let user = post[kPostOwnerKey] as? PFObject {
-             return user[kUserUsernameKey] as! String
+    class func title(post: PFObject) -> String {
+        if let title = post[kPostTitleKey] as? String {
+            return title
         }
         
         return ""
+    }
+    
+    class func coverImage(post: PFObject) -> PFFile? {
+        if let cover = post[kPostCoverKey] as? PFFile {
+            return cover
+        }
+        
+        return nil
+    }
+    
+    class func pictureOwner(post: PFObject) -> PFFile? {
+        if let user = post[kPostOwnerKey] as? PFObject {
+            return UserModel.pictureImage(user)
+        }
+        
+        return nil
+    }
+    
+    class func shortContent(post: PFObject) -> String {
+        if let content = post[kPostContentShortKey] as? String {
+            return content
+        }
+        
+        return ""
+    }
+    
+    class func createdAtDate(post: PFObject) -> String {
+        return TransformDate.timeString(post.createdAt!)
+    }
+    
+    class func likesCounter(object: PFObject) -> String {
+        var count = max(object[kPostCounterLikesKey] as! Int, 0)
+        return "+\(count)"
+    }
+    
+    class func tagsString(object: PFObject) -> String {
+        if let tags = object[kPostTagsKey] as? [String] {
+            let joiner = " #"
+            return "#\(joiner.join(tags))"
+        }
+        return ""
+    }
+    
+    class func commentsCounter(object: PFObject, var suffix: String = "") -> String {
+        var count = max(object[kPostCounterCommentsKey] as! Int, 0)
+        
+        if !suffix.isEmpty {
+            suffix = " \(suffix)"
+        }
+        
+        return "\(count)\(suffix)"
+    }
+    
+    class func usernameOwner(post: PFObject) -> String {
+        if let user = post[kPostOwnerKey] as? PFObject {
+            return UserModel.username(user)
+        }
+        
+        return kUserHiddenName
     }
     
     class func stringForShare(post: PFObject) -> String {
@@ -97,13 +156,5 @@ class Post: PFObject, PFSubclassing {
         post.setObject(kPostStatusDraft, forKey: kPostStatusKey)
         
         return post
-    }
-    
-    class func createWith(title: String, content: String) -> BFTask {
-        let post = Post.createWith()
-        post.setObject(title,   forKey: kPostTitleKey)
-        post.setObject(content, forKey: kPostContentKey)
-        
-        return post.saveInBackground()
     }
 }

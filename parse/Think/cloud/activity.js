@@ -2,7 +2,15 @@ var Activity = Parse.Object.extend("Activity");
 
 Parse.Cloud.beforeSave('Activity', function(request, response) {
   var currentUser = request.user;
-  var objectUser = request.object.get('from_user');
+  var objectUser  = request.object.get('from_user');
+  var type        = request.object.get('type');
+
+  if (type == "follow") {
+    if (currentUser.id == objectUser.id) {
+      response.error('An Activity should have a valid toUser.');  
+      return;
+    }
+  }
 
   if(!currentUser || !objectUser) {
     response.error('An Activity should have a valid fromUser.');
@@ -25,9 +33,11 @@ Parse.Cloud.afterSave('Activity', function(request) {
     return;
   }
 
+  var type = request.object.get("type");
   var query = new Parse.Query(Parse.Installation);
-  query.equalTo('user', toUser);
-
+  query.equalTo('user',   toUser);
+  query.equalTo('events', type);
+  
   Parse.Push.send({
     where: query, // Set our Installation query.
     data: alertPayload(request)
@@ -43,20 +53,20 @@ var alertMessage = function(request) {
   var message = "";
 
   if (request.object.get("type") === "comment") {
-    if (request.user.get('displayName')) {
-      message = request.user.get('displayName') + ': ' + request.object.get('content').trim();
+    if (request.user.get('username')) {
+      message = request.user.get('username') + ': ' + request.object.get('content').trim();
     } else {
       message = "Someone commented on your photo.";
     }
   } else if (request.object.get("type") === "like") {
-    if (request.user.get('displayName')) {
-      message = request.user.get('displayName') + ' likes your photo.';
+    if (request.user.get('username')) {
+      message = request.user.get('username') + ' likes your photo.';
     } else {
       message = 'Someone likes your photo.';
     }
   } else if (request.object.get("type") === "follow") {
-    if (request.user.get('displayName')) {
-      message = request.user.get('displayName') + ' is now following you.';
+    if (request.user.get('username')) {
+      message = request.user.get('username') + ' is now following you.';
     } else {
       message = "You have a new follower.";
     }
@@ -72,33 +82,33 @@ var alertMessage = function(request) {
 
 var alertPayload = function(request) {
   var payload = {};
-
-  if (request.object.get("type") === "comment") {
+  var type = request.object.get("type");
+  if (type === "comment") {
     return {
       alert: alertMessage(request), // Set our alert message.
       badge: 'Increment', // Increment the target device's badge count.
       // The following keys help Anypic load the correct photo in response to this push notification.
       p: 'a', // Payload Type: Activity
       t: 'c', // Activity Type: Comment
-      fu: request.object.get('fromUser').id, // From User
+      fu: request.object.get('from_user').id, // From User
       pid: request.object.id // Photo Id
     };
-  } else if (request.object.get("type") === "like") {
+  } else if (type === "like") {
     return {
       alert: alertMessage(request), // Set our alert message.
       // The following keys help Anypic load the correct photo in response to this push notification.
       p: 'a', // Payload Type: Activity
       t: 'l', // Activity Type: Like
-      fu: request.object.get('fromUser').id, // From User
+      fu: request.object.get('from_user').id, // From User
       pid: request.object.id // Photo Id
     };
-  } else if (request.object.get("type") === "follow") {
+  } else if (type === "follow") {
     return {
       alert: alertMessage(request), // Set our alert message.
       // The following keys help Anypic load the correct photo in response to this push notification.
       p: 'a', // Payload Type: Activity
       t: 'f', // Activity Type: Follow
-      fu: request.object.get('fromUser').id // From User
+      fu: request.object.get('from_user').id // From User
     };
   }
 }

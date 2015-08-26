@@ -16,14 +16,17 @@ import VGParallaxHeader
 
 @objc(ProfileEditViewController) class ProfileEditViewController: BaseFormViewController {
     var owner: PFObject?
+    var headerView: ProfileEditHeaderView?
     
     struct tag {
-        static let firstName        = kUserFirstNameKey     //"firstName"
-        static let lastName         = kUserLastNameKey      //"lastName"
-        static let userName         = kUserUsernameKey      //"userName"
-        static let country          = kUserCountryKey       //"country"
-        static let city             = kUserCityKey          //"city"
-        static let dateOfBirth      = kUserDateOfBirthKey   //"dateOfBirth"
+        static let firstName        = kUserFirstNameKey         //"firstName"
+        static let lastName         = kUserLastNameKey          //"lastName"
+        static let userName         = kUserUsernameKey          //"userName"
+        static let country          = kUserCountryKey           //"country"
+        static let city             = kUserCityKey              //"city"
+        static let cover            = kUserProfileCoverKey      //"cover"
+        static let picture          = kUserProfilePictureKey    //"picture"
+        static let dateOfBirth      = kUserDateOfBirthKey       //"dateOfBirth"
     }
     
     var data: [String: AnyObject]?
@@ -48,10 +51,12 @@ import VGParallaxHeader
     }
     
     func setupHeaderView() {
-        var header = ProfileEditHeaderView()
-        header.object = self.owner
-        header.parentController = self
+        let header = ProfileEditHeaderView()
+        header.delegate = self
+        header.objectDidLoad(self.owner!)
+        
         self.tableView.setParallaxHeaderView(header, mode: VGParallaxHeaderMode.Fill, height: 240)
+        self.headerView = header
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -146,17 +151,20 @@ import VGParallaxHeader
         row = XLFormRowDescriptor(tag: tag.dateOfBirth, rowType: XLFormRowDescriptorTypeDate, title: "Date of birth".uppercaseString)
         row.value = owner[kUserDateOfBirthKey] as? NSDate
         self.stylesRow(row)
-//        self.stylesTextFieldRow(row)
+        self.stylesDateRow(row)
         section.addFormRow(row)
     }
     
+    func stylesDateRow(row: XLFormRowDescriptor) {
+        row.cellConfig.setObject(UIFont(name: "OpenSans-Semibold", size: 13)!, forKey: "detailTextLabel.font")
+        row.cellConfig.setObject(UIColor(red:0.33, green:0.39, blue:0.42, alpha:1), forKey: "detailTextLabel.textColor")
+    }
+    
     func stylesTextFieldRow(row: XLFormRowDescriptor) {
-//        var t = UITextField()
-//        t.clearButtonMode = UITextFieldViewMode.Never
-        
-        row.cellConfig.setObject(UIFont(name: "OpenSans", size: 12)!, forKey: "textField.font")
+        row.cellConfig.setObject(UIFont(name: "OpenSans-Semibold", size: 13)!, forKey: "textField.font")
         row.cellConfig.setObject(UIColor(red:0.33, green:0.39, blue:0.42, alpha:1), forKey: "textField.textColor")
-//        row.cellConfig.setObject(NSTextAlignment.Right.rawValue, forKey: "textField.textAlignment")
+        row.cellConfig.setObject(UIColor(red:0.33, green:0.39, blue:0.42, alpha:1), forKey: "textField.tintColor")
+        row.cellConfig.setObject(NSTextAlignment.Right.rawValue, forKey: "textField.textAlignment")
         row.cellConfig.setObject(UITextFieldViewMode.Never.rawValue, forKey: "textField.clearButtonMode")
     }
     
@@ -208,5 +216,61 @@ import VGParallaxHeader
         profile.owner = model
         
         return profile
+    }
+}
+
+extension ProfileEditViewController: ProfileEditHeaderViewDelegate {
+    func profileView(view: ProfileEditHeaderView, didTapChangeCover button: UIButton) {
+        SelectImageHelper.selectAndUploadFile(self, sourceView: button, scenario: .CoverProfile)
+    }
+    
+    func profileView (view: ProfileEditHeaderView, didTapChangePicture button: UIButton) {
+        SelectImageHelper.selectAndUploadFile(self, sourceView: button, scenario: .PictureProfile)
+    }
+}
+
+extension ProfileEditViewController: UIImagePickerControllerDelegate {
+    func performLoadedImage(image: UIImage) {
+        if let scenario = SelectImageHelper.lastPresentScenario {
+            let user    = PFUser.currentUser()
+            let userID  = user!.objectId ?? "unknown"
+            let date    = NSDate.timeIntervalSinceReferenceDate()
+            
+            SelectImageHelper.uploadImage(image,
+                imageName: "\(userID)_\(date)")
+                { (file: PFFile, error: NSError?) in
+                    
+                    if (error == nil) {
+                        switch(scenario) {
+                        case .PictureProfile:
+                            self.data![tag.picture] = file
+                            self.headerView?.updatePicture(file)
+                            break
+                        case .CoverProfile:
+                            self.data![tag.cover] = file
+                            self.headerView?.updateCover(file)
+                            break
+                        default:
+                            println("scenario is invalid")
+                        }
+                    }
+            }
+        }
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+        
+        picker.dismissViewControllerAnimated(true, completion: nil)
+        
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            cropImageWithCropViewController(image)
+        }
+    }
+}
+
+
+extension ProfileEditViewController {
+    override func cropViewController(image: UIImage) {
+        self.performLoadedImage(image)
     }
 }

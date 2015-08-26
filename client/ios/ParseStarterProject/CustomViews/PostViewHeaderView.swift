@@ -12,13 +12,17 @@ import ParseUI
 
 
 class PostViewHeaderView: BaseUIView {
-    @IBOutlet weak var cover: PFImageView!
-    
-    var parentController: UIViewController?
-    var object: PFObject?
+    @IBOutlet weak var coverImage: PFImageView!
     
     override var nibName: String? {
         return "PostViewHeaderView"
+    }
+    
+    func objectDidLoad(object: PFObject) {
+        self.coverImage.image       = kPostPlaceholder
+        self.coverImage.file        = Post.coverImage(object)
+        
+        self.coverImage.loadInBackground()
     }
 
     override func viewDidLoad() {

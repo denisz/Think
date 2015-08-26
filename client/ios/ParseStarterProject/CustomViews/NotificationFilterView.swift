@@ -12,10 +12,16 @@ import UIKit
 let kReusableNotificationsFilterViewCell =  "NotificationsFilterViewCell"
 
 class NotificationFilterView: UIView {
-    var items: [String] = ["adding to friends", "reposting", "sharing via socials", "commenting your", "replies"];
+    var items: [(String, String)] = [
+        ("adding to friends",   kActivityTypeFollow),
+        ("commenting your",     kActivityTypeComment),
+        ("likes your",          kActivityTypeLike)
+    ];
 
     @IBOutlet weak var tableView: UITableView!
     var view: UIView!
+    
+    var selectedItems: [String]?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -44,21 +50,29 @@ class NotificationFilterView: UIView {
     }
     
     func setupView() {
-//        self.tableView.estimatedRowHeight = 64
         self.tableView.scrollEnabled = false;
         self.tableView.registerNib(UINib(nibName: kReusableNotificationsFilterViewCell, bundle: nil), forCellReuseIdentifier: kReusableNotificationsFilterViewCell)
     }
 }
 
 extension NotificationFilterView: UITableViewDelegate {
-//    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        return 64
-//    }
-    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        if let cell = tableView.cellForRowAtIndexPath(indexPath) as? NotificationFilterViewCell {
-            cell.checkbox.selected = !cell.checkbox.selected
+        if let obj  = self.objByIndexPath(indexPath) {
+            if let cell = tableView.cellForRowAtIndexPath(indexPath) as? NotificationFilterViewCell {
+                let checked = !cell.checkbox.selected
+                cell.checkbox.selected = checked
+                
+                if checked {
+                    if !contains(self.selectedItems!, obj.1) {
+                        self.selectedItems?.append(obj.1)
+                    }
+                } else {
+                    self.selectedItems?.remove{$0 == obj.1}
+                }
+                
+                tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            }
         }
         
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
@@ -66,6 +80,10 @@ extension NotificationFilterView: UITableViewDelegate {
 }
 
 extension NotificationFilterView: UITableViewDataSource {
+    func objByIndexPath(indexPath: NSIndexPath) -> (String, String)? {
+        return items[indexPath.row]
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
@@ -73,7 +91,10 @@ extension NotificationFilterView: UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(kReusableNotificationsFilterViewCell) as! NotificationFilterViewCell
         
-        cell.title.text = items[indexPath.row].uppercaseString
+        if let obj  = self.objByIndexPath(indexPath) {
+            cell.title.text = obj.0.uppercaseString
+            cell.checkbox.selected = contains(self.selectedItems!, obj.1)
+        }
         
         if indexPath.row == items.count - 1  {
             cell.separatorInset = UIEdgeInsetsMake(0, cell.bounds.size.width, 0, 0);

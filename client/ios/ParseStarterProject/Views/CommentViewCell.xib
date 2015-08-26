@@ -23,7 +23,7 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nfC-ul-y6E" id="Mfc-gs-x6a">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ava_profile" translatesAutoresizingMaskIntoConstraints="NO" id="azf-B7-h6h" customClass="UIImageCircle" customModule="Think" customModuleProvider="target">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ava_profile" translatesAutoresizingMaskIntoConstraints="NO" id="azf-B7-h6h" customClass="PFImageView">
                         <rect key="frame" x="15" y="15" width="34" height="34"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="34" id="6sR-tl-ht5"/>
@@ -75,7 +75,7 @@
             <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
             <connections>
                 <outlet property="authorName" destination="Kdk-nG-p7w" id="Tbu-zT-8li"/>
-                <outlet property="authorPicture" destination="azf-B7-h6h" id="Co6-tI-TG7"/>
+                <outlet property="authorPicture" destination="azf-B7-h6h" id="k1L-LJ-WF7"/>
                 <outlet property="body" destination="lZy-Yo-LfQ" id="Xc8-iI-mbN"/>
                 <outlet property="dateView" destination="rLf-dB-bY2" id="J0c-S8-WXF"/>
             </connections>

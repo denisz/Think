@@ -18,7 +18,7 @@
                 <outlet property="followButton" destination="bTd-l4-igA" id="yfp-Sh-hGR"/>
                 <outlet property="profileCover" destination="5LP-y3-TSK" id="NFV-Pl-HQp"/>
                 <outlet property="profileName" destination="dlI-D9-fD1" id="vvJ-lt-i7b"/>
-                <outlet property="profilePicture" destination="FGl-yL-9NR" id="fgK-Tq-sEq"/>
+                <outlet property="profilePicture" destination="FGl-yL-9NR" id="n9r-ze-Fjy"/>
                 <outlet property="whisperButton" destination="Lx9-ju-AqF" id="J8E-sK-4mb"/>
             </connections>
         </placeholder>
@@ -60,8 +60,8 @@
                         <constraint firstAttribute="centerX" secondItem="FGl-yL-9NR" secondAttribute="centerX" id="lPd-Jp-XTy"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BRu-yI-ZTv">
-                    <rect key="frame" x="195" y="183" width="190" height="28"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BRu-yI-ZTv">
+                    <rect key="frame" x="195" y="182" width="190" height="28"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lx9-ju-AqF" customClass="UIButtonRoundedBorder" customModule="Think" customModuleProvider="target">
                             <rect key="frame" x="100" y="-3" width="70" height="33"/>

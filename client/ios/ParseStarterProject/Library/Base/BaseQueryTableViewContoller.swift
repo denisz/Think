@@ -19,6 +19,11 @@ class BaseQueryTableViewController: MyQueryTableViewController {
     
     var fakeNavigationBar: UINavigationBar?
     
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        self.automaticallyAdjustsScrollViewInsets = true
+//    }
+    
     override func defineNavigationBar() -> UINavigationBar? {
         return self.fakeNavigationBar
     }
@@ -32,11 +37,17 @@ class BaseQueryTableViewController: MyQueryTableViewController {
         self.fakeNavigationBar = createFakeNavigationBar()
     }
     
+    func topConstraintForNavigationBar() -> NSLayoutConstraint? {
+        return self.tableViewTopConstraint
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
         if self.automaticallyAdjustsScrollViewInsets == true {
-            self.tableViewTopConstraint.constant = 44
+            if let top = self.topConstraintForNavigationBar() {
+                top.constant = 44
+            }
         }
     }
 }

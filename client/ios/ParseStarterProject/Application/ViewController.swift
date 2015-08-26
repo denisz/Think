@@ -110,6 +110,7 @@ class ViewController: UIViewController {
     }
     
     func registerDevice() {
+        Installation.eventsPush()
         Installation.registerPushDevice()
     }
     
@@ -183,7 +184,6 @@ extension ViewController: LogInViewControllerDelegate {
         println("logIn \(user)")
         controller.dismissViewControllerAnimated(true, completion: nil)
         self.app()
-        self.registerDevice()
     }
     
     func logIn(controller: LogInViewController, facebook user: PFUser) {
@@ -215,7 +215,8 @@ extension ViewController: SignUpViewControllerDelegate {
     }
     
     func signUp(controller: SignUpViewController, successful user: PFUser) {
-        println("signup \(user)")
+        //регистрация
+        self.registerDevice()
         controller.dismissViewControllerAnimated(false, completion: { () -> Void in
             controller.presentedViewController?.dismissViewControllerAnimated(false, completion: { () -> Void in
             })

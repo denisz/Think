@@ -12,10 +12,13 @@ import ParseUI
 import UIKit
 
 class BaseProfileHeaderView: BaseUIView {
-    var parentController: UIViewController?
     var object: PFObject?
     
-    func viewDidLoadObject(object: PFObject) {
+    func objectDidLoad(object: PFObject) {
         self.object = object
+    }
+    
+    func objectDidUpdate(object: PFObject) {
+        self.objectDidLoad(object)
     }
 }

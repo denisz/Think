@@ -19,7 +19,7 @@ class ProfileGuestHeaderView: BaseProfileHeaderView {
     @IBOutlet weak var followButton: UIButton!
     @IBOutlet weak var whisperButton: UIButton!
     @IBOutlet weak var profileName: UILabel!
-    @IBOutlet weak var profilePicture: UIImageView!
+    @IBOutlet weak var profilePicture: PFImageView!
     @IBOutlet weak var profileCover: PFImageView!
 
     
@@ -37,6 +37,22 @@ class ProfileGuestHeaderView: BaseProfileHeaderView {
         self.delegate?.profileGuestView(self, didTapWhisper: self.whisperButton)
     }
     
+    override func objectDidLoad(object: PFObject) {
+        super.objectDidLoad(object)
+        
+        self.profileName.text = object[kUserUsernameKey] as? String
+        
+        self.profilePicture.image = kUserPlaceholder
+        self.profilePicture.file = UserModel.pictureImage(object)
+        
+        self.profileCover.image = kUserCoverPlaceholder
+        self.profileCover.file = UserModel.coverImage(object)
+        
+        self.profileCover.loadInBackground()
+        self.profilePicture.loadInBackground()
+        
+        self.profilePicture.cornerEdge()
+    }
     
     override func viewDidLoad() {
     }

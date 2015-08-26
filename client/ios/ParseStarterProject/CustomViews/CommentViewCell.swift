@@ -14,16 +14,22 @@ import ParseUI
 
 class CommentViewCell: PFTableViewCell {
     @IBOutlet weak var authorName: UILabel!
-    @IBOutlet weak var authorPicture: UIImageView!
+    @IBOutlet weak var authorPicture: PFImageView!
     @IBOutlet weak var body: UILabel!
     @IBOutlet weak var dateView: UILabel!
     
+    override var imageView: PFImageView? {
+        return self.authorPicture
+    }
+    
     func prepareView(object: PFObject) {
-        if let user = object["kActivityFromUserKey"] as? PFObject {
-            self.authorName.text = user[kUserUsernameKey] as? String
-        }
+        self.authorPicture.image    = kUserPlaceholder
+        self.authorPicture.file     = Comment.pictureOwner(object)
         
-        self.dateView.text = TransformDate.timeString(object.createdAt!)
-        self.body.text = object[kActivityContentKey] as? String
+        self.authorName.text    = Comment.ownerName(object)
+        self.dateView.text      = Comment.createdAtDate(object)
+        self.body.text          = Comment.content(object)
+        
+        self.authorPicture.cornerEdge()
     }
 }

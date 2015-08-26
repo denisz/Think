@@ -59,7 +59,11 @@ extension UIViewController: LGFilterViewDelegate {
             _filterViewWrapper = nil
         }
     }
+    
+    func filterViewWillDismiss() {}
+    
     public func filterViewWillDismiss(filterView: LGFilterView!) {
+        self.filterViewWillDismiss()
         _filterView = nil
     }
     

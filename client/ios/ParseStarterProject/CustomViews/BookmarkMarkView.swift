@@ -22,6 +22,7 @@ class BookmarkMarkView: BaseUIView {
         super.viewDidLoad()
         self.label.font = UIFont.ioniconOfSize(40)
         self.label.text = String.ioniconWithName(.IosBookmarksOutline)
+        
         self.wrapper.cornerEdge()
     }
     

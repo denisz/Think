@@ -85,6 +85,10 @@ class Activity: PFObject, PFSubclassing {
         activity.setObject(post, forKey: kActivityPostKey)
         activity.setObject(kActivityTypeLike, forKey: kActivityTypeKey)
         
+        let activityACL = PFACL(user: user!)
+        activityACL.setPublicReadAccess(true)
+        activity.ACL = activityACL
+        
         activity.saveEventually()
         post.incrementKey(kPostCounterLikesKey, byAmount: 1)
         post.saveEventually()
@@ -105,6 +109,11 @@ class Activity: PFObject, PFSubclassing {
         activity.setObject(user!, forKey: kActivityFromUserKey)
         activity.setObject(otherUser, forKey: kActivityToUserKey)
         activity.setObject(kActivityTypeFollow, forKey: kActivityTypeKey)
+        
+        let activityACL = PFACL(user: user!)
+        activityACL.setPublicReadAccess(true)
+        activity.ACL = activityACL
+        
         activity.saveEventually()
         NSNotificationCenter.defaultCenter().postNotificationName(kUserFollowingUser, object: otherUser)
     }
@@ -139,6 +148,10 @@ class Activity: PFObject, PFSubclassing {
         activity.setObject(message, forKey: kActivityContentKey)
         activity.setObject(post["owner"]!, forKey: kActivityToUserKey)
         activity.setObject(kActivityTypeComment, forKey: kActivityTypeKey)
+        
+        let activityACL = PFACL(user: user!)
+        activityACL.setPublicReadAccess(true)
+        activity.ACL = activityACL
         
         return activity.saveInBackground().continueWithBlock { (task: BFTask!) -> AnyObject! in
             if task.error == nil {

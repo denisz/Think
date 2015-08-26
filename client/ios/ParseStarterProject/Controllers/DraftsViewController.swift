@@ -40,7 +40,6 @@ import UIKit
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         UIApplication.sharedApplication().setStatusBarStyle(.Default, animated: true)
-//        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default;
     }
     
     override func queryForTable() -> PFQuery {
@@ -73,7 +72,6 @@ import UIKit
         drafts.parseClassName = "Post"
         drafts.paginationEnabled = true
         drafts.pullToRefreshEnabled = false
-        
         
         return drafts
     }

@@ -10,7 +10,7 @@ import Foundation
 import Parse
 import ParseUI
 
-@objc(YouFollowViewController) class YouFollowViewController: BaseQuerySearchTableViewController {
+@objc(YouFollowViewController) class YouFollowViewController: BaseQueryTableViewController {
     var owner: PFObject?
     
     override func viewDidLoad() {
@@ -43,17 +43,18 @@ import ParseUI
         var query = PFQuery(className: self.parseClassName!)
         query.whereKey(kActivityFromUserKey, equalTo: owner!)
         query.whereKey(kActivityTypeKey, equalTo: kActivityTypeFollow)
-        query.orderByDescending("createdAt")
+        query.orderByDescending(kClassCreatedAt)
         query.includeKey(kActivityToUserKey)
         
         return query
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell? {
-        let cell = tableView.dequeueReusableCellWithIdentifier(kReusableDraftsViewCell) as! FollowUserViewCell
         
-        if let user = object![kActivityToUserKey] as? PFObject {
-            cell.prepareView(user)
+        let cell = tableView.dequeueReusableCellWithIdentifier(kReusableFollowUserViewCell) as?FollowUserViewCell
+        
+        if let cell = cell {
+            cell.prepareView(object!)
         }
         
         return cell
@@ -74,7 +75,7 @@ import ParseUI
     }
     
     class func CreateWithId(objectId: String) -> YouFollowViewController {
-        return CreateWithModel(PFObject(withoutDataWithClassName: "_User", objectId: objectId))
+        return CreateWithModel(PFObject(withoutDataWithClassName: kUserClassKey, objectId: objectId))
     }
 
 }

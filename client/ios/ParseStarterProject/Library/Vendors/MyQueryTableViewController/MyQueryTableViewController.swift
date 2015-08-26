@@ -83,14 +83,6 @@ import Bolts
     
     override func loadView() {
         super.loadView()
-    
-        if self.pullToRefreshEnabled {
-            var refreshControl = UIRefreshControl()
-            refreshControl.addTarget(self, action: Selector("refreshControlValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
-            
-            self.refreshControl = refreshControl
-        }
-
     }
     
     override func viewDidLoad() {
@@ -100,10 +92,22 @@ import Bolts
             self.createSimpleTable()
         }
         
+        self.initializeRefreshControl()
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
         self.loadObjects()
+    }
+    
+    func initializeRefreshControl() {
+        if self.pullToRefreshEnabled {
+            var refreshControl = UIRefreshControl()
+            refreshControl.addTarget(self, action: Selector("refreshControlValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
+            
+            self.tableView.addSubview(refreshControl)
+            self.tableView.sendSubviewToBack(refreshControl)
+            self.refreshControl = refreshControl
+        }
     }
     
     func createSimpleTable() {
@@ -235,8 +239,10 @@ import Bolts
                 self.tableView.reloadData()
             }
             
-            self.objectsDidLoad(error)
-            self.refreshControl?.endRefreshing()
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.objectsDidLoad(error)
+                self.refreshControl?.endRefreshing()
+            })
             
             source.setError(error)
         }
@@ -511,4 +517,3 @@ extension MyQueryTableViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(scrollView: UIScrollView) {
     }
 }
-

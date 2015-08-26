@@ -13,8 +13,9 @@ import Bolts
 
 class BaseQueryViewController: BaseViewController, StatefulViewControllerDelegate {
     var object: PFObject?
-    var className: String? { return nil }
+    var parseClassName: String?
     var objectID: String?
+    
     private var isRefreshing: Bool = false
     
     func hasContent() -> Bool {
@@ -43,24 +44,29 @@ class BaseQueryViewController: BaseViewController, StatefulViewControllerDelegat
         errorView = failureView
     }
     
+    func queryForView() -> PFQuery {
+        let query = PFQuery(className: self.parseClassName!)
+        return query;
+    }
+    
     func refresh() {
         self.objectWillLoad(self.object!)
-        self.object?.fetchIfNeededInBackground().continueWithBlock({
-            (task: BFTask!) -> AnyObject! in
-            if task.error != nil {
+        
+        var query = self.queryForView()
+        query.getObjectInBackgroundWithId(self.object!.objectId!) {
+            (object: PFObject?, error: NSError?) -> Void in
+            if error == nil && object != nil {
+                self.object = object
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.objectDidLoad(object!)
+                }
+            } else {
                 // There was an error.
                 dispatch_async(dispatch_get_main_queue()) {
-                    self.objectErrorLoad(self.object!, error: task.error)
+                    self.objectErrorLoad(object!, error: error)
                 }
-                return task
             }
-            
-            dispatch_async(dispatch_get_main_queue()) {
-                self.objectDidLoad(task.result as! PFObject)
-            }
-            
-            return task
-        })
+        }
     }
     
     func objectWillLoad(object: PFObject) {

@@ -142,9 +142,6 @@ import ParseUI
 
     
     @IBAction func didTapPosts() {
-        let title = LoremIpsum.wordsWithNumber((random() % 10) + 1)
-        let content = LoremIpsum.wordsWithNumber((random() % 100) + 1)
-        let myPost = Post.createWith(title, content: content)
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle  {

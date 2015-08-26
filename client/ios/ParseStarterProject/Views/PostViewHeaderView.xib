@@ -6,7 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PostViewHeaderView" customModule="Think" customModuleProvider="target">
             <connections>
-                <outlet property="cover" destination="abm-KS-jVj" id="Phe-7i-dP0"/>
+                <outlet property="coverImage" destination="abm-KS-jVj" id="yd2-1m-wpN"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

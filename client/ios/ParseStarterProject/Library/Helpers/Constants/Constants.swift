@@ -18,12 +18,14 @@ let kClassObjectId  = "objectId"
 
 
 // MARK: - User
-let kUserClassKey               = "User"
+let kUserClassKey               = "_User"
 
 //fields
 let kUserFirstNameKey           = "first_name"
 let kUserLastNameKey            = "last_name"
 let kUserUsernameKey            = "username"
+let kUserPasswordKey            = "password"
+let kUserEmailKey               = "email"
 let kUserProfilePictureKey      = "profile_picture"
 let kUserProfileCoverKey        = "profile_cover"
 let kUserSettingsKey            = "settings"
@@ -58,7 +60,6 @@ let kActivityPictureKey         = "picture" //картинка (например
 let kPostClassKey               = "Post"
 
 //fields
-let kPostContentKey             = "content"
 let kPostContentObjKey          = "content_obj"
 let kPostContentShortKey        = "content_short"
 let kPostTitleKey               = "title"
@@ -105,6 +106,7 @@ let kBookmarkPostOwnerKey       = "post.owner"
 // MARK: Installation
 let kInstallationUserKey        = "user"
 let kInstallationChannelsKey    = "channels"
+let kInstallationEventsKey      = "events"
 
 // MARK: Notification
 let kAPNSAlertKey = "alert"
@@ -124,6 +126,28 @@ let kPushPayloadFromUserObjectIdKey     = "fu"
 let kPushPayloadToUserObjectIdKey       = "tu"
 let kPushPayloadPoseObjectIdKey         = "pid"
 
+
+// MARK: Threads
+
+let kThreadClassKey = "Threads"
+
+//fields threads
+let kThreadParticipantsKey      = "participants"
+let kThreadLastMessageKey       = "last_message"
+
+
+// MARK: Message
+let kMessageClassKey = "Message"
+
+//fields
+let kMessageContentKey          = "content"
+let kMessagePictureKey          = "picture"
+let kMessageThreadKey           = "thread"
+let kMessageFromUserKey         = "from_user"//источник
+let kMessageToUserKey           = "to_user"//пользователя назанчение
+
+
+
 //notifications
 let kUserUnlikedPost        = "com.think.user.unliked.post"
 let kUserLikedPost          = "com.think.user.liked.post"
@@ -133,6 +157,10 @@ let kUserUnfollowUser       = "com.think.unfollow.user"
 let kUserRaisePost          = "com.think.raise.post"
 let kUserSendComment        = "com.think.send.comment"
 let kUserUpdateProfile      = "com.think.update.profile"
+let kUserCreateThread       = "com.think.create.thread"
+let kUserSendMessage        = "com.think.send.message"
+
+
 
 //side menu notifications
 enum kSideMenu: String {
@@ -179,6 +207,12 @@ let kReusableMessageViewCell        = "MessageViewCell"
 let kReusableSideMenuViewCell       = "SideMenuViewCell"
 let kReusableCommentViewCell        = "CommentViewCell"
 
+
+// MARK: post placeholder
+let kPostPlaceholder = UIImage(named: "pic_post")
+let kUserPlaceholder = UIImage(named: "ava_profile")
+let kUserCoverPlaceholder = UIImage(named: "profile_bg")
+let kUserHiddenName = "Hidden"
 
 
 

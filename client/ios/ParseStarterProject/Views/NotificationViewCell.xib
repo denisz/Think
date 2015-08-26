@@ -55,7 +55,7 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </button>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ava_profile" translatesAutoresizingMaskIntoConstraints="NO" id="WxI-Ew-RnA" customClass="UIImageCircle" customModule="Think" customModuleProvider="target">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ava_profile" translatesAutoresizingMaskIntoConstraints="NO" id="WxI-Ew-RnA" customClass="PFImageView">
                         <rect key="frame" x="15" y="15" width="38" height="38"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="38" id="JAK-MF-pen"/>
@@ -83,8 +83,11 @@
                         <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="is now following you" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aog-kq-82u">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="169" placeholderIntrinsicHeight="28" text="is now following you" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aog-kq-82u">
                         <rect key="frame" x="83" y="27.5" width="169" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="18" id="rNm-qo-tLj"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="13"/>
                         <color key="textColor" red="0.64705997709999996" green="0.64705997709999996" blue="0.64705997709999996" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -120,6 +123,13 @@
                 </constraints>
             </tableViewCellContentView>
             <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+            <connections>
+                <outlet property="dateView" destination="znn-o7-5KC" id="5HL-A0-9vC"/>
+                <outlet property="desc" destination="aog-kq-82u" id="2s1-Nl-8t2"/>
+                <outlet property="followBtn" destination="CRy-af-DPb" id="qQZ-WZ-ZJC"/>
+                <outlet property="userName" destination="saX-qR-47D" id="RwP-F2-alc"/>
+                <outlet property="userPicture" destination="WxI-Ew-RnA" id="tha-8M-Y6I"/>
+            </connections>
             <point key="canvasLocation" x="223" y="-123"/>
         </tableViewCell>
     </objects>

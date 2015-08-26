@@ -16,13 +16,21 @@
         </mutableArray>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BookmarkMainPostView" customModule="Think" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BookmarkMainPostView" customModule="Think" customModuleProvider="target">
+            <connections>
+                <outlet property="commentsCounter" destination="9tl-Vy-XSm" id="iZW-qa-oVi"/>
+                <outlet property="coverImage" destination="qFL-NB-306" id="4WG-JG-Zfa"/>
+                <outlet property="date" destination="AZc-q8-Gc1" id="RKk-KD-k5E"/>
+                <outlet property="likesCounter" destination="jPG-ts-S7P" id="N5c-vU-Vof"/>
+                <outlet property="title" destination="fen-ss-gr0" id="YKj-oM-ri0"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="320" height="201"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pic_post" translatesAutoresizingMaskIntoConstraints="NO" id="qFL-NB-306">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pic_post" translatesAutoresizingMaskIntoConstraints="NO" id="qFL-NB-306" customClass="PFImageView">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="201"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C09-22-DsT">

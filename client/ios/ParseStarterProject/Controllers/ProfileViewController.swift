@@ -15,7 +15,7 @@ import VGParallaxHeader
 
 @objc(ProfileViewController) class ProfileViewController: BaseQueryTableViewController {
     var owner: PFObject?
-    
+    var stickyView: UIView?
     var isGuest: Bool {
         if let currentUser = PFUser.currentUser() {
             if owner?.objectId == currentUser.objectId {
@@ -32,7 +32,7 @@ import VGParallaxHeader
         self.automaticallyAdjustsScrollViewInsets = false
         
         self.setupHeaderView()
-        
+
         self.tableView.registerNib(UINib(nibName: kReusableProfilePostViewCell, bundle: nil), forCellReuseIdentifier: kReusableProfilePostViewCell)
 
         self.tableView.estimatedRowHeight = 44.0;
@@ -40,6 +40,25 @@ import VGParallaxHeader
         self.tableView.tableFooterView = UIView()
         
         self.setupNavigationBar()
+        self.setupStickyView()
+    }
+    
+    override func scrollViewDidScroll(scrollView: UIScrollView) {
+        self.tableView.shouldPositionParallaxHeader()
+        self.fakeNavigationBar?.alpha   = self.tableView.parallaxHeader.progress
+        self.stickyView?.alpha          = 1 - self.tableView.parallaxHeader.progress
+    }
+    
+    func setupStickyView() {
+        let frame = CGRectMake(0, 0, 320, 20)
+        let view = UIView(frame: frame)
+        view.backgroundColor = UIColor(red:0.33, green:0.39, blue:0.42, alpha:1)
+        view.alpha = 0
+        
+        self.view.addSubview(view)
+        self.stickyView = view
+        
+        BaseUIView.constraintToTop(view, size: frame.size, offset: 0)
     }
     
     func setupHeaderView() {
@@ -48,12 +67,12 @@ import VGParallaxHeader
         if !self.isGuest {
             var headerProfile = ProfileHeaderView()
             headerProfile.delegate = self
-            headerProfile.viewDidLoadObject(self.owner!)
+            headerProfile.objectDidLoad(self.owner!)
             header = headerProfile
         } else {
             var headerProfileGuest = ProfileGuestHeaderView()
             headerProfileGuest.delegate = self
-            headerProfileGuest.viewDidLoadObject(self.owner!)
+            headerProfileGuest.objectDidLoad(self.owner!)
             header = headerProfileGuest
         }
         
@@ -100,15 +119,11 @@ import VGParallaxHeader
         UIView.commitAnimations()
     }
     
-    override func scrollViewDidScroll(scrollView: UIScrollView) {
-        self.tableView.shouldPositionParallaxHeader()
-    }
-    
     override func queryForTable() -> PFQuery {
         var query = PFQuery(className: self.parseClassName!)
         query.whereKey(kPostOwnerKey, equalTo: owner!)
         query.whereKey(kPostStatusKey, equalTo: kPostStatusPublic)
-        query.selectKeys([kPostTitleKey, kPostContentShortKey, kPostCounterCommentsKey, kPostCounterLikesKey, kPostOwnerKey, kPostOwnerUserNameKey, kPostCoverKey, kClassCreatedAt])
+        query.selectKeys([kPostTitleKey, kPostContentShortKey, kPostCounterCommentsKey, kPostCounterLikesKey, kPostOwnerKey, kPostCoverKey, kClassCreatedAt])
         query.orderByDescending(kClassCreatedAt)
         
         return query
@@ -175,7 +190,7 @@ extension ProfileViewController: ProfileHeaderViewDelegate {
     
     func profileView(view: ProfileHeaderView, didTapFollowers button: UIButton) {
         var user = PFUser.currentUser()
-        let controller = FollowersViewController.CreateWithModel(user!)
+        let controller = YouFollowViewController.CreateWithModel(user!)
         self.navigationController?.pushViewController(controller, animated: true)
 
     }

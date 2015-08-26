@@ -67,6 +67,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework 'PureLayout.framework'
   install_framework 'Reachability.framework'
   install_framework 'SlackTextViewController.framework'
+  install_framework 'TOCropViewController.framework'
   install_framework 'VGParallaxHeader.framework'
   install_framework 'XLForm.framework'
 fi
@@ -90,6 +91,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework 'PureLayout.framework'
   install_framework 'Reachability.framework'
   install_framework 'SlackTextViewController.framework'
+  install_framework 'TOCropViewController.framework'
   install_framework 'VGParallaxHeader.framework'
   install_framework 'XLForm.framework'
 fi

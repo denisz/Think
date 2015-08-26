@@ -12,7 +12,25 @@ import ParseUI
 import UIKit
 
 class NotificationViewCell: PFTableViewCell {
+    @IBOutlet weak var userName: UILabel!
+    @IBOutlet weak var userPicture: PFImageView!
+    @IBOutlet weak var desc: UILabel!
+    @IBOutlet weak var dateView: UILabel!
+    @IBOutlet weak var followBtn: UIButton!
+    @IBOutlet weak var iconView: UIImageView!
+    
+    override var imageView: PFImageView? {
+        return self.userPicture
+    }
+    
     func prepareView(object: PFObject) {
+        self.userName.text = Notify.ownerUsername(object)
+        self.userPicture.image = kUserPlaceholder
+        self.userPicture.file = Notify.ownerPicture(object)
         
+        self.userPicture.cornerEdge()
+        
+        self.dateView.text  = Notify.createdAtDate(object)
+        self.desc.text      = Notify.description(object)
     }
 }

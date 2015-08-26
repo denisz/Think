@@ -21,6 +21,9 @@
 //Progress Hud
 #import <JGProgressHUD/JGProgressHUD.h>
 
+//crop
+#import <TOCropViewController/TOCropViewController.h>
+
 //szTextView
 #import "SZTextView.h"
 

@@ -23,7 +23,7 @@ class CommentsTableView: MyQueryTableView {
         self.registerNib(UINib(nibName: kReusableCommentViewCell, bundle: nil), forCellReuseIdentifier: kReusableCommentViewCell)
         self.estimatedRowHeight = 44.0
         self.rowHeight = UITableViewAutomaticDimension
-
+        self.allowsSelection = false
         self.tableFooterView = UIView()
     }
     

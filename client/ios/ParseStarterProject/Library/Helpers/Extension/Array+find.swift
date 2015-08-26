@@ -17,4 +17,15 @@ extension Array {
         }
         return nil
     }
+    
+    mutating func remove(includedElement: T -> Bool) -> Bool {
+        
+        for (idx, element) in enumerate(self) {
+            if includedElement(element) {
+                self.removeAtIndex(idx)
+                return true
+            }
+        }
+        return false
+    }
 }

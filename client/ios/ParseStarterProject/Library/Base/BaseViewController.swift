@@ -68,13 +68,13 @@ extension UIViewController {
         _titleButton.setImage(arrowImage, forState: UIControlState.Normal)
         _titleButton.imagePosition = LGButtonImagePositionRight
         _titleButton.titleLabel!.font = UIFont(name: "OpenSans-Light", size: 19)
-        _titleButton.addTarget(self, action: "didTapFilter", forControlEvents: UIControlEvents.TouchUpInside)
+        _titleButton.addTarget(self, action: "didTapTitle", forControlEvents: UIControlEvents.TouchUpInside)
         _titleButton.sizeToFit()
         
         navigationItem.titleView = _titleButton;
     }
     
-    func didTapFilter() {}
+    func didTapTitle() {}
     
     func setupFakeStatusBar(color: UIColor) {
         let fakeView = UIView()
@@ -163,9 +163,15 @@ extension UIViewController {
         }
     }
     
+    func superviewForFakeNavigationBar() -> UIView {
+        return self.view
+    }
+    
     func createFakeNavigationBar() -> UINavigationBar {
         let frame = CGRectMake(0, 20, 320, 44)
         let fakeNavigationBar = UINavigationBar(frame: frame)
+        let superview = self.superviewForFakeNavigationBar()
+        
         fakeNavigationBar.barStyle = UIBarStyle.Default
         fakeNavigationBar.delegate = self
 
@@ -173,8 +179,7 @@ extension UIViewController {
         navigationItem.title = self.title
         fakeNavigationBar.items = [navigationItem]
         
-        view.addSubview(fakeNavigationBar)
-        
+        superview.addSubview(fakeNavigationBar)
         BaseUIView.constraintToTop(fakeNavigationBar, size: frame.size, offset: 20)
         
         return fakeNavigationBar

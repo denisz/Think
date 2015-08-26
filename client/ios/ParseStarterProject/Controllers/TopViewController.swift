@@ -9,9 +9,9 @@
 import Foundation
 import Parse
 import ParseUI
+import Bolts
 import UIKit
 
-//top
 @objc(TopViewController) class TopViewController: BaseQueryTableViewController {
     var owner: PFObject?
     
@@ -30,7 +30,7 @@ import UIKit
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.configureTitleView()
+//        self.configureTitleView()
         self.customizeNavigationBar()
         self.configureNavigationBarBackBtn(kColorNavigationBar)
     }
@@ -47,8 +47,14 @@ import UIKit
     
     override func queryForTable() -> PFQuery {
         var query = PFQuery(className: self.parseClassName!)
-        query.whereKey("owner", equalTo: owner!)
-        query.orderByDescending("createdAt")
+//        query.whereKey("owner", equalTo: owner!)
+        query.whereKey(kPostStatusKey, equalTo: kPostStatusPublic)
+        query.orderByDescending(kPostCounterLikesKey)
+        query.addDescendingOrder(kClassCreatedAt)//по созданию
+        query.includeKey(kPostOwnerKey)
+        query.selectKeys([kPostTitleKey, kPostContentShortKey, kPostCounterCommentsKey, kPostCounterLikesKey, kPostOwnerKey, kPostCoverKey, kClassCreatedAt])
+
+        
         return query
     }
     
@@ -69,23 +75,22 @@ import UIKit
         return UIStatusBarStyle.LightContent
     }
     
-    class func CreateWith() -> FeedViewController {
+    class func CreateWith() -> TopViewController {
         let user = PFUser.currentUser()!
         return CreateWithModel(user)
     }
     
-    class func CreateWithModel(model: PFObject) -> FeedViewController{
-        var feed = FeedViewController()
-        feed.owner = model
-        feed.parseClassName = "Post"
-        feed.paginationEnabled = true
-        feed.pullToRefreshEnabled = false
+    class func CreateWithModel(model: PFObject) -> TopViewController{
+        var top = TopViewController()
+        top.owner = model
+        top.parseClassName = "Post"
+        top.paginationEnabled = true
+        top.pullToRefreshEnabled = true
         
-        
-        return feed
+        return top
     }
     
-    class func CreateWithId(objectId: String) -> FeedViewController {
+    class func CreateWithId(objectId: String) -> TopViewController {
         return CreateWithModel(PFObject(withoutDataWithClassName: "_User", objectId: objectId))
     }
 }
