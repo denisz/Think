@@ -71,7 +71,7 @@ import VGParallaxHeader
     }
     
     override func queryForCollection() -> PFQuery {
-        var query = PFQuery(className: self.parseClassName!)
+        var query = PFQuery(className: kBookmarkClassKey)
         query.whereKey(kBookmarkUserKey, equalTo: owner!)
         query.includeKey(kBookmarkPostKey)
         query.selectKeys([kBookmarkPostKey])
@@ -82,7 +82,7 @@ import VGParallaxHeader
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFCollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kReusableBookmarksViewCell, forIndexPath: indexPath) as! BookmarksViewCell
         
-        if let post = object![kBookmarkPostKey] as? PFObject {
+        if let post = Bookmark.post(object!) {
             cell.prepareView(post)
         }
         
@@ -105,7 +105,7 @@ import VGParallaxHeader
         var bookmarks = BookmarksViewController()
         bookmarks.owner = model
         bookmarks.parseClassName = kBookmarkClassKey
-        bookmarks.objectsPerPage = 2
+        bookmarks.objectsPerPage = 25
         bookmarks.paginationEnabled = true
         bookmarks.pullToRefreshEnabled = false
         
