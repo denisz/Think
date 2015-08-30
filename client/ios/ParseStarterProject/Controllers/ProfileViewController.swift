@@ -88,20 +88,6 @@ import VGParallaxHeader
         if !self.isGuest {
             self.configureNavigationBarRightBtn(UIColor.whiteColor())
         }
-        
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector:
-//            "userLikedOrUnlikedPost:",             name: kUserUnlikedPost, object: nil)
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector:
-//            "userLikedOrUnlikedPost:",             name: kUserLikedPost, object: nil)
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "userFollowOrUnFollowAuthorPost:",     name: kUserFollowingUser, object: nil)
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "userFollowOrUnFollowAuthorPost:",     name: kUserUnfollowUser, object: nil)
-    }
-    
-    override func viewDidDisappear(animated: Bool) {
-//        NSNotificationCenter.defaultCenter().removeObserver(self, name: kUserUnlikedPost,   object: nil)
-//        NSNotificationCenter.defaultCenter().removeObserver(self, name: kUserLikedPost,     object: nil)
-//        NSNotificationCenter.defaultCenter().removeObserver(self, name: kUserFollowingUser, object: nil)
-//        NSNotificationCenter.defaultCenter().removeObserver(self, name: kUserUnfollowUser,  object: nil)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -112,7 +98,7 @@ import VGParallaxHeader
     func configureNavigationBarRightBtn(color: UIColor) {
         let navigationItem  = self.defineNavigationItem()
 
-        let editBarButtonItem = UIBarButtonItem(title: "Edit".uppercaseString, style: UIBarButtonItemStyle.Plain, target: self, action: "didTapEdit:")
+        let editBarButtonItem = UIBarButtonItem(title: "Edit".uppercaseString.localized, style: UIBarButtonItemStyle.Plain, target: self, action: "didTapEdit:")
         
         let attributes = [
             NSForegroundColorAttributeName: color,
@@ -147,6 +133,7 @@ import VGParallaxHeader
         let cell = tableView.dequeueReusableCellWithIdentifier(kReusableProfilePostViewCell) as! ProfilePostViewCell
         cell.prepareView(object!)
         cell.parentViewController = self
+        
         return cell
     }
     
@@ -181,8 +168,24 @@ extension ProfileViewController: ProfileGuestHeaderViewDelegate {
     }
     
     func profileGuestView(view: ProfileGuestHeaderView, didTapWhisper button: UIButton) {
-        let controller = ChannelViewController.CreateWithModel(self.owner!)
-        self.navigationController?.pushViewController(controller, animated: true)
+        let overlay = OverlayView.createInView(self.view)
+        Thread.createWithOtherUser(self.owner!).continueWithBlock { (task: BFTask!) -> AnyObject! in
+            dispatch_async(dispatch_get_main_queue()) {
+                overlay.removeFromSuperview()
+            }
+            if task.error == nil{
+                if let thread = task.result as? PFObject {
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        let controller = ThreadViewController.CreateWithModel(thread)
+                        self.navigationController?.pushViewController(controller, animated: true)
+                    })
+                }
+            } else {
+                //не смог создать thread
+            }
+            
+            return task
+        }
     }
 }
 

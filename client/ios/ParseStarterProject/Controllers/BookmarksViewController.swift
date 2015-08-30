@@ -19,7 +19,7 @@ import VGParallaxHeader
         super.viewDidLoad()
         self.title = "Bookmarks".localized
 
-        self.setupHeaderView()
+//        self.setupHeaderView()
         
         self.collectionView!.registerNib(UINib(nibName: kReusableBookmarksViewCell, bundle: nil), forCellWithReuseIdentifier: kReusableBookmarksViewCell)
         
@@ -66,8 +66,8 @@ import VGParallaxHeader
         UIApplication.sharedApplication().setStatusBarStyle(.Default, animated: true)
     }
     
-    override func scrollViewDidScroll(scrollView: UIScrollView) {
-        self.collectionView!.shouldPositionParallaxHeader()
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+//        self.collectionView!.shouldPositionParallaxHeader()
     }
     
     override func queryForCollection() -> PFQuery {
@@ -79,7 +79,7 @@ import VGParallaxHeader
         return query
     }
     
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFCollectionViewCell? {
+    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFCollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kReusableBookmarksViewCell, forIndexPath: indexPath) as! BookmarksViewCell
         
         if let post = object![kBookmarkPostKey] as? PFObject {
@@ -101,21 +101,11 @@ import VGParallaxHeader
         return UIStatusBarStyle.LightContent
     }
     
-    class func CreateLayout() -> UICollectionViewFlowLayout {
-        var aFlowLayout = UICollectionViewFlowLayout()
-        aFlowLayout.itemSize = CGSizeMake(145, 210)
-        aFlowLayout.scrollDirection =  UICollectionViewScrollDirection.Vertical
-        aFlowLayout.minimumLineSpacing = 10
-        aFlowLayout.minimumInteritemSpacing = 5
-        aFlowLayout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10)
-        
-        return aFlowLayout
-    }
-    
     class func CreateWithModel(model: PFObject) -> BookmarksViewController {
-        var bookmarks = BookmarksViewController(collectionViewLayout: CreateLayout(), className: "Post")
+        var bookmarks = BookmarksViewController()
         bookmarks.owner = model
-        bookmarks.parseClassName = "Bookmark"
+        bookmarks.parseClassName = kBookmarkClassKey
+        bookmarks.objectsPerPage = 2
         bookmarks.paginationEnabled = true
         bookmarks.pullToRefreshEnabled = false
         
@@ -123,6 +113,6 @@ import VGParallaxHeader
     }
     
     class func CreateWithId(objectId: String) -> BookmarksViewController {
-        return CreateWithModel(PFObject(withoutDataWithClassName: "_User", objectId: objectId))
+        return CreateWithModel(PFObject(withoutDataWithClassName: kUserClassKey, objectId: objectId))
     }
 }

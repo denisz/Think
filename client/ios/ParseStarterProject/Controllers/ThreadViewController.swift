@@ -48,21 +48,29 @@ import ParseUI
         
         self.customizeNavigationBar()
         self.configureNavigationBarBackBtn(kColorNavigationBar)
+        self.configureNavigationBarRightBtn(kColorNavigationBar)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "userSendMessage:", name: kUserSendMessage, object: nil)
     }
     
     func configureNavigationBarRightBtn(color: UIColor) {
         let navigationItem = self.defineNavigationItem()
-        let image = UIImage(named: "ava_profile")
+        let placeholder = kUserPlaceholder
+        let image = PFImageView()
+        image.image = kUserPlaceholder
+        image.file = UserModel.pictureImage(self.participant!)
         
         let btnBack = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
         btnBack.addTarget(self, action: "didTapAvatarBtn:", forControlEvents: UIControlEvents.TouchUpInside)
-        btnBack.setImage(image, forState: UIControlState.Normal)
+        btnBack.setImage(placeholder, forState: UIControlState.Normal)
         btnBack.imageEdgeInsets = UIEdgeInsets(top: -4, left: -4, bottom: -4, right: -4)
         btnBack.setTitleColor(kColorNavigationBar, forState: UIControlState.Normal)
         btnBack.frame = CGRectMake(0, 0, 36, 36)
         btnBack.cornerEdge()
+        
+        image.loadInBackground { (image, error) -> Void in
+            btnBack.setImage(image, forState: UIControlState.Normal)
+        }
         
         let bar = UIBarButtonItem(customView: btnBack)
         navigationItem.rightBarButtonItem = bar

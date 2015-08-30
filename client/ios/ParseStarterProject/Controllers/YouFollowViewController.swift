@@ -57,7 +57,7 @@ import Bolts
         
         if let searchString = self.getSearchText() {
             let subquery = PFQuery(className: kUserClassKey)
-            subquery.whereKey(kUserUsernameKey, hasPrefix: searchString)
+            subquery.whereKey(kUserDisplayNameKey, hasPrefix: searchString)
             query.whereKey(kActivityToUserKey, matchesKey: kClassObjectId, inQuery: subquery)
         }
         

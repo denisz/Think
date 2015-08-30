@@ -119,7 +119,7 @@ import ParseUI
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) {
-        if let user = object![kActivityFromUserKey] as? PFObject{
+        if let user = Comment.owner(object!){
             let controller = ProfileViewController.CreateWithModel(user)
             self.navigationController!.pushViewController(controller, animated: true)
         }
@@ -136,7 +136,7 @@ import ParseUI
         comments.owner = model
         comments.parseClassName = "Activity"
         comments.paginationEnabled = true
-        comments.objectsPerPage = 6
+        comments.objectsPerPage = 25
         comments.pullToRefreshEnabled = false
         comments.reverseViewCell = true
         
@@ -151,7 +151,13 @@ import ParseUI
 
 extension CommentsViewController: InputBarViewDelegate {
     func handlerSendComment(message: String) {
-        Activity.commentPost(self.owner!, message: message)
+        let readyMessage = message.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+        
+        if readyMessage.isEmpty {
+            return
+        }
+        
+        Activity.commentPost(self.owner!, message: readyMessage)
     }
     
     func inputBar(view: InputBarView, didTapLeftButton button: UIButton) {

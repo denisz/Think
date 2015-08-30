@@ -23,7 +23,7 @@ class Follower {
     //я слежу за пользователем
     class func followingUsername(activity: PFObject) -> String {
         if let user = activity[kActivityToUserKey] as? PFObject {
-            return UserModel.username(user)
+            return UserModel.displayname(user)
         }
         
         return kUserHiddenName
@@ -40,7 +40,7 @@ class Follower {
     //кто следит за мной
     class func followerUsername(activity: PFObject) -> String {
         if let user = activity[kActivityFromUserKey] as? PFObject {
-            return UserModel.username(user)
+            return UserModel.displayname(user)
         }
         
         return kUserHiddenName

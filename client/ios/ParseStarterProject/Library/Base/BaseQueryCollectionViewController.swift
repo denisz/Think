@@ -11,12 +11,9 @@ import Parse
 import ParseUI
 import UIKit
 
-
-protocol BaseQueryCollectionViewContollerProtocol {
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath, object: PFObject?)
-}
-
-class BaseQueryCollectionViewContoller: PFQueryCollectionViewController {
+class BaseQueryCollectionViewContoller: MyQueryCollectionViewController {
+    @IBOutlet weak var collectionViewTopLayoutContraint: NSLayoutConstraint!
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -42,11 +39,25 @@ class BaseQueryCollectionViewContoller: PFQueryCollectionViewController {
         self.collectionView!.dataSource = self
         self.collectionView!.delegate = self
     }
+    
+    func topConstraintForNavigationBar() -> NSLayoutConstraint? {
+        return self.collectionViewTopLayoutContraint
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if self.automaticallyAdjustsScrollViewInsets == true {
+            if let top = self.topConstraintForNavigationBar() {
+                top.constant = 44
+            }
+        }
+    }
 }
 
-extension BaseQueryCollectionViewContoller: BaseQueryCollectionViewContollerProtocol {
-    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let count = self.objects.count
+extension BaseQueryCollectionViewContoller {
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let count = self.objects!.count
         
         if count > indexPath.row {
             self.collectionView(collectionView, didSelectItemAtIndexPath: indexPath, object: self.objectAtIndexPath(indexPath))

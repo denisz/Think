@@ -36,6 +36,20 @@ class Post: PFObject, PFSubclassing {
         return kPostTitlePlaceholder
     }
     
+    class func allowContent(post: PFObject) -> Bool {
+        if let settings = Post.settings(post) {
+            let user = PFUser.currentUser()
+
+            if let contentAdult = settings[kPostOptAdultContent] as? Bool {
+                if contentAdult == true  && UserModel.age(user!) < 18 {
+                    return false
+                }
+            }
+        }
+        
+        return true
+    }
+    
     class func status(post: PFObject) -> String {
         if let status = post[kPostStatusKey] as? String {
             return status
@@ -46,6 +60,18 @@ class Post: PFObject, PFSubclassing {
     
     class func coverImage(post: PFObject) -> PFFile? {
         return post[kPostCoverKey] as? PFFile
+    }
+    
+    class func tintColor(post: PFObject) -> UIImage {
+        if let hexTintColor = post[kPostTintColor] as? String {
+            return UIImage(fromColor: UIColor(hexString: hexTintColor), size: CGSize(width: 320, height: 180))
+        }
+        
+        return kPostPlaceholder!
+    }
+    
+    class func settings(post: PFObject) -> [String: AnyObject]? {
+        return post[kPostSettingsKey] as? [String: AnyObject]
     }
     
     class func owner(post: PFObject) -> PFObject? {
@@ -97,7 +123,7 @@ class Post: PFObject, PFSubclassing {
     
     class func usernameOwner(post: PFObject) -> String {
         if let user = post[kPostOwnerKey] as? PFObject {
-            return UserModel.username(user)
+            return UserModel.displayname(user)
         }
         
         return kUserHiddenName

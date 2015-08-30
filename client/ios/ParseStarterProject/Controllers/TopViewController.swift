@@ -38,7 +38,10 @@ import UIKit
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         UIApplication.sharedApplication().setStatusBarStyle(.Default, animated: true)
-//        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default;
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
     }
     
     override func scrollViewDidScroll(scrollView: UIScrollView) {
@@ -52,7 +55,7 @@ import UIKit
         query.orderByDescending(kPostCounterLikesKey)
         query.addDescendingOrder(kClassCreatedAt)//по созданию
         query.includeKey(kPostOwnerKey)
-        query.selectKeys([kPostTitleKey, kPostContentShortKey, kPostCounterCommentsKey, kPostCounterLikesKey, kPostOwnerKey, kPostCoverKey, kClassCreatedAt])
+        query.selectKeys([kPostTitleKey, kPostTintColor, kPostContentShortKey, kPostCounterCommentsKey, kPostCounterLikesKey, kPostOwnerKey, kPostCoverKey, kClassCreatedAt])
 
         
         return query
@@ -83,7 +86,7 @@ import UIKit
     class func CreateWithModel(model: PFObject) -> TopViewController{
         var top = TopViewController()
         top.owner = model
-        top.parseClassName = "Post"
+        top.parseClassName = kPostClassKey
         top.paginationEnabled = true
         top.pullToRefreshEnabled = true
         

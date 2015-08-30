@@ -12,6 +12,8 @@ import ParseUI
 import UIKit
 
 @objc(PrivacyViewController) class PrivacyViewController: BaseViewController {
+    @IBOutlet weak var textView: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Privacy".localized
@@ -22,5 +24,7 @@ import UIKit
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         UIApplication.sharedApplication().setStatusBarStyle(.Default, animated: true)
+        
+        
     }
 }

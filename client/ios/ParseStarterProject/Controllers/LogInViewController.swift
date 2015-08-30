@@ -20,6 +20,19 @@ protocol LogInViewControllerDelegate {
     func logIn(controller: LogInViewController, sign signController: UIViewController)
 }
 
+// (kConstantTop, kConstantSN)
+func determineContraints() -> (CGFloat, CGFloat){
+    if UIDevice().userInterfaceIdiom == .Phone {
+        switch UIScreen.mainScreen().nativeBounds.height {
+        case 960:
+            return (20, 40)
+        default:
+            return (60, 60)
+        }
+    }
+    return (60, 60)
+}
+
 @objc(LogInViewController) class LogInViewController: UIViewController {
     @IBOutlet weak var fadeActivity: UIView!
     @IBOutlet weak var message: UILabel!
@@ -50,17 +63,25 @@ protocol LogInViewControllerDelegate {
         self.facebook.cornerEdge()
         self.signUp.cornerEdge()
         
-        self.setupKeyboard(true)
+        self.prepareLayoutContraints()
     }
     
-    deinit {
+    func prepareLayoutContraints() {
+        let constraints = determineContraints()
+        self.topConstraint.constant = constraints.0
+        self.betweenSigninAndNicknameConstraint.constant = constraints.1
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
         self.unsetupKeyboard()
     }
     
     override func updateConstraintKeyboard(hide: Bool, minY: CGFloat, maxY: CGFloat) {
+        let constraints = determineContraints()
         if hide {
-            self.topConstraint.constant = 60
-            self.betweenSigninAndNicknameConstraint.constant = 60
+            self.topConstraint.constant = constraints.0
+            self.betweenSigninAndNicknameConstraint.constant = constraints.1
         } else {
             self.topConstraint.constant = 15
             self.betweenSigninAndNicknameConstraint.constant = 35
@@ -75,12 +96,24 @@ protocol LogInViewControllerDelegate {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
+        self.setupKeyboard(true)
+        
         let currentUser = PFUser.currentUser()
         if currentUser!.sessionToken != nil {
             self.dismissViewControllerAnimated(false, completion: nil)
         }
         
-        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent;
+        UIApplication.sharedApplication().setStatusBarOrientation(UIInterfaceOrientation.Portrait, animated: true)
+        
+        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
+    }
+    
+    override func supportedInterfaceOrientations() -> Int {
+        return Int(UIInterfaceOrientationMask.Portrait.rawValue)
+    }
+    
+    override func shouldAutorotate() -> Bool {
+        return false
     }
     
     override func viewDidLayoutSubviews() {
@@ -103,12 +136,16 @@ protocol LogInViewControllerDelegate {
         let permissions = ["public_profile"]
         PFFacebookUtils.logInInBackgroundWithReadPermissions(permissions) {
             (user: PFUser?, error: NSError?) -> Void in
-            if let user = user {
+            if let newUser = user {
+                
+                newUser.setObject(UserModel.username(newUser), forKey: kUserDisplayNameKey)
+                newUser.saveInBackground()
+                
                 dispatch_async(dispatch_get_main_queue()) {
-                    self.delegate?.logIn(self, facebook: user)
+                    self.delegate?.logIn(self, facebook: newUser)
                 }
                 
-                if user.isNew {
+                if newUser.isNew {
                     println("User signed up and logged in through Facebook!")
                 } else {
                     println("User logged in through Facebook!")
@@ -154,14 +191,14 @@ protocol LogInViewControllerDelegate {
         var userPassword = password.text
         
         println("\(userEmailAddress) \(userPassword)")
-        
+
         PFUser.logInWithUsernameInBackground(userEmailAddress, password:userPassword) {
             (user: PFUser?, error: NSError?) -> Void in
             self.fadeActivity.hidden = true
             
-            if let user = user {
+            if let newUser = user {
                 dispatch_async(dispatch_get_main_queue()) {
-                    self.delegate?.logIn(self, successful: user)
+                    self.delegate?.logIn(self, successful: newUser)
                 }
             } else {
                 

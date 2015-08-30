@@ -25,7 +25,7 @@ class Notify {
     
     class func ownerUsername(notify: PFObject) -> String {
         if let user = notify[kActivityFromUserKey] as? PFObject {
-            return UserModel.username(user)
+            return UserModel.displayname(user)
         }
         
         return kUserHiddenName

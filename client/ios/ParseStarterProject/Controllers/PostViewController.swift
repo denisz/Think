@@ -39,6 +39,18 @@ import VGParallaxHeader
         self.setupStickyView()
     }
     
+    override func configureStateMachine() {
+        super.configureStateMachine()
+        var contentAdultView = ContentAdultView(frame: view.frame)
+        contentAdultView.tapGestureRecognizer.addTarget(self, action: Selector("didTapLeftBtn"))
+        denyView = contentAdultView
+
+    }
+    
+    override func allowContent() -> Bool {
+        return Post.allowContent(self.object!)
+    }
+    
     func scrollViewDidScroll(scrollView: UIScrollView) {
         self.scrollView.shouldPositionParallaxHeader()
         self.fakeNavigationBar?.alpha   = self.scrollView.parallaxHeader.progress
@@ -88,7 +100,6 @@ import VGParallaxHeader
         super.objectDidLoad(object)
         
         self.authorName.text        = Post.usernameOwner(object)
-//        self.likesCounter.text      = Post.likesCounter(object)
         self.titleView.text         = Post.title(object)
         
         self.authorPicture.image          = kUserPlaceholder
@@ -133,7 +144,6 @@ import VGParallaxHeader
     
     func updateFollowButton() {
         if let author = Post.owner(self.object!) {
-            println(UserModel.isEqualCurrentUser(author))
             self.followAuthor.hidden = UserModel.isEqualCurrentUser(author)
             self.followAuthor.selectedOnSet(MyCache.sharedCache.followStatusForUser(author))
         }
@@ -184,6 +194,13 @@ import VGParallaxHeader
     
     @IBAction func didTapFollowAuthor() {
         PostHelper.didTapFollowAuthor(self.object!)
+    }
+    
+    @IBAction func didTapPageAuthor() {
+        if let user = Post.owner(self.object!) {
+            let controller = ProfileViewController.CreateWithModel(user)
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
     }
     
     @IBAction func didTapComments() {

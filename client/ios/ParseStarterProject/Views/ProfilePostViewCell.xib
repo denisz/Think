@@ -162,7 +162,7 @@
                         <color key="highlightedColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                     </label>
                     <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="290" placeholderIntrinsicHeight="120" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6pt-Ay-ybB">
-                        <rect key="frame" x="10" y="291" width="300" height="129.5"/>
+                        <rect key="frame" x="10" y="291" width="300" height="154.5"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="UiY-wr-vzy"/>
                         </constraints>
@@ -171,11 +171,11 @@
                         <fontDescription key="fontDescription" name="PTSerif-Regular" family="PT Serif" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gDz-pt-bea">
-                        <rect key="frame" x="0.0" y="427" width="320" height="25"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gDz-pt-bea" userLabel="footer">
+                        <rect key="frame" x="0.0" y="452" width="320" height="0.0"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+1345" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vVY-z1-vSX" userLabel="likes" customClass="LabelViewWithIcon" customModule="Think" customModuleProvider="target">
-                                <rect key="frame" x="195" y="0.0" width="80" height="25"/>
+                                <rect key="frame" x="195" y="0.0" width="80" height="0.0"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="Btv-TF-7a0"/>
                                 </constraints>
@@ -205,7 +205,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PNa-Ro-GTj">
-                                <rect key="frame" x="275" y="0.0" width="30" height="25"/>
+                                <rect key="frame" x="275" y="0.0" width="30" height="0.0"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="lXh-AL-Y8h"/>
                                 </constraints>
@@ -218,7 +218,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="184" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dag-ZB-5TT" userLabel="comments" customClass="LabelViewWithIcon" customModule="Think" customModuleProvider="target">
-                                <rect key="frame" x="15" y="0.0" width="60" height="25"/>
+                                <rect key="frame" x="15" y="0.0" width="60" height="0.0"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="OH1-Vh-TLs"/>
                                 </constraints>
@@ -259,7 +259,7 @@
                             <constraint firstAttribute="bottom" secondItem="dag-ZB-5TT" secondAttribute="bottom" id="gbr-qv-gPc"/>
                             <constraint firstAttribute="bottom" secondItem="PNa-Ro-GTj" secondAttribute="bottom" id="qkF-sN-jDr"/>
                             <constraint firstItem="PNa-Ro-GTj" firstAttribute="leading" secondItem="vVY-z1-vSX" secondAttribute="trailing" id="u3R-er-uSj"/>
-                            <constraint firstAttribute="height" constant="25" id="w1Q-pP-Est"/>
+                            <constraint firstAttribute="height" id="w1Q-pP-Est"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -294,6 +294,7 @@
                 <outlet property="content" destination="6pt-Ay-ybB" id="uuB-QG-8fb"/>
                 <outlet property="coverImage" destination="u4c-ui-RBz" id="g1g-Mm-VWJ"/>
                 <outlet property="date" destination="3ht-5b-jBZ" id="fol-4j-JZ7"/>
+                <outlet property="footerView" destination="gDz-pt-bea" id="okm-lT-PAZ"/>
                 <outlet property="likesCounter" destination="vVY-z1-vSX" id="gMg-5c-Srx"/>
                 <outlet property="title" destination="czt-IF-oH2" id="1zg-w0-MWI"/>
             </connections>

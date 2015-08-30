@@ -24,6 +24,8 @@ class ProfilePostViewCell: PFTableViewCell {
     @IBOutlet weak var authorName: UILabel!
     @IBOutlet weak var authorPicture: PFImageView!
     @IBOutlet weak var communityView: UIView!
+    @IBOutlet weak var footerView: UIView!
+    
     
     override var imageView: PFImageView? {
         return self.coverImage
@@ -32,19 +34,21 @@ class ProfilePostViewCell: PFTableViewCell {
     func prepareView(object: PFObject) {
         self.object = object
         
+        self.footerView.hidden = true
+        
         self.title.text             = Post.title(object)
         self.authorName.text        = Post.usernameOwner(object)
         self.content.text           = Post.shortContent(object)
         self.date.text              = Post.createdAtDate(object)
         
-        self.coverImage.image       = kPostPlaceholder
+        self.coverImage.image       = Post.tintColor(object)
         self.coverImage.file        = Post.coverImage(object)
         
         self.authorPicture.image    = kUserPlaceholder
         self.authorPicture.file     = Post.pictureOwner(object)
         
-        self.updateLikesCounter()
-        self.updateCommentCounter()
+//        self.updateLikesCounter()
+//        self.updateCommentCounter()
         
         self.authorPicture.loadInBackground()
         self.authorPicture.cornerEdge()

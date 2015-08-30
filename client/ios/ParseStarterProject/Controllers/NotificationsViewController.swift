@@ -37,7 +37,7 @@ import Bolts
         
         self.configureTitleView()
         self.customizeNavigationBar()
-        self.configureNavigationBarRightBtn(kColorNavigationBar)
+//        self.configureNavigationBarRightBtn(kColorNavigationBar)
         self.configureNavigationBarBackBtn(kColorNavigationBar)
     }
     

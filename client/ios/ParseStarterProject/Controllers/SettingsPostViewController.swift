@@ -206,6 +206,7 @@ import Bolts
                                 let placemark = task.result as! CLPlacemark
                                 let formatAddress = Location.formatter(placemark)
                                 self.data![tag.address] = formatAddress
+                                
                                 if let row = self.form.formRowWithTag(tag.address) {
                                     row.value = formatAddress
                                     row.hidden = false

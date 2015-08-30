@@ -47,7 +47,7 @@ class ProfileHeaderView: BaseProfileHeaderView {
     override func objectDidLoad(object: PFObject) {
         super.objectDidLoad(object)
         
-        self.profileName.text = object[kUserUsernameKey] as? String
+        self.profileName.text = UserModel.displayname(object)
         
         self.profilePicture.image = kUserPlaceholder
         self.profilePicture.file = UserModel.pictureImage(object)

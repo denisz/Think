@@ -59,7 +59,7 @@ class MessageModel: PFObject, PFSubclassing {
 
     class func ownerUsername(message: PFObject) -> String {
         if let user = MessageModel.owner(message) {
-            return UserModel.username(user)
+            return UserModel.displayname(user)
         }
         
         return kUserHiddenName
@@ -111,7 +111,6 @@ class MessageModel: PFObject, PFSubclassing {
         message.ACL = messageACL
         
         message.saveInBackground().continueWithBlock { (task: BFTask!) -> AnyObject! in
-            println(task.error)
             if task.error == nil {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     NSNotificationCenter.defaultCenter().postNotificationName(kUserSendMessage, object: message)

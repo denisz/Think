@@ -14,6 +14,7 @@ public enum StatefulViewControllerState: String {
 	case Loading = "loading"
 	case Error = "error"
 	case Empty = "empty"
+    case Deny = "deny"
 }
 
 /// Delegate protocol
@@ -60,6 +61,9 @@ public class StatefulViewController: UIViewController {
 	public var errorView: UIView! {
 		didSet { setPlaceholderView(errorView, forState: .Error) }
 	}
+    
+    /// The error view is shown when the `endLoading` method returns an error
+    public var denyView: UIView!
 	
 	/// The empty view is shown when the `hasContent` method returns false
 	public var emptyView: UIView! {
@@ -86,6 +90,16 @@ public class StatefulViewController: UIViewController {
 	public func startLoading(animated: Bool = false) {
 		transitionViewStates(loading: true, animated: animated)
 	}
+    
+    
+    public func denyContent(animated: Bool = false) {
+        dispatch_async(dispatch_get_main_queue()) {
+            if let newView = self.denyView {
+                self.view.addSubview(newView)
+                BaseUIView.constraintToFit(newView)
+            }
+        }
+    }
 	
 	/// Ends the controller's loading state.
 	/// If an error occured, the error view is shown.

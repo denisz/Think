@@ -21,7 +21,8 @@ class PostBlock: NSObject {
     dynamic var content: String = ""
     dynamic var styleRaw : String?
     dynamic var uploadedPicture : Int = 0
-
+    dynamic var tintColor : String?
+    
     var picture: PFFile? {
         didSet {
             self.uploadedPicture += 1

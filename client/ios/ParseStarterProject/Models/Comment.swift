@@ -12,9 +12,13 @@ import ParseUI
 
 
 class Comment: NSObject {
+    class func owner(comment: PFObject) -> PFObject? {
+        return comment[kActivityFromUserKey] as? PFObject
+    }
+    
     class func ownerName(comment: PFObject) -> String {
-        if let user = comment[kActivityFromUserKey] as? PFObject {
-            return UserModel.username(user)
+        if let user = Comment.owner(comment) {
+            return UserModel.displayname(user)
         }
         
         return kUserHiddenName
@@ -33,7 +37,7 @@ class Comment: NSObject {
     }
     
     class func pictureOwner(comment: PFObject) -> PFFile? {
-        if let user = comment[kActivityFromUserKey] as? PFObject {
+        if let user = Comment.owner(comment) {
             return UserModel.pictureImage(user)
         }
         

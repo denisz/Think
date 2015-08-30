@@ -50,8 +50,6 @@ import ParseUI
         query.orderByDescending("createdAt")
         query.includeKey(kActivityFromUserKey)
         
-        
-        
         return query
     }
     

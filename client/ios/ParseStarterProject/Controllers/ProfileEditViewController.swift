@@ -21,7 +21,7 @@ import VGParallaxHeader
     struct tag {
         static let firstName        = kUserFirstNameKey         //"firstName"
         static let lastName         = kUserLastNameKey          //"lastName"
-        static let userName         = kUserUsernameKey          //"userName"
+        static let displayName      = kUserDisplayNameKey       //"displayName"
         static let country          = kUserCountryKey           //"country"
         static let city             = kUserCityKey              //"city"
         static let cover            = kUserProfileCoverKey      //"cover"
@@ -124,8 +124,8 @@ import VGParallaxHeader
         section.addFormRow(row)
         
         
-        row = XLFormRowDescriptor(tag: tag.userName, rowType: XLFormRowDescriptorTypeText, title: "User Name".uppercaseString)
-        row.value = owner[kUserUsernameKey] as? String
+        row = XLFormRowDescriptor(tag: tag.displayName, rowType: XLFormRowDescriptorTypeText, title: "Display Name".uppercaseString)
+        row.value = UserModel.displayname(owner)
         self.stylesRow(row)
         self.stylesTextFieldRow(row)
         section.addFormRow(row)
@@ -135,14 +135,14 @@ import VGParallaxHeader
         self.form.addFormSection(section)
 
         row = XLFormRowDescriptor(tag: tag.country, rowType: XLFormRowDescriptorTypeText, title: "Country".uppercaseString)
-        row.value = owner[kUserCountryKey] as? String
+        row.value = UserModel.country(owner)
         self.stylesRow(row)
         self.stylesTextFieldRow(row)
         section.addFormRow(row)
         
 
         row = XLFormRowDescriptor(tag: tag.city, rowType: XLFormRowDescriptorTypeText, title: "City".uppercaseString)
-        row.value = owner[kUserCityKey] as? String
+        row.value = UserModel.city(owner)
         self.stylesRow(row)
         self.stylesTextFieldRow(row)
         section.addFormRow(row)

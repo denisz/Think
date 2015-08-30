@@ -36,12 +36,17 @@ class BaseQueryViewController: BaseViewController, StatefulViewControllerDelegat
         }        
     }
     
+    func allowContent() -> Bool {
+        return true
+    }
+    
     func configureStateMachine() {
         loadingView = LoadingView(frame: view.frame)
         emptyView = EmptyView(frame: view.frame)
         let failureView = ErrorView(frame: view.frame)
         failureView.tapGestureRecognizer.addTarget(self, action: Selector("refresh"))
         errorView = failureView
+        denyView = DenyView(frame: view.frame)
     }
     
     func queryForView() -> PFQuery {
@@ -70,12 +75,15 @@ class BaseQueryViewController: BaseViewController, StatefulViewControllerDelegat
     }
     
     func objectWillLoad(object: PFObject) {
-        //сделать задержку
         self.startLoading(animated: false)
     }
     
     func objectDidLoad(object: PFObject) {
-        self.endLoading(animated: false, error: nil)
+        if !allowContent() {
+            self.denyContent(animated: false)
+        } else {
+            self.endLoading(animated: false, error: nil)
+        }
     }
     
     func objectErrorLoad(object: PFObject, error: NSError?) {

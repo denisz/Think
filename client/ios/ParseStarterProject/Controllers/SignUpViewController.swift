@@ -52,16 +52,26 @@ protocol SignUpViewControllerDelegate {
         self.nickname.delegate      = self
         
         self.signUp         .cornerEdge()
-
-        self.setupKeyboard(true)
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent;
-    }
+        self.setupKeyboard(true)
 
-    deinit {
+        UIApplication.sharedApplication().setStatusBarOrientation(UIInterfaceOrientation.Portrait, animated: true)
+        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
+    }
+    
+    override func supportedInterfaceOrientations() -> Int {
+        return Int(UIInterfaceOrientationMask.Portrait.rawValue)
+    }
+    
+    override func shouldAutorotate() -> Bool {
+        return false
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
         self.unsetupKeyboard()
     }
 
@@ -137,20 +147,16 @@ protocol SignUpViewControllerDelegate {
         
         // Create the user
         var user = PFUser()
-        user.password = userPassword
-        user.email = userEmailAddress
-        user.username = userName
+        user.password   = userPassword
+        user.email      = userEmailAddress
+        user.username   = userEmailAddress
         
-        user.setObject("", forKey: kUserLastNameKey)
-        user.setObject("", forKey: kUserFirstNameKey)
-        user.setObject("", forKey: kUserCountryKey)
-        user.setObject("", forKey: kUserCityKey)
-        
-        
-//        user.username = userName
-//        user.password = userPassword
-//        user.email = userEmailAddress
-        
+        user.setObject(userName,    forKey: kUserDisplayNameKey)
+        user.setObject("",          forKey: kUserLastNameKey)
+        user.setObject("",          forKey: kUserFirstNameKey)
+        user.setObject("",          forKey: kUserCountryKey)
+        user.setObject("",          forKey: kUserCityKey)
+                
         user.signUpInBackgroundWithBlock {
             (succeeded: Bool, error: NSError?) -> Void in
             

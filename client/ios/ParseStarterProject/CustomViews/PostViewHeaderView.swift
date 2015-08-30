@@ -19,7 +19,7 @@ class PostViewHeaderView: BaseUIView {
     }
     
     func objectDidLoad(object: PFObject) {
-        self.coverImage.image       = kPostPlaceholder
+        self.coverImage.image       = Post.tintColor(object)
         self.coverImage.file        = Post.coverImage(object)
         
         self.coverImage.loadInBackground()

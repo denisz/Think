@@ -44,5 +44,4 @@ class ErrorView: BasicPlaceholderView {
 		centerView.addConstraints(hConstraintsDetail)
 		centerView.addConstraints(vConstraints)
 	}
-
 }

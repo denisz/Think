@@ -25,7 +25,7 @@ class PeopleViewCell: PFTableViewCell {
     func prepareView(object: PFObject) {
         self.object = object
         
-        self.userName.text      = UserModel.username(object)
+        self.userName.text      = UserModel.displayname(object)
         self.userPicture.image  = kUserPlaceholder
         self.userPicture.file   = UserModel.pictureImage(object)
         

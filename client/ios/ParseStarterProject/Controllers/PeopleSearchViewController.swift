@@ -53,7 +53,7 @@ import Bolts
         let query = PFQuery(className: kUserClassKey)
         
         if let searchString = self.getSearchText() {
-            query.whereKey(kUserUsernameKey, hasPrefix: searchString)
+            query.whereKey(kUserDisplayNameKey, hasPrefix: searchString)
         }
         
         query.whereKey(kClassObjectId, notEqualTo: user!.objectId!)//исключаем тек пользователя
@@ -70,7 +70,6 @@ import Bolts
             if task.error == nil{
                 if let thread = task.result as? PFObject {
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        println(thread)
                         let controller = ThreadViewController.CreateWithModel(thread)
                         self.navigationController?.pushViewController(controller, animated: true)
                     })

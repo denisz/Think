@@ -151,11 +151,11 @@ import Bolts
         return self.blockByType(PostBlockType.Title)[0].toObject()[kPostBlockTextKey]!
     }
     
-    func coverPost() ->PFFile? {
+    func coverPost() -> (PFFile?, String?)? {
         var blocks = self.blockByType(PostBlockType.Cover)
         
         if blocks.count > 0 {
-            return blocks[0].picture
+            return (blocks[0].picture, blocks[0].tintColor)
         }
         
         return nil
@@ -171,7 +171,8 @@ import Bolts
         self.object?.setObject(contentObject,   forKey: kPostContentObjKey)
         
         if cover != nil {
-            self.object?.setObject(cover!, forKey: kPostCoverKey)
+            self.object?.setObject(cover!.0!, forKey: kPostCoverKey)
+            self.object?.setObject(cover!.1!, forKey: kPostTintColor)
         }
         
         self.object?.setObject(title,           forKey: kPostTitleKey)
@@ -322,7 +323,13 @@ extension NewPostViewController: UIImagePickerControllerDelegate {
                     if (error == nil) {
                         switch(scenario) {
                         case .CoverPost:
-                            blockCover.picture = file
+                            
+                            //запустить в другом потоке
+                            let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+                            dispatch_async(dispatch_get_global_queue(priority, 0)) {
+                                blockCover.tintColor    = SelectImageHelper.tintColorPicture(image)
+                                blockCover.picture      = file
+                            }
                             break
                         default:
                             println("scenario is invalid")
@@ -345,6 +352,7 @@ extension NewPostViewController: UIImagePickerControllerDelegate {
 
 extension NewPostViewController {
     override func cropViewController(image: UIImage) {
+        //определить tint
         self.performLoadedImage(image)
     }
 }

@@ -153,7 +153,10 @@ extension UIViewController {
     }
     
     func didTapLeftBtn(sender: UIButton) {
-        
+        didTapLeftBtn()
+    }
+    
+    func didTapLeftBtn() {
         if self.sideMenuView {
             if let sideMenu = sideMenuController() {
                 sideMenu.showLeftViewAnimated(true, completionHandler: nil)

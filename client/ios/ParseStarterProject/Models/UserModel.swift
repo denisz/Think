@@ -22,6 +22,45 @@ class UserModel: PFUser {
         return PFAnonymousUtils.isLinkedWithUser(PFUser.currentUser())
     }
     
+    class func country(user: PFObject) -> String {
+        if let country = user[kUserCountryKey] as? String {
+            return country
+        }
+        
+        return ""
+    }
+    
+    class func city(user: PFObject) -> String {
+        if let city = user[kUserCityKey] as? String {
+            return city
+        }
+        
+        return ""
+    }
+    
+    class func age(user: PFObject) -> Int {
+        if let birthday = user[kUserDateOfBirthKey] as? NSDate {
+            let now = NSDate()
+            var calendar : NSCalendar = NSCalendar.currentCalendar()
+            let ageComponents = calendar.components(.CalendarUnitYear,
+                fromDate: birthday,
+                toDate: now,
+                options: nil)
+            
+            return ageComponents.year
+        }
+        
+        return 0
+    }
+    
+    class func displayname(user: PFObject) -> String {
+        if let name = user[kUserDisplayNameKey] as? String {
+            return name.uppercaseString
+        }
+        
+        return kUserHiddenName
+    }
+    
     class func username(user: PFObject) -> String {
         if let name = user[kUserUsernameKey] as? String {
             return name.uppercaseString

@@ -18,13 +18,13 @@
 //blur view
 #import <FXBlurView/FXBlurView.h>
 
-#import <UIImage+AF+Additions/UIImage+AF+Additions.h>
-
 //formatterKit
 #import <FormatterKit/TTTAddressFormatter.h>
 #import <FormatterKit/TTTTimeIntervalFormatter.h>
 #import <FormatterKit/TTTNameFormatter.h>
 
+//uiimage
+#import "UIImage+AF+Additions.h"
 
 //Progress Hud
 #import <JGProgressHUD/JGProgressHUD.h>

@@ -19,6 +19,7 @@ let kUserClassKey               = "_User"
 let kUserFirstNameKey           = "first_name"
 let kUserLastNameKey            = "last_name"
 let kUserUsernameKey            = "username"
+let kUserDisplayNameKey         = "display_name"
 let kUserPasswordKey            = "password"
 let kUserEmailKey               = "email"
 let kUserProfilePictureKey      = "profile_picture"
@@ -67,7 +68,7 @@ let kPostSettingsKey            = "settings"
 let kPostStatusKey              = "status"
 let kPostCounterLikesKey        = "counter_likes"
 let kPostCounterCommentsKey     = "counter_comments"
-
+let kPostTintColor              = "tint_color"
 
 //post status
 let kPostStatusPublic       = "public"

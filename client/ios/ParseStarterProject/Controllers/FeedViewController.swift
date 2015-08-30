@@ -104,6 +104,9 @@ import UIKit
         
         let query = PFQuery.orQueryWithSubqueries([postsFromFollowedUsersQuery, postsFromCurrentUserQuery])
         query.includeKey(kPostOwnerKey)
+        
+        query.selectKeys([kPostTitleKey, kPostTintColor, kPostContentShortKey, kPostCounterCommentsKey, kPostCounterLikesKey, kPostOwnerKey, kPostCoverKey, kClassCreatedAt])
+
         query.orderByDescending(kClassCreatedAt)
         
         return query

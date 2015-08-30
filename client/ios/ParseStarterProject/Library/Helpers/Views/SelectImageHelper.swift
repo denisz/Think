@@ -95,6 +95,11 @@ class SelectImageHelper {
             HUD.dismiss();
         })
     }
+    
+    class func tintColorPicture(image: UIImage) -> String {
+        let colors = image.getColors()
+        return colors.backgroundColor.toHexString()
+    }
 }
 
 extension UIViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {

@@ -36,6 +36,9 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "Think.LogInViewController.(processLogIn (Think.LogInViewController) -&gt; () -&gt; ()).(closure #1):LogInViewController.swift">
+      </ContextState>
+      <ContextState
          contextName = "Think.MessagesViewController.objectsDidLoad (Think.MessagesViewController)(Swift.Optional&lt;ObjectiveC.NSError&gt;) -&gt; ():MessagesViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -47,12 +50,23 @@
          contextName = "Think.InputBarView.didTapRightButton (Think.InputBarView)() -&gt; ():InputBarView.swift">
       </ContextState>
       <ContextState
+         contextName = "Think.BaseQueryCollectionViewContoller.viewWillAppear (Think.BaseQueryCollectionViewContoller)(Swift.Bool) -&gt; ():BaseQueryCollectionViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.automaticallyAdjustsScrollViewInsets">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "Think.ProfileViewController.tableView (Think.ProfileViewController)(ObjectiveC.UITableView, didSelectRowAtIndexPath : ObjectiveC.NSIndexPath, object : Swift.Optional&lt;ObjectiveC.PFObject&gt;) -&gt; ():ProfileViewController.swift">
          <PersistentStrings>
             <PersistentString
                value = "object.objectId">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Think.ProfilePostViewCell.prepareView (Think.ProfilePostViewCell)(ObjectiveC.PFObject) -&gt; ():ProfilePostViewCell.swift">
       </ContextState>
    </ContextStates>
 </VariablesViewState>
