@@ -34,6 +34,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Uncomment this line if you want to enable Crash Reporting
          ParseCrashReporting.enable()
         //
+        // Enable data sharing in main app.
+        Parse.enableDataSharingWithApplicationGroupIdentifier("group.com.parse.Think")
+
         // Uncomment and fill in with your Parse credentials:
         Parse.setApplicationId("6fMiZFampnG7qANycgM45BO1c3uwjFjLMWH0DqpK",
             clientKey: "FP7X1KsUrsavpZq7EmRxiocrVvpqfttp5Ao1x94f")

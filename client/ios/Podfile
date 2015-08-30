@@ -11,9 +11,11 @@ target 'Think' do
 	pod 'LGAlertView', '~> 1.0.0'
 	pod 'LGSideMenuController', '~> 1.0.0'
 	pod 'LGDrawer', '~> 1.0.0'
-        pod 'LGViews', '~> 1.0.0'
-    	pod 'LGHelper', '~> 1.0.0'
+    pod 'LGViews', '~> 1.0.0'
+    pod 'LGHelper', '~> 1.0.0'
 	pod 'LoremIpsum', '~> 1.0'
+	pod 'UIImage+AF+Additions', :git => 'https://github.com/melvitax/UIImageAFAdditions.git'
+	pod 'FormatterKit', '~> 1.8.0'
 	pod 'JGProgressHUD'
 	pod 'TOCropViewController'
 	pod 'AsyncDisplayKit', '~> 1.2.3'
@@ -26,4 +28,10 @@ target 'Think' do
 #	pod 'StatefulViewController', "~> 0.1"
 	pod 'XLForm', :git => 'https://github.com/xmartlabs/XLForm.git'
 end
+
+prepare_command = <<-CMD
+    SUPPORTED_LOCALES="['base', 'ru', 'en']"
+    find . -type d ! -name "*$SUPPORTED_LOCALES.lproj" | grep .lproj | xargs rm -rf
+CMD
+
 

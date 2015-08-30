@@ -21,22 +21,20 @@ class BlockPostViewCell: UITableViewCell {
     
     func prepareView(block: PostBlock) {
         self.block = block
-        block.addObserver(self, forKeyPath: kvoBlockPropertyStyle, options: NSKeyValueObservingOptions.New, context: nil)
         
-        self.backgroundColor = block.backgroundColor
+        block.addObserver(self, forKeyPath: kvoBlockPropertyStyle,  options: .New, context: nil)
+        block.addObserver(self, forKeyPath: kvoBlockPropertyPicture, options: .New, context: nil)
+    }
+    
+    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
     }
     
     func clearView() {
         if let block = self.block {
             block.removeObserver(self, forKeyPath: kvoBlockPropertyStyle)
+            block.removeObserver(self, forKeyPath: kvoBlockPropertyPicture)
         }
         self.backgroundColor = UIColor.clearColor()
-    }
-    
-    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
-        if keyPath == kvoBlockPropertyStyle {
-            self.backgroundColor = self.block?.backgroundColor
-        }
     }
     
     func makeActiveBlock() {

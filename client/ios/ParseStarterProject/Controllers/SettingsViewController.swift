@@ -33,17 +33,11 @@ class SettingsViewController: BaseFormViewController {
         self.title = "Settings"
         self.form = XLFormDescriptor()
         
-        
         self.view.backgroundColor       = kColorBackgroundViewController
         self.tableView.backgroundColor  = kColorBackgroundViewController
         self.tableView.separatorStyle   = UITableViewCellSeparatorStyle.None
         
-//        self.setupSectionSocial()
-        self.setupNotify()
-//        self.setupNewMessage()
-        self.setupPrivacy()
-        self.logoutBtn()
-        
+        self.setupSections()
         self.setupNavigationBar()
     }
     
@@ -56,7 +50,15 @@ class SettingsViewController: BaseFormViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default
+        UIApplication.sharedApplication().setStatusBarStyle(.Default, animated: true)
+    }
+    
+    func setupSections() {
+//        self.setupSectionSocial()
+        self.setupNotify()
+//        self.setupNewMessage()
+        self.setupPrivacy()
+        self.logoutBtn()        
     }
     
     func setupSectionSocial() {
@@ -107,9 +109,15 @@ class SettingsViewController: BaseFormViewController {
             (kActivityTypeLike,         "Likes".localized),
             (kActivityTypeComment,      "Comments".localized),
         ])
+        self.stylesDetailRow(row)
         row.value = install[kInstallationEventsKey] as? [AnyObject]
         self.stylesRow(row)
         section.addFormRow(row)
+    }
+    
+    func stylesDetailRow(row: XLFormRowDescriptor) {
+        row.cellConfig.setObject(UIFont(name: "OpenSans-Semibold", size: 13)!, forKey: "detailTextLabel.font")
+        row.cellConfig.setObject(UIColor(red:0.33, green:0.39, blue:0.42, alpha:1), forKey: "detailTextLabel.textColor")
     }
     
     func setupPrivacy() {
@@ -126,6 +134,7 @@ class SettingsViewController: BaseFormViewController {
         section.addFormRow(row)
         
         row = XLFormRowDescriptor(tag: tag.clearCache, rowType: XLFormRowDescriptorTypeButton, title: "Clear cache".uppercaseString.localized)
+        row.action.formSelector = Selector("didTapClearCache:")
         self.styleButtonsRow(row)
         section.addFormRow(row)
     }
@@ -170,8 +179,17 @@ class SettingsViewController: BaseFormViewController {
             Installation.unRegisterPushDevice()
         });
         
+        MyCache.sharedCache.clear()
         PFQuery.clearAllCachedResults()
         PFUser.logOut()
+    }
+    
+    func didTapClearCache(sender: AnyObject) {
+        MyCache.sharedCache.clear()
+    }
+    
+    func didTapPrivacy(sender: AnyObject) {
+        
     }
     
     func performApn(newValue: AnyObject) {

@@ -9,7 +9,7 @@
 import UIKit
 
 class SwipeTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
-    let animationDuration = 0.3
+    let animationDuration = 0.257
     var tabBarIndex: Int?
     
     func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {
@@ -84,18 +84,18 @@ class SwipeTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     }
     
     func addShadowLayerTo(view: UIView) {
-        let shadowRect = CGRectMake(-5, 0, 6, view.frame.height)
-        let shadowBezier = UIBezierPath(rect: shadowRect)
-        view.layer.shadowPath = shadowBezier.CGPath
-        view.layer.shadowOpacity = 0.2
-        
-        let shadowAnimation = CABasicAnimation(keyPath: "shadowOpacity")
-        shadowAnimation.fromValue = view.layer.shadowOpacity
-        shadowAnimation.toValue = 0
-        shadowAnimation.duration = animationDuration
-        
-        view.layer.addAnimation(shadowAnimation, forKey: "opacityChange")
-        view.layer.shadowOpacity = 0
+//        let shadowRect = CGRectMake(-5, 0, 6, view.frame.height)
+//        let shadowBezier = UIBezierPath(rect: shadowRect)
+//        view.layer.shadowPath = shadowBezier.CGPath
+//        view.layer.shadowOpacity = 0.2
+//        
+//        let shadowAnimation = CABasicAnimation(keyPath: "shadowOpacity")
+//        shadowAnimation.fromValue = view.layer.shadowOpacity
+//        shadowAnimation.toValue = 0
+//        shadowAnimation.duration = animationDuration
+//        
+//        view.layer.addAnimation(shadowAnimation, forKey: "opacityChange")
+//        view.layer.shadowOpacity = 0
     }
     
     func animationEnded(transitionCompleted: Bool) {

@@ -33,15 +33,23 @@ class Post: PFObject, PFSubclassing {
             return title
         }
         
-        return ""
+        return kPostTitlePlaceholder
+    }
+    
+    class func status(post: PFObject) -> String {
+        if let status = post[kPostStatusKey] as? String {
+            return status
+        }
+        
+        return kPostStatusDraft
     }
     
     class func coverImage(post: PFObject) -> PFFile? {
-        if let cover = post[kPostCoverKey] as? PFFile {
-            return cover
-        }
-        
-        return nil
+        return post[kPostCoverKey] as? PFFile
+    }
+    
+    class func owner(post: PFObject) -> PFObject? {
+        return post[kPostOwnerKey] as? PFObject
     }
     
     class func pictureOwner(post: PFObject) -> PFFile? {
@@ -65,7 +73,7 @@ class Post: PFObject, PFSubclassing {
     }
     
     class func likesCounter(object: PFObject) -> String {
-        var count = max(object[kPostCounterLikesKey] as! Int, 0)
+        let count = max(object[kPostCounterLikesKey] as! Int, 0)
         return "+\(count)"
     }
     
@@ -106,17 +114,32 @@ class Post: PFObject, PFSubclassing {
             }
         }
         
-        return "Post in \(kAppName)"
+        return kSharePlaceholder
     }
     
     
     class func determineCurrentUserAuthor(post: PFObject) -> Bool {
-        let user = PFUser.currentUser()!
-        if let owner = post[kPostOwnerKey] as? PFObject {
-            return owner.objectId!.hash == user.objectId!.hash
+        if let owner = Post.owner(post) {
+            return UserModel.isEqualCurrentUser(owner)
         }
         
         return false
+    }
+    
+    class func wasPublishedPost(post: PFObject) -> Bool {
+        return Post.status(post) == kPostStatusPublic
+    }
+    
+    class func deletePost(post: PFObject) -> BFTask {
+        let user = PFUser.currentUser()
+        return post.deleteInBackground().continueWithBlock { (task: BFTask!) -> AnyObject! in
+            if task.error == nil {
+                MyCache.sharedCache.decrementPostCountForUser(user!)
+                NSNotificationCenter.defaultCenter().postNotificationName(kUserDeletePost, object: post)
+            }
+            
+            return task
+        }
     }
     
     class func raisePost(post: PFObject) {
@@ -125,8 +148,13 @@ class Post: PFObject, PFSubclassing {
         postACL.setPublicReadAccess(false)
         post.ACL = postACL
         post.setObject(kPostStatusDraft, forKey: kPostStatusKey)
-        
-        NSNotificationCenter.defaultCenter().postNotificationName(kUserRaisePost, object: post)
+        post.saveInBackground().continueWithBlock { (task: BFTask!) -> AnyObject! in
+            if task.error == nil {
+                NSNotificationCenter.defaultCenter().postNotificationName(kUserRaisePost, object: post)
+            }
+            
+            return task
+        }
     }
     
     class func publicPost(post: PFObject, var withSettings: [String: AnyObject]) -> BFTask {
@@ -143,17 +171,21 @@ class Post: PFObject, PFSubclassing {
         post.setObject(withSettings, forKey: kPostSettingsKey)
         post.setObject(kPostStatusPublic, forKey: kPostStatusKey)
         
-        return post.saveInBackground()
+        return post.saveInBackground().continueWithBlock({ (task: BFTask!) -> AnyObject! in
+            MyCache.sharedCache.incrementPostCountForUser(user!)
+            NSNotificationCenter.defaultCenter().postNotificationName(kUserPublicPost, object: post)
+            return task
+        })
     }
     
     class func createWith() -> PFObject {
         let post = PFObject(className: kPostClassKey)
         let user = PFUser.currentUser()
         post.ACL = PFACL(user: user!)
-        post.setObject(user!,   forKey: kPostOwnerKey)
-        post.setObject(0, forKey: kPostCounterCommentsKey)
-        post.setObject(0, forKey: kPostCounterLikesKey)
-        post.setObject(kPostStatusDraft, forKey: kPostStatusKey)
+        post.setObject(user!,               forKey: kPostOwnerKey)
+        post.setObject(0,                   forKey: kPostCounterCommentsKey)
+        post.setObject(0,                   forKey: kPostCounterLikesKey)
+        post.setObject(kPostStatusDraft,    forKey: kPostStatusKey)
         
         return post
     }

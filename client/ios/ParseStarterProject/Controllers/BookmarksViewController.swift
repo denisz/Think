@@ -91,7 +91,7 @@ import VGParallaxHeader
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath, object: PFObject?) {
         
-        if let post = object![kBookmarkPostKey] as? PFObject {
+        if let post = Bookmark.post(object!) {
             let controller = PostViewController.CreateWithModel(post)
             self.navigationController?.pushViewController(controller, animated: true)
         }

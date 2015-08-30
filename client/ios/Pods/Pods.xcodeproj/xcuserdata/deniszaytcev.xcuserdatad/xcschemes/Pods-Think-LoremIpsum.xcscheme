@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "79C8FDA07046C99D71AF3FB3"
+               BlueprintIdentifier = "4224B854B3B59990EC882DC3"
                BuildableName = "LoremIpsum.framework"
                BlueprintName = "Pods-Think-LoremIpsum"
                ReferencedContainer = "container:Pods.xcodeproj">

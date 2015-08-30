@@ -88,6 +88,20 @@ import VGParallaxHeader
         if !self.isGuest {
             self.configureNavigationBarRightBtn(UIColor.whiteColor())
         }
+        
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector:
+//            "userLikedOrUnlikedPost:",             name: kUserUnlikedPost, object: nil)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector:
+//            "userLikedOrUnlikedPost:",             name: kUserLikedPost, object: nil)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "userFollowOrUnFollowAuthorPost:",     name: kUserFollowingUser, object: nil)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "userFollowOrUnFollowAuthorPost:",     name: kUserUnfollowUser, object: nil)
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+//        NSNotificationCenter.defaultCenter().removeObserver(self, name: kUserUnlikedPost,   object: nil)
+//        NSNotificationCenter.defaultCenter().removeObserver(self, name: kUserLikedPost,     object: nil)
+//        NSNotificationCenter.defaultCenter().removeObserver(self, name: kUserFollowingUser, object: nil)
+//        NSNotificationCenter.defaultCenter().removeObserver(self, name: kUserUnfollowUser,  object: nil)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -174,7 +188,7 @@ extension ProfileViewController: ProfileGuestHeaderViewDelegate {
 
 extension ProfileViewController: ProfileHeaderViewDelegate {
     func profileView(view: ProfileHeaderView, didTapDrafts button: UIButton) {
-        let controller = DraftsViewController.CreateWithModel(owner!)
+        let controller = FactoryControllers.drafts()
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
@@ -189,8 +203,7 @@ extension ProfileViewController: ProfileHeaderViewDelegate {
     }
     
     func profileView(view: ProfileHeaderView, didTapFollowers button: UIButton) {
-        var user = PFUser.currentUser()
-        let controller = YouFollowViewController.CreateWithModel(user!)
+        let controller = FactoryControllers.youFollow()
         self.navigationController?.pushViewController(controller, animated: true)
 
     }

@@ -34,7 +34,6 @@ class SelectImageHelper {
         var hud         = SelectImageHelper.createHudProgress()
         
         imageFile.saveInBackgroundWithProgressBlock ({ (progress: Int32) -> Void in
-            println(progress)
             SelectImageHelper.progressHudProgress(hud, progress: Float(progress) / 100)
         }).continueWithBlock({ (task: BFTask!) -> AnyObject! in
             if (task.error != nil) {

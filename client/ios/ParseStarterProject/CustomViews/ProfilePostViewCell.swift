@@ -36,8 +36,6 @@ class ProfilePostViewCell: PFTableViewCell {
         self.authorName.text        = Post.usernameOwner(object)
         self.content.text           = Post.shortContent(object)
         self.date.text              = Post.createdAtDate(object)
-        self.likesCounter.text      = Post.likesCounter(object)
-        self.commentsCounter.text   = Post.commentsCounter(object)
         
         self.coverImage.image       = kPostPlaceholder
         self.coverImage.file        = Post.coverImage(object)
@@ -45,11 +43,19 @@ class ProfilePostViewCell: PFTableViewCell {
         self.authorPicture.image    = kUserPlaceholder
         self.authorPicture.file     = Post.pictureOwner(object)
         
-        self.authorPicture.loadInBackground()
+        self.updateLikesCounter()
+        self.updateCommentCounter()
         
+        self.authorPicture.loadInBackground()
         self.authorPicture.cornerEdge()
         
         self.setupViewCover()
+    }
+    
+    override func clearView() {
+        super.clearView()
+        //отписаться от событий
+        
     }
     
     func setupViewCover() {
@@ -62,14 +68,29 @@ class ProfilePostViewCell: PFTableViewCell {
         Bookmark.createWith(self.object!)
     }
     
+    func updateCommentCounter() {
+        self.commentsCounter.text = Post.commentsCounter(self.object!)
+    }
+    
+    func updateLikesCounter() {
+        self.likesCounter.text = Post.likesCounter(self.object!)
+        
+        let isLiked = MyCache.sharedCache.isPostLikedByCurrentUser(self.object!)
+        if isLiked {
+            likesCounter.setColor(UIColor(red:0, green:0.64, blue:0.85, alpha:1))
+        } else {
+            likesCounter.setColor(UIColor(red:0.2, green:0.28, blue:0.37, alpha:1))
+        }
+    }
+    
     @IBAction func didTapLikePost() {
         Activity.handlerLikePost(self.object!)
-        likesCounter.setColor(UIColor(red:0, green:0.64, blue:0.85, alpha:1))
     }
     
     func didTapShare() {
-        let textToShare = self.object!["content"] as! String
+        let textToShare = Post.shortContent(self.object!)
         let activityVC = UIActivityViewController(activityItems: [textToShare], applicationActivities: nil)
+        
         if let controller = self.parentViewController {
             controller.presentViewController(activityVC, animated: true, completion: nil)
         }

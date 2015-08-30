@@ -86,6 +86,9 @@ class ViewController: UIViewController {
             case .Top:
                 controller = FactoryControllers.top()
                 break
+            case .Digest:
+                controller = FactoryControllers.newPost()
+                break
             case .Profile:
                 controller = FactoryControllers.myProfile()
                 break

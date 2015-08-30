@@ -51,6 +51,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework 'Alamofire.framework'
   install_framework 'AsyncDisplayKit.framework'
   install_framework 'FXBlurView.framework'
+  install_framework 'FormatterKit.framework'
   install_framework 'HMSegmentedControl.framework'
   install_framework 'JGProgressHUD.framework'
   install_framework 'Kingfisher.framework'
@@ -68,6 +69,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework 'Reachability.framework'
   install_framework 'SlackTextViewController.framework'
   install_framework 'TOCropViewController.framework'
+  install_framework 'UIImage_AF_Additions.framework'
   install_framework 'VGParallaxHeader.framework'
   install_framework 'XLForm.framework'
 fi
@@ -75,6 +77,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework 'Alamofire.framework'
   install_framework 'AsyncDisplayKit.framework'
   install_framework 'FXBlurView.framework'
+  install_framework 'FormatterKit.framework'
   install_framework 'HMSegmentedControl.framework'
   install_framework 'JGProgressHUD.framework'
   install_framework 'Kingfisher.framework'
@@ -92,6 +95,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework 'Reachability.framework'
   install_framework 'SlackTextViewController.framework'
   install_framework 'TOCropViewController.framework'
+  install_framework 'UIImage_AF_Additions.framework'
   install_framework 'VGParallaxHeader.framework'
   install_framework 'XLForm.framework'
 fi

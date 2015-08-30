@@ -49,5 +49,22 @@ class Notify {
         return ""
     }
     
+    class func icon(notify: PFObject) -> UIImage {
+        if let type = notify[kActivityTypeKey] as? String {
+            switch type {
+            case kActivityTypeComment:
+                return kIconNotifyCommentPlaceholder!
+            case kActivityTypeFollow:
+                return kIconNotifyFollowPlaceholder!
+            case kActivityTypeLike:
+                return kIconNotifyLikePlaceholder!
+            default:
+                return kIconNotifyLikePlaceholder!
+            }
+        }
+        
+        return kIconNotifyLikePlaceholder!
+    }
+    
     
 }

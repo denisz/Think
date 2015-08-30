@@ -4,14 +4,14 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <customFonts key="customFonts">
+        <mutableArray key="OpenSans-Bold.ttf">
+            <string>OpenSans-Bold</string>
+        </mutableArray>
         <mutableArray key="OpenSans-Light.ttf">
             <string>OpenSans-Light</string>
         </mutableArray>
         <mutableArray key="OpenSans-Regular.ttf">
             <string>OpenSans</string>
-        </mutableArray>
-        <mutableArray key="OpenSans-Semibold.ttf">
-            <string>OpenSans-Semibold</string>
         </mutableArray>
     </customFonts>
     <objects>
@@ -23,7 +23,7 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BBJ-fm-A0Q" id="jeM-bV-XFm">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ava_profile" translatesAutoresizingMaskIntoConstraints="NO" id="ihj-pc-2dJ" customClass="UIImageCircle" customModule="Think" customModuleProvider="target">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ava_profile" translatesAutoresizingMaskIntoConstraints="NO" id="ihj-pc-2dJ" customClass="PFImageView">
                         <rect key="frame" x="15" y="15" width="34" height="34"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="34" id="1D5-lk-tfh"/>
@@ -44,12 +44,15 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="VLB-Lm-ubs"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
+                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="11"/>
                         <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="It would be great to see Dany on podium first time." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7mh-4x-22B">
                         <rect key="frame" x="64" y="39" width="241" height="75.5"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="36" id="ZbY-u9-Vun"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="13"/>
                         <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -74,7 +77,8 @@
             </tableViewCellContentView>
             <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
             <connections>
-                <outlet property="authorPicture" destination="ihj-pc-2dJ" id="CG0-dl-ezz"/>
+                <outlet property="authorName" destination="4Uo-cC-i42" id="9P5-Ji-gkU"/>
+                <outlet property="authorPicture" destination="ihj-pc-2dJ" id="HXz-uH-fxF"/>
                 <outlet property="body" destination="7mh-4x-22B" id="yEi-9N-tEU"/>
                 <outlet property="dateView" destination="OaQ-Ro-zeW" id="ptb-FI-CLb"/>
             </connections>

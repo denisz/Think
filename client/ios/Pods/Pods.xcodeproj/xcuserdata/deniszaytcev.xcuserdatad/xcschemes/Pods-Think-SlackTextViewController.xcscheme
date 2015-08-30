@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E9A6F9B0FC5D2B7030D8664E"
+               BlueprintIdentifier = "7626B23E4E24BD248E2E634E"
                BuildableName = "SlackTextViewController.framework"
                BlueprintName = "Pods-Think-SlackTextViewController"
                ReferencedContainer = "container:Pods.xcodeproj">

@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2030AAEC0D87F941E392564C"
+               BlueprintIdentifier = "B67DE34E28F89A0D7F357520"
                BuildableName = "LGSideMenuController.framework"
                BlueprintName = "Pods-Think-LGSideMenuController"
                ReferencedContainer = "container:Pods.xcodeproj">

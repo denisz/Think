@@ -4,14 +4,14 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <customFonts key="customFonts">
+        <mutableArray key="OpenSans-Bold.ttf">
+            <string>OpenSans-Bold</string>
+        </mutableArray>
         <mutableArray key="OpenSans-Light.ttf">
             <string>OpenSans-Light</string>
         </mutableArray>
         <mutableArray key="OpenSans-Regular.ttf">
             <string>OpenSans</string>
-        </mutableArray>
-        <mutableArray key="OpenSans-Semibold.ttf">
-            <string>OpenSans-Semibold</string>
         </mutableArray>
     </customFonts>
     <objects>
@@ -62,7 +62,7 @@
                             <constraint firstAttribute="width" constant="38" id="oOA-XX-jh0"/>
                         </constraints>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="paD-s5-625" customClass="UIButtonCircle" customModule="Think" customModuleProvider="target">
+                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="paD-s5-625" customClass="UIButtonCircle" customModule="Think" customModuleProvider="target">
                         <rect key="frame" x="36" y="36" width="32" height="32"/>
                         <color key="backgroundColor" red="0.9607800245" green="0.9607800245" blue="0.9607800245" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -79,7 +79,7 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="2xf-AO-HUk"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
+                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="11"/>
                         <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -127,6 +127,7 @@
                 <outlet property="dateView" destination="znn-o7-5KC" id="5HL-A0-9vC"/>
                 <outlet property="desc" destination="aog-kq-82u" id="2s1-Nl-8t2"/>
                 <outlet property="followBtn" destination="CRy-af-DPb" id="qQZ-WZ-ZJC"/>
+                <outlet property="iconView" destination="paD-s5-625" id="IbC-BN-gXe"/>
                 <outlet property="userName" destination="saX-qR-47D" id="RwP-F2-alc"/>
                 <outlet property="userPicture" destination="WxI-Ew-RnA" id="tha-8M-Y6I"/>
             </connections>

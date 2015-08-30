@@ -16,72 +16,91 @@ class BaseQuerySearchTableViewController: BaseQueryTableViewController {
     @IBOutlet weak var searchBarTopLayoutConstraint: NSLayoutConstraint!
     
     private var searchText: String = ""
-
+    var updateObjectsAfterCancel: Bool = false
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.customizeSearchBar()
+    }
+    
+    func customizeSearchBar() {
+        self.searchBar.layer.borderWidth = 1
+        self.searchBar.layer.borderColor = UIColor.whiteColor().CGColor
+    }
+    
     func getSearchText() -> String? {
         return searchText.isEmpty ? nil: searchText.lowercaseString
     }
     
     override func topConstraintForNavigationBar() -> NSLayoutConstraint? {
-        return self.searchBarTopLayoutConstraint
+        return nil//self.searchBarTopLayoutConstraint
     }
     
-    func customizeSearchBar() {}
-}
-
-extension BaseQuerySearchTableViewController: UISearchResultsUpdating {
-    func updateSearchResultsForSearchController(searchController: UISearchController) {
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if self.automaticallyAdjustsScrollViewInsets == true {
+            self.searchBarTopLayoutConstraint.constant = 64
+        }
     }
 }
 
 extension BaseQuerySearchTableViewController: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(searchBar: UISearchBar){
         self.searchText = ""
+        searchBar.showsCancelButton = true
     }
     
     func searchBarShouldBeginEditing(searchBar: UISearchBar) -> Bool {
-        let navigationBar = self.defineNavigationBar()
-        self.tableViewTopConstraint?.constant = 24
-        
-        UIView.animateWithDuration(0.357, delay: 0,
-            options: .BeginFromCurrentState | UIViewAnimationOptions.CurveEaseInOut,
-            animations: { () -> Void in
-                self.view.layoutIfNeeded()
-            }, completion: nil)
-        
-        UIView.animateWithDuration(0.5, delay: 0,
-            options: UIViewAnimationOptions.CurveEaseInOut,
-            animations: { () -> Void in
-                navigationBar!.frame.origin.y = -64
-                navigationBar!.layer.opacity = 0
-            }, completion: nil)
+        if let navigationBar = self.defineNavigationBar() {
+            if let topNavigationBar = HelperConstraint.findTopConstraint(navigationBar) {
+                topNavigationBar.constant = -44
+            }
+            self.searchBarTopLayoutConstraint.constant = 20
+            
+            UIView.animateWithDuration(0.257, delay: 0,
+                options: .BeginFromCurrentState | UIViewAnimationOptions.CurveEaseInOut,
+                animations: { () -> Void in
+                    self.view.layoutIfNeeded()
+                    navigationBar.alpha = 0
+                }, completion: nil)
+        }
 
         return true
     }
     
     func animateNavigationVarAfterEditing() {
-        let navigationBar = self.defineNavigationBar()
-        self.tableViewTopConstraint?.constant = 44
-        
-        UIView.animateWithDuration(0.375, delay: 0, options: .BeginFromCurrentState | .CurveEaseInOut, animations: { () -> Void in
-            self.view.layoutIfNeeded()
-            }) { (result) -> Void in
-                self.loadObjects()
+        if let navigationBar = self.defineNavigationBar() {
+            if let topNavigationBar = HelperConstraint.findTopConstraint(navigationBar) {
+                topNavigationBar.constant = 20
+            }
+            self.searchBarTopLayoutConstraint.constant = 64
+            
+            UIView.animateWithDuration(0.257, delay: 0,
+                options: .BeginFromCurrentState | UIViewAnimationOptions.CurveEaseInOut,
+                animations: { () -> Void in
+                    self.view.layoutIfNeeded()
+                    navigationBar.alpha = 1
+                }, completion: nil)
         }
-        
-        UIView.animateWithDuration(0.5, delay: 0, options: .CurveEaseInOut,
-            animations: { () -> Void in
-                navigationBar!.frame.origin.y = 20
-                navigationBar!.layer.opacity = 1
-            }, completion: nil)
     }
     
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         self.searchText = ""
+        self.hideKeyboard()
+        searchBar.showsCancelButton = false
         self.animateNavigationVarAfterEditing()
+        
+        if self.updateObjectsAfterCancel {
+            self.loadObjects()
+        }
+        
     }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         self.searchText = searchBar.text
+        self.clear()
+        self.loadObjects()
     }
     
     func searchBarTextDidEndEditing(searchBar: UISearchBar) {

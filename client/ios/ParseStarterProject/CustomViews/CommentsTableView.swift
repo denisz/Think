@@ -33,7 +33,6 @@ class CommentsTableView: MyQueryTableView {
         if error == nil {
             self.layoutIfNeeded()
             self.heightLayoutConstraint.constant = self.contentSize.height
-            println(self.contentSize.height)
         }
     }
     

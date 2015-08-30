@@ -14,6 +14,7 @@ import Bolts
 
 @objc(NewPostViewController) class NewPostViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableViewTopLayoutContraint: NSLayoutConstraint!
     @IBOutlet weak var tableViewBottomLayoutContraint: NSLayoutConstraint!
     @IBOutlet weak var toolbarBottomLayoutContraint: NSLayoutConstraint!
     @IBOutlet weak var toolbar: ToolbarNewPostView!
@@ -50,6 +51,14 @@ import Bolts
     override func updateConstraintKeyboard(hide: Bool, minY: CGFloat, maxY: CGFloat) {
         self.tableViewBottomLayoutContraint.constant    = maxY - minY + 60
         self.toolbarBottomLayoutContraint.constant      = maxY - minY
+    }
+    
+    override func setupNavigationBar() {
+        super.setupNavigationBar()
+        
+        if self.automaticallyAdjustsScrollViewInsets == true {
+            self.tableViewTopLayoutContraint.constant = 64
+        }
     }
     
     func setupToolbar() {
@@ -124,8 +133,7 @@ import Bolts
                 }
             } else {
                 dispatch_async(dispatch_get_main_queue()) {
-                    let controller = SettingsPostViewController()
-                    controller.object = self.object!
+                    let controller = SettingsPostViewController.CreateWithModel(self.object!)
                     self.navigationController?.pushViewController(controller, animated: true)
                 }
             }
@@ -143,15 +151,30 @@ import Bolts
         return self.blockByType(PostBlockType.Title)[0].toObject()[kPostBlockTextKey]!
     }
     
+    func coverPost() ->PFFile? {
+        var blocks = self.blockByType(PostBlockType.Cover)
+        
+        if blocks.count > 0 {
+            return blocks[0].picture
+        }
+        
+        return nil
+    }
+    
     func preparePost(){
         var result = [String]()
         
         let title           = self.titlePost()
         let contentObject   = self.blockByType(PostBlockType.Text).map({ $0.toObject() })
-//        let content         = JSONStringify(contentObject)
+        let cover           = self.coverPost()
         
-        self.object?.setObject(contentObject, forKey: kPostContentObjKey)
-        self.object?.setObject(title,   forKey: kPostTitleKey)
+        self.object?.setObject(contentObject,   forKey: kPostContentObjKey)
+        
+        if cover != nil {
+            self.object?.setObject(cover!, forKey: kPostCoverKey)
+        }
+        
+        self.object?.setObject(title,           forKey: kPostTitleKey)
     }
     
     override func didTapLeftBtn(sender: UIButton) {
@@ -189,6 +212,7 @@ extension NewPostViewController: UITableViewDelegate {
         self.tableView.beginUpdates()
         self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         self.tableView.endUpdates()
+        self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
         
 //        if type == PostBlockType.Text {
 //            if let cell = self.cellByBlock(block)  {
@@ -203,10 +227,6 @@ extension NewPostViewController: UITableViewDelegate {
 }
 
 extension NewPostViewController: UITableViewDataSource {
-    func getIndexPathForTitle () -> NSIndexPath {
-        return NSIndexPath(forRow: 0, inSection: 0)
-    }
-    
     func parseReuseIdentifierByType(type: PostBlockType) -> String {
         switch(type) {
         case .Text:
@@ -240,14 +260,6 @@ extension NewPostViewController: UITableViewDataSource {
         return self.blocks!.count
     }
     
-    func tableView(tableView: UITableView, cellForTitleAtIndexPath indexPath: NSIndexPath, block: PostBlock) -> UITableViewCell  {
-        
-        var cell = tableView.dequeueReusableCellWithIdentifier(kReusableTitlePostViewCell) as? TitlePostViewCell
-        
-        cell!.prepareView(block)
-        return cell!
-    }
-    
     func tableView(tableView: UITableView, cellForBlockAtIndexPath indexPath: NSIndexPath, block: PostBlock) -> UITableViewCell  {
         
         let cellIndentifier = self.parseReuseIdentifierByType(block.type)
@@ -263,10 +275,6 @@ extension NewPostViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let block = blockByIndexPath(indexPath)
-        
-        if block.type == PostBlockType.Title {
-            return self.tableView(tableView, cellForTitleAtIndexPath: indexPath, block: block)
-        }
         
         return self.tableView(tableView, cellForBlockAtIndexPath: indexPath, block: block)
     }
@@ -296,5 +304,47 @@ extension NewPostViewController: ToolbarNewPostViewDelegate {
         if let block = self.currentEditingBlock {
             block.style = PostBlockStyle.Gray
         }
+    }
+}
+
+extension NewPostViewController: UIImagePickerControllerDelegate {
+    func performLoadedImage(image: UIImage) {
+        if let scenario = SelectImageHelper.lastPresentScenario {
+            let user        = PFUser.currentUser()
+            let userID      = user!.objectId ?? "unknown"
+            let date        = NSDate.timeIntervalSinceReferenceDate()
+            var blockCover  = self.blockByType(PostBlockType.Cover)[0]//тут могут быть проблемы
+            
+            SelectImageHelper.uploadImage(image,
+                imageName: "\(userID)_\(date)")
+                { (file: PFFile, error: NSError?) in
+                    
+                    if (error == nil) {
+                        switch(scenario) {
+                        case .CoverPost:
+                            blockCover.picture = file
+                            break
+                        default:
+                            println("scenario is invalid")
+                        }
+                    }
+            }
+        }
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+        
+        picker.dismissViewControllerAnimated(true, completion: nil)
+        
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            cropImageWithCropViewController(image)
+        }
+    }
+}
+
+
+extension NewPostViewController {
+    override func cropViewController(image: UIImage) {
+        self.performLoadedImage(image)
     }
 }

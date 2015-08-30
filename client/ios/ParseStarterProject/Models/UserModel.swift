@@ -29,6 +29,10 @@ class UserModel: PFUser {
         
         return kUserHiddenName
     }
+    
+    class func createdAtDate(post: PFObject) -> String {
+        return TransformDate.timeString(post.createdAt!)
+    }
 
     class func pictureImage(user: PFObject) -> PFFile? {
         if let picture = user[kUserProfilePictureKey] as? PFFile {

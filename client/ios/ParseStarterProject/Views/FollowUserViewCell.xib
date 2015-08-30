@@ -4,11 +4,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <customFonts key="customFonts">
+        <mutableArray key="OpenSans-Bold.ttf">
+            <string>OpenSans-Bold</string>
+        </mutableArray>
         <mutableArray key="OpenSans-Light.ttf">
             <string>OpenSans-Light</string>
-        </mutableArray>
-        <mutableArray key="OpenSans-Semibold.ttf">
-            <string>OpenSans-Semibold</string>
         </mutableArray>
     </customFonts>
     <objects>
@@ -51,6 +51,9 @@
                                 <color key="value" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="didTapFollow" destination="LG6-Yr-VH1" eventType="touchUpInside" id="lq7-Hc-6Eu"/>
+                        </connections>
                     </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ava_profile" translatesAutoresizingMaskIntoConstraints="NO" id="f7Q-4i-1l5" customClass="PFImageView">
                         <rect key="frame" x="15" y="15" width="38" height="38"/>
@@ -72,13 +75,16 @@
                         </state>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mary Green" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7B5-a1-7jf">
-                        <rect key="frame" x="83" y="15" width="169" height="19.5"/>
-                        <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
+                        <rect key="frame" x="83" y="15" width="169" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="7LS-PL-bq8"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="11"/>
                         <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 min ago" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d3i-aw-Zql">
-                        <rect key="frame" x="83" y="36.5" width="169" height="16.5"/>
+                        <rect key="frame" x="83" y="38" width="169" height="16.5"/>
                         <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="12"/>
                         <color key="textColor" red="0.32940998669999999" green="0.39215999839999999" blue="0.41569000480000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -108,7 +114,7 @@
                 <outlet property="userName" destination="7B5-a1-7jf" id="7hl-Hr-IWJ"/>
                 <outlet property="userPicture" destination="f7Q-4i-1l5" id="QOw-hg-zq4"/>
             </connections>
-            <point key="canvasLocation" x="223" y="-127"/>
+            <point key="canvasLocation" x="203" y="-185"/>
         </tableViewCell>
     </objects>
     <resources>

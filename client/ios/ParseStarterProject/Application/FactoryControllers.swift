@@ -32,6 +32,18 @@ class FactoryControllers {
         return controller
     }
     
+    class func youFollow() -> UIViewController {
+        var user = PFUser.currentUser()
+        let controller = YouFollowViewController.CreateWithModel(user!)
+        
+        return controller
+    }
+    
+    class func peopleSearch() -> UIViewController {
+        let controller = PeopleSearchViewController.Create()
+        return controller
+    }
+    
     class func feed() -> UIViewController {
         let user = PFUser.currentUser()
         let controller = FeedViewController.CreateWithModel(user!)
@@ -63,6 +75,13 @@ class FactoryControllers {
         let user = PFUser.currentUser()
         let controller = MessagesViewController.CreateWithModel(user!)
         
+        return controller
+    }
+    
+    class func newPost() -> UIViewController {
+        let controller = NewPostViewController()
+        controller.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
+        controller.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
         return controller
     }
     

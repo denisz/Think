@@ -67,7 +67,7 @@ import ParseUI
         var query = PFQuery(className: self.parseClassName!)
         query.whereKey(kActivityTypeKey, equalTo: kActivityTypeComment)
         query.whereKey(kActivityPostKey, equalTo: owner!)
-        query.orderByDescending("createdAt")        
+        query.orderByDescending(kClassCreatedAt)
         query.includeKey(kActivityPostKey)
         query.includeKey(kActivityFromUserKey)
         

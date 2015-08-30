@@ -12,6 +12,14 @@ import ParseUI
 
 
 class Follower {
+    class func following(activity: PFObject) -> PFObject? {
+        return activity[kActivityToUserKey] as? PFObject
+    }
+    
+    class func follower(activity: PFObject) -> PFObject? {
+        return activity[kActivityFromUserKey] as? PFObject
+    }
+    
     //я слежу за пользователем
     class func followingUsername(activity: PFObject) -> String {
         if let user = activity[kActivityToUserKey] as? PFObject {

@@ -25,23 +25,11 @@ class Activity: PFObject, PFSubclassing {
     }
     
     class func isLikePost(post: PFObject)-> Bool {
-        let user = PFUser.currentUser()
-        let query = PFQuery(className: kActivityClassKey)
-        query.whereKey(kActivityFromUserKey, equalTo: user!)
-        query.whereKey(kActivityPostKey, equalTo: post)
-        query.whereKey(kActivityTypeKey, equalTo: kActivityTypeLike)
-        
-        return query.countObjects() > 0
+        return MyCache.sharedCache.isPostLikedByCurrentUser(post)
     }
     
     class func isFollowUser(otherUser: PFObject)-> Bool {
-        let user = PFUser.currentUser()
-        let query = PFQuery(className: kActivityClassKey)
-        query.whereKey(kActivityFromUserKey, equalTo: user!)
-        query.whereKey(kActivityToUserKey, equalTo: otherUser)
-        query.whereKey(kActivityTypeKey, equalTo: kActivityTypeFollow)
-        
-        return query.countObjects() > 0
+        return MyCache.sharedCache.followStatusForUser(otherUser)
     }
     
     class func handlerLikePost(post: PFObject) {
@@ -60,21 +48,20 @@ class Activity: PFObject, PFSubclassing {
         query.whereKey(kActivityPostKey, equalTo: post)
         
         query.getFirstObjectInBackground().continueWithBlock { (task: BFTask!) -> AnyObject! in
-            if (task.error != nil) {
-                
+            if (task.error == nil) {
+                if let activity = task.result as? PFObject {
+                    activity.deleteEventually()
+                    post.saveInBackground()
+                }
             } else {
-                let activity = task.result as! PFObject
-                activity.deleteEventually()
-                post.incrementKey(kPostCounterLikesKey, byAmount: -1)
-                post.saveEventually()
-                
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    NSNotificationCenter.defaultCenter().postNotificationName(kUserUnlikedPost, object: post)
-                })
             }
             
             return task
         }
+        
+        post.incrementKey(kPostCounterLikesKey, byAmount: -1)
+        MyCache.sharedCache.setPostIsLikedByCurrentUser(post, liked: false)
+        NSNotificationCenter.defaultCenter().postNotificationName(kUserUnlikedPost, object: post)
     }
     
     class func likePost(post: PFObject) {
@@ -89,9 +76,16 @@ class Activity: PFObject, PFSubclassing {
         activityACL.setPublicReadAccess(true)
         activity.ACL = activityACL
         
-        activity.saveEventually()
+        activity.saveInBackground().continueWithBlock { (task: BFTask!) -> AnyObject! in
+            if task.error == nil {
+                post.saveInBackground()
+            } 
+            
+            return task
+        }
+        
         post.incrementKey(kPostCounterLikesKey, byAmount: 1)
-        post.saveEventually()
+        MyCache.sharedCache.setPostIsLikedByCurrentUser(post, liked: true)
         NSNotificationCenter.defaultCenter().postNotificationName(kUserLikedPost, object: post)
     }
     
@@ -115,6 +109,7 @@ class Activity: PFObject, PFSubclassing {
         activity.ACL = activityACL
         
         activity.saveEventually()
+        MyCache.sharedCache.setFollowStatus(true, user: otherUser)
         NSNotificationCenter.defaultCenter().postNotificationName(kUserFollowingUser, object: otherUser)
     }
     
@@ -124,13 +119,16 @@ class Activity: PFObject, PFSubclassing {
         query.whereKey(kActivityFromUserKey, equalTo: user!)
         query.whereKey(kActivityToUserKey, equalTo: otherUser)
         query.whereKey(kActivityTypeKey, equalTo: kActivityTypeFollow)
-        
+
         query.getFirstObjectInBackground().continueWithBlock { (task: BFTask!) -> AnyObject! in
             if (task.error != nil) {
                 
             } else {
                 let activity = task.result as! PFObject
                 activity.deleteEventually()
+                
+                MyCache.sharedCache.setFollowStatus(false, user: otherUser)
+                
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     NSNotificationCenter.defaultCenter().postNotificationName(kUserUnfollowUser, object: otherUser)
                 })

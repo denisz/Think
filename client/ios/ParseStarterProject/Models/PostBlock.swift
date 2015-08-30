@@ -9,8 +9,6 @@
 import Foundation
 import Parse
 
-let kvoBlockPropertyStyle = "styleRaw"
-
 enum PostBlockType: Int {
     case Text
     case Title
@@ -20,10 +18,17 @@ enum PostBlockType: Int {
 }
 
 class PostBlock: NSObject {
-    var type: PostBlockType
     dynamic var content: String = ""
-    dynamic var picture: PFFile?
     dynamic var styleRaw : String?
+    dynamic var uploadedPicture : Int = 0
+
+    var picture: PFFile? {
+        didSet {
+            self.uploadedPicture += 1
+        }
+    }
+    var type: PostBlockType
+    
     var style : PostBlockStyle? {
         didSet {
             styleRaw = style?.rawValue

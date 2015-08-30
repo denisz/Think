@@ -35,6 +35,51 @@ import VGParallaxHeader
         
         self.customizeNavigationBar()
         self.configureNavigationItem()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "userCreatedThread:", name: kUserCreateThread, object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "userSendMessage:", name: kUserSendMessage, object: nil)
+        
+        //изменять lastMessage
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        NSNotificationCenter.defaultCenter().removeObserver(self,
+            name: kUserCreateThread, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self,
+            name: kUserSendMessage, object: nil)
+    }
+    
+    func userCreatedThread(notification: NSNotification) {
+        if let object = notification.object as? PFObject {
+            self.objects?.insertObject(object, atIndex: 0)
+            
+            self.tableView.beginUpdates()
+            
+            var indexPath = NSIndexPath(forRow: 0, inSection: 0)
+            
+            self.tableView.insertRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
+            
+            self.tableView.endUpdates()
+            self.tableView.scrollToRowAtIndexPath(indexPath!, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
+        }
+    }
+    
+    func userSendMessage(notification: NSNotification) {
+        if let message = notification.object as? PFObject {
+            if let thread = MessageModel.thread(message) {
+                let index = IndexOf(self.objects!, thread)
+                if index > -1 {
+                    if let item = self.objects![index] as? PFObject {
+                        item.setObject(message, forKey: kThreadLastMessageKey)
+                        if let indexPath = self.indexPathByObject(item) {
+                            self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+                        }
+                    }
+                }
+            }
+        }
     }
     
     func configureNavigationItem() {
@@ -59,7 +104,8 @@ import VGParallaxHeader
     }
     
     func didTapNewMessageBtn(sender: AnyObject?) {
-        self.navigationController?.popViewControllerAnimated(true)
+        let controller = FactoryControllers.peopleSearch()
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     override func objectsDidLoad(error: NSError?) {
@@ -79,20 +125,27 @@ import VGParallaxHeader
     override func queryForTable() -> PFQuery {
         let query = PFQuery(className: self.parseClassName!)
         
-        query.whereKey(kThreadParticipantsKey, containedIn: [self.owner!])
-        query.orderByDescending("createdAt")
+//        query.whereKey(kThreadParticipantsKey, equalTo: self.owner!.objectId!)
+        query.whereKeyExists(kThreadLastMessageKey)//и имеет сообщение
+        query.orderByDescending(kClassCreatedAt)
+        query.includeKey(kThreadLastMessageKey)
         
         return query
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell? {
         let cell = tableView.dequeueReusableCellWithIdentifier(kReusableMessageViewCell) as! MessageViewCell
-        cell.prepareView(object!)
+        
+        if let message = Thread.lastMessage(object!) {
+            cell.clearView()
+            cell.prepareView(message)
+        }
+        
         return cell
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) {
-        var controller = ChannelViewController.CreateWithModel(object!)
+        let controller = ThreadViewController.CreateWithModel(object!)
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
@@ -105,12 +158,12 @@ import VGParallaxHeader
         messages.owner = model
         messages.parseClassName = kThreadClassKey
         messages.paginationEnabled = true
-        messages.pullToRefreshEnabled = false
+        messages.pullToRefreshEnabled = true
         
         return messages
     }
     
     class func CreateWithId(objectId: String) -> MessagesViewController {
-        return CreateWithModel(PFObject(withoutDataWithClassName: "_User", objectId: objectId))
+        return CreateWithModel(PFObject(withoutDataWithClassName: kUserClassKey, objectId: objectId))
     }
 }

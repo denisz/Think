@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scheme
+   LastUpgradeVersion = "0640"
+   version = "2.0">
+   <BuildAction
+      parallelizeBuildables = "YES"
+      buildImplicitDependencies = "YES">
+      <BuildActionEntries>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A99795811B90A25600B2AA09"
+               BuildableName = "Think WatchKit App.app"
+               BlueprintName = "Think WatchKit App"
+               ReferencedContainer = "container:Think.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A99795741B90A25600B2AA09"
+               BuildableName = "Think WatchKit Extension.appex"
+               BlueprintName = "Think WatchKit Extension"
+               ReferencedContainer = "container:Think.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "81BA81441A49DA1800E65899"
+               BuildableName = "Think.app"
+               BlueprintName = "Think"
+               ReferencedContainer = "container:Think.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+      </BuildActionEntries>
+   </BuildAction>
+   <TestAction
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      buildConfiguration = "Debug">
+      <Testables>
+      </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "A99795811B90A25600B2AA09"
+            BuildableName = "Think WatchKit App.app"
+            BlueprintName = "Think WatchKit App"
+            ReferencedContainer = "container:Think.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
+   </TestAction>
+   <LaunchAction
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      launchStyle = "0"
+      useCustomWorkingDirectory = "NO"
+      buildConfiguration = "Debug"
+      ignoresPersistentStateOnLaunch = "NO"
+      debugDocumentVersioning = "YES"
+      allowLocationSimulation = "YES"
+      launchAutomaticallySubstyle = "8"
+      notificationPayloadFile = "Think WatchKit Extension/PushNotificationPayload.apns">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.springboard"
+         RemotePath = "/Think">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "A99795811B90A25600B2AA09"
+            BuildableName = "Think WatchKit App.app"
+            BlueprintName = "Think WatchKit App"
+            ReferencedContainer = "container:Think.xcodeproj">
+         </BuildableReference>
+      </RemoteRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "A99795811B90A25600B2AA09"
+            BuildableName = "Think WatchKit App.app"
+            BlueprintName = "Think WatchKit App"
+            ReferencedContainer = "container:Think.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
+      <AdditionalOptions>
+      </AdditionalOptions>
+   </LaunchAction>
+   <ProfileAction
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      savedToolIdentifier = ""
+      useCustomWorkingDirectory = "NO"
+      buildConfiguration = "Release"
+      debugDocumentVersioning = "YES"
+      launchAutomaticallySubstyle = "8"
+      notificationPayloadFile = "Think WatchKit Extension/PushNotificationPayload.apns">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.springboard"
+         RemotePath = "/Think">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "A99795811B90A25600B2AA09"
+            BuildableName = "Think WatchKit App.app"
+            BlueprintName = "Think WatchKit App"
+            ReferencedContainer = "container:Think.xcodeproj">
+         </BuildableReference>
+      </RemoteRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "A99795811B90A25600B2AA09"
+            BuildableName = "Think WatchKit App.app"
+            BlueprintName = "Think WatchKit App"
+            ReferencedContainer = "container:Think.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
+   </ProfileAction>
+   <AnalyzeAction
+      buildConfiguration = "Debug">
+   </AnalyzeAction>
+   <ArchiveAction
+      buildConfiguration = "Release"
+      revealArchiveInOrganizer = "YES">
+   </ArchiveAction>
+</Scheme>

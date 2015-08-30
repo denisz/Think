@@ -64,11 +64,12 @@ import VGParallaxHeader
         self.configureNavigationBarBackBtn(UIColor.whiteColor())
         self.configureNavigationBarRightBtn(UIColor.whiteColor())
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "userLikedOrUnlikedPost:", name: kUserUnlikedPost, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "userLikedOrUnlikedPost:", name: kUserLikedPost, object: nil)
-
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "userFollowOrUnFollowAuthorPost:", name: kUserFollowingUser, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "userFollowOrUnFollowAuthorPost:", name: kUserUnfollowUser, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:
+            "userLikedOrUnlikedPost:",             name: kUserUnlikedPost, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:
+            "userLikedOrUnlikedPost:",             name: kUserLikedPost, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "userFollowOrUnFollowAuthorPost:",     name: kUserFollowingUser, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "userFollowOrUnFollowAuthorPost:",     name: kUserUnfollowUser, object: nil)
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -87,8 +88,7 @@ import VGParallaxHeader
         super.objectDidLoad(object)
         
         self.authorName.text        = Post.usernameOwner(object)
-        self.likesCounter.text      = Post.likesCounter(object)
-        self.commentsCounter.text   = Post.commentsCounter(object, suffix: "comments".uppercaseString)
+//        self.likesCounter.text      = Post.likesCounter(object)
         self.titleView.text         = Post.title(object)
         
         self.authorPicture.image          = kUserPlaceholder
@@ -96,6 +96,10 @@ import VGParallaxHeader
         
         self.authorPicture.loadInBackground()
         self.authorPicture.cornerEdge()
+        
+        self.updateLikesCounter()
+        self.updateCommentCounter()
+        self.updateFollowButton()
         
         self.tagsView.text = Post.tagsString(object)
         
@@ -112,13 +116,26 @@ import VGParallaxHeader
         return query;
     }
     
-    func updateColorAndCountLikes(like: Bool) {
+    func updateCommentCounter() {
+        self.commentsCounter.text   = Post.commentsCounter(self.object!, suffix: "comments".uppercaseString)
+    }
+    
+    func updateLikesCounter() {
+        let isLiked = Activity.isLikePost(self.object!)
         self.likesCounter.text = Post.likesCounter(self.object!)
 
-        if like {
+        if isLiked {
             likesCounter.setColor(UIColor(red:0, green:0.64, blue:0.85, alpha:1))
         } else {
             likesCounter.setColor(UIColor(red:0.26, green:0.26, blue:0.26, alpha:1))
+        }
+    }
+    
+    func updateFollowButton() {
+        if let author = Post.owner(self.object!) {
+            println(UserModel.isEqualCurrentUser(author))
+            self.followAuthor.hidden = UserModel.isEqualCurrentUser(author)
+            self.followAuthor.selectedOnSet(MyCache.sharedCache.followStatusForUser(author))
         }
     }
     
@@ -151,44 +168,7 @@ import VGParallaxHeader
     }
     
     func didTapMoreBtn(sender: AnyObject?) {
-        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
-
-        
-        let reportAction = UIAlertAction(title: "Report".localized, style: .Default) { (action) -> Void in
-            self.didTapReport()
-        }
-        
-        let shareAction = UIAlertAction(title: "Share via socials".localized, style: .Default) { (action) -> Void in
-            self.didTapShare()
-        }
-        
-        let bookmarkAction = UIAlertAction(title: "Save to read later".localized, style: .Default) { (action) -> Void in
-            self.didTapBookmarkPost()
-        }
-        
-        let raiseAction = UIAlertAction(title: "Raise post public".localized, style: .Default) { (action) -> Void in
-            self.didTapRaisePost()
-        }
-        
-        let followAction = UIAlertAction(title: "Follow author".localized, style: .Default) { (action) -> Void in
-            self.didTapFollowAuthor()
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel".localized, style: .Cancel, handler: nil)
-        
-        actionSheet.addAction(shareAction)
-
-        if Post.determineCurrentUserAuthor(self.object!) {
-            actionSheet.addAction(raiseAction)
-        } else {
-            actionSheet.addAction(bookmarkAction)
-            actionSheet.addAction(reportAction)
-            actionSheet.addAction(followAction)
-        }
-
-        actionSheet.addAction(cancelAction)
-        
-        self.presentViewController(actionSheet, animated: true, completion: nil)
+        PostHelper.actionSheet(self.object!, controller: self)
     }
     
     func didDoubleTapBookmarkPost() {
@@ -198,48 +178,24 @@ import VGParallaxHeader
         }
     }
     
-    func didTapBookmarkPost() {
-        Bookmark.createWith(self.object!)
-    }
-    
-    func didTapRaisePost() {
-        Post.raisePost(self.object!)
-    }
-    
-    func didTapReport() {
-    }
-    
     @IBAction func didTapLikePost() {
-        if let object = self.object {
-            Activity.handlerLikePost(object)
-        }
+        PostHelper.didTapLikePost(self.object!)
     }
     
     @IBAction func didTapFollowAuthor() {
-        if let object = self.object {
-            let owner = object[kPostOwnerKey] as! PFObject
-            Activity.handlerFollowUser(owner)
-        }
+        PostHelper.didTapFollowAuthor(self.object!)
     }
     
     @IBAction func didTapComments() {
-        let comments = CommentsViewController.CreateWithModel(self.object!)
-        self.navigationController?.pushViewController(comments, animated: true)
-    }
-    
-    func didTapShare() {
-        let post = self.object!
-        let textToShare = Post.stringForShare(post)
-        let activityVC = UIActivityViewController(activityItems: [textToShare], applicationActivities: nil)
-        self.presentViewController(activityVC, animated: true, completion: nil)
+        PostHelper.didTapComments(self.object!, controller: self)
     }
     
     dynamic func userLikedOrUnlikedPost(notification: NSNotification) {
-        self.updateColorAndCountLikes(Activity.isLikePost(self.object!))
+        self.updateLikesCounter()
     }
     
     dynamic func userFollowOrUnFollowAuthorPost(notification: NSNotification) {
-        followAuthor.selectedOnSet(true)
+        self.updateFollowButton()
     }
     
     class func CreateWithModel(model: PFObject) -> PostViewController {

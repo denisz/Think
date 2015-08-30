@@ -77,6 +77,18 @@
 		A92897B91B7CE16F00A1A754 /* SLKTextInputbar+height.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92897B81B7CE16F00A1A754 /* SLKTextInputbar+height.swift */; };
 		A962DBC51B8E0054000A17F3 /* Follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = A962DBC41B8E0054000A17F3 /* Follower.swift */; };
 		A962DBC71B8E0C41000A17F3 /* Notify.swift in Sources */ = {isa = PBXBuildFile; fileRef = A962DBC61B8E0C41000A17F3 /* Notify.swift */; };
+		A962DBC91B8EE643000A17F3 /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A962DBC81B8EE643000A17F3 /* PrivacyViewController.swift */; };
+		A962DBCB1B8EED20000A17F3 /* MyCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = A962DBCA1B8EED20000A17F3 /* MyCache.swift */; };
+		A962DBCD1B8EFB08000A17F3 /* PFTableView+Clear.swift in Sources */ = {isa = PBXBuildFile; fileRef = A962DBCC1B8EFB08000A17F3 /* PFTableView+Clear.swift */; };
+		A962DBCF1B8F99A3000A17F3 /* HelperConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A962DBCE1B8F99A3000A17F3 /* HelperConstraint.swift */; };
+		A962DBD11B8FA76B000A17F3 /* PeopleSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A962DBD01B8FA76B000A17F3 /* PeopleSearchViewController.xib */; };
+		A962DBD31B8FA783000A17F3 /* PeopleSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A962DBD21B8FA783000A17F3 /* PeopleSearchViewController.swift */; };
+		A962DBD51B8FA829000A17F3 /* PeopleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A962DBD41B8FA829000A17F3 /* PeopleViewCell.swift */; };
+		A962DBD71B8FA834000A17F3 /* PeopleViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A962DBD61B8FA834000A17F3 /* PeopleViewCell.xib */; };
+		A962DBD91B8FAD8A000A17F3 /* YouFollowViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A962DBD81B8FAD8A000A17F3 /* YouFollowViewCell.swift */; };
+		A962DBDB1B8FAE5A000A17F3 /* YouFollowViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A962DBDA1B8FAE5A000A17F3 /* YouFollowViewCell.xib */; };
+		A962DBDD1B903B8E000A17F3 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = A962DBDC1B903B8E000A17F3 /* Location.swift */; };
+		A962DBDF1B903BE9000A17F3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A962DBDE1B903BE9000A17F3 /* CoreLocation.framework */; };
 		A966ED581B737CB5002DFED8 /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A966ED571B737CB5002DFED8 /* Authentication.storyboard */; };
 		A966ED5F1B737D10002DFED8 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A966ED5E1B737D10002DFED8 /* BaseViewController.swift */; };
 		A966ED611B737D31002DFED8 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A966ED601B737D31002DFED8 /* BaseNavigationController.swift */; };
@@ -117,6 +129,21 @@
 		A97184851B8C9A8000653F68 /* TopViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A97184841B8C9A8000653F68 /* TopViewController.xib */; };
 		A97184871B8CAE7900653F68 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97184861B8CAE7900653F68 /* Comment.swift */; };
 		A97184891B8CEA7F00653F68 /* UIViewController+Cropimage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97184881B8CEA7F00653F68 /* UIViewController+Cropimage.swift */; };
+		A997954E1B90A16500B2AA09 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A997954D1B90A16500B2AA09 /* NotificationCenter.framework */; };
+		A99795531B90A16600B2AA09 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99795521B90A16600B2AA09 /* TodayViewController.swift */; };
+		A99795551B90A16600B2AA09 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A99795541B90A16600B2AA09 /* MainInterface.storyboard */; };
+		A99795581B90A16600B2AA09 /* Think Today.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A997954C1B90A16500B2AA09 /* Think Today.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A99795981B924C0C00B2AA09 /* IndexOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99795971B924C0C00B2AA09 /* IndexOf.swift */; };
+		A999C2421B9058010068C330 /* Resizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A999C2411B9058010068C330 /* Resizer.swift */; };
+		A999C2441B9067610068C330 /* KeyValueObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = A999C2431B9067610068C330 /* KeyValueObserver.swift */; };
+		A999C2461B9067F00068C330 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A999C2451B9067F00068C330 /* Observable.swift */; };
+		A999C2491B90895A0068C330 /* PostHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A999C2481B90895A0068C330 /* PostHelper.swift */; };
+		A999C24B1B9090BA0068C330 /* PostObserverHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A999C24A1B9090BA0068C330 /* PostObserverHelper.swift */; };
+		A999C24D1B9095270068C330 /* ThreadViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A999C24C1B9095270068C330 /* ThreadViewCell.swift */; };
+		A999C2501B9095720068C330 /* InThreadViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A999C24F1B9095720068C330 /* InThreadViewCell.xib */; };
+		A999C2521B9095E00068C330 /* OutThreadViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A999C2511B9095E00068C330 /* OutThreadViewCell.xib */; };
+		A999C2541B9097FB0068C330 /* ThreadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A999C2531B9097FB0068C330 /* ThreadViewController.swift */; };
+		A999C2561B9098270068C330 /* ThreadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A999C2551B9098270068C330 /* ThreadViewController.xib */; };
 		A99AE6101B7666DE00085138 /* AsyncMessagesViewController.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A99AE5FF1B7666DE00085138 /* AsyncMessagesViewController.xcassets */; };
 		A99AE6111B7666DE00085138 /* AsyncMessagesCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99AE6011B7666DE00085138 /* AsyncMessagesCollectionViewDataSource.swift */; };
 		A99AE6121B7666DE00085138 /* AsyncMessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99AE6021B7666DE00085138 /* AsyncMessagesViewController.swift */; };
@@ -252,6 +279,30 @@
 		A9F607A41B7D2DF000FC1832 /* BaseProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F607A31B7D2DF000FC1832 /* BaseProfileHeaderView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		A99795561B90A16600B2AA09 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 81BA813D1A49DA1800E65899 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A997954B1B90A16500B2AA09;
+			remoteInfo = "Think Today";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A997955C1B90A16600B2AA09 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				A99795581B90A16600B2AA09 /* Think Today.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		49E21E2DED1F01F3A4E46DA0 /* Pods-Think.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Think.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Think/Pods-Think.debug.xcconfig"; sourceTree = "<group>"; };
 		7D57E0D4D066DF7D206077EC /* Pods-Think.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Think.release.xcconfig"; path = "Pods/Target Support Files/Pods-Think/Pods-Think.release.xcconfig"; sourceTree = "<group>"; };
@@ -330,6 +381,18 @@
 		A92897B81B7CE16F00A1A754 /* SLKTextInputbar+height.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SLKTextInputbar+height.swift"; sourceTree = "<group>"; };
 		A962DBC41B8E0054000A17F3 /* Follower.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Follower.swift; sourceTree = "<group>"; };
 		A962DBC61B8E0C41000A17F3 /* Notify.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notify.swift; sourceTree = "<group>"; };
+		A962DBC81B8EE643000A17F3 /* PrivacyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
+		A962DBCA1B8EED20000A17F3 /* MyCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCache.swift; sourceTree = "<group>"; };
+		A962DBCC1B8EFB08000A17F3 /* PFTableView+Clear.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PFTableView+Clear.swift"; sourceTree = "<group>"; };
+		A962DBCE1B8F99A3000A17F3 /* HelperConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperConstraint.swift; sourceTree = "<group>"; };
+		A962DBD01B8FA76B000A17F3 /* PeopleSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PeopleSearchViewController.xib; sourceTree = "<group>"; };
+		A962DBD21B8FA783000A17F3 /* PeopleSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleSearchViewController.swift; sourceTree = "<group>"; };
+		A962DBD41B8FA829000A17F3 /* PeopleViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleViewCell.swift; sourceTree = "<group>"; };
+		A962DBD61B8FA834000A17F3 /* PeopleViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PeopleViewCell.xib; sourceTree = "<group>"; };
+		A962DBD81B8FAD8A000A17F3 /* YouFollowViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouFollowViewCell.swift; sourceTree = "<group>"; };
+		A962DBDA1B8FAE5A000A17F3 /* YouFollowViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YouFollowViewCell.xib; sourceTree = "<group>"; };
+		A962DBDC1B903B8E000A17F3 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		A962DBDE1B903BE9000A17F3 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A966ED571B737CB5002DFED8 /* Authentication.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Authentication.storyboard; sourceTree = "<group>"; };
 		A966ED5E1B737D10002DFED8 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		A966ED601B737D31002DFED8 /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
@@ -373,6 +436,26 @@
 		A97184841B8C9A8000653F68 /* TopViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopViewController.xib; sourceTree = "<group>"; };
 		A97184861B8CAE7900653F68 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		A97184881B8CEA7F00653F68 /* UIViewController+Cropimage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Cropimage.swift"; sourceTree = "<group>"; };
+		A997954C1B90A16500B2AA09 /* Think Today.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Think Today.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A997954D1B90A16500B2AA09 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		A99795511B90A16600B2AA09 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A99795521B90A16600B2AA09 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		A99795541B90A16600B2AA09 /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
+		A997955D1B90A16F00B2AA09 /* Think Today.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Think Today.entitlements"; sourceTree = "<group>"; };
+		A99795971B924C0C00B2AA09 /* IndexOf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexOf.swift; sourceTree = "<group>"; };
+		A999C23B1B90431B0068C330 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		A999C23C1B90431B0068C330 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
+		A999C23F1B904AE10068C330 /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
+		A999C2411B9058010068C330 /* Resizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resizer.swift; sourceTree = "<group>"; };
+		A999C2431B9067610068C330 /* KeyValueObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyValueObserver.swift; sourceTree = "<group>"; };
+		A999C2451B9067F00068C330 /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		A999C2481B90895A0068C330 /* PostHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostHelper.swift; sourceTree = "<group>"; };
+		A999C24A1B9090BA0068C330 /* PostObserverHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostObserverHelper.swift; sourceTree = "<group>"; };
+		A999C24C1B9095270068C330 /* ThreadViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreadViewCell.swift; sourceTree = "<group>"; };
+		A999C24F1B9095720068C330 /* InThreadViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = InThreadViewCell.xib; path = ChannelViewCell/InThreadViewCell.xib; sourceTree = "<group>"; };
+		A999C2511B9095E00068C330 /* OutThreadViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OutThreadViewCell.xib; sourceTree = "<group>"; };
+		A999C2531B9097FB0068C330 /* ThreadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreadViewController.swift; sourceTree = "<group>"; };
+		A999C2551B9098270068C330 /* ThreadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThreadViewController.xib; sourceTree = "<group>"; };
 		A99AE5FF1B7666DE00085138 /* AsyncMessagesViewController.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = AsyncMessagesViewController.xcassets; sourceTree = "<group>"; };
 		A99AE6011B7666DE00085138 /* AsyncMessagesCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncMessagesCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		A99AE6021B7666DE00085138 /* AsyncMessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncMessagesViewController.swift; sourceTree = "<group>"; };
@@ -520,6 +603,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A962DBDF1B903BE9000A17F3 /* CoreLocation.framework in Frameworks */,
 				A966ED6B1B737F16002DFED8 /* FBAudienceNetwork.framework in Frameworks */,
 				A9D6EC601B7474A6002546A3 /* AdSupport.framework in Frameworks */,
 				A9D6EC5E1B747486002546A3 /* CoreMotion.framework in Frameworks */,
@@ -545,6 +629,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A99795491B90A16500B2AA09 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A997954E1B90A16500B2AA09 /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -562,6 +654,7 @@
 			children = (
 				A966EDAE1B73D8DA002DFED8 /* Think.entitlements */,
 				81BA81471A49DA1800E65899 /* ParseStarterProject */,
+				A997954F1B90A16500B2AA09 /* Think Today */,
 				81BA816A1A49DB5600E65899 /* Frameworks */,
 				81BA81461A49DA1800E65899 /* Products */,
 				0BE359DAFF6A53DC66FF3499 /* Pods */,
@@ -572,6 +665,7 @@
 			isa = PBXGroup;
 			children = (
 				81BA81451A49DA1800E65899 /* Think.app */,
+				A997954C1B90A16500B2AA09 /* Think Today.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -599,6 +693,7 @@
 			children = (
 				81BA81491A49DA1800E65899 /* Info.plist */,
 				81BA81821A49E27F00E65899 /* ParseStarterProject-Bridging-Header.h */,
+				A999C23F1B904AE10068C330 /* Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -606,6 +701,9 @@
 		81BA816A1A49DB5600E65899 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A999C23B1B90431B0068C330 /* AddressBook.framework */,
+				A999C23C1B90431B0068C330 /* AddressBookUI.framework */,
+				A962DBDE1B903BE9000A17F3 /* CoreLocation.framework */,
 				A9D6EC5F1B7474A5002546A3 /* AdSupport.framework */,
 				A9D6EC5D1B747486002546A3 /* CoreMotion.framework */,
 				A9D6EC5B1B747472002546A3 /* CoreMedia.framework */,
@@ -627,6 +725,7 @@
 				81BA81801A49E10C00E65899 /* ParseUI.framework */,
 				81BA81751A49E0C500E65899 /* System Frameworks */,
 				B9C7B197D1564C4ECD0230DB /* Pods_Think.framework */,
+				A997954D1B90A16500B2AA09 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -671,6 +770,12 @@
 				A92106891B84FBFA009C0B08 /* JSONParse.swift */,
 				A9B5D4CA1B85D6BC003B2E78 /* TransformDate.swift */,
 				A9E0001E1B88AEED00A1B1E6 /* TransformString.swift */,
+				A962DBCA1B8EED20000A17F3 /* MyCache.swift */,
+				A962DBCE1B8F99A3000A17F3 /* HelperConstraint.swift */,
+				A962DBDC1B903B8E000A17F3 /* Location.swift */,
+				A999C2411B9058010068C330 /* Resizer.swift */,
+				A999C2431B9067610068C330 /* KeyValueObserver.swift */,
+				A999C2451B9067F00068C330 /* Observable.swift */,
 			);
 			path = Singleton;
 			sourceTree = "<group>";
@@ -685,6 +790,7 @@
 				A921066C1B835C0C009C0B08 /* Extension+String.swift */,
 				A9B5D4CC1B861D4F003B2E78 /* String+truncate.swift */,
 				A97184881B8CEA7F00653F68 /* UIViewController+Cropimage.swift */,
+				A962DBCC1B8EFB08000A17F3 /* PFTableView+Clear.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -745,11 +851,14 @@
 				A9D385DF1B77A52000DD8492 /* DraftsViewController.swift */,
 				A9D385F51B7807E800DD8492 /* NewPostViewController.swift */,
 				A9D385F91B78080E00DD8492 /* SettingsPostViewController.swift */,
-				A9D386111B7A722200DD8492 /* MessagesViewController.swift */,
 				A9D385FF1B780A9A00DD8492 /* FollowersViewController.swift */,
 				A92897AE1B7CD35E00A1A754 /* YouFollowViewController.swift */,
 				A9B5D4CE1B86EC9E003B2E78 /* TopViewController.swift */,
 				A91AE0F61B8B03A300104795 /* CommentsViewController.swift */,
+				A999C2531B9097FB0068C330 /* ThreadViewController.swift */,
+				A9D386111B7A722200DD8492 /* MessagesViewController.swift */,
+				A962DBC81B8EE643000A17F3 /* PrivacyViewController.swift */,
+				A962DBD21B8FA783000A17F3 /* PeopleSearchViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -803,6 +912,7 @@
 		A966ED561B737C6F002DFED8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A999C24E1B9095510068C330 /* ThreadViewCell */,
 				A92106941B85036B009C0B08 /* EditPostBlock */,
 				A9D6EC901B7515B5002546A3 /* AppViewController.xib */,
 				A9D6EC921B7515B5002546A3 /* LogInViewController.xib */,
@@ -841,10 +951,14 @@
 				A921069D1B8503D5009C0B08 /* PostBlockViewCell.xib */,
 				A9B5D4C01B85BC9B003B2E78 /* OverlayView.xib */,
 				A9B5D4C41B85C55A003B2E78 /* FollowUserViewCell.xib */,
+				A962DBDA1B8FAE5A000A17F3 /* YouFollowViewCell.xib */,
 				A9B5D4D81B871ECB003B2E78 /* BookmarkMarkView.xib */,
 				A91AE0E91B8ADDFC00104795 /* CommentViewCell.xib */,
 				A91AE0F41B8AFF8B00104795 /* InputBarView.xib */,
 				A97184781B8B337A00653F68 /* CommentsViewController.xib */,
+				A962DBD01B8FA76B000A17F3 /* PeopleSearchViewController.xib */,
+				A962DBD61B8FA834000A17F3 /* PeopleViewCell.xib */,
+				A999C2551B9098270068C330 /* ThreadViewController.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -872,6 +986,7 @@
 		A966ED5B1B737CFA002DFED8 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				A999C2471B9089460068C330 /* App */,
 				A92106621B833859009C0B08 /* Singleton */,
 				A92106631B83387A009C0B08 /* Extension */,
 				A9D6EC671B74D957002546A3 /* PlaceholderViews */,
@@ -973,6 +1088,44 @@
 				A971847E1B8B47FF00653F68 /* DGTextField.m */,
 			);
 			path = DGTextField;
+			sourceTree = "<group>";
+		};
+		A997954F1B90A16500B2AA09 /* Think Today */ = {
+			isa = PBXGroup;
+			children = (
+				A997955D1B90A16F00B2AA09 /* Think Today.entitlements */,
+				A99795521B90A16600B2AA09 /* TodayViewController.swift */,
+				A99795541B90A16600B2AA09 /* MainInterface.storyboard */,
+				A99795501B90A16600B2AA09 /* Supporting Files */,
+			);
+			path = "Think Today";
+			sourceTree = "<group>";
+		};
+		A99795501B90A16600B2AA09 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A99795511B90A16600B2AA09 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A999C2471B9089460068C330 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				A999C2481B90895A0068C330 /* PostHelper.swift */,
+				A999C24A1B9090BA0068C330 /* PostObserverHelper.swift */,
+				A99795971B924C0C00B2AA09 /* IndexOf.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		A999C24E1B9095510068C330 /* ThreadViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				A999C24F1B9095720068C330 /* InThreadViewCell.xib */,
+				A999C2511B9095E00068C330 /* OutThreadViewCell.xib */,
+			);
+			name = ThreadViewCell;
 			sourceTree = "<group>";
 		};
 		A99AE5FD1B7666DE00085138 /* SourceCommentsViewController */ = {
@@ -1132,17 +1285,20 @@
 				A90B28081B822E8700A8D3E7 /* BlockPostViewCell.swift */,
 				A92106801B84ADB6009C0B08 /* TextBlockPostViewCell.swift */,
 				A90B28041B822E5100A8D3E7 /* TextPostViewCell.swift */,
+				A921067C1B83A142009C0B08 /* CoverPostViewCell.swift */,
 				A90B28061B822E6D00A8D3E7 /* PicturePostViewCell.swift */,
 				A90B28211B83305600A8D3E7 /* TitlePostViewCell.swift */,
 				A92106781B8378BB009C0B08 /* ToolbarNewPostView.swift */,
-				A921067C1B83A142009C0B08 /* CoverPostViewCell.swift */,
 				A92106871B84FB94009C0B08 /* PostContentView.swift */,
 				A9B5D4C61B85C574003B2E78 /* FollowUserViewCell.swift */,
+				A962DBD81B8FAD8A000A17F3 /* YouFollowViewCell.swift */,
 				A91AE0EB1B8ADE0900104795 /* CommentViewCell.swift */,
 				A9B5D4BE1B85BC50003B2E78 /* OverlayView.swift */,
 				A9B5D4D61B871D5F003B2E78 /* BookmarkMarkView.swift */,
 				A91AE0ED1B8AE0E800104795 /* CommentsTableView.swift */,
 				A91AE0F21B8AFD9500104795 /* InputBarView.swift */,
+				A962DBD41B8FA829000A17F3 /* PeopleViewCell.swift */,
+				A999C24C1B9095270068C330 /* ThreadViewCell.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -1171,15 +1327,34 @@
 				81CC85E11A49F6D40076DE19 /* Upload Symbol Files */,
 				4B4C328C29162ED3FC3ED035 /* Embed Pods Frameworks */,
 				6DE3F32930D67BDD2237E8BA /* Copy Pods Resources */,
+				A997955C1B90A16600B2AA09 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				A99795571B90A16600B2AA09 /* PBXTargetDependency */,
 			);
 			name = Think;
 			productName = ParseStarterProject;
 			productReference = 81BA81451A49DA1800E65899 /* Think.app */;
 			productType = "com.apple.product-type.application";
+		};
+		A997954B1B90A16500B2AA09 /* Think Today */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A99795591B90A16600B2AA09 /* Build configuration list for PBXNativeTarget "Think Today" */;
+			buildPhases = (
+				A99795481B90A16500B2AA09 /* Sources */,
+				A99795491B90A16500B2AA09 /* Frameworks */,
+				A997954A1B90A16500B2AA09 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Think Today";
+			productName = "Think Today";
+			productReference = A997954C1B90A16500B2AA09 /* Think Today.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -1194,10 +1369,25 @@
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = A6543TM5TJ;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
+							com.apple.Keychain = {
+								enabled = 1;
+							};
 							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
+					};
+					A997954B1B90A16500B2AA09 = {
+						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = A6543TM5TJ;
+						SystemCapabilities = {
+							com.apple.Keychain = {
 								enabled = 1;
 							};
 						};
@@ -1218,6 +1408,7 @@
 			projectRoot = "";
 			targets = (
 				81BA81441A49DA1800E65899 /* Think */,
+				A997954B1B90A16500B2AA09 /* Think Today */,
 			);
 		};
 /* End PBXProject section */
@@ -1234,17 +1425,21 @@
 				A99AE6101B7666DE00085138 /* AsyncMessagesViewController.xcassets in Resources */,
 				A9D386461B7A897400DD8492 /* LICENSE in Resources */,
 				A9D6EC971B7515B5002546A3 /* FeedViewController.xib in Resources */,
+				A962DBD71B8FA834000A17F3 /* PeopleViewCell.xib in Resources */,
 				A92106771B8378B1009C0B08 /* ToolbarNewPostView.xib in Resources */,
 				A9D6EC981B7515B5002546A3 /* LogInViewController.xib in Resources */,
 				A9B5D4D91B871ECB003B2E78 /* BookmarkMarkView.xib in Resources */,
 				A9D6ECA01B751655002546A3 /* ProfileHeaderView.xib in Resources */,
 				A966ED9B1B73A7E8002DFED8 /* LICENSE.txt in Resources */,
+				A962DBD11B8FA76B000A17F3 /* PeopleSearchViewController.xib in Resources */,
 				A99AE6301B77475B00085138 /* NotificationsViewController.xib in Resources */,
 				A966EDA01B73A7E8002DFED8 /* OpenSans-Italic.ttf in Resources */,
+				A999C2521B9095E00068C330 /* OutThreadViewCell.xib in Resources */,
 				A9D385D11B77601800DD8492 /* PT_Serif-Web-Bold.ttf in Resources */,
 				A92106991B8503AF009C0B08 /* CoverPostViewCell.xib in Resources */,
 				A9D6ECA61B751B0D002546A3 /* FeedPostViewCell.xib in Resources */,
 				A91AE0F51B8AFF8C00104795 /* InputBarView.xib in Resources */,
+				A962DBDB1B8FAE5A000A17F3 /* YouFollowViewCell.xib in Resources */,
 				A97184851B8C9A8000653F68 /* TopViewController.xib in Resources */,
 				A966ED9C1B73A7E8002DFED8 /* OpenSans-Bold.ttf in Resources */,
 				A966ED9E1B73A7E8002DFED8 /* OpenSans-ExtraBold.ttf in Resources */,
@@ -1264,6 +1459,7 @@
 				A92897A71B7C930E00A1A754 /* PostViewHeaderView.xib in Resources */,
 				A99AE6341B77481B00085138 /* NotificationViewCell.xib in Resources */,
 				A9D386141B7A729300DD8492 /* MessagesViewController.xib in Resources */,
+				A999C2501B9095720068C330 /* InThreadViewCell.xib in Resources */,
 				A9D385FE1B78082A00DD8492 /* PostViewController.xib in Resources */,
 				A9D386441B7A897400DD8492 /* foundation-icons.ttf in Resources */,
 				A966EDA11B73A7E8002DFED8 /* OpenSans-Light.ttf in Resources */,
@@ -1286,6 +1482,7 @@
 				A9D385F41B77FA4900DD8492 /* BookmarksViewController.xib in Resources */,
 				A9D385DC1B7780E000DD8492 /* NotificationsFilterViewCell.xib in Resources */,
 				A9BF09681B7BEA9100A1D7E8 /* ionicons.ttf in Resources */,
+				A999C2561B9098270068C330 /* ThreadViewController.xib in Resources */,
 				A9B5D4C11B85BC9B003B2E78 /* OverlayView.xib in Resources */,
 				A9D385E41B77EF4E00DD8492 /* BookmarkMainPostView.xib in Resources */,
 				A99AE62A1B76988A00085138 /* SideMenuViewCell.xib in Resources */,
@@ -1301,6 +1498,14 @@
 				A9D6EC9A1B7515B5002546A3 /* ProfileViewController.xib in Resources */,
 				A9D385D81B777DBA00DD8492 /* NotificationFilterView.xib in Resources */,
 				A9D6EC991B7515B5002546A3 /* ProfilePostViewCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A997954A1B90A16500B2AA09 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A99795551B90A16600B2AA09 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1373,8 +1578,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A999C24D1B9095270068C330 /* ThreadViewCell.swift in Sources */,
 				A9D6ECA41B751B02002546A3 /* FeedPostViewCell.swift in Sources */,
 				A921068A1B84FBFA009C0B08 /* JSONParse.swift in Sources */,
+				A962DBD31B8FA783000A17F3 /* PeopleSearchViewController.swift in Sources */,
 				A92106751B837522009C0B08 /* SZTextView.m in Sources */,
 				A9D6ECA21B7516A2002546A3 /* ProfilePostViewCell.swift in Sources */,
 				A9D386421B7A897400DD8492 /* FAKZocial.m in Sources */,
@@ -1383,6 +1590,7 @@
 				A966ED611B737D31002DFED8 /* BaseNavigationController.swift in Sources */,
 				A962DBC71B8E0C41000A17F3 /* Notify.swift in Sources */,
 				A92897A91B7C931900A1A754 /* PostViewHeaderView.swift in Sources */,
+				A962DBCB1B8EED20000A17F3 /* MyCache.swift in Sources */,
 				A9B5D4CD1B861D4F003B2E78 /* String+truncate.swift in Sources */,
 				A99AE61D1B7666DE00085138 /* UIImageExtensions.swift in Sources */,
 				A9D386411B7A897400DD8492 /* FAKIonIcons.m in Sources */,
@@ -1396,6 +1604,7 @@
 				A99AE62E1B77466100085138 /* NotificationsViewController.swift in Sources */,
 				A92897B91B7CE16F00A1A754 /* SLKTextInputbar+height.swift in Sources */,
 				A9D385FA1B78080E00DD8492 /* SettingsPostViewController.swift in Sources */,
+				A999C2441B9067610068C330 /* KeyValueObserver.swift in Sources */,
 				A91AE0EC1B8ADE0900104795 /* CommentViewCell.swift in Sources */,
 				A92106811B84ADB6009C0B08 /* TextBlockPostViewCell.swift in Sources */,
 				A966EDAD1B73D5C9002DFED8 /* UIViewController+keyboard.swift in Sources */,
@@ -1406,10 +1615,13 @@
 				A971847F1B8B47FF00653F68 /* DGTextField.m in Sources */,
 				A92897B71B7CD73F00A1A754 /* ProfileGuestHeaderView.swift in Sources */,
 				A99AE6191B7666DE00085138 /* MessageCellNode.swift in Sources */,
+				A962DBCF1B8F99A3000A17F3 /* HelperConstraint.swift in Sources */,
 				A9D386401B7A897400DD8492 /* FAKIcon.m in Sources */,
+				A999C2461B9067F00068C330 /* Observable.swift in Sources */,
 				A9D6EC701B74D957002546A3 /* LoadingView.swift in Sources */,
 				A9B5D4D31B86EF72003B2E78 /* Installation.swift in Sources */,
 				A9D3860A1B79253A00DD8492 /* EMPartialModalViewController.swift in Sources */,
+				A99795981B924C0C00B2AA09 /* IndexOf.swift in Sources */,
 				A99AE62C1B76A72C00085138 /* BaseSideMenuViewController.swift in Sources */,
 				A921067D1B83A142009C0B08 /* CoverPostViewCell.swift in Sources */,
 				A9D386121B7A722200DD8492 /* MessagesViewController.swift in Sources */,
@@ -1455,6 +1667,7 @@
 				A9D6EC641B74D76F002546A3 /* BaseQueryViewController.swift in Sources */,
 				A966ED791B73891B002DFED8 /* AppViewController.swift in Sources */,
 				A97184831B8C736A00653F68 /* Thread.swift in Sources */,
+				A999C24B1B9090BA0068C330 /* PostObserverHelper.swift in Sources */,
 				A99AE6361B774BF600085138 /* UIButtonCircle.swift in Sources */,
 				A9F607A11B7D054200FC1832 /* SwipeTransitionAnimator.swift in Sources */,
 				A92106831B84C89D009C0B08 /* PostBlock.swift in Sources */,
@@ -1471,15 +1684,18 @@
 				A966ED771B73871D002DFED8 /* SignUpViewController.swift in Sources */,
 				A92106901B8502FF009C0B08 /* AppDelegate.swift in Sources */,
 				A9D3863E1B7A897400DD8492 /* FAKFontAwesome.m in Sources */,
+				A962DBD91B8FAD8A000A17F3 /* YouFollowViewCell.swift in Sources */,
 				A9D385F61B7807E800DD8492 /* NewPostViewController.swift in Sources */,
 				A9D386291B7A83E000DD8492 /* SBGestureTableViewCellAction.swift in Sources */,
 				A97184891B8CEA7F00653F68 /* UIViewController+Cropimage.swift in Sources */,
 				A9D385E01B77A52000DD8492 /* DraftsViewController.swift in Sources */,
 				A9B5D4D11B86EF50003B2E78 /* App.swift in Sources */,
 				A92106851B84CB82009C0B08 /* JSONStringify.swift in Sources */,
+				A962DBCD1B8EFB08000A17F3 /* PFTableView+Clear.swift in Sources */,
 				A99AE6241B7686A700085138 /* BaseMessageCollectionView.swift in Sources */,
 				A9D6EC6D1B74D957002546A3 /* BasicPlaceholderView.swift in Sources */,
 				A9D6EC9E1B7515F6002546A3 /* ProfileHeaderView.swift in Sources */,
+				A999C2541B9097FB0068C330 /* ThreadViewController.swift in Sources */,
 				A9D385F01B77F91C00DD8492 /* DraftsViewCell.swift in Sources */,
 				A9F607A21B7D054200FC1832 /* SwipeTransitionDelegate.swift in Sources */,
 				A99AE61C1B7666DE00085138 /* MessageTextBubbleNode.swift in Sources */,
@@ -1488,12 +1704,16 @@
 				A91AE0F11B8AE16200104795 /* MyQueryTableView.swift in Sources */,
 				A9D6EC571B7405A7002546A3 /* StatefulViewController.swift in Sources */,
 				A9B5D4BF1B85BC50003B2E78 /* OverlayView.swift in Sources */,
+				A962DBC91B8EE643000A17F3 /* PrivacyViewController.swift in Sources */,
 				A9B5D4D51B871778003B2E78 /* FactoryControllers.swift in Sources */,
+				A962DBD51B8FA829000A17F3 /* PeopleViewCell.swift in Sources */,
 				A90B28091B822E8700A8D3E7 /* BlockPostViewCell.swift in Sources */,
 				A91AE0EE1B8AE0E800104795 /* CommentsTableView.swift in Sources */,
 				A9D385DE1B778EF600DD8492 /* BookmarksViewController.swift in Sources */,
+				A999C2491B90895A0068C330 /* PostHelper.swift in Sources */,
 				A99AE6111B7666DE00085138 /* AsyncMessagesCollectionViewDataSource.swift in Sources */,
 				A90B28071B822E6D00A8D3E7 /* PicturePostViewCell.swift in Sources */,
+				A999C2421B9058010068C330 /* Resizer.swift in Sources */,
 				A966EDB01B7402BF002DFED8 /* ProfileViewController.swift in Sources */,
 				A9D385F81B7807FE00DD8492 /* PostViewController.swift in Sources */,
 				A9D6EC7B1B74E66E002546A3 /* FeedViewController.swift in Sources */,
@@ -1518,12 +1738,29 @@
 				A9D385EC1B77F4CC00DD8492 /* BaseQueryCollectionViewController.swift in Sources */,
 				A966ED8B1B73A23A002DFED8 /* UIButton+border.swift in Sources */,
 				A921068C1B84FDFA009C0B08 /* PostStyles.swift in Sources */,
+				A962DBDD1B903B8E000A17F3 /* Location.swift in Sources */,
 				A9D385EE1B77F5DB00DD8492 /* BookmarksViewCell.swift in Sources */,
 				A90B28221B83305600A8D3E7 /* TitlePostViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A99795481B90A16500B2AA09 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A99795531B90A16600B2AA09 /* TodayViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A99795571B90A16600B2AA09 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A997954B1B90A16500B2AA09 /* Think Today */;
+			targetProxy = A99795561B90A16600B2AA09 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		81BA814E1A49DA1800E65899 /* Main.storyboard */ = {
@@ -1625,6 +1862,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = Think.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1634,6 +1873,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Think;
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ParseStarterProject/ParseStarterProject-Bridging-Header.h";
 			};
 			name = Debug;
@@ -1645,6 +1885,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = Think.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1654,7 +1896,47 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Think;
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ParseStarterProject/ParseStarterProject-Bridging-Header.h";
+			};
+			name = Release;
+		};
+		A997955A1B90A16600B2AA09 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Think Today/Think Today.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Think Today/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		A997955B1B90A16600B2AA09 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Think Today/Think Today.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Think Today/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
@@ -1675,6 +1957,15 @@
 			buildConfigurations = (
 				81BA81651A49DA1800E65899 /* Debug */,
 				81BA81661A49DA1800E65899 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A99795591B90A16600B2AA09 /* Build configuration list for PBXNativeTarget "Think Today" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A997955A1B90A16600B2AA09 /* Debug */,
+				A997955B1B90A16600B2AA09 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

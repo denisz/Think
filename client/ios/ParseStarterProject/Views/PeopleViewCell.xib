@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="OpenSans-Bold.ttf">
+            <string>OpenSans-Bold</string>
+        </mutableArray>
+        <mutableArray key="OpenSans-Light.ttf">
+            <string>OpenSans-Light</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PeopleViewCell" id="oQI-mL-2uF" userLabel="PeopleViewCell" customClass="PeopleViewCell" customModule="Think" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="78"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oQI-mL-2uF" id="W8K-Na-zx1">
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rEP-iJ-9Mg" customClass="UIButtonRoundedBorder" customModule="Think" customModuleProvider="target">
+                        <rect key="frame" x="259" y="23" width="46" height="32"/>
+                        <color key="backgroundColor" red="0.9607800245" green="0.9607800245" blue="0.9607800245" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="32" id="HTY-A0-cI1"/>
+                            <constraint firstAttribute="width" constant="46" id="Vgd-Nx-wXG"/>
+                        </constraints>
+                        <inset key="imageEdgeInsets" minX="7" minY="2" maxX="7" maxY="2"/>
+                        <state key="normal" image="ic_add_follow">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderRadius">
+                                <real key="value" value="4"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="0.5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="imageColor">
+                                <color key="value" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="imageColorSelected">
+                                <color key="value" red="0.9607800245" green="0.9607800245" blue="0.9607800245" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="backgroundColorSelected">
+                                <color key="value" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="didTapFollow" destination="oQI-mL-2uF" eventType="touchUpInside" id="mgA-XJ-CiG"/>
+                        </connections>
+                    </button>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ava_profile" translatesAutoresizingMaskIntoConstraints="NO" id="9Rn-12-q7k" customClass="PFImageView">
+                        <rect key="frame" x="15" y="15" width="38" height="38"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="38" id="HDj-wu-p5U"/>
+                            <constraint firstAttribute="height" constant="38" id="ZC5-wT-5nk"/>
+                        </constraints>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wa8-bi-v2S" customClass="UIButtonCircle" customModule="Think" customModuleProvider="target">
+                        <rect key="frame" x="36" y="36" width="32" height="32"/>
+                        <color key="backgroundColor" red="0.9607800245" green="0.9607800245" blue="0.9607800245" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="32" id="EJE-hs-XWv"/>
+                            <constraint firstAttribute="height" constant="32" id="MbL-Kq-MiS"/>
+                        </constraints>
+                        <inset key="imageEdgeInsets" minX="2" minY="2" maxX="2" maxY="2"/>
+                        <state key="normal" image="ic_follow">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mary Green" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n37-1F-da0">
+                        <rect key="frame" x="83" y="15" width="169" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="NGD-we-zfS"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="11"/>
+                        <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 min ago" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JEp-yg-oQT">
+                        <rect key="frame" x="83" y="38" width="169" height="16.5"/>
+                        <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="12"/>
+                        <color key="textColor" red="0.32940998669999999" green="0.39215999839999999" blue="0.41569000480000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" red="0.9607800245" green="0.9607800245" blue="0.9607800245" alpha="1" colorSpace="calibratedRGB"/>
+                <constraints>
+                    <constraint firstAttribute="centerY" secondItem="rEP-iJ-9Mg" secondAttribute="centerY" id="2ns-zX-CCh"/>
+                    <constraint firstItem="Wa8-bi-v2S" firstAttribute="top" secondItem="W8K-Na-zx1" secondAttribute="top" constant="36" id="Gdu-DS-yuI"/>
+                    <constraint firstItem="9Rn-12-q7k" firstAttribute="top" secondItem="W8K-Na-zx1" secondAttribute="top" constant="15" id="KLE-kA-0fa"/>
+                    <constraint firstAttribute="trailing" secondItem="rEP-iJ-9Mg" secondAttribute="trailing" constant="15" id="LJX-bf-0D4"/>
+                    <constraint firstItem="n37-1F-da0" firstAttribute="leading" secondItem="9Rn-12-q7k" secondAttribute="trailing" constant="30" id="OoG-ZF-e1i"/>
+                    <constraint firstItem="n37-1F-da0" firstAttribute="top" secondItem="W8K-Na-zx1" secondAttribute="top" constant="15" id="RyV-hm-wSm"/>
+                    <constraint firstItem="n37-1F-da0" firstAttribute="leading" secondItem="JEp-yg-oQT" secondAttribute="leading" id="Ug8-sb-LF9"/>
+                    <constraint firstItem="rEP-iJ-9Mg" firstAttribute="leading" secondItem="n37-1F-da0" secondAttribute="trailing" constant="7" id="WmS-1g-cX9"/>
+                    <constraint firstItem="n37-1F-da0" firstAttribute="trailing" secondItem="JEp-yg-oQT" secondAttribute="trailing" id="aeq-Jx-z4N"/>
+                    <constraint firstItem="Wa8-bi-v2S" firstAttribute="leading" secondItem="W8K-Na-zx1" secondAttribute="leading" constant="36" id="wPx-w9-GWn"/>
+                    <constraint firstItem="JEp-yg-oQT" firstAttribute="top" secondItem="n37-1F-da0" secondAttribute="bottom" constant="2" id="xdR-yz-epk"/>
+                    <constraint firstItem="9Rn-12-q7k" firstAttribute="leading" secondItem="W8K-Na-zx1" secondAttribute="leading" constant="15" id="zFO-jY-By0"/>
+                    <constraint firstAttribute="bottom" secondItem="Wa8-bi-v2S" secondAttribute="bottom" constant="10" id="zNs-S0-1Yo"/>
+                </constraints>
+            </tableViewCellContentView>
+            <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+            <connections>
+                <outlet property="dateView" destination="JEp-yg-oQT" id="qqi-5d-IAs"/>
+                <outlet property="followBtn" destination="rEP-iJ-9Mg" id="AL8-YM-tzW"/>
+                <outlet property="userName" destination="n37-1F-da0" id="Hd1-Pb-0mr"/>
+                <outlet property="userPicture" destination="9Rn-12-q7k" id="1cr-j2-GhG"/>
+            </connections>
+            <point key="canvasLocation" x="223" y="-127"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ava_profile" width="170" height="170"/>
+        <image name="ic_add_follow" width="57" height="57"/>
+        <image name="ic_follow" width="57" height="57"/>
+    </resources>
+</document>

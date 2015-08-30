@@ -92,7 +92,7 @@
                             <constraint firstItem="weB-RS-N1u" firstAttribute="top" secondItem="zJO-yN-DMX" secondAttribute="top" id="vNn-yq-JTa"/>
                         </constraints>
                     </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="InD-f3-0Qf" userLabel="Wrapper">
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="InD-f3-0Qf" userLabel="Wrapper">
                         <rect key="frame" x="0.0" y="54" width="320" height="180"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pic_post" translatesAutoresizingMaskIntoConstraints="NO" id="u4c-ui-RBz" customClass="PFImageView">

@@ -7,17 +7,12 @@ let kFontNavigationItem = UIFont(name: "OpenSans-Light", size: 18)!
 let kWidthScreen = 320
 
 
-//Cache keys
-let kUserDefaultCacheFollowingKey = "com.think.userDefaults.cache.following"
-
-
-//common Fields
+//MARK: Common Fields
 let kClassCreatedAt = "createdAt"
 let kClassUpdatedAt = "updatedAt"
 let kClassObjectId  = "objectId"
 
-
-// MARK: - User
+// MARK: User
 let kUserClassKey               = "_User"
 
 //fields
@@ -33,7 +28,7 @@ let kUserDateOfBirthKey         = "date_of_birth"
 let kUserCountryKey             = "country"
 let kUserCityKey                = "city"
 
-//MARK: - Activity Class
+//MARK: Activity
 let kActivityClassKey           = "Activity"
 
 // type values
@@ -56,7 +51,7 @@ let kActivityContentKey         = "content"//пользовательские д
 let kActivityPostKey            = "post"//ссылка на пост (например лайк)
 let kActivityPictureKey         = "picture" //картинка (например в комментариях)
 
-//MARK: - Post Class
+//MARK: Post
 let kPostClassKey               = "Post"
 
 //fields
@@ -75,9 +70,9 @@ let kPostCounterCommentsKey     = "counter_comments"
 
 
 //post status
-
 let kPostStatusPublic       = "public"
 let kPostStatusDraft        = "draft"
+
 
 //fields settings
 let kPostOptPostTo        = "postTo"
@@ -88,6 +83,7 @@ let kPostOptLocation      = "location"
 let kPostOptHideComments  = "hideComments"
 let kPostOptSocialCounter = "socialCounter"
 let kPostOptAdultContent  = "adultContent"
+let kPostOptAddress       = "address"
 
 
 //fields Post block
@@ -108,28 +104,9 @@ let kInstallationUserKey        = "user"
 let kInstallationChannelsKey    = "channels"
 let kInstallationEventsKey      = "events"
 
-// MARK: Notification
-let kAPNSAlertKey = "alert"
-let kAPNSBadgeKey = "badge"
-let kAPNSSoundKey = "sound"
-
-let kPushPayloadPayloadTypeKey          = "p"
-let kPushPayloadPayloadTypeActivityKey  = "a"
-
-let kPushPayloadActivityTypeKey         = "t"
-let kPushPayloadActivityLikeKey         = "l"
-let kPushPayloadActivityCommentKey      = "c"
-let kPushPayloadActivityFollowKey       = "f"
-let kPushPayloadActivityCreatePostKey   = "n"
-
-let kPushPayloadFromUserObjectIdKey     = "fu"
-let kPushPayloadToUserObjectIdKey       = "tu"
-let kPushPayloadPoseObjectIdKey         = "pid"
-
-
 // MARK: Threads
 
-let kThreadClassKey = "Threads"
+let kThreadClassKey     = "Threads"
 
 //fields threads
 let kThreadParticipantsKey      = "participants"
@@ -144,22 +121,54 @@ let kMessageContentKey          = "content"
 let kMessagePictureKey          = "picture"
 let kMessageThreadKey           = "thread"
 let kMessageFromUserKey         = "from_user"//источник
-let kMessageToUserKey           = "to_user"//пользователя назанчение
+let kMessageToUserKey           = "to_user"
+
+// MARK: Notification
+let kAPNSAlertKey = "alert"
+let kAPNSBadgeKey = "badge"
+let kAPNSSoundKey = "sound"
+
+let kPushPayloadPayloadTypeKey          = "p"
+let kPushPayloadPayloadTypeActivityKey  = "a"
+let kPushPayloadPayloadTypeMessageKey   = "m"
+
+let kPushPayloadActivityTypeKey         = "t"
+let kPushPayloadActivityLikeKey         = "l"
+let kPushPayloadActivityCommentKey      = "c"
+let kPushPayloadActivityFollowKey       = "f"
+let kPushPayloadActivityCreatePostKey   = "n"
+
+let kPushPayloadFromUserObjectIdKey     = "fu"
+let kPushPayloadToUserObjectIdKey       = "tu"
+let kPushPayloadPoseObjectIdKey         = "pid"
+let kPushPayloadMessageObjectIdKey      = "mid"
 
 
-
-//notifications
+// MARK:- Events
 let kUserUnlikedPost        = "com.think.user.unliked.post"
 let kUserLikedPost          = "com.think.user.liked.post"
 let kUserAddBookmark        = "com.think.user.add.bookmark"
 let kUserFollowingUser      = "com.think.following.user"
 let kUserUnfollowUser       = "com.think.unfollow.user"
 let kUserRaisePost          = "com.think.raise.post"
+let kUserPublicPost         = "com.think.public.post"
 let kUserSendComment        = "com.think.send.comment"
 let kUserUpdateProfile      = "com.think.update.profile"
 let kUserCreateThread       = "com.think.create.thread"
 let kUserSendMessage        = "com.think.send.message"
+let kUserDeletePost         = "com.think.user.delete.post"
+let kUserCreatePost         = "com.think.user.created.post"
 
+// MARK: Cached Post Attributes
+// keys
+let kAttributesIsLikedByCurrentUserKey = "isLikedByCurrentUser"
+let kAttributesLikeCountKey            = "likeCount"
+let kAttributesCommentCountKey         = "commentCount"
+
+// MARK: Cached User Attributes
+// keys
+let kAttributesPostCountKey                  = "postCount"
+let kAttributesIsFollowedByCurrentUserKey    = "isFollowedByCurrentUser"
 
 
 //side menu notifications
@@ -191,13 +200,14 @@ enum ScrollDirection {
     }
 }
 
-// MARK: Post blocks
+// MARK: Reusable view cell
 let kReusableTitlePostViewCell      = "TitlePostViewCell"
 let kReusableTextPostViewCell       = "TextPostViewCell"
 let kReusablePicturePostViewCell    = "PicturePostViewCell"
 let kReusableCoverPostViewCell      = "CoverPostViewCell"
-let kReusablePostBlockViewCell      =  "PostBlockViewCell"
+let kReusablePostBlockViewCell      = "PostBlockViewCell"
 let kReusableFollowUserViewCell     = "FollowUserViewCell"
+let kReusableYouFollowViewCell      = "YouFollowViewCell"
 let kReusableFeedPostViewCell       = "FeedPostViewCell"
 let kReusableProfilePostViewCell    = "ProfilePostViewCell"
 let kReusableNotificationsViewCell  = "NotificationViewCell"
@@ -206,13 +216,26 @@ let kReusableDraftsViewCell         = "DraftsViewCell"
 let kReusableMessageViewCell        = "MessageViewCell"
 let kReusableSideMenuViewCell       = "SideMenuViewCell"
 let kReusableCommentViewCell        = "CommentViewCell"
+let kReusablePeopleViewCell         = "PeopleViewCell"
+let kReusableInThreadViewCell       = "InThreadViewCell"
+let kReusableOutThreadViewCell      = "OutThreadViewCell"
 
 
-// MARK: post placeholder
+/// MARK: - KVO
+let kvoBlockPropertyStyle   = "styleRaw"
+let kvoBlockPropertyPicture = "uploadedPicture"
+
+// MARK:- Placeholders
 let kPostPlaceholder = UIImage(named: "pic_post")
 let kUserPlaceholder = UIImage(named: "ava_profile")
 let kUserCoverPlaceholder = UIImage(named: "profile_bg")
+let kIconNotificationPlaceholder = UIImage(named: "ic_follow")
+let kIconNotifyFollowPlaceholder = UIImage(named: "ic_add_follow")
+let kIconNotifyLikePlaceholder = UIImage(named: "ic_add_like")
+let kIconNotifyCommentPlaceholder = UIImage(named: "ic_add_comment")
 let kUserHiddenName = "Hidden"
+let kPostTitlePlaceholder = "Hidden"
+let kSharePlaceholder = "Post in \(kAppName)"
 
 
 

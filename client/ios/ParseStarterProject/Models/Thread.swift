@@ -24,21 +24,87 @@ class Thread:  PFObject, PFSubclassing {
         return kThreadClassKey
     }
     
+    class func lastMessage(thread: PFObject) -> PFObject? {
+        return thread[kThreadLastMessageKey] as? PFObject
+    }
     
-    class func createWithOtherUser(otherUser: PFObject) -> PFObject {
-        let currentUser = PFUser.currentUser()
-        let participants = [currentUser!, otherUser]
-        let thread = PFObject(className: kThreadClassKey)
-        thread.setObject(participants, forKey: kThreadParticipantsKey)
+    class func participants(thread: PFObject) -> [PFObject] {
+        var result = [PFObject]()
+        if let participants = thread[kThreadParticipantsKey] as? [String] {
+            for objectId in participants {
+                result.append(PFObject(withoutDataWithClassName: kUserClassKey, objectId: objectId))
+            }
+        }
         
-        thread.saveInBackground().continueWithBlock { (task: BFTask!) -> AnyObject! in
+        return result
+    }
+    
+    class func participant(thread: PFObject) -> PFObject? {
+        let participants = Thread.participants(thread)
+        
+        for user in participants {
+            if !UserModel.isEqualCurrentUser(user) {
+                return user
+            }
+        }
+        
+        return nil
+    }
+    
+    class func findExistsThread(otherUser: PFObject) -> BFTask {
+        let source          = BFTaskCompletionSource()
+        let query = PFQuery(className: kThreadClassKey)
+        query.whereKey(kThreadParticipantsKey, equalTo: otherUser.objectId!)
+        
+        query.getFirstObjectInBackgroundWithBlock { (thread: PFObject?, error: NSError?) -> Void in
+            if error == nil {
+                source.setResult(thread)
+            } else {
+                source.setError(error)
+            }
+        }
+        
+        return source.task
+    }
+    
+    //возможно стоит сделать блокирующим
+    class func createWithOtherUser(otherUser: PFObject) -> BFTask {
+        let source          = BFTaskCompletionSource()
+        
+        findExistsThread(otherUser).continueWithBlock { (task: BFTask!) -> AnyObject! in
             if task.error == nil {
-                NSNotificationCenter.defaultCenter().postNotificationName(kUserCreateThread, object: thread)
+                source.setError(task.error)
+            } else {
+                if let thread = task.result as? PFObject {
+                    source.setResult(thread)
+                } else {
+                    let currentUser     = PFUser.currentUser()
+                    let participants    = [currentUser!.objectId!, otherUser.objectId!]
+                    let thread          = PFObject(className: kThreadClassKey)
+                    thread.setObject(participants, forKey: kThreadParticipantsKey)
+                    
+                    let threadACL = PFACL(user: currentUser!)
+                    threadACL.setReadAccess(true, forUserId: otherUser.objectId!)
+                    threadACL.setWriteAccess(true, forUserId: otherUser.objectId!)
+                    thread.ACL = threadACL
+                    //сделать поиск
+                    
+                    thread.saveInBackground().continueWithBlock { (task: BFTask!) -> AnyObject! in
+                        if task.error == nil {
+                            source.setResult(thread)
+                            NSNotificationCenter.defaultCenter().postNotificationName(kUserCreateThread, object: thread)
+                        } else {
+                            source.setError(task.error)
+                        }
+                        
+                        return task
+                    }
+                }
             }
             
             return task
         }
-    
-        return thread
+        
+        return source.task
     }
 }

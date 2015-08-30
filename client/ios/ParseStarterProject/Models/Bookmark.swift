@@ -23,6 +23,11 @@ class Bookmark: PFObject, PFSubclassing {
         }
     }
     
+    
+    class func post(bookmark: PFObject) ->PFObject? {
+        return bookmark[kBookmarkPostKey] as? PFObject
+    }
+    
     static func parseClassName() -> String {
         return kBookmarkClassKey
     }

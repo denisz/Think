@@ -46,8 +46,11 @@ import ParseUI
         var query = PFQuery(className: self.parseClassName!)
         query.whereKey(kActivityToUserKey, equalTo: self.owner!)
         query.whereKey(kActivityTypeKey, equalTo: kActivityTypeFollow)
+        
         query.orderByDescending("createdAt")
         query.includeKey(kActivityFromUserKey)
+        
+        
         
         return query
     }

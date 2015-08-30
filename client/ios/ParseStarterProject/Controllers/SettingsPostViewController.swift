@@ -13,7 +13,7 @@ import Parse
 import ParseUI
 import Bolts
 
-class SettingsPostViewController: BaseFormViewController {
+@objc(SettingsPostViewController) class SettingsPostViewController: BaseFormViewController {
     var object: PFObject?
     var data: [String: AnyObject]?
     
@@ -27,6 +27,7 @@ class SettingsPostViewController: BaseFormViewController {
         static let hideComments     = kPostOptHideComments  //"hideComments"
         static let socialCounter    = kPostOptSocialCounter //"socialCounter"
         static let adultContent     = kPostOptAdultContent  //"adultContent"
+        static let address          = kPostOptAddress       //"address"
     }
     
     override func viewDidLoad() {
@@ -38,6 +39,7 @@ class SettingsPostViewController: BaseFormViewController {
         self.tableView.backgroundColor = kColorBackgroundViewController
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
 
+        self.tableView.contentInset = UIEdgeInsetsMake(16, 0, 0, 0)
         self.form = XLFormDescriptor()
         
         self.setupSections()
@@ -153,7 +155,19 @@ class SettingsPostViewController: BaseFormViewController {
         row = XLFormRowDescriptor(tag: tag.location, rowType: XLFormRowDescriptorTypeBooleanSwitch , title: "location".uppercaseString)
         self.stylesRow(row)
         section.addFormRow(row)
-
+        
+        row = XLFormRowDescriptor(tag: tag.address, rowType: XLFormRowDescriptorTypeText)
+        row.disabled = true
+        row.hidden = true
+        self.stylesTextFieldRow(row)
+        section.addFormRow(row)
+    }
+    
+    func stylesTextFieldRow(row: XLFormRowDescriptor) {
+        row.cellConfig.setObject(UIFont(name: "OpenSans-Semibold", size: 13)!, forKey: "textField.font")
+        row.cellConfig.setObject(UIColor(red:0.33, green:0.39, blue:0.42, alpha:1), forKey: "textField.textColor")
+        row.cellConfig.setObject(UIColor(red:0.33, green:0.39, blue:0.42, alpha:1), forKey: "textField.tintColor")
+        row.cellConfig.setObject(NSTextAlignment.Right.rawValue, forKey: "textField.textAlignment")
     }
     
     func selectorsExportTo() -> [XLFormOptionsObject] {
@@ -181,8 +195,41 @@ class SettingsPostViewController: BaseFormViewController {
     }
     
     override func formRowDescriptorValueHasChanged(formRow: XLFormRowDescriptor!, oldValue: AnyObject!, newValue: AnyObject!) {
-        if let tag = formRow.tag {
-            self.data![tag] = newValue
+        if let rowTag = formRow.tag {
+            
+            if rowTag ==  tag.location {
+                if var value = newValue as? Bool {
+                    if value == true {
+                        Location.sharedInstance.locationInfo().continueWithBlock({ (task: BFTask!) -> AnyObject! in
+                            
+                            if task.error == nil {
+                                let placemark = task.result as! CLPlacemark
+                                let formatAddress = Location.formatter(placemark)
+                                self.data![tag.address] = formatAddress
+                                if let row = self.form.formRowWithTag(tag.address) {
+                                    row.value = formatAddress
+                                    row.hidden = false
+                                }
+                            }
+                            
+                            return task
+                        })
+                    } else {
+                        if let row = self.form.formRowWithTag(tag.address) {
+                            row.hidden = true
+                        }
+                    }
+                }
+            } else {
+                self.data![rowTag] = newValue
+            }
         }
+    }
+    
+    class func CreateWithModel(model: PFObject) -> SettingsPostViewController {
+        let settings = SettingsPostViewController()
+        settings.object = model
+        
+        return settings
     }
 }

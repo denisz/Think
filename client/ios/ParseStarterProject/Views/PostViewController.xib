@@ -7,13 +7,13 @@
     <customFonts key="customFonts">
         <mutableArray key="OpenSans-Bold.ttf">
             <string>OpenSans-Bold</string>
+            <string>OpenSans-Bold</string>
         </mutableArray>
         <mutableArray key="OpenSans-Light.ttf">
             <string>OpenSans-Light</string>
             <string>OpenSans-Light</string>
         </mutableArray>
         <mutableArray key="OpenSans-Semibold.ttf">
-            <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
@@ -59,7 +59,7 @@
                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="24a-UO-aFl" userLabel="community">
                             <rect key="frame" x="0.0" y="73" width="320" height="0.0"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ava_profile" translatesAutoresizingMaskIntoConstraints="NO" id="VfX-FR-sKX" customClass="UIImageCircle" customModule="Think" customModuleProvider="target">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ava_profile" translatesAutoresizingMaskIntoConstraints="NO" id="VfX-FR-sKX" customClass="PFImageView">
                                     <rect key="frame" x="15" y="15" width="38" height="38"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="38" id="SmI-gm-LaZ"/>
@@ -200,7 +200,7 @@
                                     <constraints>
                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="zb6-hJ-wNa"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
+                                    <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="11"/>
                                     <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -241,7 +241,7 @@
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                     <connections>
-                                        <action selector="didTapFollowAuthor" destination="-1" eventType="touchDragInside" id="Dee-9C-pVd"/>
+                                        <action selector="didTapFollowAuthor" destination="-1" eventType="touchUpInside" id="cEB-oH-COW"/>
                                     </connections>
                                 </button>
                             </subviews>

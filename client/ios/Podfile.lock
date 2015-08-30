@@ -3,6 +3,25 @@ PODS:
   - AsyncDisplayKit (1.2.3):
     - AsyncDisplayKit/ASDealloc2MainObject (= 1.2.3)
   - AsyncDisplayKit/ASDealloc2MainObject (1.2.3)
+  - FormatterKit (1.8.0):
+    - FormatterKit/AddressFormatter (= 1.8.0)
+    - FormatterKit/ArrayFormatter (= 1.8.0)
+    - FormatterKit/ColorFormatter (= 1.8.0)
+    - FormatterKit/LocationFormatter (= 1.8.0)
+    - FormatterKit/NameFormatter (= 1.8.0)
+    - FormatterKit/OrdinalNumberFormatter (= 1.8.0)
+    - FormatterKit/TimeIntervalFormatter (= 1.8.0)
+    - FormatterKit/UnitOfInformationFormatter (= 1.8.0)
+    - FormatterKit/URLRequestFormatter (= 1.8.0)
+  - FormatterKit/AddressFormatter (1.8.0)
+  - FormatterKit/ArrayFormatter (1.8.0)
+  - FormatterKit/ColorFormatter (1.8.0)
+  - FormatterKit/LocationFormatter (1.8.0)
+  - FormatterKit/NameFormatter (1.8.0)
+  - FormatterKit/OrdinalNumberFormatter (1.8.0)
+  - FormatterKit/TimeIntervalFormatter (1.8.0)
+  - FormatterKit/UnitOfInformationFormatter (1.8.0)
+  - FormatterKit/URLRequestFormatter (1.8.0)
   - FXBlurView (1.6.3)
   - HMSegmentedControl (1.5.2)
   - JGProgressHUD (1.3)
@@ -32,6 +51,7 @@ PODS:
   - Reachability (3.2)
   - SlackTextViewController (1.6)
   - TOCropViewController (1.0.6)
+  - UIImage+AF+Additions (2.02)
   - VGParallaxHeader (0.0.6):
     - PureLayout
   - XLForm (3.0.1)
@@ -39,6 +59,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 1.2)
   - AsyncDisplayKit (~> 1.2.3)
+  - FormatterKit (~> 1.8.0)
   - FXBlurView (~> 1.6.3)
   - JGProgressHUD
   - Kingfisher (~> 1.4)
@@ -54,14 +75,20 @@ DEPENDENCIES:
   - MXSegmentedPager
   - SlackTextViewController (~> 1.5)
   - TOCropViewController
+  - UIImage+AF+Additions (from `https://github.com/melvitax/UIImageAFAdditions.git`)
   - VGParallaxHeader
   - XLForm (from `https://github.com/xmartlabs/XLForm.git`)
 
 EXTERNAL SOURCES:
+  UIImage+AF+Additions:
+    :git: https://github.com/melvitax/UIImageAFAdditions.git
   XLForm:
     :git: https://github.com/xmartlabs/XLForm.git
 
 CHECKOUT OPTIONS:
+  UIImage+AF+Additions:
+    :commit: b7ca2f7f8e7ed7c59cc5c0ab22045dce45f49608
+    :git: https://github.com/melvitax/UIImageAFAdditions.git
   XLForm:
     :commit: 6725d0a9b4a07ccff7e6be36f1525828ac320ca1
     :git: https://github.com/xmartlabs/XLForm.git
@@ -69,6 +96,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: 220403a8d5840e0b4c946a6fbaf209dbca124282
   AsyncDisplayKit: 5c8f38225f7478e39c48196cec0dd0d2ac3455ed
+  FormatterKit: bddde83e054edf9d9ee14f9de3b3a5103db256f4
   FXBlurView: c6d23f3d35af2c6282296a2930f61c6e2c788d01
   HMSegmentedControl: 83b9686022d2176fb6457d2bdb61e5d6393fed7d
   JGProgressHUD: a58f62d3afac173d201250c3ba628fe44bd67017
@@ -87,6 +115,7 @@ SPEC CHECKSUMS:
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   SlackTextViewController: 84e1e4b7f12a8e3691cf97ca61c934b99058a2e8
   TOCropViewController: a8589f4a62e633fc0fbf13a113b3dff042932d67
+  UIImage+AF+Additions: 1c9ff0c47d087ee6a7e569ab07cc41d255c850dd
   VGParallaxHeader: 1213aba58c9b0aea84f9e81ad526fde57aa4fe48
   XLForm: 98ee32c6087e18186c78c4a9f7a00b1b728ca945
 

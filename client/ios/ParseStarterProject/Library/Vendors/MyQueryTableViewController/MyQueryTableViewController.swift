@@ -12,11 +12,10 @@ import ParseUI
 import UIKit
 import Bolts
 
-
-@objc(MyQueryTableViewController) class MyQueryTableViewController: UIViewController, NSObjectProtocol {
+class MyQueryTableViewController: UIViewController, NSObjectProtocol {
     @IBOutlet weak var tableView: UITableView!
     
-    var objects:NSMutableArray?
+    var objects: NSMutableArray?
     var currentPage: Int = 0
     var firstLoad: Bool = true
     var objectsPerPage: Int = 25
@@ -202,6 +201,11 @@ import Bolts
         return self.loadObjects(0, clear: true)
     }
     
+    
+    func tableDidReloadData() {
+        
+    }
+    
     func loadObjects(page: Int, clear: Bool) -> BFTask {
         self.loading = true
         self.objectsWillLoad()
@@ -236,7 +240,13 @@ import Bolts
                 }
                 
                 self.objects?.addObjectsFromArray(foundObjects!)
-                self.tableView.reloadData()
+                
+                source.trySetResult(foundObjects!)
+                
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.tableDidReloadData()
+                    self.tableView.reloadData()
+                })
             }
             
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -358,6 +368,26 @@ extension MyQueryTableViewController: UITableViewDataSource {
         return self.objects![indexPath.row] as? PFObject
     }
     
+    func indexPathByObject(object: PFObject) -> NSIndexPath? {
+        var index = IndexOf(self.objects!, object)
+        
+        if self.reverseViewCell {
+            let count = self.objects!.count
+            
+            if self.shouldShowPaginationCell {
+                index = count - index
+            } else {
+                index = count - index + 1
+            }
+        }
+        
+        if index == -1 {
+            return nil
+        }
+        
+        return NSIndexPath(forRow: index, inSection: 0)
+    }
+    
     func removeObjectAtIndexPath(indexPath: NSIndexPath) {
         self.removeObjectAtIndexPath(indexPath, animated: true)
     }
@@ -438,8 +468,8 @@ extension MyQueryTableViewController: UITableViewDataSource {
         }
         
         if  (cell!.isKindOfClass(PFTableViewCell)
-            && tableView.dragging
-            && tableView.decelerating) {
+            && !tableView.dragging
+            && !tableView.decelerating) {
                 
             dispatch_async(dispatch_get_main_queue(), {
                 cell!.imageView?.loadInBackground()

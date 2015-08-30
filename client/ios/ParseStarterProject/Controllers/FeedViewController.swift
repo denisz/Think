@@ -30,7 +30,7 @@ import UIKit
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.configureTitleView()
+        //self.configureTitleView()
         self.customizeNavigationBar()
         self.configureNavigationRightBtns()
         self.configureNavigationBarBackBtn(kColorNavigationBar)
@@ -40,7 +40,7 @@ import UIKit
         let navigationItem  = self.defineNavigationItem()
         let newPost         = self.configureNavigationBarRightBtn(kColorNavigationBar)
         let counterPost     = self.configureCounterView()
-        navigationItem.setRightBarButtonItems([newPost, counterPost], animated: true)
+        navigationItem.setRightBarButtonItems([newPost], animated: true)
     }
     
     func configureCounterView() -> UIBarButtonItem {

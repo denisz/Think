@@ -13,8 +13,19 @@ class TextBlockPostViewCell: BlockPostViewCell {
     
     override func prepareView(block: PostBlock) {
         super.prepareView(block)
+        
+        self.textView.text      = block.content
         self.textView.textColor = block.textColor
-        self.textView.text = block.content
+        self.backgroundColor    = block.backgroundColor
+    }
+    
+    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+        super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
+        
+        if keyPath == kvoBlockPropertyStyle {
+            self.textView.textColor = self.block?.textColor
+            self.backgroundColor    = self.block?.backgroundColor
+        }
     }
     
     func scrollToCursorForTextView(textView: UITextView) {
@@ -22,6 +33,7 @@ class TextBlockPostViewCell: BlockPostViewCell {
         cursorRect = self.tableView!.convertRect(cursorRect, fromView: textView)
         
         cursorRect.size.height += 8
+        
         self.tableView!.scrollRectToVisible(cursorRect, animated: true)
     }
     
@@ -35,14 +47,6 @@ class TextBlockPostViewCell: BlockPostViewCell {
         visibleRect.size.height -= self.tableView!.contentInset.top + self.tableView!.contentInset.bottom
         
         return CGRectContainsRect(visibleRect, rect)
-    }
-    
-    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
-        super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
-        
-        if keyPath == kvoBlockPropertyStyle {
-            self.textView.textColor = self.block?.textColor
-        }
     }
 }
 

@@ -22,8 +22,15 @@ class MessageViewCell: PFTableViewCell {
     }
     
     func prepareView(object: PFObject) {
-        self.body.text = object["body"] as? String
+        self.body.text = MessageModel.content(object)
         
+        self.authorName.text        = MessageModel.ownerUsername(object)
         
+        self.authorPicture.image    = kUserPlaceholder
+        self.authorPicture.file     = MessageModel.ownerPicture(object)
+        
+        self.dateView.text = MessageModel.createdAtDate(object)
+        
+        self.authorPicture.cornerEdge()
     }
 }

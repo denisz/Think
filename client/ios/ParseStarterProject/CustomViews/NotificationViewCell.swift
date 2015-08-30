@@ -17,7 +17,7 @@ class NotificationViewCell: PFTableViewCell {
     @IBOutlet weak var desc: UILabel!
     @IBOutlet weak var dateView: UILabel!
     @IBOutlet weak var followBtn: UIButton!
-    @IBOutlet weak var iconView: UIImageView!
+    @IBOutlet weak var iconView: UIButton!
     
     override var imageView: PFImageView? {
         return self.userPicture
@@ -28,9 +28,14 @@ class NotificationViewCell: PFTableViewCell {
         self.userPicture.image = kUserPlaceholder
         self.userPicture.file = Notify.ownerPicture(object)
         
+        self.iconView.setImage(Notify.icon(object), forState: UIControlState.Normal)
         self.userPicture.cornerEdge()
         
         self.dateView.text  = Notify.createdAtDate(object)
         self.desc.text      = Notify.description(object)
+    }
+    
+    override func clearView() {
+        super.clearView()
     }
 }

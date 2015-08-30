@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "107447D0013FB5AC63DEC246"
+               BlueprintIdentifier = "C77DF3B84E4663542263C815"
                BuildableName = "TOCropViewController.framework"
                BlueprintName = "Pods-Think-TOCropViewController"
                ReferencedContainer = "container:Pods.xcodeproj">

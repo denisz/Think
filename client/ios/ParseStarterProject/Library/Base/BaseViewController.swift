@@ -206,9 +206,6 @@ class BaseViewController: StatefulViewController {
     
     func setupNavigationBar() {
         self.fakeNavigationBar = createFakeNavigationBar()
-        if self.automaticallyAdjustsScrollViewInsets == true {
-            
-        }
     }
 
     override func viewWillAppear(animated: Bool) {

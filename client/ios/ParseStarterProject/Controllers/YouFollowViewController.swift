@@ -9,24 +9,35 @@
 import Foundation
 import Parse
 import ParseUI
+import Bolts
 
-@objc(YouFollowViewController) class YouFollowViewController: BaseQueryTableViewController {
+@objc(YouFollowViewController) class YouFollowViewController: BaseQuerySearchTableViewController {
     var owner: PFObject?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.updateObjectsAfterCancel = true
         self.title = "You follow"
         self.tableView.backgroundColor = kColorBackgroundViewController
-        self.tableView.registerNib(UINib(nibName: kReusableFollowUserViewCell, bundle: nil), forCellReuseIdentifier: kReusableFollowUserViewCell)
+        self.tableView.registerNib(UINib(nibName: kReusableYouFollowViewCell, bundle: nil), forCellReuseIdentifier: kReusableYouFollowViewCell)
         
         self.tableView.estimatedRowHeight = 44.0;
         self.tableView.rowHeight = UITableViewAutomaticDimension;
         self.tableView.tableFooterView = UIView()
         
         self.setupNavigationBar()
+    
     }
     
+    override func objectsDidLoad(error: NSError?) {
+        super.objectsDidLoad(error)
+        
+        if error == nil {
+            //обновить кеш follower
+        }
+    }
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -43,15 +54,44 @@ import ParseUI
         var query = PFQuery(className: self.parseClassName!)
         query.whereKey(kActivityFromUserKey, equalTo: owner!)
         query.whereKey(kActivityTypeKey, equalTo: kActivityTypeFollow)
+        
+        if let searchString = self.getSearchText() {
+            let subquery = PFQuery(className: kUserClassKey)
+            subquery.whereKey(kUserUsernameKey, hasPrefix: searchString)
+            query.whereKey(kActivityToUserKey, matchesKey: kClassObjectId, inQuery: subquery)
+        }
+        
         query.orderByDescending(kClassCreatedAt)
         query.includeKey(kActivityToUserKey)
         
         return query
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) {
+        
+        if let user = Follower.following(object!) {
+            Thread.createWithOtherUser(user).continueWithBlock({ (task: BFTask!) -> AnyObject! in
+                if task.error == nil {
+                    if let thread = task.result as? PFObject {
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            let controller = ThreadViewController.CreateWithModel(thread)
+                            self.navigationController?.pushViewController(controller, animated: true)
+                        })
+                    }
+                } else {
+                    //вызвать ошибку
+                }
+                
+                return task
+            })
+            
+        }
+    }
+
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell? {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(kReusableFollowUserViewCell) as?FollowUserViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(kReusableYouFollowViewCell) as? YouFollowViewCell
         
         if let cell = cell {
             cell.prepareView(object!)

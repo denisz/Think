@@ -66,7 +66,7 @@ class BaseUIView: UIView {
     class func constraintToTop(view: UIView, size: CGSize, offset: CGFloat) {
         view.setTranslatesAutoresizingMaskIntoConstraints(false)
         
-        let views = ["view": view]
+        let views   = ["view": view]
         let metrics = ["height": size.height, "top": offset ]
         
         let hConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[view]|", options: .AlignAllCenterY, metrics: nil, views: views)

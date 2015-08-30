@@ -4,14 +4,14 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <customFonts key="customFonts">
+        <mutableArray key="OpenSans-Bold.ttf">
+            <string>OpenSans-Bold</string>
+        </mutableArray>
         <mutableArray key="OpenSans-Light.ttf">
             <string>OpenSans-Light</string>
         </mutableArray>
         <mutableArray key="OpenSans-Regular.ttf">
             <string>OpenSans</string>
-        </mutableArray>
-        <mutableArray key="OpenSans-Semibold.ttf">
-            <string>OpenSans-Semibold</string>
         </mutableArray>
     </customFonts>
     <objects>
@@ -44,7 +44,7 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="l7G-Vn-hNK"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
+                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="11"/>
                         <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
