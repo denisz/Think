@@ -86,7 +86,8 @@ import Bolts
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default
+        UIApplication.sharedApplication().setStatusBarStyle(.Default, animated: true)
+//        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default
     }
     
     override var imageLeftBtn: String {
@@ -171,8 +172,13 @@ import Bolts
         self.object?.setObject(contentObject,   forKey: kPostContentObjKey)
         
         if cover != nil {
-            self.object?.setObject(cover!.0!, forKey: kPostCoverKey)
-            self.object?.setObject(cover!.1!, forKey: kPostTintColor)
+            if let coverPicture = cover!.0 {
+                self.object?.setObject(coverPicture, forKey: kPostCoverKey)
+            }
+            
+            if let coverTint = cover!.1 {
+                self.object?.setObject(coverTint, forKey: kPostTintColor)
+            }
         }
         
         self.object?.setObject(title,           forKey: kPostTitleKey)

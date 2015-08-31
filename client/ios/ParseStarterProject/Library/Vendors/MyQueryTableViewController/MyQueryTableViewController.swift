@@ -201,8 +201,12 @@ class MyQueryTableViewController: UIViewController, NSObjectProtocol {
         return self.loadObjects(0, clear: true)
     }
     
+    func objectsWillAppend(objects: [AnyObject]) {
+        self.objects?.addObjectsFromArray(objects)
+        self.objectsDidAppend(objects)
+    }
     
-    func tableDidReloadData() {
+    func objectsDidAppend(objects: [AnyObject]) {
         
     }
     
@@ -239,12 +243,10 @@ class MyQueryTableViewController: UIViewController, NSObjectProtocol {
                     self.objects?.removeAllObjects()
                 }
                 
-                self.objects?.addObjectsFromArray(foundObjects!)
-                
+                self.objectsWillAppend(foundObjects!)
                 source.trySetResult(foundObjects!)
                 
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.tableDidReloadData()
                     self.tableView.reloadData()
                 })
             }

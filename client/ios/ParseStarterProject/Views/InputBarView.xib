@@ -9,7 +9,7 @@
         </mutableArray>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InputBarView" customModule="Think" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InputBarView" customModule="Snugly" customModuleProvider="target">
             <connections>
                 <outlet property="leftButton" destination="Tut-xQ-Rik" id="Ntl-Ew-kGL"/>
                 <outlet property="leftButtonLC" destination="uP2-4p-vjO" id="sDo-X1-Fil"/>
@@ -39,7 +39,6 @@
                 </button>
                 <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Add a comment..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5ig-zE-cZo">
                     <rect key="frame" x="56" y="12" width="208" height="40"/>
-                    <color key="tintColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="LG4-T1-bzj"/>
                     </constraints>

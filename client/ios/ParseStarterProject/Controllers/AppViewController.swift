@@ -65,8 +65,6 @@ import ParseUI
     }
     
     @IBAction func didTapComments() {
-        let controller = ChannelViewController()
-        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     @IBAction func didTapFeed() {

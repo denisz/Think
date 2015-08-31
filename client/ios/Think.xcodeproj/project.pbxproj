@@ -122,6 +122,7 @@
 		A966EDAB1B73D3BF002DFED8 /* UITextField+placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A966EDAA1B73D3BF002DFED8 /* UITextField+placeholder.swift */; };
 		A966EDAD1B73D5C9002DFED8 /* UIViewController+keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A966EDAC1B73D5C9002DFED8 /* UIViewController+keyboard.swift */; };
 		A966EDB01B7402BF002DFED8 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A966EDAF1B7402BF002DFED8 /* ProfileViewController.swift */; };
+		A96D027A1B9483550066839F /* OutMessageViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A96D02791B9483550066839F /* OutMessageViewCell.xib */; };
 		A97184791B8B337A00653F68 /* CommentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A97184781B8B337A00653F68 /* CommentsViewController.xib */; };
 		A971847F1B8B47FF00653F68 /* DGTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = A971847E1B8B47FF00653F68 /* DGTextField.m */; };
 		A97184811B8C70CB00653F68 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97184801B8C70CB00653F68 /* MessageModel.swift */; };
@@ -129,10 +130,6 @@
 		A97184851B8C9A8000653F68 /* TopViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A97184841B8C9A8000653F68 /* TopViewController.xib */; };
 		A97184871B8CAE7900653F68 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97184861B8CAE7900653F68 /* Comment.swift */; };
 		A97184891B8CEA7F00653F68 /* UIViewController+Cropimage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97184881B8CEA7F00653F68 /* UIViewController+Cropimage.swift */; };
-		A997954E1B90A16500B2AA09 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A997954D1B90A16500B2AA09 /* NotificationCenter.framework */; };
-		A99795531B90A16600B2AA09 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99795521B90A16600B2AA09 /* TodayViewController.swift */; };
-		A99795551B90A16600B2AA09 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A99795541B90A16600B2AA09 /* MainInterface.storyboard */; };
-		A99795581B90A16600B2AA09 /* Think Today.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A997954C1B90A16500B2AA09 /* Think Today.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A99795981B924C0C00B2AA09 /* IndexOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99795971B924C0C00B2AA09 /* IndexOf.swift */; };
 		A997959A1B92EF3400B2AA09 /* Threading.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99795991B92EF3400B2AA09 /* Threading.swift */; };
 		A99795A11B92F03100B2AA09 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = A997959C1B92F03100B2AA09 /* LICENSE */; };
@@ -200,7 +197,6 @@
 		A9B7D45C1B752E1700E79F12 /* LabelViewWithIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B7D45B1B752E1700E79F12 /* LabelViewWithIcon.swift */; };
 		A9B7D45E1B752ED400E79F12 /* UIImage+tintColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B7D45D1B752ED400E79F12 /* UIImage+tintColor.swift */; };
 		A9B7D4601B75424B00E79F12 /* UImageVIewCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B7D45F1B75424B00E79F12 /* UImageVIewCircle.swift */; };
-		A9B7D4741B76628300E79F12 /* ChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B7D4731B76628300E79F12 /* ChannelViewController.swift */; };
 		A9BF09611B7BB70D00A1D7E8 /* SelectImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BF09601B7BB70D00A1D7E8 /* SelectImageHelper.swift */; };
 		A9BF09631B7BE77F00A1D7E8 /* BaseQuerySearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BF09621B7BE77F00A1D7E8 /* BaseQuerySearchTableViewController.swift */; };
 		A9BF09671B7BEA9100A1D7E8 /* Ionicons.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BF09651B7BEA9100A1D7E8 /* Ionicons.swift */; };
@@ -241,7 +237,7 @@
 		A9D3860E1B792B9800DD8492 /* ProfileEditHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9D3860D1B792B9800DD8492 /* ProfileEditHeaderView.xib */; };
 		A9D386121B7A722200DD8492 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D386111B7A722200DD8492 /* MessagesViewController.swift */; };
 		A9D386141B7A729300DD8492 /* MessagesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9D386131B7A729300DD8492 /* MessagesViewController.xib */; };
-		A9D386161B7A736500DD8492 /* MessageViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9D386151B7A736500DD8492 /* MessageViewCell.xib */; };
+		A9D386161B7A736500DD8492 /* InMessageViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9D386151B7A736500DD8492 /* InMessageViewCell.xib */; };
 		A9D386181B7A737B00DD8492 /* MessageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D386171B7A737B00DD8492 /* MessageViewCell.swift */; };
 		A9D386271B7A83E000DD8492 /* SBGestureTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D386231B7A83E000DD8492 /* SBGestureTableView.swift */; };
 		A9D386281B7A83E000DD8492 /* SBGestureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D386241B7A83E000DD8492 /* SBGestureTableViewCell.swift */; };
@@ -290,16 +286,6 @@
 		A9F607A41B7D2DF000FC1832 /* BaseProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F607A31B7D2DF000FC1832 /* BaseProfileHeaderView.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		A99795561B90A16600B2AA09 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 81BA813D1A49DA1800E65899 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A997954B1B90A16500B2AA09;
-			remoteInfo = "Think Today";
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
 		A997955C1B90A16600B2AA09 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -307,7 +293,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				A99795581B90A16600B2AA09 /* Think Today.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -439,6 +424,7 @@
 		A966EDAC1B73D5C9002DFED8 /* UIViewController+keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+keyboard.swift"; sourceTree = "<group>"; };
 		A966EDAE1B73D8DA002DFED8 /* Think.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Think.entitlements; sourceTree = "<group>"; };
 		A966EDAF1B7402BF002DFED8 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		A96D02791B9483550066839F /* OutMessageViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OutMessageViewCell.xib; sourceTree = "<group>"; };
 		A97184781B8B337A00653F68 /* CommentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentsViewController.xib; sourceTree = "<group>"; };
 		A971847D1B8B47E200653F68 /* DGTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGTextField.h; sourceTree = "<group>"; };
 		A971847E1B8B47FF00653F68 /* DGTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGTextField.m; sourceTree = "<group>"; };
@@ -447,12 +433,7 @@
 		A97184841B8C9A8000653F68 /* TopViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopViewController.xib; sourceTree = "<group>"; };
 		A97184861B8CAE7900653F68 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		A97184881B8CEA7F00653F68 /* UIViewController+Cropimage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Cropimage.swift"; sourceTree = "<group>"; };
-		A997954C1B90A16500B2AA09 /* Think Today.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Think Today.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A997954D1B90A16500B2AA09 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
-		A99795511B90A16600B2AA09 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A99795521B90A16600B2AA09 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
-		A99795541B90A16600B2AA09 /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
-		A997955D1B90A16F00B2AA09 /* Think Today.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Think Today.entitlements"; sourceTree = "<group>"; };
 		A99795971B924C0C00B2AA09 /* IndexOf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexOf.swift; sourceTree = "<group>"; };
 		A99795991B92EF3400B2AA09 /* Threading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Threading.swift; sourceTree = "<group>"; };
 		A997959C1B92F03100B2AA09 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -524,7 +505,6 @@
 		A9B7D45B1B752E1700E79F12 /* LabelViewWithIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelViewWithIcon.swift; sourceTree = "<group>"; };
 		A9B7D45D1B752ED400E79F12 /* UIImage+tintColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+tintColor.swift"; sourceTree = "<group>"; };
 		A9B7D45F1B75424B00E79F12 /* UImageVIewCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UImageVIewCircle.swift; sourceTree = "<group>"; };
-		A9B7D4731B76628300E79F12 /* ChannelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelViewController.swift; sourceTree = "<group>"; };
 		A9BF09601B7BB70D00A1D7E8 /* SelectImageHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectImageHelper.swift; path = ../Views/SelectImageHelper.swift; sourceTree = "<group>"; };
 		A9BF09621B7BE77F00A1D7E8 /* BaseQuerySearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseQuerySearchTableViewController.swift; sourceTree = "<group>"; };
 		A9BF09651B7BEA9100A1D7E8 /* Ionicons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ionicons.swift; sourceTree = "<group>"; };
@@ -565,7 +545,7 @@
 		A9D3860D1B792B9800DD8492 /* ProfileEditHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileEditHeaderView.xib; sourceTree = "<group>"; };
 		A9D386111B7A722200DD8492 /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		A9D386131B7A729300DD8492 /* MessagesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessagesViewController.xib; sourceTree = "<group>"; };
-		A9D386151B7A736500DD8492 /* MessageViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageViewCell.xib; sourceTree = "<group>"; };
+		A9D386151B7A736500DD8492 /* InMessageViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = InMessageViewCell.xib; path = ParseStarterProject/Views/InMessageViewCell.xib; sourceTree = SOURCE_ROOT; };
 		A9D386171B7A737B00DD8492 /* MessageViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewCell.swift; sourceTree = "<group>"; };
 		A9D386231B7A83E000DD8492 /* SBGestureTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBGestureTableView.swift; sourceTree = "<group>"; };
 		A9D386241B7A83E000DD8492 /* SBGestureTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBGestureTableViewCell.swift; sourceTree = "<group>"; };
@@ -652,14 +632,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A99795491B90A16500B2AA09 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A997954E1B90A16500B2AA09 /* NotificationCenter.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -676,8 +648,7 @@
 			isa = PBXGroup;
 			children = (
 				A966EDAE1B73D8DA002DFED8 /* Think.entitlements */,
-				81BA81471A49DA1800E65899 /* ParseStarterProject */,
-				A997954F1B90A16500B2AA09 /* Think Today */,
+				81BA81471A49DA1800E65899 /* Snugly */,
 				81BA816A1A49DB5600E65899 /* Frameworks */,
 				81BA81461A49DA1800E65899 /* Products */,
 				0BE359DAFF6A53DC66FF3499 /* Pods */,
@@ -688,12 +659,11 @@
 			isa = PBXGroup;
 			children = (
 				81BA81451A49DA1800E65899 /* Think.app */,
-				A997954C1B90A16500B2AA09 /* Think Today.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		81BA81471A49DA1800E65899 /* ParseStarterProject */ = {
+		81BA81471A49DA1800E65899 /* Snugly */ = {
 			isa = PBXGroup;
 			children = (
 				A9D6EC9C1B7515E5002546A3 /* CustomViews */,
@@ -708,6 +678,7 @@
 				81BA81511A49DA1800E65899 /* Images.xcassets */,
 				81BA81481A49DA1800E65899 /* Supporting Files */,
 			);
+			name = Snugly;
 			path = ParseStarterProject;
 			sourceTree = "<group>";
 		};
@@ -870,7 +841,6 @@
 				A9D386031B78F36100DD8492 /* ProfileEditViewController.swift */,
 				A9B5D4CE1B86EC9E003B2E78 /* TopViewController.swift */,
 				A9D6EC7A1B74E66E002546A3 /* FeedViewController.swift */,
-				A9B7D4731B76628300E79F12 /* ChannelViewController.swift */,
 				A99AE62D1B77466100085138 /* NotificationsViewController.swift */,
 				A9D385D51B77665800DD8492 /* SettingsViewController.swift */,
 				A9D385DD1B778EF600DD8492 /* BookmarksViewController.swift */,
@@ -937,6 +907,7 @@
 		A966ED561B737C6F002DFED8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A96D02781B94833B0066839F /* MessageViewCell */,
 				A999C24E1B9095510068C330 /* ThreadViewCell */,
 				A92106941B85036B009C0B08 /* EditPostBlock */,
 				A9D6EC901B7515B5002546A3 /* AppViewController.xib */,
@@ -966,7 +937,6 @@
 				A9D385FD1B78082A00DD8492 /* PostViewController.xib */,
 				A9D386071B79245200DD8492 /* SettingsPostViewController.xib */,
 				A9D386131B7A729300DD8492 /* MessagesViewController.xib */,
-				A9D386151B7A736500DD8492 /* MessageViewCell.xib */,
 				A92897AC1B7CCB3A00A1A754 /* ChannelViewController.xib */,
 				A92897B01B7CD52A00A1A754 /* YouFollowViewController.xib */,
 				A92897B21B7CD54E00A1A754 /* FollowersViewController.xib */,
@@ -1109,6 +1079,15 @@
 			path = Open_Sans;
 			sourceTree = "<group>";
 		};
+		A96D02781B94833B0066839F /* MessageViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				A9D386151B7A736500DD8492 /* InMessageViewCell.xib */,
+				A96D02791B9483550066839F /* OutMessageViewCell.xib */,
+			);
+			path = MessageViewCell;
+			sourceTree = "<group>";
+		};
 		A971847C1B8B47D400653F68 /* DGTextField */ = {
 			isa = PBXGroup;
 			children = (
@@ -1116,25 +1095,6 @@
 				A971847E1B8B47FF00653F68 /* DGTextField.m */,
 			);
 			path = DGTextField;
-			sourceTree = "<group>";
-		};
-		A997954F1B90A16500B2AA09 /* Think Today */ = {
-			isa = PBXGroup;
-			children = (
-				A997955D1B90A16F00B2AA09 /* Think Today.entitlements */,
-				A99795521B90A16600B2AA09 /* TodayViewController.swift */,
-				A99795541B90A16600B2AA09 /* MainInterface.storyboard */,
-				A99795501B90A16600B2AA09 /* Supporting Files */,
-			);
-			path = "Think Today";
-			sourceTree = "<group>";
-		};
-		A99795501B90A16600B2AA09 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				A99795511B90A16600B2AA09 /* Info.plist */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		A997959B1B92F03100B2AA09 /* UIImage+AF+Additions */ = {
@@ -1391,29 +1351,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				A99795571B90A16600B2AA09 /* PBXTargetDependency */,
 			);
 			name = Think;
 			productName = ParseStarterProject;
 			productReference = 81BA81451A49DA1800E65899 /* Think.app */;
 			productType = "com.apple.product-type.application";
-		};
-		A997954B1B90A16500B2AA09 /* Think Today */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A99795591B90A16600B2AA09 /* Build configuration list for PBXNativeTarget "Think Today" */;
-			buildPhases = (
-				A99795481B90A16500B2AA09 /* Sources */,
-				A99795491B90A16500B2AA09 /* Frameworks */,
-				A997954A1B90A16500B2AA09 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Think Today";
-			productName = "Think Today";
-			productReference = A997954C1B90A16500B2AA09 /* Think Today.appex */;
-			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -1434,19 +1376,16 @@
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
+							com.apple.DataProtection = {
+								enabled = 0;
+							};
+							com.apple.HomeKit = {
+								enabled = 0;
+							};
 							com.apple.Keychain = {
 								enabled = 1;
 							};
 							com.apple.iCloud = {
-								enabled = 1;
-							};
-						};
-					};
-					A997954B1B90A16500B2AA09 = {
-						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = A6543TM5TJ;
-						SystemCapabilities = {
-							com.apple.Keychain = {
 								enabled = 1;
 							};
 						};
@@ -1467,7 +1406,6 @@
 			projectRoot = "";
 			targets = (
 				81BA81441A49DA1800E65899 /* Think */,
-				A997954B1B90A16500B2AA09 /* Think Today */,
 			);
 		};
 /* End PBXProject section */
@@ -1500,6 +1438,7 @@
 				A9D6ECA61B751B0D002546A3 /* FeedPostViewCell.xib in Resources */,
 				A91AE0F51B8AFF8C00104795 /* InputBarView.xib in Resources */,
 				A962DBDB1B8FAE5A000A17F3 /* YouFollowViewCell.xib in Resources */,
+				A96D027A1B9483550066839F /* OutMessageViewCell.xib in Resources */,
 				A97184851B8C9A8000653F68 /* TopViewController.xib in Resources */,
 				A966ED9C1B73A7E8002DFED8 /* OpenSans-Bold.ttf in Resources */,
 				A966ED9E1B73A7E8002DFED8 /* OpenSans-ExtraBold.ttf in Resources */,
@@ -1515,7 +1454,7 @@
 				A97184791B8B337A00653F68 /* CommentsViewController.xib in Resources */,
 				A9D385D21B77601800DD8492 /* PT_Serif-Web-BoldItalic.ttf in Resources */,
 				A9D385F21B77F9A300DD8492 /* DraftsViewCell.xib in Resources */,
-				A9D386161B7A736500DD8492 /* MessageViewCell.xib in Resources */,
+				A9D386161B7A736500DD8492 /* InMessageViewCell.xib in Resources */,
 				A92897A71B7C930E00A1A754 /* PostViewHeaderView.xib in Resources */,
 				A99AE6341B77481B00085138 /* NotificationViewCell.xib in Resources */,
 				A9D386141B7A729300DD8492 /* MessagesViewController.xib in Resources */,
@@ -1560,14 +1499,6 @@
 				A9D6EC9A1B7515B5002546A3 /* ProfileViewController.xib in Resources */,
 				A9D385D81B777DBA00DD8492 /* NotificationFilterView.xib in Resources */,
 				A9D6EC991B7515B5002546A3 /* ProfilePostViewCell.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A997954A1B90A16500B2AA09 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A99795551B90A16600B2AA09 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1648,7 +1579,6 @@
 				A9D6ECA21B7516A2002546A3 /* ProfilePostViewCell.swift in Sources */,
 				A9D386421B7A897400DD8492 /* FAKZocial.m in Sources */,
 				A99AE6141B7666DE00085138 /* MessageBubbleImageProvider.swift in Sources */,
-				A9B7D4741B76628300E79F12 /* ChannelViewController.swift in Sources */,
 				A966ED611B737D31002DFED8 /* BaseNavigationController.swift in Sources */,
 				A962DBC71B8E0C41000A17F3 /* Notify.swift in Sources */,
 				A92897A91B7C931900A1A754 /* PostViewHeaderView.swift in Sources */,
@@ -1814,23 +1744,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A99795481B90A16500B2AA09 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A99795531B90A16600B2AA09 /* TodayViewController.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		A99795571B90A16600B2AA09 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A997954B1B90A16500B2AA09 /* Think Today */;
-			targetProxy = A99795561B90A16600B2AA09 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		81BA814E1A49DA1800E65899 /* Main.storyboard */ = {
@@ -1940,7 +1854,7 @@
 					/Users/deniszaytcev/Documents/FacebookSDK,
 				);
 				INFOPLIST_FILE = ParseStarterProject/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Think;
 				PROVISIONING_PROFILE = "";
@@ -1963,50 +1877,11 @@
 					/Users/deniszaytcev/Documents/FacebookSDK,
 				);
 				INFOPLIST_FILE = ParseStarterProject/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Think;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ParseStarterProject/ParseStarterProject-Bridging-Header.h";
-			};
-			name = Release;
-		};
-		A997955A1B90A16600B2AA09 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "Think Today/Think Today.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "Think Today/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		A997955B1B90A16600B2AA09 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "Think Today/Think Today.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Think Today/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
@@ -2027,15 +1902,6 @@
 			buildConfigurations = (
 				81BA81651A49DA1800E65899 /* Debug */,
 				81BA81661A49DA1800E65899 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A99795591B90A16600B2AA09 /* Build configuration list for PBXNativeTarget "Think Today" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A997955A1B90A16600B2AA09 /* Debug */,
-				A997955B1B90A16600B2AA09 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

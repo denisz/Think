@@ -63,7 +63,9 @@ import UIKit
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell? {
         let cell = tableView.dequeueReusableCellWithIdentifier(kReusableProfilePostViewCell) as! ProfilePostViewCell
+        
         cell.prepareView(object!)
+        cell.parentViewController = self
         
         return cell
     }
@@ -94,6 +96,6 @@ import UIKit
     }
     
     class func CreateWithId(objectId: String) -> TopViewController {
-        return CreateWithModel(PFObject(withoutDataWithClassName: "_User", objectId: objectId))
+        return CreateWithModel(PFObject(withoutDataWithClassName: kUserClassKey, objectId: objectId))
     }
 }

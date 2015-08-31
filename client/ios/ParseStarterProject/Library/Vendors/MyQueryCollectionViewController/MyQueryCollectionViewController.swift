@@ -168,16 +168,20 @@ class MyQueryCollectionViewController: UIViewController, NSObjectProtocol{
         return self.loadObjects(0, clear: true)
     }
     
-    
-    func tableDidReloadData() {
-        
-    }
-    
     func loadNextPage() {
         if !self.loading {
             self.loadObjects(self.currentPage + 1, clear: false)
             currentNextPageView?.setAnimating(true)
         }
+    }
+    
+    func objectsWillAppend(objects: [AnyObject]) {
+        self.objects?.addObjectsFromArray(objects)
+        self.objectsDidAppend(objects)
+    }
+    
+    func objectsDidAppend(objects: [AnyObject]) {
+        
     }
     
     func loadObjects(page: Int, clear: Bool) -> BFTask {
@@ -213,12 +217,11 @@ class MyQueryCollectionViewController: UIViewController, NSObjectProtocol{
                     self.objects?.removeAllObjects()
                 }
                 
-                self.objects?.addObjectsFromArray(foundObjects!)
+                self.objectsWillAppend(foundObjects!)
                 
                 source.trySetResult(foundObjects!)
                 
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.tableDidReloadData()
                     self.collectionView.reloadData()
                 })
             }

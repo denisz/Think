@@ -79,7 +79,7 @@ import VGParallaxHeader
             NSFontAttributeName: kFontNavigationItem
         ]
         
-        let cancelBarButtonItem = UIBarButtonItem(title: "Cancel".uppercaseString, style: UIBarButtonItemStyle.Plain, target: self, action: "didTapCancel:")
+        let cancelBarButtonItem = UIBarButtonItem(title: "Cancel".uppercaseString.localized, style: UIBarButtonItemStyle.Plain, target: self, action: "didTapCancel:")
         cancelBarButtonItem.setTitleTextAttributes(attributes, forState: UIControlState.Normal)
         navigationItem.leftBarButtonItem = cancelBarButtonItem
     }
@@ -92,7 +92,7 @@ import VGParallaxHeader
             NSFontAttributeName: kFontNavigationItem
         ]
         
-        let editBarButtonItem = UIBarButtonItem(title: "Done".uppercaseString, style: UIBarButtonItemStyle.Plain, target: self, action: "didTapDone:")
+        let editBarButtonItem = UIBarButtonItem(title: "Done".uppercaseString.localized, style: UIBarButtonItemStyle.Plain, target: self, action: "didTapDone:")
         editBarButtonItem.setTitleTextAttributes(attributes, forState: UIControlState.Normal)
         navigationItem.rightBarButtonItem = editBarButtonItem
     }
@@ -110,21 +110,21 @@ import VGParallaxHeader
         section = XLFormSectionDescriptor()
         self.form.addFormSection(section)
         
-        row = XLFormRowDescriptor(tag: tag.firstName, rowType: XLFormRowDescriptorTypeText, title: "First Name".uppercaseString)
+        row = XLFormRowDescriptor(tag: tag.firstName, rowType: XLFormRowDescriptorTypeText, title: "First Name".uppercaseString.localized)
         row.value = owner[kUserFirstNameKey] as? String
         self.stylesRow(row)
         self.stylesTextFieldRow(row)
         section.addFormRow(row)
         
 
-        row = XLFormRowDescriptor(tag: tag.lastName, rowType: XLFormRowDescriptorTypeText, title: "Last Name".uppercaseString)
+        row = XLFormRowDescriptor(tag: tag.lastName, rowType: XLFormRowDescriptorTypeText, title: "Last Name".uppercaseString.localized)
         row.value = owner[kUserLastNameKey] as? String
         self.stylesRow(row)
         self.stylesTextFieldRow(row)
         section.addFormRow(row)
         
         
-        row = XLFormRowDescriptor(tag: tag.displayName, rowType: XLFormRowDescriptorTypeText, title: "Display Name".uppercaseString)
+        row = XLFormRowDescriptor(tag: tag.displayName, rowType: XLFormRowDescriptorTypeText, title: "Display Name".uppercaseString.localized)
         row.value = UserModel.displayname(owner)
         self.stylesRow(row)
         self.stylesTextFieldRow(row)
@@ -134,21 +134,21 @@ import VGParallaxHeader
         section = XLFormSectionDescriptor()
         self.form.addFormSection(section)
 
-        row = XLFormRowDescriptor(tag: tag.country, rowType: XLFormRowDescriptorTypeText, title: "Country".uppercaseString)
+        row = XLFormRowDescriptor(tag: tag.country, rowType: XLFormRowDescriptorTypeText, title: "Country".uppercaseString.localized)
         row.value = UserModel.country(owner)
         self.stylesRow(row)
         self.stylesTextFieldRow(row)
         section.addFormRow(row)
         
 
-        row = XLFormRowDescriptor(tag: tag.city, rowType: XLFormRowDescriptorTypeText, title: "City".uppercaseString)
+        row = XLFormRowDescriptor(tag: tag.city, rowType: XLFormRowDescriptorTypeText, title: "City".uppercaseString.localized)
         row.value = UserModel.city(owner)
         self.stylesRow(row)
         self.stylesTextFieldRow(row)
         section.addFormRow(row)
         
         
-        row = XLFormRowDescriptor(tag: tag.dateOfBirth, rowType: XLFormRowDescriptorTypeDate, title: "Date of birth".uppercaseString)
+        row = XLFormRowDescriptor(tag: tag.dateOfBirth, rowType: XLFormRowDescriptorTypeDate, title: "Date of birth".uppercaseString.localized)
         row.value = owner[kUserDateOfBirthKey] as? NSDate
         self.stylesRow(row)
         self.stylesDateRow(row)

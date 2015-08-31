@@ -69,7 +69,7 @@ import UIKit
     class func CreateWithModel(model: PFObject) -> DraftsViewController{
         var drafts = DraftsViewController()
         drafts.owner = model
-        drafts.parseClassName = "Post"
+        drafts.parseClassName = kPostClassKey
         drafts.paginationEnabled = true
         drafts.pullToRefreshEnabled = false
         
@@ -77,7 +77,7 @@ import UIKit
     }
     
     class func CreateWithId(objectId: String) -> DraftsViewController {
-        return CreateWithModel(PFObject(withoutDataWithClassName: "_User", objectId: objectId))
+        return CreateWithModel(PFObject(withoutDataWithClassName: kUserClassKey, objectId: objectId))
     }
 
 }

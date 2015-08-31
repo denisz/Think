@@ -16,7 +16,7 @@ import Bolts
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "People search"
+        self.title = "People search".localized
         self.tableView.backgroundColor = kColorBackgroundViewController
         self.tableView.registerNib(UINib(nibName: kReusablePeopleViewCell, bundle: nil), forCellReuseIdentifier: kReusablePeopleViewCell)
         

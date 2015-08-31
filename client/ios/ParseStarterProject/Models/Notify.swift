@@ -15,8 +15,12 @@ class Notify {
         return TransformDate.timeString(notify.createdAt!)
     }
     
+    class func owner(notify: PFObject) -> PFObject? {
+        return notify[kActivityFromUserKey] as? PFObject
+    }
+    
     class func ownerPicture(notify: PFObject) -> PFFile? {
-        if let user = notify[kActivityFromUserKey] as? PFObject {
+        if let user = Notify.owner(notify) {
             return UserModel.pictureImage(user)
         }
     
@@ -24,7 +28,7 @@ class Notify {
     }
     
     class func ownerUsername(notify: PFObject) -> String {
-        if let user = notify[kActivityFromUserKey] as? PFObject {
+        if let user = Notify.owner(notify) {
             return UserModel.displayname(user)
         }
         

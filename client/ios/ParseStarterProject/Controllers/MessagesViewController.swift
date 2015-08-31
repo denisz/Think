@@ -18,8 +18,11 @@ import VGParallaxHeader
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Messages"
-        self.tableView.registerNib(UINib(nibName: kReusableMessageViewCell, bundle: nil), forCellReuseIdentifier: kReusableMessageViewCell)
+        self.title = "Messages".localized
+        
+        self.tableView.registerNib(UINib(nibName: kReusableOutMessageViewCell, bundle: nil), forCellReuseIdentifier: kReusableOutMessageViewCell)
+        
+        self.tableView.registerNib(UINib(nibName: kReusableInMessageViewCell, bundle: nil), forCellReuseIdentifier: kReusableInMessageViewCell)
         
         self.view.backgroundColor = UIColor.whiteColor()//kColorBackgroundViewController
         self.tableView.backgroundColor = kColorBackgroundViewController
@@ -90,11 +93,11 @@ import VGParallaxHeader
     func configureNavigationBarRightBtn(color: UIColor) {
         let navigationItem = defineNavigationItem()
         
-        var image = UIImage(named: "ic_new_post") as UIImage!
+        var image = UIImage(named: "ic_search") as UIImage!
         image = image.imageWithColor(color)
         
         let btnBack = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
-        btnBack.addTarget(self, action: "didTapNewMessageBtn:", forControlEvents: UIControlEvents.TouchUpInside)
+        btnBack.addTarget(self, action: "didTapSearchBtn:", forControlEvents: UIControlEvents.TouchUpInside)
         btnBack.setImage(image, forState: UIControlState.Normal)
         btnBack.imageEdgeInsets = UIEdgeInsets(top: 1, left: 0, bottom: 2, right: 0)
         btnBack.setTitleColor(kColorNavigationBar, forState: UIControlState.Normal)
@@ -103,18 +106,9 @@ import VGParallaxHeader
         navigationItem.setRightBarButtonItem(UIBarButtonItem(customView: btnBack), animated: true)
     }
     
-    func didTapNewMessageBtn(sender: AnyObject?) {
+    func didTapSearchBtn(sender: AnyObject?) {
         let controller = FactoryControllers.peopleSearch()
         self.navigationController?.pushViewController(controller, animated: true)
-    }
-    
-    override func objectsDidLoad(error: NSError?) {
-        for item in self.objects! {
-            var parseObject = item as! PFObject
-            parseObject["body"] = LoremIpsum.wordsWithNumber((random() % 10) + 1)
-        }
-        
-        super.objectsDidLoad(error)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -125,20 +119,29 @@ import VGParallaxHeader
     override func queryForTable() -> PFQuery {
         let query = PFQuery(className: self.parseClassName!)
         
-//        query.whereKey(kThreadParticipantsKey, equalTo: self.owner!.objectId!)
         query.whereKeyExists(kThreadLastMessageKey)//и имеет сообщение
         query.orderByDescending(kClassCreatedAt)
         query.includeKey(kThreadLastMessageKey)
+        query.includeKey(kThreadParticipantsOneKey)
+        query.includeKey(kThreadParticipantsSecondKey)
         
         return query
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell? {
-        let cell = tableView.dequeueReusableCellWithIdentifier(kReusableMessageViewCell) as! MessageViewCell
+        var cell: MessageViewCell? = nil
         
         if let message = Thread.lastMessage(object!) {
-            cell.clearView()
-            cell.prepareView(message)
+            if MessageModel.determineCurrentUserAuthor(message) {
+                cell = tableView.dequeueReusableCellWithIdentifier(kReusableOutMessageViewCell) as? MessageViewCell
+            } else {
+                cell = tableView.dequeueReusableCellWithIdentifier(kReusableInMessageViewCell) as? MessageViewCell
+            }
+        }
+        
+        if cell != nil {
+            cell?.clearView()
+            cell?.prepareView(object!)
         }
         
         return cell
@@ -147,6 +150,8 @@ import VGParallaxHeader
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) {
         let controller = ThreadViewController.CreateWithModel(object!)
         self.navigationController?.pushViewController(controller, animated: true)
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle  {

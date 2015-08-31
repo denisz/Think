@@ -40,11 +40,15 @@ class Thread:  PFObject, PFSubclassing {
     }
     
     class func participant(thread: PFObject) -> PFObject? {
-        let participants = Thread.participants(thread)
+        if let participiantOne = thread[kThreadParticipantsOneKey] as? PFObject {
+            if !UserModel.isEqualCurrentUser(participiantOne) {
+                return participiantOne
+            }
+        }
         
-        for user in participants {
-            if !UserModel.isEqualCurrentUser(user) {
-                return user
+        if let participiantSecond = thread[kThreadParticipantsSecondKey] as? PFObject {
+            if !UserModel.isEqualCurrentUser(participiantSecond) {
+                return participiantSecond
             }
         }
         
@@ -82,6 +86,9 @@ class Thread:  PFObject, PFSubclassing {
                     let participants    = [currentUser!.objectId!, otherUser.objectId!]
                     let thread          = PFObject(className: kThreadClassKey)
                     thread.setObject(participants, forKey: kThreadParticipantsKey)
+                    
+                    thread.setObject(currentUser!,  forKey: kThreadParticipantsOneKey)
+                    thread.setObject(otherUser,     forKey: kThreadParticipantsSecondKey)
                     
                     let threadACL = PFACL(user: currentUser!)
                     threadACL.setReadAccess(true, forUserId: otherUser.objectId!)

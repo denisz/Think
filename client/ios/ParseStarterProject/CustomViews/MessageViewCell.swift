@@ -12,25 +12,48 @@ import ParseUI
 
 
 class MessageViewCell: PFTableViewCell {
-    @IBOutlet weak var authorName: UILabel!
-    @IBOutlet weak var authorPicture: PFImageView!
-    @IBOutlet weak var body: UILabel!
+    @IBOutlet weak var inAuthorName: UILabel!
+    @IBOutlet weak var inAuthorPicture: PFImageView!
+    
+    @IBOutlet weak var outAuthorPicture: PFImageView!
+    @IBOutlet weak var outBody: UILabel!
+    
+    @IBOutlet weak var inBody: UILabel!
     @IBOutlet weak var dateView: UILabel!
     
     override var imageView: PFImageView? {
-        return self.authorPicture
+        return self.inAuthorPicture
     }
     
+    //if let message = Thread.lastMessage(object!) {
     func prepareView(object: PFObject) {
-        self.body.text = MessageModel.content(object)
         
-        self.authorName.text        = MessageModel.ownerUsername(object)
+        if let message = Thread.lastMessage(object) {
+            var body = MessageModel.content(message)
+            body = body.truncate(140, trailing: "...")
+            
+            if MessageModel.determineCurrentUserAuthor(message) {
+                self.outBody.text = body
+                self.outAuthorPicture.image = kUserPlaceholder
+                self.outAuthorPicture.file  = MessageModel.ownerPicture(message)
+                self.outAuthorPicture.cornerEdge()
+                
+                self.outBody.numberOfLines = 0
+                self.outBody.sizeToFit()
+            } else {
+                self.inBody.text = body
+                self.inBody.numberOfLines = 0
+                self.inBody.sizeToFit()
+            }
+        }
         
-        self.authorPicture.image    = kUserPlaceholder
-        self.authorPicture.file     = MessageModel.ownerPicture(object)
+        if let participiant = Thread.participant(object) {
+            self.inAuthorName.text      = UserModel.displayname(participiant)
+            self.inAuthorPicture.image = kUserPlaceholder
+            self.inAuthorPicture.file  = UserModel.pictureImage(participiant)
+            self.inAuthorPicture.cornerEdge()
+        }
         
         self.dateView.text = MessageModel.createdAtDate(object)
-        
-        self.authorPicture.cornerEdge()
     }
 }

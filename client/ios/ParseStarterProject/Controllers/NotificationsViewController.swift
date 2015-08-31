@@ -105,8 +105,11 @@ import Bolts
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) {
-        let controller = ProfileViewController.CreateWithModel(object!)
-        self.navigationController!.pushViewController(controller, animated: true)
+        
+        if let user = Notify.owner(object!) {
+            let controller = ProfileViewController.CreateWithModel(user)
+            self.navigationController!.pushViewController(controller, animated: true)
+        }
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle  {

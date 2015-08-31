@@ -115,7 +115,7 @@ import UIKit
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell? {
         let cell = tableView.dequeueReusableCellWithIdentifier(kReusableProfilePostViewCell) as! ProfilePostViewCell
         cell.prepareView(object!)
-       
+        cell.parentViewController = self
         return cell
     }
     

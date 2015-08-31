@@ -139,8 +139,8 @@ class Activity: PFObject, PFSubclassing {
     }
     
     class func commentPost(post: PFObject, message: String) -> BFTask {
-        let user = PFUser.currentUser()
-        let activity = PFObject(className: kActivityClassKey)
+        let user        = PFUser.currentUser()
+        let activity    = PFObject(className: kActivityClassKey)
         activity.setObject(user!, forKey: kActivityFromUserKey)
         activity.setObject(post, forKey: kActivityPostKey)
         activity.setObject(message, forKey: kActivityContentKey)

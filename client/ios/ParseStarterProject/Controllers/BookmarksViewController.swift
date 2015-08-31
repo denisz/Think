@@ -19,8 +19,6 @@ import VGParallaxHeader
         super.viewDidLoad()
         self.title = "Bookmarks".localized
 
-//        self.setupHeaderView()
-        
         self.collectionView!.registerNib(UINib(nibName: kReusableBookmarksViewCell, bundle: nil), forCellWithReuseIdentifier: kReusableBookmarksViewCell)
         
         self.setupNavigationBar()
@@ -31,12 +29,11 @@ import VGParallaxHeader
         
         self.customizeNavigationBar()
         self.configureNavigationBarBackBtn(kColorNavigationBar)
-        self.configureNavigationBarRightBtn(kColorNavigationBar)
+//        self.configureNavigationBarRightBtn(kColorNavigationBar)
     }
     
     func setupHeaderView() {
         let header = BookmarkMainPostView()
-//        header.objectDidLoad(self.owner!)
         self.collectionView!.setParallaxHeaderView(header, mode: VGParallaxHeaderMode.Fill, height: 240)
     }
     

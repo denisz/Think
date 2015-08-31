@@ -11,7 +11,12 @@
 			<key>orderHint</key>
 			<integer>29</integer>
 		</dict>
-		<key>ParseStarterProject.xcscheme_^#shared#^_</key>
+		<key>Snugly Today.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>26</integer>
+		</dict>
+		<key>Snugly.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -22,11 +27,6 @@
 			<false/>
 			<key>orderHint</key>
 			<integer>27</integer>
-		</dict>
-		<key>Think Today.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>26</integer>
 		</dict>
 		<key>Think WatchKit App.xcscheme</key>
 		<dict>

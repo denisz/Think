@@ -21,10 +21,20 @@ class ThreadViewCell: PFTableViewCell {
     }
     
     func prepareView(object: PFObject) {
-        self.body.text  = MessageModel.content(object)
+        let body = MessageModel.content(object)
+        self.body.text  = body
+
+        if MessageModel.determineCurrentUserAuthor(object) {
+            if body.length > 36 {
+                self.body.textAlignment = NSTextAlignment.Left
+            } else {
+                self.body.textAlignment = NSTextAlignment.Right
+            }
+        } else {
+            self.body.textAlignment = NSTextAlignment.Left
+        }
         
         self.authorName.text = MessageModel.ownerUsername(object)
-            
         self.authorPicture.image    = kUserPlaceholder
         self.authorPicture.file     = MessageModel.ownerPicture(object)
         

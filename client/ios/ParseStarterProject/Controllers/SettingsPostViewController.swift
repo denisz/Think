@@ -32,7 +32,7 @@ import Bolts
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Tune post"
+        self.title = "Tune post".localized
         self.data = [String: AnyObject]()
         
         self.view.backgroundColor = kColorBackgroundViewController
@@ -63,7 +63,7 @@ import Bolts
     func configureNavigationBarRightBtn(color: UIColor) {
         let navigationItem  = self.defineNavigationItem()
         
-        let editBarButtonItem = UIBarButtonItem(title: "Public".uppercaseString, style: UIBarButtonItemStyle.Plain, target: self, action: "didTapSendBtn:")
+        let editBarButtonItem = UIBarButtonItem(title: "Public".uppercaseString.localized, style: UIBarButtonItemStyle.Plain, target: self, action: "didTapSendBtn:")
         
         let attributes = [
             NSForegroundColorAttributeName: color,
@@ -110,7 +110,7 @@ import Bolts
         section = XLFormSectionDescriptor()
         self.form.addFormSection(section)
         
-        row = XLFormRowDescriptor(tag: tag.adultContent, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "adult content".uppercaseString)
+        row = XLFormRowDescriptor(tag: tag.adultContent, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "adult content".uppercaseString.localized)
         self.stylesRow(row)
         section.addFormRow(row)
         
@@ -118,41 +118,41 @@ import Bolts
         self.form.addFormSection(section)
         
         //tags
-        row = XLFormRowDescriptor(tag: tag.tags, rowType: XLFormRowDescriptorTypeSelectorPush, title: "tags".uppercaseString)
+        row = XLFormRowDescriptor(tag: tag.tags, rowType: XLFormRowDescriptorTypeSelectorPush, title: "tags".uppercaseString.localized)
         row.action.viewControllerClass = RRTagController.self
         self.stylesRow(row)
         section.addFormRow(row)
         
         
-        row = XLFormRowDescriptor(tag: tag.postTo, rowType: XLFormRowDescriptorTypeMultipleSelector, title: "post to".uppercaseString)
+        row = XLFormRowDescriptor(tag: tag.postTo, rowType: XLFormRowDescriptorTypeMultipleSelector, title: "post to".uppercaseString.localized)
         row.selectorOptions = self.selectorsPostTo()
         self.stylesRow(row)
         section.addFormRow(row)
         
-        row = XLFormRowDescriptor(tag: tag.visibleTo, rowType: XLFormRowDescriptorTypeMultipleSelector, title: "visible to".uppercaseString)
+        row = XLFormRowDescriptor(tag: tag.visibleTo, rowType: XLFormRowDescriptorTypeMultipleSelector, title: "visible to".uppercaseString.localized)
         row.selectorOptions = self.selectorsVisibleTo()
         self.stylesRow(row)
         section.addFormRow(row)
 
-        row = XLFormRowDescriptor(tag: tag.comments, rowType: XLFormRowDescriptorTypeMultipleSelector, title: "comments".uppercaseString)
+        row = XLFormRowDescriptor(tag: tag.comments, rowType: XLFormRowDescriptorTypeMultipleSelector, title: "comments".uppercaseString.localized)
         row.selectorOptions = self.selectorsComments()
         self.stylesRow(row)
         section.addFormRow(row)
         
-        row = XLFormRowDescriptor(tag: tag.exportTo, rowType: XLFormRowDescriptorTypeMultipleSelector, title: "export to".uppercaseString)
+        row = XLFormRowDescriptor(tag: tag.exportTo, rowType: XLFormRowDescriptorTypeMultipleSelector, title: "export to".uppercaseString.localized)
         row.selectorOptions = self.selectorsExportTo()
         self.stylesRow(row)
         section.addFormRow(row)
 
         
-        row = XLFormRowDescriptor(tag: tag.socialCounter, rowType: XLFormRowDescriptorTypeBooleanSwitch , title: "social counters".uppercaseString)
+        row = XLFormRowDescriptor(tag: tag.socialCounter, rowType: XLFormRowDescriptorTypeBooleanSwitch , title: "social counters".uppercaseString.localized)
         self.stylesRow(row)
         section.addFormRow(row)
         
         section = XLFormSectionDescriptor()
         self.form.addFormSection(section)
 
-        row = XLFormRowDescriptor(tag: tag.location, rowType: XLFormRowDescriptorTypeBooleanSwitch , title: "location".uppercaseString)
+        row = XLFormRowDescriptor(tag: tag.location, rowType: XLFormRowDescriptorTypeBooleanSwitch , title: "location".uppercaseString.localized)
         self.stylesRow(row)
         section.addFormRow(row)
         

@@ -4349,7 +4349,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Think-Reachability/Pods-Think-Reachability-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Pods-Think-Reachability/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-Think-Reachability/Pods-Think-Reachability.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -4376,7 +4376,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Think-AsyncDisplayKit/Pods-Think-AsyncDisplayKit-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Pods-Think-AsyncDisplayKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-Think-AsyncDisplayKit/Pods-Think-AsyncDisplayKit.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -4416,7 +4416,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SYMROOT = "${SRCROOT}/../build";
 				VALIDATE_PRODUCT = YES;
@@ -4437,7 +4437,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Think-FXBlurView/Pods-Think-FXBlurView-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Pods-Think-FXBlurView/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-Think-FXBlurView/Pods-Think-FXBlurView.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -4464,7 +4464,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Think-Kingfisher/Pods-Think-Kingfisher-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Pods-Think-Kingfisher/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-Think-Kingfisher/Pods-Think-Kingfisher.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -4491,7 +4491,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Think-UIImage+AF+Additions/Pods-Think-UIImage+AF+Additions-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Pods-Think-UIImage+AF+Additions/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-Think-UIImage+AF+Additions/Pods-Think-UIImage+AF+Additions.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -4518,7 +4518,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Think-LoremIpsum/Pods-Think-LoremIpsum-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Pods-Think-LoremIpsum/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-Think-LoremIpsum/Pods-Think-LoremIpsum.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -4545,7 +4545,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Think-LGActionSheet/Pods-Think-LGActionSheet-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Pods-Think-LGActionSheet/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-Think-LGActionSheet/Pods-Think-LGActionSheet.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -4572,7 +4572,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Think-LoremIpsum/Pods-Think-LoremIpsum-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Pods-Think-LoremIpsum/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-Think-LoremIpsum/Pods-Think-LoremIpsum.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -4599,7 +4599,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Think-LGSideMenuController/Pods-Think-LGSideMenuController-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Pods-Think-LGSideMenuController/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-Think-LGSideMenuController/Pods-Think-LGSideMenuController.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -4626,7 +4626,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Think-LGHelper/Pods-Think-LGHelper-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Pods-Think-LGHelper/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-Think-LGHelper/Pods-Think-LGHelper.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -4653,7 +4653,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Think-MXSegmentedPager/Pods-Think-MXSegmentedPager-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Pods-Think-MXSegmentedPager/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-Think-MXSegmentedPager/Pods-Think-MXSegmentedPager.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -4680,7 +4680,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Think-MXSegmentedPager/Pods-Think-MXSegmentedPager-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Pods-Think-MXSegmentedPager/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-Think-MXSegmentedPager/Pods-Think-MXSegmentedPager.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -4707,7 +4707,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Think-Alamofire/Pods-Think-Alamofire-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Pods-Think-Alamofire/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-Think-Alamofire/Pods-Think-Alamofire.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -4734,7 +4734,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Think-LGViews/Pods-Think-LGViews-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Pods-Think-LGViews/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-Think-LGViews/Pods-Think-LGViews.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -4760,7 +4760,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				INFOPLIST_FILE = "Target Support Files/Pods-Think/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-Think/Pods-Think.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -4790,7 +4790,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Think-LGViews/Pods-Think-LGViews-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Pods-Think-LGViews/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-Think-LGViews/Pods-Think-LGViews.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -4817,7 +4817,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Think-AsyncDisplayKit/Pods-Think-AsyncDisplayKit-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Pods-Think-AsyncDisplayKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-Think-AsyncDisplayKit/Pods-Think-AsyncDisplayKit.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -4843,7 +4843,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				INFOPLIST_FILE = "Target Support Files/Pods-Think/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-Think/Pods-Think.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -4874,7 +4874,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Think-UIImage+AF+Additions/Pods-Think-UIImage+AF+Additions-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Pods-Think-UIImage+AF+Additions/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-Think-UIImage+AF+Additions/Pods-Think-UIImage+AF+Additions.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -4901,7 +4901,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Think-LGActionSheet/Pods-Think-LGActionSheet-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Pods-Think-LGActionSheet/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-Think-LGActionSheet/Pods-Think-LGActionSheet.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -4928,7 +4928,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Think-HMSegmentedControl/Pods-Think-HMSegmentedControl-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Pods-Think-HMSegmentedControl/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-Think-HMSegmentedControl/Pods-Think-HMSegmentedControl.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -4955,7 +4955,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Think-XLForm/Pods-Think-XLForm-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Pods-Think-XLForm/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-Think-XLForm/Pods-Think-XLForm.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -4982,7 +4982,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Think-LGSideMenuController/Pods-Think-LGSideMenuController-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Pods-Think-LGSideMenuController/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-Think-LGSideMenuController/Pods-Think-LGSideMenuController.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -5009,7 +5009,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Think-LGFilterView/Pods-Think-LGFilterView-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Pods-Think-LGFilterView/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-Think-LGFilterView/Pods-Think-LGFilterView.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -5036,7 +5036,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Think-LGDrawer/Pods-Think-LGDrawer-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Pods-Think-LGDrawer/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-Think-LGDrawer/Pods-Think-LGDrawer.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -5063,7 +5063,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Think-LTMorphingLabel/Pods-Think-LTMorphingLabel-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Pods-Think-LTMorphingLabel/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-Think-LTMorphingLabel/Pods-Think-LTMorphingLabel.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -5091,7 +5091,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Think-SlackTextViewController/Pods-Think-SlackTextViewController-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Pods-Think-SlackTextViewController/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-Think-SlackTextViewController/Pods-Think-SlackTextViewController.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -5118,7 +5118,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Think-Alamofire/Pods-Think-Alamofire-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Pods-Think-Alamofire/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-Think-Alamofire/Pods-Think-Alamofire.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -5146,7 +5146,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Think-JGProgressHUD/Pods-Think-JGProgressHUD-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Pods-Think-JGProgressHUD/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-Think-JGProgressHUD/Pods-Think-JGProgressHUD.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -5173,7 +5173,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Think-LTMorphingLabel/Pods-Think-LTMorphingLabel-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Pods-Think-LTMorphingLabel/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-Think-LTMorphingLabel/Pods-Think-LTMorphingLabel.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -5200,7 +5200,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Think-VGParallaxHeader/Pods-Think-VGParallaxHeader-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Pods-Think-VGParallaxHeader/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-Think-VGParallaxHeader/Pods-Think-VGParallaxHeader.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -5227,7 +5227,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Think-PureLayout/Pods-Think-PureLayout-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Pods-Think-PureLayout/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-Think-PureLayout/Pods-Think-PureLayout.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -5254,7 +5254,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Think-Kingfisher/Pods-Think-Kingfisher-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Pods-Think-Kingfisher/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-Think-Kingfisher/Pods-Think-Kingfisher.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -5282,7 +5282,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Think-LGHelper/Pods-Think-LGHelper-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Pods-Think-LGHelper/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-Think-LGHelper/Pods-Think-LGHelper.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -5309,7 +5309,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Think-FXBlurView/Pods-Think-FXBlurView-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Pods-Think-FXBlurView/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-Think-FXBlurView/Pods-Think-FXBlurView.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -5336,7 +5336,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Think-FormatterKit/Pods-Think-FormatterKit-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Pods-Think-FormatterKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-Think-FormatterKit/Pods-Think-FormatterKit.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -5363,7 +5363,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Think-LGAlertView/Pods-Think-LGAlertView-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Pods-Think-LGAlertView/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-Think-LGAlertView/Pods-Think-LGAlertView.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -5390,7 +5390,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Think-LGDrawer/Pods-Think-LGDrawer-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Pods-Think-LGDrawer/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-Think-LGDrawer/Pods-Think-LGDrawer.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -5417,7 +5417,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Think-TOCropViewController/Pods-Think-TOCropViewController-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Pods-Think-TOCropViewController/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-Think-TOCropViewController/Pods-Think-TOCropViewController.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -5444,7 +5444,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Think-TOCropViewController/Pods-Think-TOCropViewController-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Pods-Think-TOCropViewController/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-Think-TOCropViewController/Pods-Think-TOCropViewController.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -5489,7 +5489,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SYMROOT = "${SRCROOT}/../build";
@@ -5510,7 +5510,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Think-XLForm/Pods-Think-XLForm-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Pods-Think-XLForm/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-Think-XLForm/Pods-Think-XLForm.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -5537,7 +5537,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Think-SlackTextViewController/Pods-Think-SlackTextViewController-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Pods-Think-SlackTextViewController/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-Think-SlackTextViewController/Pods-Think-SlackTextViewController.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -5564,7 +5564,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Think-PureLayout/Pods-Think-PureLayout-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Pods-Think-PureLayout/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-Think-PureLayout/Pods-Think-PureLayout.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -5591,7 +5591,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Think-VGParallaxHeader/Pods-Think-VGParallaxHeader-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Pods-Think-VGParallaxHeader/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-Think-VGParallaxHeader/Pods-Think-VGParallaxHeader.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -5618,7 +5618,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Think-JGProgressHUD/Pods-Think-JGProgressHUD-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Pods-Think-JGProgressHUD/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-Think-JGProgressHUD/Pods-Think-JGProgressHUD.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -5645,7 +5645,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Think-FormatterKit/Pods-Think-FormatterKit-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Pods-Think-FormatterKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-Think-FormatterKit/Pods-Think-FormatterKit.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -5672,7 +5672,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Think-LGAlertView/Pods-Think-LGAlertView-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Pods-Think-LGAlertView/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-Think-LGAlertView/Pods-Think-LGAlertView.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -5699,7 +5699,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Think-LGFilterView/Pods-Think-LGFilterView-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Pods-Think-LGFilterView/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-Think-LGFilterView/Pods-Think-LGFilterView.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -5726,7 +5726,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Think-Reachability/Pods-Think-Reachability-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Pods-Think-Reachability/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-Think-Reachability/Pods-Think-Reachability.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -5753,7 +5753,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Think-HMSegmentedControl/Pods-Think-HMSegmentedControl-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Pods-Think-HMSegmentedControl/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-Think-HMSegmentedControl/Pods-Think-HMSegmentedControl.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;

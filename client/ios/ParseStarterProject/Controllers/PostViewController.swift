@@ -224,6 +224,6 @@ import VGParallaxHeader
     }
     
     class func CreateWithId(objectId: String) -> PostViewController {
-        return CreateWithModel(PFObject(withoutDataWithClassName: "Post", objectId: objectId))
+        return CreateWithModel(PFObject(withoutDataWithClassName: kPostClassKey, objectId: objectId))
     }
 }

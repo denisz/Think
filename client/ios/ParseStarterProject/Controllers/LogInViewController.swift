@@ -23,7 +23,7 @@ protocol LogInViewControllerDelegate {
 // (kConstantTop, kConstantSN)
 func determineContraints() -> (CGFloat, CGFloat){
     if UIDevice().userInterfaceIdiom == .Phone {
-        switch UIScreen.mainScreen().nativeBounds.height {
+        switch UIScreen.mainScreen().bounds.height {
         case 960:
             return (20, 40)
         default:

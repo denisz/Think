@@ -45,6 +45,7 @@ class InputBarView: BaseUIView {
         
         self.textField.delegate  = self
         self.textField.tintColor = kColorNavigationBar
+//        self.textField.valueForKey("textInputTraits")?.setValue(kColorNavigationBar, forKey: "insertionPointColor")
     }
     
     func hideLeftButton() {

@@ -4,7 +4,7 @@
 source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
-target 'Think' do
+target 'Snugly' do
 	pod 'Alamofire', '~> 1.2'
 	pod 'FXBlurView', '~> 1.6.3'
 	pod 'LGActionSheet', '~> 1.0.0'

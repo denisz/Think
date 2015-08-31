@@ -110,8 +110,10 @@ let kInstallationEventsKey      = "events"
 let kThreadClassKey     = "Threads"
 
 //fields threads
-let kThreadParticipantsKey      = "participants"
-let kThreadLastMessageKey       = "last_message"
+let kThreadParticipantsKey          = "participants"
+let kThreadParticipantsOneKey       = "participants1"
+let kThreadParticipantsSecondKey    = "participants2"
+let kThreadLastMessageKey           = "last_message"
 
 
 // MARK: Message
@@ -215,6 +217,8 @@ let kReusableNotificationsViewCell  = "NotificationViewCell"
 let kReusableBookmarksViewCell      = "BookmarksViewCell"
 let kReusableDraftsViewCell         = "DraftsViewCell"
 let kReusableMessageViewCell        = "MessageViewCell"
+let kReusableOutMessageViewCell     = "OutMessageViewCell"
+let kReusableInMessageViewCell      = "InMessageViewCell"
 let kReusableSideMenuViewCell       = "SideMenuViewCell"
 let kReusableCommentViewCell        = "CommentViewCell"
 let kReusablePeopleViewCell         = "PeopleViewCell"

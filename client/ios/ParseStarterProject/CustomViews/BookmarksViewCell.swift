@@ -21,5 +21,7 @@ class BookmarksViewCell: PFCollectionViewCell {
         
         self.shortContent.text  = Post.shortContent(object)
         self.date.text          = Post.createdAtDate(object)
+        
+        self.coverImage.loadInBackground()
     }
 }

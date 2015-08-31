@@ -48,7 +48,13 @@ import ParseUI
         
         self.customizeNavigationBar()
         self.configureNavigationBarBackBtn(kColorNavigationBar)
-        self.configureNavigationBarRightBtn(kColorNavigationBar)
+        self.participant!.fetchIfNeededInBackground().continueWithBlock { (task: BFTask!) -> AnyObject! in
+            
+            dispatch_async(dispatch_get_main_queue()) {
+                self.configureNavigationBarRightBtn(kColorNavigationBar)
+            }
+            return task
+        }
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "userSendMessage:", name: kUserSendMessage, object: nil)
     }
@@ -57,6 +63,7 @@ import ParseUI
         let navigationItem = self.defineNavigationItem()
         let placeholder = kUserPlaceholder
         let image = PFImageView()
+//        image.contentMode = UIViewContentMode.ScaleAspectFill
         image.image = kUserPlaceholder
         image.file = UserModel.pictureImage(self.participant!)
         
@@ -69,11 +76,23 @@ import ParseUI
         btnBack.cornerEdge()
         
         image.loadInBackground { (image, error) -> Void in
-            btnBack.setImage(image, forState: UIControlState.Normal)
+            if error == nil {
+                dispatch_async(dispatch_get_main_queue()) {
+                    btnBack.setImage(image, forState: UIControlState.Normal)
+                }
+            }
         }
         
         let bar = UIBarButtonItem(customView: btnBack)
         navigationItem.rightBarButtonItem = bar
+    }
+    
+    func didTapAvatarBtn(sender: AnyObject) {
+        if let user = self.participant {
+            let controller = ProfileViewController.CreateWithModel(user)
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
+
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -114,6 +133,10 @@ import ParseUI
         return cell
     }
     
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+    }
+    
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> [AnyObject]?  {
         
         var deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Delete" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
@@ -124,7 +147,6 @@ import ParseUI
         return [deleteAction]
     }
     
-    //вот тут будет рассинхрон
     func userSendMessage(notification: NSNotification) {
         if let object = notification.object as? PFObject {
             self.objects?.insertObject(object, atIndex: 0)

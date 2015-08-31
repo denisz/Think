@@ -17,8 +17,7 @@ import Bolts
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.updateObjectsAfterCancel = true
-        self.title = "You follow"
+        self.title = "You follow".localized
         self.tableView.backgroundColor = kColorBackgroundViewController
         self.tableView.registerNib(UINib(nibName: kReusableYouFollowViewCell, bundle: nil), forCellReuseIdentifier: kReusableYouFollowViewCell)
         
@@ -27,14 +26,15 @@ import Bolts
         self.tableView.tableFooterView = UIView()
         
         self.setupNavigationBar()
-    
     }
     
-    override func objectsDidLoad(error: NSError?) {
-        super.objectsDidLoad(error)
+    override func objectsDidAppend(objects: [AnyObject]) {
+        super.objectsDidAppend(objects)
         
-        if error == nil {
-            //обновить кеш follower
+        for object in objects {
+            if let item  = object as? PFObject {
+                
+            }
         }
     }
 
@@ -84,10 +84,8 @@ import Bolts
                 
                 return task
             })
-            
         }
     }
-
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell? {
         

@@ -25,7 +25,7 @@ class ProfilePostViewCell: PFTableViewCell {
     @IBOutlet weak var authorPicture: PFImageView!
     @IBOutlet weak var communityView: UIView!
     @IBOutlet weak var footerView: UIView!
-    
+    @IBOutlet weak var wrapperCover: UIView!
     
     override var imageView: PFImageView? {
         return self.coverImage
@@ -54,22 +54,27 @@ class ProfilePostViewCell: PFTableViewCell {
         self.authorPicture.cornerEdge()
         
         self.setupViewCover()
+        self.setupGesture()
+    }
+    
+    func setupGesture() {
+        let gestureName = UITapGestureRecognizer(target: self, action: "didTapAuthor")
+        self.authorName.addGestureRecognizer(gestureName)
+        self.authorName.userInteractionEnabled = true
+
+        
+        let gesturePicture = UITapGestureRecognizer(target: self, action: "didTapAuthor")
+        self.authorPicture.addGestureRecognizer(gesturePicture)
+        self.authorPicture.userInteractionEnabled = true
     }
     
     override func clearView() {
         super.clearView()
         //отписаться от событий
-        
     }
     
     func setupViewCover() {
-        let doubleTapGesture = UITapGestureRecognizer(target: self, action: "didTapBookmarkPost")
-        doubleTapGesture.numberOfTapsRequired = 2
-        self.coverImage.addGestureRecognizer(doubleTapGesture)
-    }
-    
-    func didTapBookmarkPost() {
-        Bookmark.createWith(self.object!)
+        
     }
     
     func updateCommentCounter() {
@@ -87,45 +92,12 @@ class ProfilePostViewCell: PFTableViewCell {
         }
     }
     
-    @IBAction func didTapLikePost() {
-        Activity.handlerLikePost(self.object!)
-    }
-    
-    func didTapShare() {
-        let textToShare = Post.shortContent(self.object!)
-        let activityVC = UIActivityViewController(activityItems: [textToShare], applicationActivities: nil)
-        
-        if let controller = self.parentViewController {
-            controller.presentViewController(activityVC, animated: true, completion: nil)
+    func didTapAuthor() {
+        if let user = Post.owner(self.object!) {
+            let controller = ProfileViewController.CreateWithModel(user)
+            if let parentController = self.parentViewController {
+                parentController.navigationController!.pushViewController(controller, animated: true)
+            }
         }
     }
-    
-    @IBAction func didTapMoreBtn(sender: AnyObject?) {
-        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
-        
-        
-        let reportAction = UIAlertAction(title: "Report".localized, style: .Default) { (action) -> Void in
-        }
-        
-        let shareAction = UIAlertAction(title: "Share via socials".localized, style: .Default) { (action) -> Void in
-            self.didTapShare()
-        }
-        
-        let bookmarkAction = UIAlertAction(title: "Save to read later".localized, style: .Default) { (action) -> Void in
-            self.didTapBookmarkPost()
-        }
-
-        let cancelAction = UIAlertAction(title: "Cancel".localized, style: .Cancel, handler: nil)
-        
-        actionSheet.addAction(shareAction)
-        actionSheet.addAction(bookmarkAction)
-        actionSheet.addAction(reportAction)
-        actionSheet.addAction(cancelAction)
-        
-        if let controller = self.parentViewController {
-            controller.presentViewController(actionSheet, animated: true, completion: nil)
-        }
-        
-    }
-    
 }

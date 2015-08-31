@@ -34,6 +34,7 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ava_profile" translatesAutoresizingMaskIntoConstraints="NO" id="weB-RS-N1u" customClass="PFImageView">
                                 <rect key="frame" x="15" y="10" width="33" height="33"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="33" id="JJb-f1-hCt"/>
                                     <constraint firstAttribute="height" constant="33" id="hRG-HG-503"/>
@@ -41,6 +42,7 @@
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ALEXANDER" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zJO-yN-DMX" customClass="LabelViewWithIcon" customModule="Think" customModuleProvider="target">
                                 <rect key="frame" x="63" y="10" width="249" height="17"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="gJT-ib-p38"/>
                                 </constraints>
@@ -95,7 +97,7 @@
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="InD-f3-0Qf" userLabel="Wrapper">
                         <rect key="frame" x="0.0" y="54" width="320" height="180"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pic_post" translatesAutoresizingMaskIntoConstraints="NO" id="u4c-ui-RBz" customClass="PFImageView">
+                            <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pic_post" translatesAutoresizingMaskIntoConstraints="NO" id="u4c-ui-RBz" customClass="PFImageView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="180" id="fVq-lK-vqL"/>
@@ -297,6 +299,7 @@
                 <outlet property="footerView" destination="gDz-pt-bea" id="okm-lT-PAZ"/>
                 <outlet property="likesCounter" destination="vVY-z1-vSX" id="gMg-5c-Srx"/>
                 <outlet property="title" destination="czt-IF-oH2" id="1zg-w0-MWI"/>
+                <outlet property="wrapperCover" destination="InD-f3-0Qf" id="NDl-az-Wwf"/>
             </connections>
             <point key="canvasLocation" x="403" y="388"/>
         </tableViewCell>

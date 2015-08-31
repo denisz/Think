@@ -16,6 +16,7 @@ import VGParallaxHeader
 @objc(ProfileViewController) class ProfileViewController: BaseQueryTableViewController {
     var owner: PFObject?
     var stickyView: UIView?
+    var headerProfile: BaseProfileHeaderView?
     var isGuest: Bool {
         if let currentUser = PFUser.currentUser() {
             if owner?.objectId == currentUser.objectId {
@@ -62,21 +63,17 @@ import VGParallaxHeader
     }
     
     func setupHeaderView() {
-        var header: UIView?
-
         if !self.isGuest {
             var headerProfile = ProfileHeaderView()
+            self.headerProfile = headerProfile
             headerProfile.delegate = self
-            headerProfile.objectDidLoad(self.owner!)
-            header = headerProfile
         } else {
             var headerProfileGuest = ProfileGuestHeaderView()
+            self.headerProfile = headerProfileGuest
             headerProfileGuest.delegate = self
-            headerProfileGuest.objectDidLoad(self.owner!)
-            header = headerProfileGuest
         }
         
-        self.tableView.setParallaxHeaderView(header!, mode: VGParallaxHeaderMode.Fill, height: 240)
+        self.tableView.setParallaxHeaderView( self.headerProfile!, mode: VGParallaxHeaderMode.Fill, height: 240)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -85,6 +82,8 @@ import VGParallaxHeader
         self.customizeNavigationBar(.Transparent)
         self.configureNavigationBarBackBtn(UIColor.whiteColor())
         
+        self.headerProfile?.objectDidLoad(self.owner!)
+        
         if !self.isGuest {
             self.configureNavigationBarRightBtn(UIColor.whiteColor())
         }
@@ -92,6 +91,7 @@ import VGParallaxHeader
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
         UIApplication.sharedApplication().setStatusBarStyle(.LightContent, animated: true)
     }
     
@@ -150,7 +150,7 @@ import VGParallaxHeader
     class func CreateWithModel(model: PFObject) -> ProfileViewController{
         var profile = ProfileViewController()
         profile.owner = model
-        profile.parseClassName = "Post"
+        profile.parseClassName = kPostClassKey
         profile.paginationEnabled = true
         profile.pullToRefreshEnabled = false
 
@@ -158,13 +158,13 @@ import VGParallaxHeader
     }
     
     class func CreateWithId(objectId: String) -> ProfileViewController {
-        return CreateWithModel(PFObject(withoutDataWithClassName: "_User", objectId: objectId))
+        return CreateWithModel(PFObject(withoutDataWithClassName: kUserClassKey, objectId: objectId))
     }
 }
 
 extension ProfileViewController: ProfileGuestHeaderViewDelegate {
     func profileGuestView(view: ProfileGuestHeaderView, didTapFollow button: UIButton) {
-        //зафоллофим
+        Activity.handlerFollowUser(self.owner!)
     }
     
     func profileGuestView(view: ProfileGuestHeaderView, didTapWhisper button: UIButton) {

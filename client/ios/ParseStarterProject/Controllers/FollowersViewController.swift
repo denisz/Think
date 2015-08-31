@@ -17,7 +17,7 @@ import ParseUI
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Followers"
+        self.title = "Followers".localized
         
         self.tableView.backgroundColor = kColorBackgroundViewController
         self.tableView.registerNib(UINib(nibName: kReusableFollowUserViewCell, bundle: nil), forCellReuseIdentifier: kReusableFollowUserViewCell)
@@ -78,6 +78,6 @@ import ParseUI
     }
     
     class func CreateWithId(objectId: String) -> FollowersViewController {
-        return CreateWithModel(PFObject(withoutDataWithClassName: "_User", objectId: objectId))
+        return CreateWithModel(PFObject(withoutDataWithClassName: kUserClassKey, objectId: objectId))
     }
 }
