@@ -82,6 +82,14 @@ import Bolts
         }
     }
     
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if iOS8 {
+            return UITableViewAutomaticDimension
+        } else {
+            return 78
+        }
+    }
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell? {
         
         let cell = tableView.dequeueReusableCellWithIdentifier(kReusablePeopleViewCell) as? PeopleViewCell

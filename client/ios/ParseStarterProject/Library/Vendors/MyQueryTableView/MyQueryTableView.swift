@@ -107,12 +107,15 @@ class MyQueryTableView: UITableView {
     
     func viewDidLoad() {
         if self.pullToRefreshEnabled {
-            var refreshControl = UIRefreshControl()
-            refreshControl.addTarget(self, action: Selector("refreshControlValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
-            
-            self.refreshControl = refreshControl
+            self.setupRefreshControl()
         }
+    }
+    
+    func setupRefreshControl() {
+        var refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: Selector("refreshControlValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
         
+        self.refreshControl = refreshControl
     }
     
     func refreshControlValueChanged(sender: UIRefreshControl) {
@@ -374,6 +377,14 @@ extension MyQueryTableView: UITableViewDataSource {
         cell!.setAnimating(self.loading)
         
         return cell
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if iOS8 {
+            return UITableViewAutomaticDimension
+        } else {
+            return 44
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

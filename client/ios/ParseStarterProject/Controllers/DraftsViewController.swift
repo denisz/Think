@@ -57,6 +57,14 @@ import UIKit
         return cell
     }
     
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if iOS8 {
+            return UITableViewAutomaticDimension
+        } else {
+            return 420
+        }
+    }
+    
     override func preferredStatusBarStyle() -> UIStatusBarStyle  {
         return UIStatusBarStyle.Default
     }

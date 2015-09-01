@@ -36,11 +36,28 @@ class CommentsTableView: MyQueryTableView {
         }
     }
     
+    override func setupRefreshControl() {
+        if iOS8 {
+            super.setupRefreshControl()
+        } else {
+            
+        }
+    }
+    
+    override func refreshLoadingView() {
+        if iOS8 {
+            super.refreshLoadingView()
+        } else {
+
+        }
+    }
+    
     override func setupWithClassName(otherClassName: String?) {
         super.setupWithClassName(otherClassName)
-        self.parseClassName = "Activity"
+        self.parseClassName = kActivityClassKey
         self.objectsPerPage = 3
         self.paginationEnabled = false
+        self.pullToRefreshEnabled = false
     }
     
     override func queryForTable() -> PFQuery {
@@ -60,5 +77,20 @@ class CommentsTableView: MyQueryTableView {
         cell?.prepareView(object!)
         
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if iOS8 {
+            return UITableViewAutomaticDimension
+        } else {
+            var height: CGFloat = 0
+            if let object = objectAtIndexPath(indexPath) {
+                let body = Comment.content(object)
+                height = MeasureText.heightForText(body, font: kCommentContentFont, width: kWidthScreen)
+                height += 52
+            }
+            
+            return max(height, 100)
+        }
     }
 }

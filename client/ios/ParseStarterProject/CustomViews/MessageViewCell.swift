@@ -30,7 +30,7 @@ class MessageViewCell: PFTableViewCell {
         
         if let message = Thread.lastMessage(object) {
             var body = MessageModel.content(message)
-            body = body.truncate(140, trailing: "...")
+            body = body.truncate(100, trailing: "...")
             
             if MessageModel.determineCurrentUserAuthor(message) {
                 self.outBody.text = body

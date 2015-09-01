@@ -27,6 +27,9 @@ class PostContentView: UITableView  {
         self.prepareBlocks()
         self.reloadData()
 
+//        self.beginUpdates()
+//        self.endUpdates()
+//        self.sizeThatFits(CGSizeMake(CGRectGetWidth(self.bounds), CGFloat.max))
         self.layoutIfNeeded()
         self.heightLayoutConstraint.constant = self.contentSize.height
     }
@@ -41,7 +44,7 @@ class PostContentView: UITableView  {
         self.rowHeight = UITableViewAutomaticDimension
         self.tableFooterView = UIView()
 
-        self.registerNib(UINib(nibName: "PostBlockViewCell", bundle: nil), forCellReuseIdentifier: kReusablePostBlockViewCell)
+        self.registerNib(UINib(nibName: kReusablePostBlockViewCell, bundle: nil), forCellReuseIdentifier: kReusablePostBlockViewCell)
         
         self.prepareBlocks()
     }
@@ -60,10 +63,33 @@ class PostContentView: UITableView  {
 }
 
 
-extension PostContentView: UITableViewDelegate {}
+extension PostContentView: UITableViewDelegate {
+    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        var height: CGFloat = 0
+        if let block = self.blockByIndexPath(indexPath) {
+            height = NSString(string: block.content).heightText(kPostBlockContentFont, width: kWidthScreen - 50) + 10
+        }
+        
+        return max(height, 20)
+    }
+    
+    func tableView( tableView: UITableView,
+                    heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if iOS8 {
+            return UITableViewAutomaticDimension
+        } else {
+            var height: CGFloat = 0
+            if let block = self.blockByIndexPath(indexPath) {
+                height = NSString(string: block.content).heightText(kPostBlockContentFont, width: kWidthScreen - 50) + 10
+            }
+            
+            return max(height, 20)
+        }
+    }
+}
 
 extension PostContentView: UITableViewDataSource {
-    func blockByIndexPath(indexPath: NSIndexPath) -> PostBlock {
+    func blockByIndexPath(indexPath: NSIndexPath) -> PostBlock? {
         return self.blocks![indexPath.row]
     }
     
@@ -72,11 +98,12 @@ extension PostContentView: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let block = self.blockByIndexPath(indexPath)
         var cell = tableView.dequeueReusableCellWithIdentifier(kReusablePostBlockViewCell) as? PostBlockViewCell
         
-        cell!.prepareView(block)
-        
+        if let block = self.blockByIndexPath(indexPath) {
+            cell!.prepareView(block)
+        }
+
         return cell!
     }
 }

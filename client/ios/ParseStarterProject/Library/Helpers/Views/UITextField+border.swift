@@ -12,20 +12,28 @@ import UIKit
 extension UITextField {
 
     func borderBottom(color: UIColor) {
-        self.backgroundColor = UIColor.clearColor()
         
-        let menuBottomHairline: UIView = UIView()
-        
-        menuBottomHairline.setTranslatesAutoresizingMaskIntoConstraints(false)
-        
-        self.addSubview(menuBottomHairline)
-        
-        let menuBottomHairline_constraint_H:Array = NSLayoutConstraint.constraintsWithVisualFormat("H:|[menuBottomHairline]|", options: NSLayoutFormatOptions(0), metrics: nil, views: ["menuBottomHairline":menuBottomHairline])
-        let menuBottomHairline_constraint_V:Array = NSLayoutConstraint.constraintsWithVisualFormat("V:[menuBottomHairline(0.5)]|", options: NSLayoutFormatOptions(0), metrics: nil, views: ["menuBottomHairline":menuBottomHairline])
-        
-        self.addConstraints(menuBottomHairline_constraint_H)
-        self.addConstraints(menuBottomHairline_constraint_V)
-        
-        menuBottomHairline.backgroundColor = color
+        if iOS7 {
+            var bottomBorder = CALayer()
+            bottomBorder.frame = CGRectMake(0.0, self.frame.size.height - 1, self.frame.size.width, 1.0);
+            bottomBorder.backgroundColor = color.CGColor
+            self.layer.addSublayer(bottomBorder)
+        } else {
+            self.backgroundColor = UIColor.clearColor()
+            
+            let menuBottomHairline: UIView = UIView()
+            
+            menuBottomHairline.setTranslatesAutoresizingMaskIntoConstraints(false)
+            
+            self.addSubview(menuBottomHairline)
+            
+            let menuBottomHairline_constraint_H:Array = NSLayoutConstraint.constraintsWithVisualFormat("H:|[menuBottomHairline]|", options: NSLayoutFormatOptions(0), metrics: nil, views: ["menuBottomHairline":menuBottomHairline])
+            let menuBottomHairline_constraint_V:Array = NSLayoutConstraint.constraintsWithVisualFormat("V:[menuBottomHairline(0.5)]|", options: NSLayoutFormatOptions(0), metrics: nil, views: ["menuBottomHairline":menuBottomHairline])
+            
+            self.addConstraints(menuBottomHairline_constraint_H)
+            self.addConstraints(menuBottomHairline_constraint_V)
+            
+            menuBottomHairline.backgroundColor = color
+        }        
     }
 }

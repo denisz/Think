@@ -122,6 +122,9 @@
 		A966EDAB1B73D3BF002DFED8 /* UITextField+placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A966EDAA1B73D3BF002DFED8 /* UITextField+placeholder.swift */; };
 		A966EDAD1B73D5C9002DFED8 /* UIViewController+keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A966EDAC1B73D5C9002DFED8 /* UIViewController+keyboard.swift */; };
 		A966EDB01B7402BF002DFED8 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A966EDAF1B7402BF002DFED8 /* ProfileViewController.swift */; };
+		A96B871A1B94DD6E00D66C44 /* BaseQueryTableViewCollection+FixAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96B87191B94DD6E00D66C44 /* BaseQueryTableViewCollection+FixAutoLayout.swift */; };
+		A96B871C1B959BBF00D66C44 /* MeasureText.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96B871B1B959BBF00D66C44 /* MeasureText.swift */; };
+		A96B871E1B959FC000D66C44 /* NSString+height.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96B871D1B959FC000D66C44 /* NSString+height.swift */; };
 		A96D027A1B9483550066839F /* OutMessageViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A96D02791B9483550066839F /* OutMessageViewCell.xib */; };
 		A97184791B8B337A00653F68 /* CommentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A97184781B8B337A00653F68 /* CommentsViewController.xib */; };
 		A971847F1B8B47FF00653F68 /* DGTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = A971847E1B8B47FF00653F68 /* DGTextField.m */; };
@@ -424,6 +427,9 @@
 		A966EDAC1B73D5C9002DFED8 /* UIViewController+keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+keyboard.swift"; sourceTree = "<group>"; };
 		A966EDAE1B73D8DA002DFED8 /* Think.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Think.entitlements; sourceTree = "<group>"; };
 		A966EDAF1B7402BF002DFED8 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		A96B87191B94DD6E00D66C44 /* BaseQueryTableViewCollection+FixAutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BaseQueryTableViewCollection+FixAutoLayout.swift"; sourceTree = "<group>"; };
+		A96B871B1B959BBF00D66C44 /* MeasureText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasureText.swift; sourceTree = "<group>"; };
+		A96B871D1B959FC000D66C44 /* NSString+height.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+height.swift"; sourceTree = "<group>"; };
 		A96D02791B9483550066839F /* OutMessageViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OutMessageViewCell.xib; sourceTree = "<group>"; };
 		A97184781B8B337A00653F68 /* CommentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentsViewController.xib; sourceTree = "<group>"; };
 		A971847D1B8B47E200653F68 /* DGTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGTextField.h; sourceTree = "<group>"; };
@@ -772,6 +778,7 @@
 				A999C2451B9067F00068C330 /* Observable.swift */,
 				A99795991B92EF3400B2AA09 /* Threading.swift */,
 				A99795A81B93829B00B2AA09 /* Device.swift */,
+				A96B871B1B959BBF00D66C44 /* MeasureText.swift */,
 			);
 			path = Singleton;
 			sourceTree = "<group>";
@@ -787,6 +794,7 @@
 				A9B5D4CC1B861D4F003B2E78 /* String+truncate.swift */,
 				A97184881B8CEA7F00653F68 /* UIViewController+Cropimage.swift */,
 				A962DBCC1B8EFB08000A17F3 /* PFTableView+Clear.swift */,
+				A96B871D1B959FC000D66C44 /* NSString+height.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -975,6 +983,7 @@
 				A9D3862B1B7A84B600DD8492 /* BaseGestureQueryTableViewController.swift */,
 				A92897AA1B7C93AF00A1A754 /* BaseUIView.swift */,
 				A9F607A31B7D2DF000FC1832 /* BaseProfileHeaderView.swift */,
+				A96B87191B94DD6E00D66C44 /* BaseQueryTableViewCollection+FixAutoLayout.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -1650,6 +1659,7 @@
 				A99AE6181B7666DE00085138 /* MessageBubbleNodeFactory.swift in Sources */,
 				A9BF09671B7BEA9100A1D7E8 /* Ionicons.swift in Sources */,
 				A92106791B8378BB009C0B08 /* ToolbarNewPostView.swift in Sources */,
+				A96B871C1B959BBF00D66C44 /* MeasureText.swift in Sources */,
 				A9D6EC791B74DCA6002546A3 /* String+localized.swift in Sources */,
 				A99AE63A1B775DC400085138 /* SeperatorView.swift in Sources */,
 				A9D6EC661B74D7D9002546A3 /* BaseQueryTableViewContoller.swift in Sources */,
@@ -1705,6 +1715,8 @@
 				A9D6EC571B7405A7002546A3 /* StatefulViewController.swift in Sources */,
 				A9B5D4BF1B85BC50003B2E78 /* OverlayView.swift in Sources */,
 				A962DBC91B8EE643000A17F3 /* PrivacyViewController.swift in Sources */,
+				A96B871E1B959FC000D66C44 /* NSString+height.swift in Sources */,
+				A96B871A1B94DD6E00D66C44 /* BaseQueryTableViewCollection+FixAutoLayout.swift in Sources */,
 				A9B5D4D51B871778003B2E78 /* FactoryControllers.swift in Sources */,
 				A962DBD51B8FA829000A17F3 /* PeopleViewCell.swift in Sources */,
 				A90B28091B822E8700A8D3E7 /* BlockPostViewCell.swift in Sources */,

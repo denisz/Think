@@ -194,6 +194,14 @@ import Bolts
 }
 
 extension NewPostViewController: UITableViewDelegate {
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if iOS8 {
+            return UITableViewAutomaticDimension
+        } else {
+            return 206
+        }
+    }
+
     func insertNewBlockAfterBlock(block: PostBlock, type: PostBlockType) {
         var index = self.blocks?.find{$0 == block}
         

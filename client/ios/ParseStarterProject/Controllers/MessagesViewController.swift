@@ -154,6 +154,14 @@ import VGParallaxHeader
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if iOS8 {
+            return UITableViewAutomaticDimension
+        } else {
+            return 100
+        }
+    }
+    
     override func preferredStatusBarStyle() -> UIStatusBarStyle  {
         return UIStatusBarStyle.Default
     }

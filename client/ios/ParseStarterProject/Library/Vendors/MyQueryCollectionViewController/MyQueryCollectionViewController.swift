@@ -114,10 +114,6 @@ class MyQueryCollectionViewController: UIViewController, NSObjectProtocol{
         }
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-    }
-    
     func refreshControlValueChanged(sender: UIRefreshControl) {
         if !self.loading {
             self.loadObjects()

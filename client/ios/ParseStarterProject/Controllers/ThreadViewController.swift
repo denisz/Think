@@ -31,7 +31,10 @@ import ParseUI
         self.tableView.estimatedRowHeight   = 44.0;
         self.tableView.rowHeight            = UITableViewAutomaticDimension;
         self.tableView.tableFooterView      = UIView()
-        self.tableView.layoutMargins        = UIEdgeInsetsZero
+        
+        if self.tableView.respondsToSelector("layoutMargins") {
+            self.tableView.layoutMargins        = UIEdgeInsetsZero
+        }
         
         self.setupNavigationBar()
         self.setupInputBar()
@@ -128,9 +131,31 @@ import ParseUI
         }
         
         cell.prepareView(object!)
+        
+        if cell.respondsToSelector("layoutMargins") {
+            cell.layoutMargins  = UIEdgeInsetsZero
+        }
+        
         cell.separatorInset = UIEdgeInsetsZero
-        cell.layoutMargins  = UIEdgeInsetsZero
+        
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if iOS8 {
+            return UITableViewAutomaticDimension
+        } else {
+            var height: CGFloat = 0
+            if let object = objectAtIndexPath(indexPath) {
+                if let message = Thread.lastMessage(object) {
+                    let body = MessageModel.content(message)
+                    height = MeasureText.heightForText(body, font: kThreadContentFont, width: kWidthScreen)
+                    height += 52
+                }
+            }
+            
+            return max(height, 100)
+        }
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {

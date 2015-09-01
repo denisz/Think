@@ -98,6 +98,14 @@ import Bolts
         return cell
     }
     
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if iOS8 {
+            return UITableViewAutomaticDimension
+        } else {
+            return 78
+        }
+    }
+    
     override func preferredStatusBarStyle() -> UIStatusBarStyle  {
         return UIStatusBarStyle.LightContent
     }

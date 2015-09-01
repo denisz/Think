@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -110,6 +111,7 @@
                             <constraint firstAttribute="bottom" secondItem="u4c-ui-RBz" secondAttribute="bottom" id="d9U-Lw-yDa"/>
                             <constraint firstAttribute="trailing" secondItem="u4c-ui-RBz" secondAttribute="trailing" id="ssh-mW-gdk"/>
                             <constraint firstItem="u4c-ui-RBz" firstAttribute="leading" secondItem="InD-f3-0Qf" secondAttribute="leading" id="tZl-pH-zEH"/>
+                            <constraint firstAttribute="height" constant="180" id="xkt-Tl-OjA"/>
                         </constraints>
                     </view>
                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1DU-8A-xje">

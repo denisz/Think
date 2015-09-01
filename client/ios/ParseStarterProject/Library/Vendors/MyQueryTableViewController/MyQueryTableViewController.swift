@@ -133,10 +133,6 @@ class MyQueryTableViewController: UIViewController, NSObjectProtocol {
         self.tableView = tableView
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-    }
-    
     func refreshControlValueChanged(sender: UIRefreshControl) {
         self.loadObjects()
     }

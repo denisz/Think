@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -66,7 +67,7 @@
                                         <constraint firstAttribute="width" constant="38" id="WTe-JR-4qn"/>
                                     </constraints>
                                 </imageView>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fwv-pn-1iI" customClass="UIButtonCircle" customModule="Snugly" customModuleProvider="target">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fwv-pn-1iI" customClass="UIButtonCircle" customModule="Think" customModuleProvider="target">
                                     <rect key="frame" x="36" y="36" width="32" height="32"/>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
@@ -133,7 +134,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u1B-7k-xk2">
                             <rect key="frame" x="0.0" y="341" width="320" height="40"/>
                             <subviews>
-                                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+1345" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BPn-bQ-KI1" userLabel="Likes" customClass="LabelViewWithIcon" customModule="Snugly" customModuleProvider="target">
+                                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+1345" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BPn-bQ-KI1" userLabel="Likes" customClass="LabelViewWithIcon" customModule="Think" customModuleProvider="target">
                                     <rect key="frame" x="83" y="8" width="154" height="25"/>
                                     <gestureRecognizers/>
                                     <constraints>
@@ -212,7 +213,7 @@
                                         <outletCollection property="gestureRecognizers" destination="nl0-ra-9hI" appends="YES" id="eYc-d6-oya"/>
                                     </connections>
                                 </label>
-                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OxS-BU-EZO" customClass="UIButtonRoundedBorder" customModule="Snugly" customModuleProvider="target">
+                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OxS-BU-EZO" customClass="UIButtonRoundedBorder" customModule="Think" customModuleProvider="target">
                                     <rect key="frame" x="266" y="15" width="46" height="32"/>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <gestureRecognizers/>
@@ -268,7 +269,7 @@
                                 <constraint firstItem="qQ8-Ow-Bk2" firstAttribute="top" secondItem="3Ed-fD-4ML" secondAttribute="top" constant="15" id="kCo-he-C50"/>
                             </constraints>
                         </view>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="290" placeholderIntrinsicHeight="150" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fuS-BX-FWV" customClass="PostContentView" customModule="Snugly" customModuleProvider="target">
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="290" placeholderIntrinsicHeight="150" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fuS-BX-FWV" customClass="PostContentView" customModule="Think" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="81" width="320" height="150"/>
                             <color key="tintColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
@@ -294,7 +295,7 @@
                                         <outletCollection property="gestureRecognizers" destination="n53-ez-uxp" appends="YES" id="wJx-Et-yQC"/>
                                     </connections>
                                 </label>
-                                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="vN6-vr-p2p" customClass="CommentsTableView" customModule="Snugly" customModuleProvider="target">
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="vN6-vr-p2p" customClass="CommentsTableView" customModule="Think" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="39" width="320" height="147"/>
                                     <color key="backgroundColor" red="0.9607800245" green="0.9607800245" blue="0.9607800245" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>

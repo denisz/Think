@@ -20,17 +20,20 @@ protocol LogInViewControllerDelegate {
     func logIn(controller: LogInViewController, sign signController: UIViewController)
 }
 
-// (kConstantTop, kConstantSN)
-func determineContraints() -> (CGFloat, CGFloat){
+// (kConstantTop, kConstantSN, show (kConstantTop, kConstantSN) )
+func determineContraints() -> (CGFloat, CGFloat, CGFloat, CGFloat){
     if UIDevice().userInterfaceIdiom == .Phone {
+        println(UIScreen.mainScreen().bounds.height)
         switch UIScreen.mainScreen().bounds.height {
         case 960:
-            return (20, 40)
+            return (20, 40, -45, 25)
+        case 480:
+            return (20, 40, -45, 25)
         default:
-            return (60, 60)
+            return (60, 60, 15, 35)
         }
     }
-    return (60, 60)
+    return (60, 60, 15, 35)
 }
 
 @objc(LogInViewController) class LogInViewController: UIViewController {
@@ -83,8 +86,8 @@ func determineContraints() -> (CGFloat, CGFloat){
             self.topConstraint.constant = constraints.0
             self.betweenSigninAndNicknameConstraint.constant = constraints.1
         } else {
-            self.topConstraint.constant = 15
-            self.betweenSigninAndNicknameConstraint.constant = 35
+            self.topConstraint.constant = constraints.2
+            self.betweenSigninAndNicknameConstraint.constant = constraints.3
         }
     }
     
@@ -116,10 +119,6 @@ func determineContraints() -> (CGFloat, CGFloat){
         return false
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-    }
-
     @IBAction func didTapForgot(sender: AnyObject) {
         var userEmailAddress = emailAddress.text
         userEmailAddress = userEmailAddress.lowercaseString

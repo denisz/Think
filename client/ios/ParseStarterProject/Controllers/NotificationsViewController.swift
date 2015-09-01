@@ -97,11 +97,25 @@ import Bolts
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell? {
         let cell = tableView.dequeueReusableCellWithIdentifier(kReusableNotificationsViewCell) as! NotificationViewCell
-        cell.layoutMargins = UIEdgeInsetsZero
-        cell.preservesSuperviewLayoutMargins = false
+        
+        if cell.respondsToSelector("layoutMargins") {
+            cell.layoutMargins = UIEdgeInsetsZero
+        }
+        
+        if cell.respondsToSelector("preservesSuperviewLayoutMargins") {
+            cell.preservesSuperviewLayoutMargins = false
+        }
 
         cell.prepareView(object!)
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if iOS8 {
+            return UITableViewAutomaticDimension
+        } else {
+            return 86
+        }
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) {

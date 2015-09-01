@@ -22,10 +22,17 @@ class SwipeTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         let toVC = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
         
         let containerView = transitionContext.containerView()
-        // from view is the pushed view in the pop case
-        let fromView = transitionContext.viewForKey(UITransitionContextFromViewKey)!
-        let toView = transitionContext.viewForKey(UITransitionContextToViewKey)!
+        var toView: UIView
+        var fromView: UIView
         
+        // from view is the pushed view in the pop case
+        if iOS7 {
+            fromView    = fromVC.view
+            toView      = toVC.view
+        } else {
+            fromView    = transitionContext.viewForKey(UITransitionContextFromViewKey)!
+            toView      = transitionContext.viewForKey(UITransitionContextToViewKey)!
+        }
         
         let initialFrame = transitionContext.initialFrameForViewController(toVC)
         let finialFrame = transitionContext.finalFrameForViewController(toVC)
