@@ -9,11 +9,12 @@ let kFontNavigationBarTitle = UIFont(name: "OpenSans-Light", size: 19)!
 let kFontNavigationItem = UIFont(name: "OpenSans-Light", size: 18)!
 let kWidthScreen: CGFloat = 320
 
-let kPostContentFont    = UIFont(name: "PTSerif-Regular", size: 14)!
-let kPostTitleFont      = UIFont(name: "PTSerif-Bold", size: 17)!
-let kThreadContentFont  = UIFont(name: "OpenSans", size: 13)!
-let kCommentContentFont = UIFont(name: "OpenSans", size: 13)!
-let kPostBlockContentFont = UIFont(name: "PTSerif-Regular", size: 16)!
+let kPostContentFont        = UIFont(name: "PTSerif-Regular",   size: 14)!
+let kPostTitleFont          = UIFont(name: "PTSerif-Bold",      size: 17)!
+let kThreadContentFont      = UIFont(name: "OpenSans",          size: 13)!
+let kCommentContentFont     = UIFont(name: "OpenSans",          size: 13)!
+let kPostBlockContentFont   = UIFont(name: "PTSerif-Regular",   size: 16)!
+
 
 //MARK: Common Fields
 let kClassCreatedAt = "createdAt"
@@ -232,23 +233,28 @@ let kReusableCommentViewCell        = "CommentViewCell"
 let kReusablePeopleViewCell         = "PeopleViewCell"
 let kReusableInThreadViewCell       = "InThreadViewCell"
 let kReusableOutThreadViewCell      = "OutThreadViewCell"
+let kReusableToolbarNewPost         = "ToolbarNewPostViewCell"
 
 
 /// MARK: - KVO
 let kvoBlockPropertyStyle   = "styleRaw"
 let kvoBlockPropertyPicture = "uploadedPicture"
 
+
 // MARK:- Placeholders
-let kPostPlaceholder = UIImage(named: "pic_post")
-let kUserPlaceholder = UIImage(named: "ava_profile")
-let kUserCoverPlaceholder = UIImage(named: "profile_bg")
-let kIconNotificationPlaceholder = UIImage(named: "ic_follow")
-let kIconNotifyFollowPlaceholder = UIImage(named: "ic_add_follow")
-let kIconNotifyLikePlaceholder = UIImage(named: "ic_add_like")
-let kIconNotifyCommentPlaceholder = UIImage(named: "ic_add_comment")
-let kUserHiddenName = "Hidden"
-let kPostTitlePlaceholder = "Hidden"
-let kSharePlaceholder = "Post in \(kAppName)"
+let kPostPlaceholder                = UIImage(named: "pic_post")
+let kUserPlaceholder                = UIImage(named: "ava_profile")
+let kUserCoverPlaceholder           = UIImage(named: "profile_bg")
+let kIconNotificationPlaceholder    = UIImage(named: "ic_follow")
+let kIconNotifyFollowPlaceholder    = UIImage(named: "ic_add_follow")
+let kIconNotifyLikePlaceholder      = UIImage(named: "ic_add_like")
+let kIconNotifyCommentPlaceholder   = UIImage(named: "ic_add_comment")
+let kColorLikeActive                = UIColor(red:0, green:0.64, blue:0.85, alpha:1)
+let kColorLikeUnactive              = UIColor(red:0.2, green:0.28, blue:0.37, alpha:1)
+let kColorStickyTop                 = UIColor(red:0.33, green:0.39, blue:0.42, alpha:1)
+let kUserHiddenName                 = "Hidden"
+let kPostTitlePlaceholder           = "Hidden"
+let kSharePlaceholder               = "Post in \(kAppName)"
 
 
 

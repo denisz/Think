@@ -68,7 +68,6 @@
 		A92897A71B7C930E00A1A754 /* PostViewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A92897A61B7C930E00A1A754 /* PostViewHeaderView.xib */; };
 		A92897A91B7C931900A1A754 /* PostViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92897A81B7C931900A1A754 /* PostViewHeaderView.swift */; };
 		A92897AB1B7C93AF00A1A754 /* BaseUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92897AA1B7C93AF00A1A754 /* BaseUIView.swift */; };
-		A92897AD1B7CCB3A00A1A754 /* ChannelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A92897AC1B7CCB3A00A1A754 /* ChannelViewController.xib */; };
 		A92897AF1B7CD35E00A1A754 /* YouFollowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92897AE1B7CD35E00A1A754 /* YouFollowViewController.swift */; };
 		A92897B11B7CD52B00A1A754 /* YouFollowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A92897B01B7CD52A00A1A754 /* YouFollowViewController.xib */; };
 		A92897B31B7CD54E00A1A754 /* FollowersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A92897B21B7CD54E00A1A754 /* FollowersViewController.xib */; };
@@ -105,7 +104,6 @@
 		A966ED7D1B738AE7002DFED8 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A966ED7C1B738AE7002DFED8 /* Social.framework */; };
 		A966ED7F1B738AEF002DFED8 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A966ED7E1B738AEF002DFED8 /* Accounts.framework */; };
 		A966ED851B73A0FE002DFED8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A966ED841B73A0FE002DFED8 /* Constants.swift */; };
-		A966ED881B73A15E002DFED8 /* view.xib in Resources */ = {isa = PBXBuildFile; fileRef = A966ED871B73A15E002DFED8 /* view.xib */; };
 		A966ED8B1B73A23A002DFED8 /* UIButton+border.swift in Sources */ = {isa = PBXBuildFile; fileRef = A966ED8A1B73A23A002DFED8 /* UIButton+border.swift */; };
 		A966ED8D1B73A316002DFED8 /* UITextField+border.swift in Sources */ = {isa = PBXBuildFile; fileRef = A966ED8C1B73A316002DFED8 /* UITextField+border.swift */; };
 		A966ED9B1B73A7E8002DFED8 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = A966ED901B73A7E8002DFED8 /* LICENSE.txt */; };
@@ -155,23 +153,6 @@
 		A999C2521B9095E00068C330 /* OutThreadViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A999C2511B9095E00068C330 /* OutThreadViewCell.xib */; };
 		A999C2541B9097FB0068C330 /* ThreadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A999C2531B9097FB0068C330 /* ThreadViewController.swift */; };
 		A999C2561B9098270068C330 /* ThreadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A999C2551B9098270068C330 /* ThreadViewController.xib */; };
-		A99AE6101B7666DE00085138 /* AsyncMessagesViewController.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A99AE5FF1B7666DE00085138 /* AsyncMessagesViewController.xcassets */; };
-		A99AE6111B7666DE00085138 /* AsyncMessagesCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99AE6011B7666DE00085138 /* AsyncMessagesCollectionViewDataSource.swift */; };
-		A99AE6121B7666DE00085138 /* AsyncMessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99AE6021B7666DE00085138 /* AsyncMessagesViewController.swift */; };
-		A99AE6131B7666DE00085138 /* DefaultAsyncMessagesCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99AE6031B7666DE00085138 /* DefaultAsyncMessagesCollectionViewDataSource.swift */; };
-		A99AE6141B7666DE00085138 /* MessageBubbleImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99AE6041B7666DE00085138 /* MessageBubbleImageProvider.swift */; };
-		A99AE6151B7666DE00085138 /* MessageCellNodeMetadataFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99AE6051B7666DE00085138 /* MessageCellNodeMetadataFactory.swift */; };
-		A99AE6161B7666DE00085138 /* MessageTimestampFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99AE6061B7666DE00085138 /* MessageTimestampFormatter.swift */; };
-		A99AE6171B7666DE00085138 /* MessageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99AE6081B7666DE00085138 /* MessageData.swift */; };
-		A99AE6181B7666DE00085138 /* MessageBubbleNodeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99AE60A1B7666DE00085138 /* MessageBubbleNodeFactory.swift */; };
-		A99AE6191B7666DE00085138 /* MessageCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99AE60B1B7666DE00085138 /* MessageCellNode.swift */; };
-		A99AE61A1B7666DE00085138 /* MessageContentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99AE60C1B7666DE00085138 /* MessageContentNode.swift */; };
-		A99AE61B1B7666DE00085138 /* MessageNetworkImageBubbleNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99AE60D1B7666DE00085138 /* MessageNetworkImageBubbleNode.swift */; };
-		A99AE61C1B7666DE00085138 /* MessageTextBubbleNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99AE60E1B7666DE00085138 /* MessageTextBubbleNode.swift */; };
-		A99AE61D1B7666DE00085138 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99AE60F1B7666DE00085138 /* UIImageExtensions.swift */; };
-		A99AE6211B7666F800085138 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99AE61F1B7666F800085138 /* Message.swift */; };
-		A99AE6221B7666F800085138 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99AE6201B7666F800085138 /* User.swift */; };
-		A99AE6241B7686A700085138 /* BaseMessageCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99AE6231B7686A700085138 /* BaseMessageCollectionView.swift */; };
 		A99AE6281B76952700085138 /* SideMenuVIewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A99AE6271B76952700085138 /* SideMenuVIewController.xib */; };
 		A99AE62A1B76988A00085138 /* SideMenuViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A99AE6291B76988A00085138 /* SideMenuViewCell.xib */; };
 		A99AE62C1B76A72C00085138 /* BaseSideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99AE62B1B76A72C00085138 /* BaseSideMenuViewController.swift */; };
@@ -371,7 +352,6 @@
 		A92897A61B7C930E00A1A754 /* PostViewHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostViewHeaderView.xib; sourceTree = "<group>"; };
 		A92897A81B7C931900A1A754 /* PostViewHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewHeaderView.swift; sourceTree = "<group>"; };
 		A92897AA1B7C93AF00A1A754 /* BaseUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseUIView.swift; sourceTree = "<group>"; };
-		A92897AC1B7CCB3A00A1A754 /* ChannelViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChannelViewController.xib; sourceTree = "<group>"; };
 		A92897AE1B7CD35E00A1A754 /* YouFollowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouFollowViewController.swift; sourceTree = "<group>"; };
 		A92897B01B7CD52A00A1A754 /* YouFollowViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YouFollowViewController.xib; sourceTree = "<group>"; };
 		A92897B21B7CD54E00A1A754 /* FollowersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FollowersViewController.xib; sourceTree = "<group>"; };
@@ -409,7 +389,6 @@
 		A966ED7C1B738AE7002DFED8 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		A966ED7E1B738AEF002DFED8 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		A966ED841B73A0FE002DFED8 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		A966ED871B73A15E002DFED8 /* view.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = view.xib; sourceTree = "<group>"; };
 		A966ED8A1B73A23A002DFED8 /* UIButton+border.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+border.swift"; sourceTree = "<group>"; };
 		A966ED8C1B73A316002DFED8 /* UITextField+border.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+border.swift"; sourceTree = "<group>"; };
 		A966ED901B73A7E8002DFED8 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
@@ -466,23 +445,6 @@
 		A999C2511B9095E00068C330 /* OutThreadViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OutThreadViewCell.xib; sourceTree = "<group>"; };
 		A999C2531B9097FB0068C330 /* ThreadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreadViewController.swift; sourceTree = "<group>"; };
 		A999C2551B9098270068C330 /* ThreadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThreadViewController.xib; sourceTree = "<group>"; };
-		A99AE5FF1B7666DE00085138 /* AsyncMessagesViewController.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = AsyncMessagesViewController.xcassets; sourceTree = "<group>"; };
-		A99AE6011B7666DE00085138 /* AsyncMessagesCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncMessagesCollectionViewDataSource.swift; sourceTree = "<group>"; };
-		A99AE6021B7666DE00085138 /* AsyncMessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncMessagesViewController.swift; sourceTree = "<group>"; };
-		A99AE6031B7666DE00085138 /* DefaultAsyncMessagesCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultAsyncMessagesCollectionViewDataSource.swift; sourceTree = "<group>"; };
-		A99AE6041B7666DE00085138 /* MessageBubbleImageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageBubbleImageProvider.swift; sourceTree = "<group>"; };
-		A99AE6051B7666DE00085138 /* MessageCellNodeMetadataFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCellNodeMetadataFactory.swift; sourceTree = "<group>"; };
-		A99AE6061B7666DE00085138 /* MessageTimestampFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTimestampFormatter.swift; sourceTree = "<group>"; };
-		A99AE6081B7666DE00085138 /* MessageData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageData.swift; sourceTree = "<group>"; };
-		A99AE60A1B7666DE00085138 /* MessageBubbleNodeFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageBubbleNodeFactory.swift; sourceTree = "<group>"; };
-		A99AE60B1B7666DE00085138 /* MessageCellNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCellNode.swift; sourceTree = "<group>"; };
-		A99AE60C1B7666DE00085138 /* MessageContentNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageContentNode.swift; sourceTree = "<group>"; };
-		A99AE60D1B7666DE00085138 /* MessageNetworkImageBubbleNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageNetworkImageBubbleNode.swift; sourceTree = "<group>"; };
-		A99AE60E1B7666DE00085138 /* MessageTextBubbleNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTextBubbleNode.swift; sourceTree = "<group>"; };
-		A99AE60F1B7666DE00085138 /* UIImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
-		A99AE61F1B7666F800085138 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
-		A99AE6201B7666F800085138 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		A99AE6231B7686A700085138 /* BaseMessageCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMessageCollectionView.swift; sourceTree = "<group>"; };
 		A99AE6271B76952700085138 /* SideMenuVIewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SideMenuVIewController.xib; sourceTree = "<group>"; };
 		A99AE6291B76988A00085138 /* SideMenuViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SideMenuViewCell.xib; sourceTree = "<group>"; };
 		A99AE62B1B76A72C00085138 /* BaseSideMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSideMenuViewController.swift; sourceTree = "<group>"; };
@@ -945,7 +907,6 @@
 				A9D385FD1B78082A00DD8492 /* PostViewController.xib */,
 				A9D386071B79245200DD8492 /* SettingsPostViewController.xib */,
 				A9D386131B7A729300DD8492 /* MessagesViewController.xib */,
-				A92897AC1B7CCB3A00A1A754 /* ChannelViewController.xib */,
 				A92897B01B7CD52A00A1A754 /* YouFollowViewController.xib */,
 				A92897B21B7CD54E00A1A754 /* FollowersViewController.xib */,
 				A9D385FB1B78081D00DD8492 /* NewPostViewController.xib */,
@@ -978,7 +939,6 @@
 				A9BF09621B7BE77F00A1D7E8 /* BaseQuerySearchTableViewController.swift */,
 				A9D386011B786A9000DD8492 /* BaseFormViewController.swift */,
 				A966ED601B737D31002DFED8 /* BaseNavigationController.swift */,
-				A99AE6231B7686A700085138 /* BaseMessageCollectionView.swift */,
 				A99AE62B1B76A72C00085138 /* BaseSideMenuViewController.swift */,
 				A9D3862B1B7A84B600DD8492 /* BaseGestureQueryTableViewController.swift */,
 				A92897AA1B7C93AF00A1A754 /* BaseUIView.swift */,
@@ -1023,7 +983,6 @@
 				A9F6079C1B7D054200FC1832 /* SwipeTransition */,
 				A9BF09641B7BEA9100A1D7E8 /* Ionicons */,
 				A9D3862D1B7A897400DD8492 /* FontAwesomeKit */,
-				A99AE5FD1B7666DE00085138 /* SourceCommentsViewController */,
 				A9D6EC541B7405A7002546A3 /* StatefulViewController */,
 			);
 			path = Vendors;
@@ -1032,7 +991,6 @@
 		A966ED861B73A147002DFED8 /* Playground */ = {
 			isa = PBXGroup;
 			children = (
-				A966ED871B73A15E002DFED8 /* view.xib */,
 			);
 			path = Playground;
 			sourceTree = "<group>";
@@ -1152,69 +1110,6 @@
 				A999C2511B9095E00068C330 /* OutThreadViewCell.xib */,
 			);
 			name = ThreadViewCell;
-			sourceTree = "<group>";
-		};
-		A99AE5FD1B7666DE00085138 /* SourceCommentsViewController */ = {
-			isa = PBXGroup;
-			children = (
-				A99AE61E1B7666F800085138 /* Support */,
-				A99AE5FE1B7666DE00085138 /* Assets */,
-				A99AE6001B7666DE00085138 /* Controllers */,
-				A99AE6071B7666DE00085138 /* Models */,
-				A99AE6091B7666DE00085138 /* Views */,
-			);
-			path = SourceCommentsViewController;
-			sourceTree = "<group>";
-		};
-		A99AE5FE1B7666DE00085138 /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-				A99AE5FF1B7666DE00085138 /* AsyncMessagesViewController.xcassets */,
-			);
-			path = Assets;
-			sourceTree = "<group>";
-		};
-		A99AE6001B7666DE00085138 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				A99AE6011B7666DE00085138 /* AsyncMessagesCollectionViewDataSource.swift */,
-				A99AE6021B7666DE00085138 /* AsyncMessagesViewController.swift */,
-				A99AE6031B7666DE00085138 /* DefaultAsyncMessagesCollectionViewDataSource.swift */,
-				A99AE6041B7666DE00085138 /* MessageBubbleImageProvider.swift */,
-				A99AE6051B7666DE00085138 /* MessageCellNodeMetadataFactory.swift */,
-				A99AE6061B7666DE00085138 /* MessageTimestampFormatter.swift */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
-		A99AE6071B7666DE00085138 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				A99AE6081B7666DE00085138 /* MessageData.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		A99AE6091B7666DE00085138 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				A99AE60A1B7666DE00085138 /* MessageBubbleNodeFactory.swift */,
-				A99AE60B1B7666DE00085138 /* MessageCellNode.swift */,
-				A99AE60C1B7666DE00085138 /* MessageContentNode.swift */,
-				A99AE60D1B7666DE00085138 /* MessageNetworkImageBubbleNode.swift */,
-				A99AE60E1B7666DE00085138 /* MessageTextBubbleNode.swift */,
-				A99AE60F1B7666DE00085138 /* UIImageExtensions.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		A99AE61E1B7666F800085138 /* Support */ = {
-			isa = PBXGroup;
-			children = (
-				A99AE61F1B7666F800085138 /* Message.swift */,
-				A99AE6201B7666F800085138 /* User.swift */,
-			);
-			path = Support;
 			sourceTree = "<group>";
 		};
 		A9BF09641B7BEA9100A1D7E8 /* Ionicons */ = {
@@ -1428,7 +1323,6 @@
 				A921069B1B8503AF009C0B08 /* TextPostViewCell.xib in Resources */,
 				A966EDA51B73A7E8002DFED8 /* OpenSans-SemiboldItalic.ttf in Resources */,
 				A92897B51B7CD6AC00A1A754 /* ProfileGuestHeaderView.xib in Resources */,
-				A99AE6101B7666DE00085138 /* AsyncMessagesViewController.xcassets in Resources */,
 				A9D386461B7A897400DD8492 /* LICENSE in Resources */,
 				A9D6EC971B7515B5002546A3 /* FeedViewController.xib in Resources */,
 				A962DBD71B8FA834000A17F3 /* PeopleViewCell.xib in Resources */,
@@ -1479,7 +1373,6 @@
 				A921069A1B8503AF009C0B08 /* PicturePostViewCell.xib in Resources */,
 				A92897B31B7CD54E00A1A754 /* FollowersViewController.xib in Resources */,
 				A9D386061B79242D00DD8492 /* ProfileEditViewController.xib in Resources */,
-				A92897AD1B7CCB3A00A1A754 /* ChannelViewController.xib in Resources */,
 				A9D386471B7A897400DD8492 /* zocial-regular-webfont.ttf in Resources */,
 				A9D386431B7A897400DD8492 /* FontAwesome.otf in Resources */,
 				A966ED9F1B73A7E8002DFED8 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
@@ -1501,7 +1394,6 @@
 				A9D385FC1B78081D00DD8492 /* NewPostViewController.xib in Resources */,
 				A921067B1B837D34009C0B08 /* ToolbarNewPostViewCell.xib in Resources */,
 				A966EDA21B73A7E8002DFED8 /* OpenSans-LightItalic.ttf in Resources */,
-				A966ED881B73A15E002DFED8 /* view.xib in Resources */,
 				A9D385D31B77601800DD8492 /* PT_Serif-Web-Italic.ttf in Resources */,
 				A921069C1B8503AF009C0B08 /* TitlePostViewCell.xib in Resources */,
 				A9D385E21B77E13300DD8492 /* DraftsViewController.xib in Resources */,
@@ -1587,19 +1479,16 @@
 				A92106751B837522009C0B08 /* SZTextView.m in Sources */,
 				A9D6ECA21B7516A2002546A3 /* ProfilePostViewCell.swift in Sources */,
 				A9D386421B7A897400DD8492 /* FAKZocial.m in Sources */,
-				A99AE6141B7666DE00085138 /* MessageBubbleImageProvider.swift in Sources */,
 				A966ED611B737D31002DFED8 /* BaseNavigationController.swift in Sources */,
 				A962DBC71B8E0C41000A17F3 /* Notify.swift in Sources */,
 				A92897A91B7C931900A1A754 /* PostViewHeaderView.swift in Sources */,
 				A962DBCB1B8EED20000A17F3 /* MyCache.swift in Sources */,
 				A9B5D4CD1B861D4F003B2E78 /* String+truncate.swift in Sources */,
-				A99AE61D1B7666DE00085138 /* UIImageExtensions.swift in Sources */,
 				A9D386411B7A897400DD8492 /* FAKIonIcons.m in Sources */,
 				A9D386001B780A9A00DD8492 /* FollowersViewController.swift in Sources */,
 				A90B281E1B832D5C00A8D3E7 /* RRAddTagView.swift in Sources */,
 				A9E0001F1B88AEED00A1B1E6 /* TransformString.swift in Sources */,
 				A9D385E61B77EF5800DD8492 /* BookmarkMainPostView.swift in Sources */,
-				A99AE6131B7666DE00085138 /* DefaultAsyncMessagesCollectionViewDataSource.swift in Sources */,
 				A921066D1B835C0C009C0B08 /* Extension+String.swift in Sources */,
 				A90B28201B832D5C00A8D3E7 /* RRTagController.swift in Sources */,
 				A99AE62E1B77466100085138 /* NotificationsViewController.swift in Sources */,
@@ -1616,7 +1505,6 @@
 				A971847F1B8B47FF00653F68 /* DGTextField.m in Sources */,
 				A92897B71B7CD73F00A1A754 /* ProfileGuestHeaderView.swift in Sources */,
 				A997959A1B92EF3400B2AA09 /* Threading.swift in Sources */,
-				A99AE6191B7666DE00085138 /* MessageCellNode.swift in Sources */,
 				A962DBCF1B8F99A3000A17F3 /* HelperConstraint.swift in Sources */,
 				A9D386401B7A897400DD8492 /* FAKIcon.m in Sources */,
 				A999C2461B9067F00068C330 /* Observable.swift in Sources */,
@@ -1641,7 +1529,6 @@
 				A9D3860C1B792B6900DD8492 /* ProfileEditHeaderView.swift in Sources */,
 				A966ED8D1B73A316002DFED8 /* UITextField+border.swift in Sources */,
 				A9D3862A1B7A83E000DD8492 /* SBGestureTableViewCellSideView.swift in Sources */,
-				A99AE6151B7666DE00085138 /* MessageCellNodeMetadataFactory.swift in Sources */,
 				A9D386271B7A83E000DD8492 /* SBGestureTableView.swift in Sources */,
 				A90B28051B822E5100A8D3E7 /* TextPostViewCell.swift in Sources */,
 				A99795A91B93829B00B2AA09 /* Device.swift in Sources */,
@@ -1651,12 +1538,8 @@
 				A9D385D61B77665800DD8492 /* SettingsViewController.swift in Sources */,
 				A9B5D4C71B85C574003B2E78 /* FollowUserViewCell.swift in Sources */,
 				A92106651B833887009C0B08 /* Array+find.swift in Sources */,
-				A99AE6221B7666F800085138 /* User.swift in Sources */,
-				A99AE61A1B7666DE00085138 /* MessageContentNode.swift in Sources */,
 				A9B7D45E1B752ED400E79F12 /* UIImage+tintColor.swift in Sources */,
-				A99AE6161B7666DE00085138 /* MessageTimestampFormatter.swift in Sources */,
 				A99AE6321B7747E800085138 /* NotificationViewCell.swift in Sources */,
-				A99AE6181B7666DE00085138 /* MessageBubbleNodeFactory.swift in Sources */,
 				A9BF09671B7BEA9100A1D7E8 /* Ionicons.swift in Sources */,
 				A92106791B8378BB009C0B08 /* ToolbarNewPostView.swift in Sources */,
 				A96B871C1B959BBF00D66C44 /* MeasureText.swift in Sources */,
@@ -1666,7 +1549,6 @@
 				A9B5D4C91B85D357003B2E78 /* UserModel.swift in Sources */,
 				A92390191B7FB5A3004E3ECD /* UIViewController+FilterView.swift in Sources */,
 				A9D386041B78F36100DD8492 /* ProfileEditViewController.swift in Sources */,
-				A99AE61B1B7666DE00085138 /* MessageNetworkImageBubbleNode.swift in Sources */,
 				A9D6EC581B7405A7002546A3 /* ViewStateMachine.swift in Sources */,
 				A92106691B834541009C0B08 /* HSL.swift in Sources */,
 				A9D6EC641B74D76F002546A3 /* BaseQueryViewController.swift in Sources */,
@@ -1700,7 +1582,6 @@
 				A99795A51B92F6C900B2AA09 /* ContentAdultView.swift in Sources */,
 				A92106851B84CB82009C0B08 /* JSONStringify.swift in Sources */,
 				A962DBCD1B8EFB08000A17F3 /* PFTableView+Clear.swift in Sources */,
-				A99AE6241B7686A700085138 /* BaseMessageCollectionView.swift in Sources */,
 				A99795B01B939E8C00B2AA09 /* MyQueryCollectionViewController.swift in Sources */,
 				A9D6EC6D1B74D957002546A3 /* BasicPlaceholderView.swift in Sources */,
 				A9D6EC9E1B7515F6002546A3 /* ProfileHeaderView.swift in Sources */,
@@ -1708,7 +1589,6 @@
 				A9D385F01B77F91C00DD8492 /* DraftsViewCell.swift in Sources */,
 				A9F607A21B7D054200FC1832 /* SwipeTransitionDelegate.swift in Sources */,
 				A99795A71B92F97200B2AA09 /* DenyView.swift in Sources */,
-				A99AE61C1B7666DE00085138 /* MessageTextBubbleNode.swift in Sources */,
 				A9D6EC6F1B74D957002546A3 /* ErrorView.swift in Sources */,
 				A9B5D4CB1B85D6BC003B2E78 /* TransformDate.swift in Sources */,
 				A91AE0F11B8AE16200104795 /* MyQueryTableView.swift in Sources */,
@@ -1723,7 +1603,6 @@
 				A91AE0EE1B8AE0E800104795 /* CommentsTableView.swift in Sources */,
 				A9D385DE1B778EF600DD8492 /* BookmarksViewController.swift in Sources */,
 				A999C2491B90895A0068C330 /* PostHelper.swift in Sources */,
-				A99AE6111B7666DE00085138 /* AsyncMessagesCollectionViewDataSource.swift in Sources */,
 				A90B28071B822E6D00A8D3E7 /* PicturePostViewCell.swift in Sources */,
 				A999C2421B9058010068C330 /* Resizer.swift in Sources */,
 				A966EDB01B7402BF002DFED8 /* ProfileViewController.swift in Sources */,
@@ -1731,8 +1610,6 @@
 				A9D6EC7B1B74E66E002546A3 /* FeedViewController.swift in Sources */,
 				A99AE6381B774C2800085138 /* UIButtonRoundedBorder.swift in Sources */,
 				A9B5D4D71B871D5F003B2E78 /* BookmarkMarkView.swift in Sources */,
-				A99AE6171B7666DE00085138 /* MessageData.swift in Sources */,
-				A99AE6121B7666DE00085138 /* AsyncMessagesViewController.swift in Sources */,
 				A91AE0F31B8AFD9500104795 /* InputBarView.swift in Sources */,
 				A921066B1B835BD8009C0B08 /* UITableViewCel.swift in Sources */,
 				A9D386181B7A737B00DD8492 /* MessageViewCell.swift in Sources */,
@@ -1741,7 +1618,6 @@
 				A9B7D4601B75424B00E79F12 /* UImageVIewCircle.swift in Sources */,
 				A97184811B8C70CB00653F68 /* MessageModel.swift in Sources */,
 				A91AE0F71B8B03A300104795 /* CommentsViewController.swift in Sources */,
-				A99AE6211B7666F800085138 /* Message.swift in Sources */,
 				A92390171B7E2721004E3ECD /* MyActivityTableViewCell.swift in Sources */,
 				A92106671B8339CE009C0B08 /* UIColor+hex.swift in Sources */,
 				A92106881B84FB94009C0B08 /* PostContentView.swift in Sources */,

@@ -10,8 +10,6 @@ import Foundation
 import UIKit
 
 
-let kReusableToolbarNewPost = "ToolbarNewPostViewCell"
-
 @objc protocol ToolbarNewPostViewDelegate {
     func toolbar(view: ToolbarNewPostView, didTapNewBlock sender: UIView)
     func toolbar(view: ToolbarNewPostView, didTapChangeStyle sender: UIView)

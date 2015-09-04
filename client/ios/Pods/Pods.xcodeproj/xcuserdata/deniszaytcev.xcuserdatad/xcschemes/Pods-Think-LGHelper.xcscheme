@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "88C0246C7A12D848BD92045C"
+               BlueprintIdentifier = "A1B6F1A6A4B24D9C2924FF7F"
                BuildableName = "LGHelper.framework"
                BlueprintName = "Pods-Think-LGHelper"
                ReferencedContainer = "container:Pods.xcodeproj">

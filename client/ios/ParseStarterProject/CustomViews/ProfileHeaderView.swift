@@ -49,11 +49,11 @@ class ProfileHeaderView: BaseProfileHeaderView {
         
         self.profileName.text = UserModel.displayname(object)
         
-        self.profilePicture.image = kUserPlaceholder
-        self.profilePicture.file = UserModel.pictureImage(object)
+        self.profilePicture.image   = kUserPlaceholder
+        self.profilePicture.file    = UserModel.pictureImage(object)
         
         self.profileCover.image = kUserCoverPlaceholder
-        self.profileCover.file = UserModel.coverImage(object)
+        self.profileCover.file  = UserModel.coverImage(object)
         
         self.profileCover.loadInBackground()
         self.profilePicture.loadInBackground()

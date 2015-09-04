@@ -6,30 +6,6 @@
 // project.
 
 
-// Alamofire
-#define COCOAPODS_POD_AVAILABLE_Alamofire
-#define COCOAPODS_VERSION_MAJOR_Alamofire 1
-#define COCOAPODS_VERSION_MINOR_Alamofire 3
-#define COCOAPODS_VERSION_PATCH_Alamofire 0
-
-// AsyncDisplayKit
-#define COCOAPODS_POD_AVAILABLE_AsyncDisplayKit
-#define COCOAPODS_VERSION_MAJOR_AsyncDisplayKit 1
-#define COCOAPODS_VERSION_MINOR_AsyncDisplayKit 2
-#define COCOAPODS_VERSION_PATCH_AsyncDisplayKit 3
-
-// AsyncDisplayKit/ASDealloc2MainObject
-#define COCOAPODS_POD_AVAILABLE_AsyncDisplayKit_ASDealloc2MainObject
-#define COCOAPODS_VERSION_MAJOR_AsyncDisplayKit_ASDealloc2MainObject 1
-#define COCOAPODS_VERSION_MINOR_AsyncDisplayKit_ASDealloc2MainObject 2
-#define COCOAPODS_VERSION_PATCH_AsyncDisplayKit_ASDealloc2MainObject 3
-
-// FXBlurView
-#define COCOAPODS_POD_AVAILABLE_FXBlurView
-#define COCOAPODS_VERSION_MAJOR_FXBlurView 1
-#define COCOAPODS_VERSION_MINOR_FXBlurView 6
-#define COCOAPODS_VERSION_PATCH_FXBlurView 3
-
 // FormatterKit
 #define COCOAPODS_POD_AVAILABLE_FormatterKit
 #define COCOAPODS_VERSION_MAJOR_FormatterKit 1
@@ -102,12 +78,6 @@
 #define COCOAPODS_VERSION_MINOR_JGProgressHUD 3
 #define COCOAPODS_VERSION_PATCH_JGProgressHUD 0
 
-// Kingfisher
-#define COCOAPODS_POD_AVAILABLE_Kingfisher
-#define COCOAPODS_VERSION_MAJOR_Kingfisher 1
-#define COCOAPODS_VERSION_MINOR_Kingfisher 4
-#define COCOAPODS_VERSION_PATCH_Kingfisher 3
-
 // LGActionSheet
 #define COCOAPODS_POD_AVAILABLE_LGActionSheet
 #define COCOAPODS_VERSION_MAJOR_LGActionSheet 1
@@ -174,12 +144,6 @@
 #define COCOAPODS_VERSION_MINOR_LGViews_LGTextView 0
 #define COCOAPODS_VERSION_PATCH_LGViews_LGTextView 0
 
-// LTMorphingLabel
-#define COCOAPODS_POD_AVAILABLE_LTMorphingLabel
-#define COCOAPODS_VERSION_MAJOR_LTMorphingLabel 0
-#define COCOAPODS_VERSION_MINOR_LTMorphingLabel 0
-#define COCOAPODS_VERSION_PATCH_LTMorphingLabel 7
-
 // LoremIpsum
 #define COCOAPODS_POD_AVAILABLE_LoremIpsum
 #define COCOAPODS_VERSION_MAJOR_LoremIpsum 1
@@ -203,12 +167,6 @@
 #define COCOAPODS_VERSION_MAJOR_Reachability 3
 #define COCOAPODS_VERSION_MINOR_Reachability 2
 #define COCOAPODS_VERSION_PATCH_Reachability 0
-
-// SlackTextViewController
-#define COCOAPODS_POD_AVAILABLE_SlackTextViewController
-#define COCOAPODS_VERSION_MAJOR_SlackTextViewController 1
-#define COCOAPODS_VERSION_MINOR_SlackTextViewController 6
-#define COCOAPODS_VERSION_PATCH_SlackTextViewController 0
 
 // TOCropViewController
 #define COCOAPODS_POD_AVAILABLE_TOCropViewController

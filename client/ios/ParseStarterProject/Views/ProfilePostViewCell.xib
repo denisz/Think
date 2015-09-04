@@ -42,7 +42,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ALEXANDER" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zJO-yN-DMX" customClass="LabelViewWithIcon" customModule="Think" customModuleProvider="target">
-                                <rect key="frame" x="63" y="10" width="249" height="17"/>
+                                <rect key="frame" x="63" y="10" width="213" height="17"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="gJT-ib-p38"/>
@@ -73,7 +73,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 min ago" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ht-5b-jBZ">
-                                <rect key="frame" x="63" y="27" width="249" height="15"/>
+                                <rect key="frame" x="63" y="27" width="213" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="9Ji-5s-gbu"/>
                                 </constraints>
@@ -81,16 +81,31 @@
                                 <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LwS-Vb-DN8">
+                                <rect key="frame" x="283" y="12" width="29" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="29" id="uLi-DW-km0"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="ic_more">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapMore" destination="VM2-bt-t62" eventType="touchUpInside" id="t20-vK-hdv"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="3ht-5b-jBZ" firstAttribute="top" secondItem="zJO-yN-DMX" secondAttribute="bottom" id="H3m-4u-R9y"/>
                             <constraint firstItem="weB-RS-N1u" firstAttribute="top" secondItem="eEp-mI-vbj" secondAttribute="top" constant="10" id="JJs-MR-Tbf"/>
                             <constraint firstItem="zJO-yN-DMX" firstAttribute="leading" secondItem="weB-RS-N1u" secondAttribute="trailing" constant="15" id="NVZ-3N-asU"/>
+                            <constraint firstAttribute="trailing" secondItem="LwS-Vb-DN8" secondAttribute="trailing" constant="8" id="Qdv-pC-D7m"/>
+                            <constraint firstAttribute="bottom" secondItem="LwS-Vb-DN8" secondAttribute="bottom" constant="12" id="all-cX-tgL"/>
                             <constraint firstItem="3ht-5b-jBZ" firstAttribute="leading" secondItem="zJO-yN-DMX" secondAttribute="leading" id="ap6-8U-djK"/>
                             <constraint firstItem="weB-RS-N1u" firstAttribute="leading" secondItem="eEp-mI-vbj" secondAttribute="leading" constant="15" id="hjK-iZ-vUK"/>
-                            <constraint firstAttribute="trailing" secondItem="3ht-5b-jBZ" secondAttribute="trailing" constant="8" id="l2t-io-ff1"/>
-                            <constraint firstAttribute="trailing" secondItem="zJO-yN-DMX" secondAttribute="trailing" constant="8" id="tHW-2L-bqf"/>
+                            <constraint firstAttribute="trailing" secondItem="3ht-5b-jBZ" secondAttribute="trailing" constant="44" id="l2t-io-ff1"/>
+                            <constraint firstItem="LwS-Vb-DN8" firstAttribute="top" secondItem="eEp-mI-vbj" secondAttribute="top" constant="12" id="rlF-KB-jHK"/>
+                            <constraint firstAttribute="trailing" secondItem="zJO-yN-DMX" secondAttribute="trailing" constant="44" id="tHW-2L-bqf"/>
                             <constraint firstAttribute="height" constant="54" id="v0j-bP-RXw"/>
                             <constraint firstItem="weB-RS-N1u" firstAttribute="top" secondItem="zJO-yN-DMX" secondAttribute="top" id="vNn-yq-JTa"/>
                         </constraints>
@@ -217,9 +232,6 @@
                                 <state key="normal" title="Button" image="ic_more">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="didTapMoreBtn:" destination="VM2-bt-t62" eventType="touchUpInside" id="QPf-Ae-xWB"/>
-                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="184" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dag-ZB-5TT" userLabel="comments" customClass="LabelViewWithIcon" customModule="Think" customModuleProvider="target">
                                 <rect key="frame" x="15" y="0.0" width="60" height="0.0"/>

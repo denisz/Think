@@ -29,8 +29,8 @@ Parse.Cloud.afterSave('Message', function ( request ) {
 var alertMessage = function ( request ) {
 	var message = "";
 
-	if ( request.user.get('username') ) {
-		message = request.user.get('username') + ' send you a message.';
+	if ( request.user.get('display_name') ) {
+		message = request.user.get('display_name') + ' send you a message.';
 	} else {
 		message = 'Someone send you a message.';
 	}

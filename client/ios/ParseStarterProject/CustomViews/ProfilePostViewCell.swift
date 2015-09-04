@@ -86,9 +86,15 @@ class ProfilePostViewCell: PFTableViewCell {
         
         let isLiked = MyCache.sharedCache.isPostLikedByCurrentUser(self.object!)
         if isLiked {
-            likesCounter.setColor(UIColor(red:0, green:0.64, blue:0.85, alpha:1))
+            likesCounter.setColor(kColorLikeActive)
         } else {
-            likesCounter.setColor(UIColor(red:0.2, green:0.28, blue:0.37, alpha:1))
+            likesCounter.setColor(kColorLikeUnactive)
+        }
+    }
+    
+    @IBAction func didTapMore() {
+        if let controller = self.parentViewController {
+            PostHelper.actionSheet(self.object!, controller: controller)
         }
     }
     

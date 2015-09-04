@@ -1,5 +1,12 @@
-var handlerFollowType = require('cloud/activity_follow.js');
-var handlerLikeType = require('cloud/activity_like.js');
+var handlerFollowType 	= require('cloud/activity_follow.js');
+var handlerLikeType 	= require('cloud/activity_like.js');
+var handlerApn 			= require('cloud/activity_apn.js');
+var handlerCounter 		= require('cloud/activity_counter.js');
+
+Parse.Cloud.afterSave('Activity', function(request) {
+	handlerApn(request);
+	handlerCounter(request);
+});
 
 Parse.Cloud.beforeSave('Activity', function ( request, response ) {
 	var currentUser = request.user;

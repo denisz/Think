@@ -26,11 +26,6 @@ class PostContentView: UITableView  {
         self.object = object
         self.prepareBlocks()
         self.reloadData()
-
-//        self.beginUpdates()
-//        self.endUpdates()
-//        self.sizeThatFits(CGSizeMake(CGRectGetWidth(self.bounds), CGFloat.max))
-        self.layoutIfNeeded()
         self.heightLayoutConstraint.constant = self.contentSize.height
     }
     
@@ -62,15 +57,15 @@ class PostContentView: UITableView  {
     }
 }
 
-
 extension PostContentView: UITableViewDelegate {
+    //определяем высоту contentSize
     func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         var height: CGFloat = 0
         if let block = self.blockByIndexPath(indexPath) {
-            height = NSString(string: block.content).heightText(kPostBlockContentFont, width: kWidthScreen - 50) + 10
+            height = NSString(string: block.content).heightText(kPostBlockContentFont, width: kWidthScreen - 45) + 10
         }
         
-        return max(height, 20)
+        return max(height, 10)
     }
     
     func tableView( tableView: UITableView,
@@ -80,7 +75,7 @@ extension PostContentView: UITableViewDelegate {
         } else {
             var height: CGFloat = 0
             if let block = self.blockByIndexPath(indexPath) {
-                height = NSString(string: block.content).heightText(kPostBlockContentFont, width: kWidthScreen - 50) + 10
+                height = NSString(string: block.content).heightText(kPostBlockContentFont, width: kWidthScreen - 45) + 10
             }
             
             return max(height, 20)

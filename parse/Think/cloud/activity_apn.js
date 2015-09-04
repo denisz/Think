@@ -1,4 +1,4 @@
-Parse.Cloud.afterSave('Activity', function ( request ) {
+module.exports = function ( request ) {
 	// Only send push notifications for new activities
 	var currentUser = request.user;
 
@@ -30,26 +30,26 @@ Parse.Cloud.afterSave('Activity', function ( request ) {
 	}, function ( error ) {
 		throw "Push Error " + error.code + " : " + error.message;
 	});
-});
+};
 
 var alertMessage = function ( request ) {
 	var message = "";
 
 	if ( request.object.get("type") === "comment" ) {
-		if ( request.user.get('username') ) {
-			message = request.user.get('username') + ': ' + request.object.get('content').trim();
+		if ( request.user.get('display_name') ) {
+			message = request.user.get('display_name') + ': ' + request.object.get('content').trim();
 		} else {
 			message = "Someone commented on your post.";
 		}
 	} else if ( request.object.get("type") === "like" ) {
-		if ( request.user.get('username') ) {
-			message = request.user.get('username') + ' likes your post.';
+		if ( request.user.get('display_name') ) {
+			message = request.user.get('display_name') + ' likes your post.';
 		} else {
 			message = 'Someone likes your post.';
 		}
 	} else if ( request.object.get("type") === "follow" ) {
-		if ( request.user.get('username') ) {
-			message = request.user.get('username') + ' is now following you.';
+		if ( request.user.get('display_name') ) {
+			message = request.user.get('display_name') + ' is now following you.';
 		} else {
 			message = "You have a new follower.";
 		}

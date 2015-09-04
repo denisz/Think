@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3A0F85A191CE2E261CA861EE"
+               BlueprintIdentifier = "E60F01A7ABD3D2535E88845C"
                BuildableName = "LGActionSheet.framework"
                BlueprintName = "Pods-Think-LGActionSheet"
                ReferencedContainer = "container:Pods.xcodeproj">

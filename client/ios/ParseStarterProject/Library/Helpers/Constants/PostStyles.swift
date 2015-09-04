@@ -26,4 +26,5 @@ let kPostBlockStyles = [
     ] as [PostBlockStyle: (UIColor, UIColor)]
 
 let kStyleGray = (UIColor(red:0.33, green:0.39, blue:0.42, alpha:1), UIColor.whiteColor()) as (UIColor, UIColor)
+
 let kStyleDefault = (UIColor.whiteColor(), UIColor(red:0.2, green:0.2, blue:0.2, alpha:1)) as (UIColor, UIColor)

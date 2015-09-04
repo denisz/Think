@@ -51,15 +51,12 @@ class Activity: PFObject, PFSubclassing {
             if (task.error == nil) {
                 if let activity = task.result as? PFObject {
                     activity.deleteEventually()
-                    post.saveInBackground()
                 }
-            } else {
             }
-            
             return task
         }
         
-        post.incrementKey(kPostCounterLikesKey, byAmount: -1)
+//        post.incrementKey(kPostCounterLikesKey, byAmount: -1)
         MyCache.sharedCache.setPostIsLikedByCurrentUser(post, liked: false)
         NSNotificationCenter.defaultCenter().postNotificationName(kUserUnlikedPost, object: post)
     }
@@ -76,15 +73,9 @@ class Activity: PFObject, PFSubclassing {
         activityACL.setPublicReadAccess(true)
         activity.ACL = activityACL
         
-        activity.saveInBackground().continueWithBlock { (task: BFTask!) -> AnyObject! in
-            if task.error == nil {
-                post.saveInBackground()
-            } 
-            
-            return task
-        }
+        activity.saveInBackground()
         
-        post.incrementKey(kPostCounterLikesKey, byAmount: 1)
+//        post.incrementKey(kPostCounterLikesKey, byAmount: 1)
         MyCache.sharedCache.setPostIsLikedByCurrentUser(post, liked: true)
         NSNotificationCenter.defaultCenter().postNotificationName(kUserLikedPost, object: post)
     }
@@ -154,8 +145,7 @@ class Activity: PFObject, PFSubclassing {
         return activity.saveInBackground().continueWithBlock { (task: BFTask!) -> AnyObject! in
             if task.error == nil {
                 post.incrementKey(kPostCounterCommentsKey, byAmount: 1)
-                post.saveEventually()
-                
+
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     NSNotificationCenter.defaultCenter().postNotificationName(kUserSendComment, object: activity)
                 })
@@ -176,7 +166,6 @@ class Activity: PFObject, PFSubclassing {
         return activity.saveInBackground().continueWithBlock { (task: BFTask!) -> AnyObject! in
             if task.error == nil {
                 post.incrementKey(kPostCounterCommentsKey, byAmount: 1)
-                post.saveEventually()
                 
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     NSNotificationCenter.defaultCenter().postNotificationName(kUserSendComment, object: activity)

@@ -60,7 +60,7 @@ import VGParallaxHeader
     func setupStickyView() {
         let frame = CGRectMake(0, 0, 320, 20)
         let view = UIView(frame: frame)
-        view.backgroundColor = UIColor(red:0.33, green:0.39, blue:0.42, alpha:1)
+        view.backgroundColor = kColorStickyTop
         view.alpha = 0
         
         self.view.addSubview(view)
@@ -136,9 +136,9 @@ import VGParallaxHeader
         self.likesCounter.text = Post.likesCounter(self.object!)
 
         if isLiked {
-            likesCounter.setColor(UIColor(red:0, green:0.64, blue:0.85, alpha:1))
+            likesCounter.setColor(kColorLikeActive)
         } else {
-            likesCounter.setColor(UIColor(red:0.26, green:0.26, blue:0.26, alpha:1))
+            likesCounter.setColor(kColorLikeUnactive)
         }
     }
     

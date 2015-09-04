@@ -16,7 +16,7 @@
 #import <VGParallaxHeader/UIScrollView+VGParallaxHeader.h>
 
 //blur view
-#import <FXBlurView/FXBlurView.h>
+//#import <FXBlurView/FXBlurView.h>
 
 //formatterKit
 #import <FormatterKit/TTTAddressFormatter.h>
@@ -49,9 +49,9 @@
 #import <LGViews/LGViews.h>
 
 //comments
-#import <AsyncDisplayKit/AsyncDisplayKit.h>
-#import <AsyncDisplayKit/ASDisplayNode+Subclasses.h>
-#import <SlackTextViewController/SLKTextViewController.h>
+//#import <AsyncDisplayKit/AsyncDisplayKit.h>
+//#import <AsyncDisplayKit/ASDisplayNode+Subclasses.h>
+//#import <SlackTextViewController/SLKTextViewController.h>
 #import <LoremIpsum/LoremIpsum.h>
 
 //scrolling uiviewcontroller

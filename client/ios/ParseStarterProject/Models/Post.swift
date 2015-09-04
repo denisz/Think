@@ -99,7 +99,11 @@ class Post: PFObject, PFSubclassing {
     }
     
     class func likesCounter(object: PFObject) -> String {
-        let count = max(object[kPostCounterLikesKey] as! Int, 0)
+        var count = max(object[kPostCounterLikesKey] as! Int, 0)
+        if MyCache.sharedCache.isPostLikedByCurrentUser(object) {
+            count++
+        }
+        
         return "+\(count)"
     }
     
@@ -142,7 +146,6 @@ class Post: PFObject, PFSubclassing {
         
         return kSharePlaceholder
     }
-    
     
     class func determineCurrentUserAuthor(post: PFObject) -> Bool {
         if let owner = Post.owner(post) {
