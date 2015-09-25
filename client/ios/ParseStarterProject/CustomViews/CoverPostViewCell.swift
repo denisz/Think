@@ -18,7 +18,7 @@ class CoverPostViewCell: BlockPostViewCell {
     override func prepareView(block: PostBlock) {
         super.prepareView(block)
         
-        if let picture = block.picture {
+        if let _ = block.picture {
             self.pictureView.file = block.picture
             self.pictureView.loadInBackground()
             self.pictureView.hidden = false
@@ -27,7 +27,7 @@ class CoverPostViewCell: BlockPostViewCell {
         }
     }
     
-    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
     
         super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
         
@@ -39,7 +39,7 @@ class CoverPostViewCell: BlockPostViewCell {
     }
     
     @IBAction func didTapButton(sender: AnyObject!) {
-        var sourceView = sender as! UIView
+        let sourceView = sender as! UIView
         SelectImageHelper.selectAndUploadFile(self.parentViewController!, sourceView: sourceView, scenario: .CoverPost)
     }
 }

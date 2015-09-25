@@ -39,12 +39,12 @@ import UIKit
     func configureNavigationRightBtns() {
         let navigationItem  = self.defineNavigationItem()
         let newPost         = self.configureNavigationBarRightBtn(kColorNavigationBar)
-        let counterPost     = self.configureCounterView()
+        self.configureCounterView()
         navigationItem.setRightBarButtonItems([newPost], animated: true)
     }
     
     func configureCounterView() -> UIBarButtonItem {
-        let counterButton  = UIButton.buttonWithType(UIButtonType.System) as! UIButton
+        let counterButton  = UIButton(type: UIButtonType.System)
         counterButton.backgroundColor = UIColor(red:0, green:0.64, blue:0.85, alpha:1)
         counterButton.frame = CGRectMake(0, 0, 40, 24)  // Size
         counterButton.setTitle("2", forState: UIControlState.Normal)
@@ -60,7 +60,7 @@ import UIKit
         var image = UIImage(named: "ic_new_post") as UIImage!
         image = image.imageWithColor(color)
         
-        let btnBack = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+        let btnBack = UIButton(type: UIButtonType.Custom)
         btnBack.addTarget(self, action: "didTapNewPostBtn:", forControlEvents: UIControlEvents.TouchUpInside)
         btnBack.setImage(image, forState: UIControlState.Normal)
         btnBack.imageEdgeInsets = UIEdgeInsets(top: 1, left: 0, bottom: 2, right: 0)
@@ -82,7 +82,11 @@ import UIKit
     func didTapNewPostBtn(sender: AnyObject?) {
         let controller = NewPostViewController()
         controller.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
-        controller.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
+        if #available(iOS 8.0, *) {
+            controller.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
+        } else {
+            // Fallback on earlier versions
+        }
         
         let navigation = BaseNavigationController(rootViewController: controller)
         
@@ -143,7 +147,7 @@ import UIKit
     }
     
     class func CreateWithModel(model: PFObject) -> FeedViewController{
-        var feed = FeedViewController()
+        let feed = FeedViewController()
         feed.owner = model
         feed.parseClassName = kActivityClassKey
         feed.paginationEnabled = true

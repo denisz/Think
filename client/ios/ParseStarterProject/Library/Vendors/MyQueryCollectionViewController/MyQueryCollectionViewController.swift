@@ -14,7 +14,7 @@ import UIKit
 
 let PFQueryCollectionViewNextPageReusableViewIdentifier: String = "nextPageView"
 
-class MyQueryCollectionViewController: UIViewController, NSObjectProtocol{
+class MyQueryCollectionViewController: UIViewController{
     @IBOutlet weak var collectionView: UICollectionView!
     
     var objects: NSMutableArray?
@@ -60,7 +60,7 @@ class MyQueryCollectionViewController: UIViewController, NSObjectProtocol{
         return NSIndexPath(forItem: 0, inSection: self.numberOfSectionsInCollectionView(self.collectionView) - 1)
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.setupWithClassName(nil)
     }
@@ -105,7 +105,7 @@ class MyQueryCollectionViewController: UIViewController, NSObjectProtocol{
     
     func initializeRefreshControl() {
         if self.pullToRefreshEnabled {
-            var refreshControl = UIRefreshControl()
+            let refreshControl = UIRefreshControl()
             refreshControl.addTarget(self, action: Selector("refreshControlValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
             
             self.collectionView.addSubview(refreshControl)
@@ -133,18 +133,18 @@ class MyQueryCollectionViewController: UIViewController, NSObjectProtocol{
     }
     
     func refreshLoadingView() {
-        var showLoadingView = self.loadingViewEnabled && self.loading && self.firstLoad;
+        let showLoadingView = self.loadingViewEnabled && self.loading && self.firstLoad;
         
         if (showLoadingView) {
             //            self.tableView.addSubview(self.loadingView!)
-            var newView = self.loadingView!
+            let newView = self.loadingView!
             newView.alpha = 1.0
-            newView.setTranslatesAutoresizingMaskIntoConstraints(false)
+            newView.translatesAutoresizingMaskIntoConstraints = false
             self.view.addSubview(newView)
             
             let views = ["view": newView]
-            let hConstraints = NSLayoutConstraint.constraintsWithVisualFormat("|[view]|", options: nil, metrics: nil, views: views)
-            let vConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[view]|", options: nil, metrics: nil, views: views)
+            let hConstraints = NSLayoutConstraint.constraintsWithVisualFormat("|[view]|", options: [], metrics: nil, views: views)
+            let vConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[view]|", options: [], metrics: nil, views: views)
             self.view.addConstraints(hConstraints)
             self.view.addConstraints(vConstraints)
         } else {
@@ -184,9 +184,9 @@ class MyQueryCollectionViewController: UIViewController, NSObjectProtocol{
         self.loading = true
         self.objectsWillLoad()
         
-        var source = BFTaskCompletionSource()
+        let source = BFTaskCompletionSource()
         
-        var query = self.queryForCollection()
+        let query = self.queryForCollection()
         self._alterQuery(query, forLoadingPage: page)
         
         PFErrorCode.ErrorCacheMiss
@@ -234,7 +234,7 @@ class MyQueryCollectionViewController: UIViewController, NSObjectProtocol{
     }
     
     func queryForCollection() -> PFQuery {
-        var query = PFQuery(className: self.parseClassName!)
+        let query = PFQuery(className: self.parseClassName!)
         
         if (self.objects!.count == 0 && !Parse.isLocalDatastoreEnabled()) {
             query.cachePolicy = PFCachePolicy.CacheThenNetwork
@@ -318,7 +318,7 @@ extension MyQueryCollectionViewController: UICollectionViewDataSource {
             return;
         }
         
-        var indexes = NSMutableIndexSet()
+        let indexes = NSMutableIndexSet()
         
         for indexPath in indexPaths {
             if indexPath.section == 0 {
@@ -328,8 +328,8 @@ extension MyQueryCollectionViewController: UICollectionViewDataSource {
             }
         }
         
-        var allDeletionTasks = NSMutableArray(capacity: indexes.count)
-        var objectsToRemove = self.objects!.objectsAtIndexes(indexes)
+        let allDeletionTasks = NSMutableArray(capacity: indexes.count)
+        let objectsToRemove = self.objects!.objectsAtIndexes(indexes)
         
         self.objects!.removeObjectsInArray(objectsToRemove)
         self.collectionView.deleteItemsAtIndexPaths(indexPaths)

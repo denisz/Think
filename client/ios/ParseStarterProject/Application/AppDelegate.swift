@@ -72,14 +72,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
             }
         }
-        if application.respondsToSelector("registerUserNotificationSettings:") {
-            let userNotificationTypes = UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound
+        
+        if #available(iOS 8.0, *) {
+            let userNotificationTypes: UIUserNotificationType = [UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound]
             let settings = UIUserNotificationSettings(forTypes: userNotificationTypes, categories: nil)
             application.registerUserNotificationSettings(settings)
             application.registerForRemoteNotifications()
         } else {
-            
-            let types = UIRemoteNotificationType.Badge | UIRemoteNotificationType.Alert | UIRemoteNotificationType.Sound
+            // Fallback on earlier versions
+            let types: UIRemoteNotificationType = [UIRemoteNotificationType.Badge, UIRemoteNotificationType.Alert, UIRemoteNotificationType.Sound]
             application.registerForRemoteNotificationTypes(types)
         }
         
@@ -98,18 +99,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         PFPush.subscribeToChannelInBackground("") { (succeeded: Bool, error: NSError?) in
             if succeeded {
-                println("ParseStarterProject successfully subscribed to push notifications on the broadcast channel.");
+                print("ParseStarterProject successfully subscribed to push notifications on the broadcast channel.");
             } else {
-                println("ParseStarterProject failed to subscribe to push notifications on the broadcast channel with error = %@.", error)
+                print("ParseStarterProject failed to subscribe to push notifications on the broadcast channel with error = %@.", error)
             }
         }
     }
 
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
         if error.code == 3010 {
-            println("Push notifications are not supported in the iOS Simulator.")
+            print("Push notifications are not supported in the iOS Simulator.")
         } else {
-            println("application:didFailToRegisterForRemoteNotificationsWithError: %@", error)
+            print("application:didFailToRegisterForRemoteNotificationsWithError: %@", error)
         }
     }
 
@@ -143,7 +144,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication,
         openURL url: NSURL,
         sourceApplication: String?,
-        annotation: AnyObject?) -> Bool {
+        annotation: AnyObject) -> Bool {
             return FBSDKApplicationDelegate.sharedInstance().application(application,
                 openURL: url,
                 sourceApplication: sourceApplication,

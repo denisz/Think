@@ -32,7 +32,7 @@ import Bolts
         super.objectsDidAppend(objects)
         
         for object in objects {
-            if let item  = object as? PFObject {
+            if let _  = object as? PFObject {
                 
             }
         }
@@ -51,7 +51,7 @@ import Bolts
     }
     
     override func queryForTable() -> PFQuery {
-        var query = PFQuery(className: self.parseClassName!)
+        let query = PFQuery(className: self.parseClassName!)
         query.whereKey(kActivityFromUserKey, equalTo: owner!)
         query.whereKey(kActivityTypeKey, equalTo: kActivityTypeFollow)
         
@@ -111,7 +111,7 @@ import Bolts
     }
     
     class func CreateWithModel(model: PFObject) -> YouFollowViewController{
-        var follow = YouFollowViewController()
+        let follow = YouFollowViewController()
         follow.owner = model
         follow.parseClassName = kActivityClassKey
         follow.paginationEnabled = true

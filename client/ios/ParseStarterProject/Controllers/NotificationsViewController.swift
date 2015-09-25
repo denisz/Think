@@ -52,7 +52,7 @@ import Bolts
         var image = UIImage(named: "ic_settings_notify") as UIImage!
         image = image.imageWithColor(color)
         
-        var btnBack:UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+        let btnBack:UIButton = UIButton(type: UIButtonType.Custom)
         btnBack.addTarget(self, action: "didTapSettingsBtn:", forControlEvents: UIControlEvents.TouchUpInside)
         btnBack.setImage(image, forState: UIControlState.Normal)
         btnBack.contentEdgeInsets = UIEdgeInsets(top: -5, left: 0, bottom: 0, right: 0)
@@ -99,11 +99,19 @@ import Bolts
         let cell = tableView.dequeueReusableCellWithIdentifier(kReusableNotificationsViewCell) as! NotificationViewCell
         
         if cell.respondsToSelector("layoutMargins") {
-            cell.layoutMargins = UIEdgeInsetsZero
+            if #available(iOS 8.0, *) {
+                cell.layoutMargins = UIEdgeInsetsZero
+            } else {
+                // Fallback on earlier versions
+            }
         }
         
         if cell.respondsToSelector("preservesSuperviewLayoutMargins") {
-            cell.preservesSuperviewLayoutMargins = false
+            if #available(iOS 8.0, *) {
+                cell.preservesSuperviewLayoutMargins = false
+            } else {
+                // Fallback on earlier versions
+            }
         }
 
         cell.prepareView(object!)
@@ -144,7 +152,7 @@ import Bolts
     }
     
     class func CreateWithModel(model: PFObject) -> NotificationsViewController {
-        var notifications = NotificationsViewController()
+        let notifications = NotificationsViewController()
         notifications.owner = model
         notifications.parseClassName = kActivityClassKey
         notifications.paginationEnabled = true

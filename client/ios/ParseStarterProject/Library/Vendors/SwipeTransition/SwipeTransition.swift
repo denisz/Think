@@ -1,4 +1,3 @@
-//
 //  SwipeTransition.swift
 //  SwipeTransitionExample
 //
@@ -28,8 +27,10 @@ public class SwipeTransition: UIPercentDrivenInteractiveTransition {
     private func prepareGestureRecognizer(view: UIView) {
         gestureRecognizer = UIPanGestureRecognizer(target: self, action: "handlePan:")
         gestureRecognizer.delegate = self
-        if !contains(view.gestureRecognizers as! [UIGestureRecognizer], gestureRecognizer) {
-            view.addGestureRecognizer(gestureRecognizer)
+        if let gestureRecognizers = view.gestureRecognizers {
+            if gestureRecognizers.contains(gestureRecognizer) {
+               view.addGestureRecognizer(gestureRecognizer)
+            }
         }
     }
     

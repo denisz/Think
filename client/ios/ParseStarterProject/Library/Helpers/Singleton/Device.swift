@@ -36,16 +36,16 @@ public extension UIDevice {
         uname(&systemInfo)
         
         let machine = systemInfo.machine
-        let mirror = reflect(machine)                // Swift 1.2
-        // let mirror = Mirror(reflecting: machine)  // Swift 2.0
-        var identifier = ""
+//        let mirror = Mirror(machine)                // Swift 1.2
+         _ = Mirror(reflecting: machine)  // Swift 2.0
+        let identifier = ""
         
         // Swift 1.2 - if you use Swift 2.0 comment this loop out.
-        for i in 0..<mirror.count {
-            if let value = mirror[i].1.value as? Int8 where value != 0 {
-                identifier.append(UnicodeScalar(UInt8(value)))
-            }
-        }
+//        for i in 0..<mirror.count {
+//            if let value = mirror[i].1.value as? Int8 where value != 0 {
+//                identifier.append(UnicodeScalar(UInt8(value)))
+//            }
+//        }
         
         // Swift 2.0 and later - if you use Swift 2.0 uncomment his loop
         // for child in mirror.children where child.value as? Int8 != 0 {

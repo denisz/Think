@@ -57,7 +57,7 @@ class BaseQueryViewController: BaseViewController, StatefulViewControllerDelegat
     func refresh() {
         self.objectWillLoad(self.object!)
         
-        var query = self.queryForView()
+        let query = self.queryForView()
         query.getObjectInBackgroundWithId(self.object!.objectId!) {
             (object: PFObject?, error: NSError?) -> Void in
             if error == nil && object != nil {
@@ -75,19 +75,19 @@ class BaseQueryViewController: BaseViewController, StatefulViewControllerDelegat
     }
     
     func objectWillLoad(object: PFObject) {
-        self.startLoading(animated: false)
+        self.startLoading(false)
     }
     
     func objectDidLoad(object: PFObject) {
         if !allowContent() {
-            self.denyContent(animated: false)
+            self.denyContent(false)
         } else {
-            self.endLoading(animated: false, error: nil)
+            self.endLoading(false, error: nil)
         }
     }
     
     func objectErrorLoad(object: PFObject, error: NSError?) {
-       self.endLoading(animated: false, error: error)
+       self.endLoading(false, error: error)
     }
 }
 

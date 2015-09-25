@@ -14,7 +14,7 @@ extension String {
     
     public var length: Int {
         get {
-            return count(self)
+            return self.characters.count
         }
     }
 }

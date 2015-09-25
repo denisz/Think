@@ -26,7 +26,7 @@ class BlockPostViewCell: UITableViewCell {
         block.addObserver(self, forKeyPath: kvoBlockPropertyPicture, options: .New, context: nil)
     }
     
-    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
     }
     
     func clearView() {

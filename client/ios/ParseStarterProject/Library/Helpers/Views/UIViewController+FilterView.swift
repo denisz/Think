@@ -16,13 +16,13 @@ var _filterViewWrapper: UIView?
 
 func createViewWrapperInView(view: UIView) -> UIView {
     let wrapper = UIView()
-    wrapper.setTranslatesAutoresizingMaskIntoConstraints(false)
+    wrapper.translatesAutoresizingMaskIntoConstraints = false
     wrapper.clipsToBounds = true
     view.addSubview(wrapper)
     
     let views = ["view": wrapper]
-    let hConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[view]|", options: nil, metrics: nil, views: views)
-    let vConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-64-[view]|", options: nil, metrics: nil, views: views)
+    let hConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[view]|", options: [], metrics: nil, views: views)
+    let vConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-64-[view]|", options: [], metrics: nil, views: views)
     
     view.addConstraints(hConstraints)
     view.addConstraints(vConstraints)

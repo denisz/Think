@@ -12,12 +12,12 @@ import Parse
 class TransformString {
     
     class func likesCounter(object: PFObject) -> String {
-        var count = max(object[kPostCounterLikesKey] as! Int, 0)
+        let count = max(object[kPostCounterLikesKey] as! Int, 0)
         return "+\(count)"
     }
     
     class func commentsCounter(object: PFObject, var suffix: String = "") -> String {
-        var count = max(object[kPostCounterCommentsKey] as! Int, 0)
+        let count = max(object[kPostCounterCommentsKey] as! Int, 0)
         
         if !suffix.isEmpty {
             suffix = " \(suffix)"

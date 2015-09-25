@@ -37,8 +37,9 @@ class SwipeTransitionDeleagte: NSObject, UINavigationControllerDelegate {
         delegate?.navigationController?(navigationController, didShowViewController: viewController, animated: animated)
     }
     
-    func navigationControllerSupportedInterfaceOrientations(navigationController: UINavigationController) -> Int {
-        return delegate?.navigationControllerSupportedInterfaceOrientations?(navigationController) ?? 0
+    func navigationControllerSupportedInterfaceOrientations(navigationController: UINavigationController) -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.Portrait
+//        return (delegate?.navigationControllerSupportedInterfaceOrientations?(navigationController))!
     }
     
     func navigationControllerPreferredInterfaceOrientationForPresentation(navigationController: UINavigationController) -> UIInterfaceOrientation {

@@ -14,7 +14,13 @@ func JSONStringify(value: AnyObject, prettyPrinted:Bool = false) -> String{
     
     if NSJSONSerialization.isValidJSONObject(value) {
         var error: NSError? = nil
-        let data = NSJSONSerialization.dataWithJSONObject(value, options: options, error: &error)
+        let data: NSData?
+        do {
+            data = try NSJSONSerialization.dataWithJSONObject(value, options: options)
+        } catch let error1 as NSError {
+            error = error1
+            data = nil
+        }
         if (error == nil) {
             if let string = NSString(data: data!, encoding: NSUTF8StringEncoding) {
                 return string as String

@@ -62,7 +62,7 @@ extension UIViewController {
         
         self.updateConstraintKeyboard(minY == maxY, minY: minY, maxY: maxY)
         
-        UIView.animateWithDuration(animationDuration, delay: 0.0, options: .BeginFromCurrentState | animationCurve, animations: {
+        UIView.animateWithDuration(animationDuration, delay: 0.0, options: UIViewAnimationOptions.BeginFromCurrentState.union(animationCurve), animations: {
             self.view.layoutIfNeeded()
             
             }, completion: nil)

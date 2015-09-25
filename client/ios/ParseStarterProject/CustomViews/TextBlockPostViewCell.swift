@@ -19,7 +19,7 @@ class TextBlockPostViewCell: BlockPostViewCell {
         self.backgroundColor    = block.backgroundColor
     }
     
-    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
         
         if keyPath == kvoBlockPropertyStyle {

@@ -21,7 +21,7 @@ class BaseUIView: UIView {
         xibSetup()
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         xibSetup()
     }
@@ -29,7 +29,7 @@ class BaseUIView: UIView {
     func xibSetup() {
         if let view = loadViewFromNib() {
             view.frame = bounds
-            view.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
+            view.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
             addSubview(view)
             
             self.view = view
@@ -53,7 +53,7 @@ class BaseUIView: UIView {
     
     
     class func constraintToFit(view: UIView) {
-        view.setTranslatesAutoresizingMaskIntoConstraints(false)
+        view.translatesAutoresizingMaskIntoConstraints = false
         
         let views = ["view": view]
         let hConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[view]|", options: .AlignAllCenterY, metrics: nil, views: views)
@@ -64,7 +64,7 @@ class BaseUIView: UIView {
     }
     
     class func constraintToTop(view: UIView, size: CGSize, offset: CGFloat) {
-        view.setTranslatesAutoresizingMaskIntoConstraints(false)
+        view.translatesAutoresizingMaskIntoConstraints = false
         
         let views   = ["view": view]
         let metrics = ["height": size.height, "top": offset ]
@@ -77,7 +77,7 @@ class BaseUIView: UIView {
     }
     
     class func constraintToBottom(view: UIView, size: CGSize, offset: CGFloat) {
-        view.setTranslatesAutoresizingMaskIntoConstraints(false)
+        view.translatesAutoresizingMaskIntoConstraints = false
         
         let views = ["view": view]
         let metrics = ["height": size.height, "bottom": offset]
@@ -90,7 +90,7 @@ class BaseUIView: UIView {
     }
     
     class func constraintToCenter(view: UIView, size: CGSize) {
-        view.setTranslatesAutoresizingMaskIntoConstraints(false)
+        view.translatesAutoresizingMaskIntoConstraints = false
         let superview = view.superview!
         let metrics = ["width": size.width, "height": size.height]
         

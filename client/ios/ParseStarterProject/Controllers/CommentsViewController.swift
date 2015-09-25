@@ -64,7 +64,7 @@ import ParseUI
     }
     
     override func queryForTable() -> PFQuery {
-        var query = PFQuery(className: self.parseClassName!)
+        let query = PFQuery(className: self.parseClassName!)
         query.whereKey(kActivityTypeKey, equalTo: kActivityTypeComment)
         query.whereKey(kActivityPostKey, equalTo: owner!)
         query.orderByDescending(kClassCreatedAt)
@@ -82,14 +82,15 @@ import ParseUI
         return cell
     }
     
-   override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> [AnyObject]?  {
+   @available(iOS 8.0, *)
+   override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> [UITableViewRowAction]?  {
         
-        var reportAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Report" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+        let reportAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Report" , handler: { (action:UITableViewRowAction, indexPath:NSIndexPath) -> Void in
         })
         
         reportAction.backgroundColor = UIColor(red:0.91, green:0.3, blue:0.24, alpha:1)
         
-        var replyAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Reply" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+        let replyAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Reply" , handler: { (action:UITableViewRowAction, indexPath:NSIndexPath) -> Void in
         })
         
         replyAction.backgroundColor = UIColor.lightGrayColor()
@@ -132,7 +133,7 @@ import ParseUI
     }
     
     class func CreateWithModel(model: PFObject) -> CommentsViewController {
-        var comments = CommentsViewController()
+        let comments = CommentsViewController()
         comments.owner = model
         comments.parseClassName = "Activity"
         comments.paginationEnabled = true

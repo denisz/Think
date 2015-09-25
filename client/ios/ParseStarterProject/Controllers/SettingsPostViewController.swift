@@ -171,25 +171,25 @@ import Bolts
     }
     
     func selectorsExportTo() -> [XLFormOptionsObject] {
-        var options = [XLFormOptionsObject]()
+        let options = [XLFormOptionsObject]()
         
         return options
     }
     
     func selectorsComments() -> [XLFormOptionsObject] {
-        var options = [XLFormOptionsObject]()
+        let options = [XLFormOptionsObject]()
         
         return options
     }
     
     func selectorsVisibleTo() -> [XLFormOptionsObject] {
-        var options = [XLFormOptionsObject]()
+        let options = [XLFormOptionsObject]()
         
         return options
     }
     
     func selectorsPostTo() -> [XLFormOptionsObject] {
-        var options = [XLFormOptionsObject]()
+        let options = [XLFormOptionsObject]()
         
         return options
     }
@@ -198,7 +198,7 @@ import Bolts
         if let rowTag = formRow.tag {
             
             if rowTag ==  tag.location {
-                if var value = newValue as? Bool {
+                if let value = newValue as? Bool {
                     if value == true {
                         Location.sharedInstance.locationInfo().continueWithBlock({ (task: BFTask!) -> AnyObject! in
                             

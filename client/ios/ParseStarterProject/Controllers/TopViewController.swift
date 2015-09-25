@@ -49,7 +49,7 @@ import UIKit
     }
     
     override func queryForTable() -> PFQuery {
-        var query = PFQuery(className: self.parseClassName!)
+        let query = PFQuery(className: self.parseClassName!)
 //        query.whereKey("owner", equalTo: owner!)
         query.whereKey(kPostStatusKey, equalTo: kPostStatusPublic)
         query.orderByDescending(kPostCounterLikesKey)
@@ -94,7 +94,7 @@ import UIKit
     }
     
     class func CreateWithModel(model: PFObject) -> TopViewController{
-        var top = TopViewController()
+        let top = TopViewController()
         top.owner = model
         top.parseClassName = kPostClassKey
         top.paginationEnabled = true

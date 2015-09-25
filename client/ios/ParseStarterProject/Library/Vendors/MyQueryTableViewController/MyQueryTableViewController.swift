@@ -12,7 +12,7 @@ import ParseUI
 import UIKit
 import Bolts
 
-class MyQueryTableViewController: UIViewController, NSObjectProtocol {
+class MyQueryTableViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var objects: NSMutableArray?
@@ -62,7 +62,7 @@ class MyQueryTableViewController: UIViewController, NSObjectProtocol {
         self.setupWithClassName(nil)
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.setupWithClassName(nil)
     }
@@ -100,7 +100,7 @@ class MyQueryTableViewController: UIViewController, NSObjectProtocol {
     
     func initializeRefreshControl() {
         if self.pullToRefreshEnabled {
-            var refreshControl = UIRefreshControl()
+            let refreshControl = UIRefreshControl()
             refreshControl.addTarget(self, action: Selector("refreshControlValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
             
             self.tableView.addSubview(refreshControl)
@@ -111,7 +111,7 @@ class MyQueryTableViewController: UIViewController, NSObjectProtocol {
     
     func createSimpleTable() {
         let tableView = UITableView(frame: self.view.bounds, style: UITableViewStyle.Plain)
-        tableView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(tableView)
         
         tableViewTopConstraint = NSLayoutConstraint(item: tableView, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: 0)
@@ -138,18 +138,18 @@ class MyQueryTableViewController: UIViewController, NSObjectProtocol {
     }
     
     func refreshLoadingView() {
-        var showLoadingView = self.loadingViewEnabled && self.loading && self.firstLoad;
+        let showLoadingView = self.loadingViewEnabled && self.loading && self.firstLoad;
      
         if (showLoadingView) {
 //            self.tableView.addSubview(self.loadingView!)
-            var newView = self.loadingView!
+            let newView = self.loadingView!
             newView.alpha = 1.0
-            newView.setTranslatesAutoresizingMaskIntoConstraints(false)
+            newView.translatesAutoresizingMaskIntoConstraints = false
             self.view.addSubview(newView)
             
             let views = ["view": newView]
-            let hConstraints = NSLayoutConstraint.constraintsWithVisualFormat("|[view]|", options: nil, metrics: nil, views: views)
-            let vConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[view]|", options: nil, metrics: nil, views: views)
+            let hConstraints = NSLayoutConstraint.constraintsWithVisualFormat("|[view]|", options: [], metrics: nil, views: views)
+            let vConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[view]|", options: [], metrics: nil, views: views)
             self.view.addConstraints(hConstraints)
             self.view.addConstraints(vConstraints)
         } else {
@@ -210,9 +210,9 @@ class MyQueryTableViewController: UIViewController, NSObjectProtocol {
         self.loading = true
         self.objectsWillLoad()
         
-        var source = BFTaskCompletionSource()
+        let source = BFTaskCompletionSource()
         
-        var query = self.queryForTable()
+        let query = self.queryForTable()
         self._alterQuery(query, forLoadingPage: page)
         
         PFErrorCode.ErrorCacheMiss
@@ -259,7 +259,7 @@ class MyQueryTableViewController: UIViewController, NSObjectProtocol {
     }
     
     func queryForTable() -> PFQuery {
-        var query = PFQuery(className: self.parseClassName!)
+        let query = PFQuery(className: self.parseClassName!)
         
         if (self.objects!.count == 0 && !Parse.isLocalDatastoreEnabled()) {
             query.cachePolicy = PFCachePolicy.CacheThenNetwork
@@ -301,10 +301,10 @@ class MyQueryTableViewController: UIViewController, NSObjectProtocol {
     
     func loadImagesForOnscreenRows () {
         if self.objects!.count > 0 {
-            var visiblePaths = self.tableView.indexPathsForVisibleRows()
+            let visiblePaths = self.tableView.indexPathsForVisibleRows
             
             for indexPath in visiblePaths! {
-                self.loadImageForCellAtIndexPath(indexPath as! NSIndexPath)
+                self.loadImageForCellAtIndexPath(indexPath )
             }
         }
     }
@@ -367,7 +367,7 @@ extension MyQueryTableViewController: UITableViewDataSource {
     }
     
     func indexPathByObject(object: PFObject) -> NSIndexPath? {
-        var index = IndexOf(self.objects!, object)
+        var index = IndexOf(self.objects!, object: object)
         
         if self.reverseViewCell {
             let count = self.objects!.count
@@ -400,7 +400,7 @@ extension MyQueryTableViewController: UITableViewDataSource {
             return;
         }
         
-        var indexes = NSMutableIndexSet()
+        let indexes = NSMutableIndexSet()
         
         for indexPath in indexPaths {
             if indexPath.section == 0 {
@@ -410,10 +410,10 @@ extension MyQueryTableViewController: UITableViewDataSource {
             }
         }
         
-        var allDeletionTasks = NSMutableArray(capacity: indexes.count)
-        var objectsToRemove = self.objects!.objectsAtIndexes(indexes)
+        let allDeletionTasks = NSMutableArray(capacity: indexes.count)
+        let objectsToRemove = self.objects!.objectsAtIndexes(indexes)
         
-        var animation: UITableViewRowAnimation = (animated == true ? .Automatic : .None)
+        let animation: UITableViewRowAnimation = (animated == true ? .Automatic : .None)
         
         self.objects!.removeObjectsInArray(objectsToRemove)
         self.tableView.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: animation)
@@ -432,7 +432,7 @@ extension MyQueryTableViewController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForNextPageAtIndexPath indexPath: NSIndexPath) -> PFTableViewCell? {
-        var cellIdentifier = "PFTableViewCellNextPage"
+        let cellIdentifier = "PFTableViewCellNextPage"
         
         var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as? MyActivityTableViewCell
         
@@ -524,7 +524,8 @@ extension MyQueryTableViewController: UITableViewDelegate {
         
     }
     
-    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]?  {
+    @available(iOS 8.0, *)
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]?  {
         if  indexPath.isEqual(self.indexPathForPaginationCell) {
             return nil
         }
@@ -536,7 +537,8 @@ extension MyQueryTableViewController: UITableViewDelegate {
         return result
     }
     
-    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> [AnyObject]? {
+    @available(iOS 8.0, *)
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> [UITableViewRowAction]? {
         return nil
     }
 }

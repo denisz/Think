@@ -26,7 +26,7 @@ extension UIViewController {
     
     var sideMenuView: Bool {
         if let nc = self.navigationController {
-            let controllers = nc.viewControllers as! [UIViewController]
+            let controllers = nc.viewControllers 
             if controllers.count > 1 {
                 return false
             }
@@ -45,8 +45,8 @@ extension UIViewController {
     func configureTitleView() {
         let navigationItem = defineNavigationItem()
         
-        var color = UIColor(red:0.2, green:0.2, blue:0.2, alpha:1)
-        var arrowImage = LGDrawer.drawArrowWithImageSize(CGSizeMake(11, 10),
+        let color = UIColor(red:0.2, green:0.2, blue:0.2, alpha:1)
+        let arrowImage = LGDrawer.drawArrowWithImageSize(CGSizeMake(11, 10),
             size: CGSizeMake(11, 6),
             offset: CGPoint(x: 0, y: 2),
             rotate: 0,
@@ -59,7 +59,7 @@ extension UIViewController {
             shadowOffset: CGPointZero,
             shadowBlur: 0)
         
-        var _titleButton = LGButton()
+        let _titleButton = LGButton()
         _titleButton.adjustsAlphaWhenHighlighted = true
         _titleButton.backgroundColor = UIColor.clearColor()
         _titleButton.tag = 0
@@ -79,12 +79,12 @@ extension UIViewController {
     func setupFakeStatusBar(color: UIColor) {
         let fakeView = UIView()
         fakeView.backgroundColor = color
-        fakeView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        fakeView.translatesAutoresizingMaskIntoConstraints = false
         
         self.view.addSubview(fakeView)
         
         let views = ["view": fakeView]
-        var hConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[view]|", options: .AlignAllCenterY, metrics: nil, views: views)
+        let hConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[view]|", options: .AlignAllCenterY, metrics: nil, views: views)
         let vConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[view(20)]", options: .AlignAllCenterX, metrics: nil, views: views)
         
         self.view.addConstraints(hConstraints)
@@ -140,7 +140,7 @@ extension UIViewController {
         var image = UIImage(named: imageLeftBtn) as UIImage!
         image = image.imageWithColor(color)
         
-        var btnBack:UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+        let btnBack:UIButton = UIButton(type: UIButtonType.Custom)
         btnBack.addTarget(self, action: "didTapLeftBtn:", forControlEvents: UIControlEvents.TouchUpInside)
         btnBack.setImage(image, forState: UIControlState.Normal)
         btnBack.contentEdgeInsets = UIEdgeInsets(top: -5, left: 0, bottom: 0, right: 0)
@@ -148,7 +148,7 @@ extension UIViewController {
         btnBack.setTitleColor(kColorNavigationBar, forState: UIControlState.Normal)
         btnBack.sizeToFit()
         
-        var myCustomBackButtonItem:UIBarButtonItem = UIBarButtonItem(customView: btnBack)
+        let myCustomBackButtonItem:UIBarButtonItem = UIBarButtonItem(customView: btnBack)
         navigationItem.setLeftBarButtonItem(myCustomBackButtonItem, animated: animated)
     }
     
@@ -204,7 +204,7 @@ class BaseViewController: StatefulViewController {
     
     override func defineNavigationItem() -> UINavigationItem {
         let navBar = defineNavigationBar()
-        return navBar!.items[0] as! UINavigationItem
+        return (navBar!.items?.first)!
     }
     
     func setupNavigationBar() {

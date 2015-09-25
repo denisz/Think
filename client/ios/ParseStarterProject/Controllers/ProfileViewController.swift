@@ -64,11 +64,11 @@ import VGParallaxHeader
     
     func setupHeaderView() {
         if !self.isGuest {
-            var headerProfile = ProfileHeaderView()
+            let headerProfile = ProfileHeaderView()
             self.headerProfile = headerProfile
             headerProfile.delegate = self
         } else {
-            var headerProfileGuest = ProfileGuestHeaderView()
+            let headerProfileGuest = ProfileGuestHeaderView()
             self.headerProfile = headerProfileGuest
             headerProfileGuest.delegate = self
         }
@@ -120,7 +120,7 @@ import VGParallaxHeader
     }
     
     override func queryForTable() -> PFQuery {
-        var query = PFQuery(className: self.parseClassName!)
+        let query = PFQuery(className: self.parseClassName!)
         query.whereKey(kPostOwnerKey, equalTo: owner!)
         query.whereKey(kPostStatusKey, equalTo: kPostStatusPublic)
         query.selectKeys([kPostTitleKey, kPostContentShortKey, kPostCounterCommentsKey, kPostCounterLikesKey, kPostOwnerKey, kPostCoverKey, kClassCreatedAt])
@@ -156,7 +156,7 @@ import VGParallaxHeader
     }
     
     class func CreateWithModel(model: PFObject) -> ProfileViewController{
-        var profile = ProfileViewController()
+        let profile = ProfileViewController()
         profile.owner = model
         profile.parseClassName = kPostClassKey
         profile.paginationEnabled = true
@@ -206,7 +206,11 @@ extension ProfileViewController: ProfileHeaderViewDelegate {
     func profileView(view: ProfileHeaderView, didTapNewPost button: UIButton) {
         let controller = NewPostViewController()
         controller.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
-        controller.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
+        if #available(iOS 8.0, *) {
+            controller.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
+        } else {
+            // Fallback on earlier versions
+        }
         
         let navigation = BaseNavigationController(rootViewController: controller)
         

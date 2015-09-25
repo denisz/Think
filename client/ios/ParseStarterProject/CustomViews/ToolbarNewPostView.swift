@@ -52,8 +52,6 @@ class ToolbarNewPostView: BaseUIView {
         case .hideKeyboard:
             self.delegate?.toolbar(self,  didTapHideKeyboard: sender)
             break
-        default:
-            println("")
         }
     }
 }

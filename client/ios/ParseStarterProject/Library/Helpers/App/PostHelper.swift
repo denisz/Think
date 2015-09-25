@@ -66,10 +66,9 @@ class PostHelper: NSObject {
     }
     
     class func actionSheet(post: PFObject, controller: UIViewController) {
-        if iOS8 {
+        if #available(iOS 8.0, *) {
             self.actionSheetIOS8(post, controller: controller)
         } else {
-            //для ios7 придумать другое
             self.actionSheetIOS7(post, controller: controller)
         }
     }
@@ -97,6 +96,7 @@ class PostHelper: NSObject {
         actionSheet.showAnimated(true, completionHandler: nil)
     }
     
+    @available(iOS 8.0, *)
     class func actionSheetIOS8(post: PFObject, controller: UIViewController)  {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
         

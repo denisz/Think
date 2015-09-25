@@ -105,7 +105,7 @@ import VGParallaxHeader
     func setupSections() {
         var row: XLFormRowDescriptor
         var section: XLFormSectionDescriptor
-        var owner = self.owner!
+        let owner = self.owner!
         
         section = XLFormSectionDescriptor()
         self.form.addFormSection(section)
@@ -212,7 +212,7 @@ import VGParallaxHeader
     }
     
     class func CreateWithModel(model: PFObject) -> ProfileEditViewController{
-        var profile = ProfileEditViewController()
+        let profile = ProfileEditViewController()
         profile.owner = model
         
         return profile
@@ -229,7 +229,7 @@ extension ProfileEditViewController: ProfileEditHeaderViewDelegate {
     }
 }
 
-extension ProfileEditViewController: UIImagePickerControllerDelegate {
+extension ProfileEditViewController {
     func performLoadedImage(image: UIImage) {
         if let scenario = SelectImageHelper.lastPresentScenario {
             let user    = PFUser.currentUser()
@@ -251,14 +251,14 @@ extension ProfileEditViewController: UIImagePickerControllerDelegate {
                             self.headerView?.updateCover(file)
                             break
                         default:
-                            println("scenario is invalid")
+                            print("scenario is invalid")
                         }
                     }
             }
         }
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         
         picker.dismissViewControllerAnimated(true, completion: nil)
         

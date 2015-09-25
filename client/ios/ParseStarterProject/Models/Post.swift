@@ -110,13 +110,13 @@ class Post: PFObject, PFSubclassing {
     class func tagsString(object: PFObject) -> String {
         if let tags = object[kPostTagsKey] as? [String] {
             let joiner = " #"
-            return "#\(joiner.join(tags))"
+            return "#\(tags.joinWithSeparator(joiner))"
         }
         return ""
     }
     
     class func commentsCounter(object: PFObject, var suffix: String = "") -> String {
-        var count = max(object[kPostCounterCommentsKey] as! Int, 0)
+        let count = max(object[kPostCounterCommentsKey] as! Int, 0)
         
         if !suffix.isEmpty {
             suffix = " \(suffix)"

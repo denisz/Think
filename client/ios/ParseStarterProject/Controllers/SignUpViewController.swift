@@ -62,8 +62,8 @@ protocol SignUpViewControllerDelegate {
         UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
     }
     
-    override func supportedInterfaceOrientations() -> Int {
-        return Int(UIInterfaceOrientationMask.Portrait.rawValue)
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.Portrait
     }
     
     override func shouldAutorotate() -> Bool {
@@ -107,18 +107,18 @@ protocol SignUpViewControllerDelegate {
     }
     
     func validation() -> Bool {
-        var userEmailAddress = emailAddress.text
+        let userEmailAddress = emailAddress.text
         let userPassword = password.text
         let userName = nickname.text
-        if userName.isEmpty {
+        if userName!.isEmpty {
             return false
         }
         
-        if userPassword.isEmpty {
+        if userPassword!.isEmpty {
             return false
         }
         
-        if userEmailAddress.isEmpty {
+        if userEmailAddress!.isEmpty {
             return false
         }
         
@@ -141,17 +141,17 @@ protocol SignUpViewControllerDelegate {
         
         
         // Ensure username is lowercase
-        userEmailAddress = userEmailAddress.lowercaseString
+        userEmailAddress = userEmailAddress!.lowercaseString
         
         // Add email address validation
         
         // Create the user
-        var user = PFUser()
+        let user = PFUser()
         user.password   = userPassword
         user.email      = userEmailAddress
         user.username   = userEmailAddress
         
-        user.setObject(userName,    forKey: kUserDisplayNameKey)
+        user.setObject(userName!,    forKey: kUserDisplayNameKey)
         user.setObject("",          forKey: kUserLastNameKey)
         user.setObject("",          forKey: kUserFirstNameKey)
         user.setObject("",          forKey: kUserCountryKey)
@@ -169,7 +169,7 @@ protocol SignUpViewControllerDelegate {
                 }
                 
             } else {
-                if let message: AnyObject = error!.userInfo!["error"] {
+                if let message: AnyObject = error!.userInfo["error"] {
                     self.message.text = "\(message)"
                 }
                 

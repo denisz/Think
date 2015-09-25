@@ -23,7 +23,7 @@ extension UIViewController: TOCropViewControllerDelegate  {
     }
     
     func cropImageWithCropViewController(image: UIImage) {
-        var cropController: TOCropViewController = TOCropViewController(image: image)
+        let cropController: TOCropViewController = TOCropViewController(image: image)
         cropController.delegate = self
         self.presentViewController(cropController, animated: true, completion: nil)
     }

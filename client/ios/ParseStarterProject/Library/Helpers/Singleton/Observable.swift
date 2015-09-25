@@ -93,9 +93,9 @@ struct Subscriptions<T>: SequenceType {
     
     // MARK: SequenceType protocol
     
-    func generate() -> GeneratorOf<Subscription<ValueType>> {
+    func generate() -> AnyGenerator<Subscription<ValueType>> {
         var nextIndex = subscriptions.count-1
-        return GeneratorOf<Subscription<ValueType>> {
+        return anyGenerator {
             if (nextIndex < 0) {
                 return nil
             }

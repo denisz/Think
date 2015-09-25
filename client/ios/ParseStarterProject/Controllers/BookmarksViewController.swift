@@ -43,7 +43,7 @@ import VGParallaxHeader
         var image = UIImage(named: "ic_more2") as UIImage!
         image = image.imageWithColor(color)
         
-        var btnBack:UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+        let btnBack:UIButton = UIButton(type: UIButtonType.Custom)
         btnBack.addTarget(self, action: "didTapMoreBtn:", forControlEvents: UIControlEvents.TouchUpInside)
         btnBack.setImage(image, forState: UIControlState.Normal)
         btnBack.imageEdgeInsets = UIEdgeInsets(top: 13, left: 26, bottom: 13, right: 0)
@@ -68,7 +68,7 @@ import VGParallaxHeader
     }
     
     override func queryForCollection() -> PFQuery {
-        var query = PFQuery(className: kBookmarkClassKey)
+        let query = PFQuery(className: kBookmarkClassKey)
         query.whereKey(kBookmarkUserKey, equalTo: owner!)
         query.includeKey(kBookmarkPostKey)
         query.selectKeys([kBookmarkPostKey])
@@ -99,7 +99,7 @@ import VGParallaxHeader
     }
     
     class func CreateWithModel(model: PFObject) -> BookmarksViewController {
-        var bookmarks = BookmarksViewController()
+        let bookmarks = BookmarksViewController()
         bookmarks.owner = model
         bookmarks.parseClassName = kBookmarkClassKey
         bookmarks.objectsPerPage = 25

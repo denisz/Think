@@ -22,7 +22,7 @@ class DenyView: BasicPlaceholderView {
         label.text = "Deny content".localized
         label.font = UIFont(name: "OpenSans", size: 13)
         label.textColor = UIColor(red:0.28, green:0.31, blue:0.32, alpha:1)
-        label.setTranslatesAutoresizingMaskIntoConstraints(false)
+        label.translatesAutoresizingMaskIntoConstraints = false
         centerView.addSubview(label)
         
         let views = ["label": label]

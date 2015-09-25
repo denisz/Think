@@ -21,8 +21,8 @@ func secondItemMatchesConstraint(
 }
 
 func isConstraintAttribute(view: UIView, constraint: NSLayoutConstraint, attribute: NSLayoutAttribute) -> Bool {
-    let isFirst = firstItemMatchesConstraint(view, constraint, attribute)
-    let isSecond = secondItemMatchesConstraint(view, constraint, attribute)
+    let isFirst = firstItemMatchesConstraint(view, constraint: constraint, attribute: attribute)
+    let isSecond = secondItemMatchesConstraint(view, constraint: constraint, attribute: attribute)
     
     return  isFirst || isSecond
 }
@@ -34,11 +34,10 @@ class HelperConstraint: NSObject {
         let attribute = NSLayoutAttribute.Top
         
         if let superview = view.superview {
-            if let constraints = superview.constraints() as? [NSLayoutConstraint] {
-                for constraint in constraints {
-                    if isConstraintAttribute(view, constraint, attribute) {
-                        return constraint
-                    }
+            let constraints = superview.constraints
+            for constraint in constraints {
+                if isConstraintAttribute(view, constraint: constraint, attribute: attribute) {
+                    return constraint
                 }
             }
         }

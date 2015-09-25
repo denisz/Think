@@ -22,7 +22,7 @@ class UIButtonRoundedBorder: UIButton {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        var image = self.imageView?.image
+        let image = self.imageView?.image
         self.setImage(image?.imageWithColor(imageColor), forState: UIControlState.Normal)
         self.setImage(image?.imageWithColor(imageColorSelected), forState: UIControlState.Selected)
 

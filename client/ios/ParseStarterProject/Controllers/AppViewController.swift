@@ -49,17 +49,17 @@ import ParseUI
     }
     
     @IBAction func didTapTest(sender: AnyObject) {
-        var user = PFUser.currentUser()
+        _ = PFUser.currentUser()
     }
     
     @IBAction func didTapProfile() {
-        var user = PFUser.currentUser()
+        let user = PFUser.currentUser()
         let controller = ProfileViewController.CreateWithModel(user!)
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
     @IBAction func didTapNotifications() {
-        var user = PFUser.currentUser()
+        let user = PFUser.currentUser()
         let controller = NotificationsViewController.CreateWithModel(user!)
         self.navigationController?.pushViewController(controller, animated: true)
     }
@@ -68,7 +68,7 @@ import ParseUI
     }
     
     @IBAction func didTapFeed() {
-        var user = PFUser.currentUser()
+        let user = PFUser.currentUser()
         let controller = FeedViewController.CreateWithModel(user!)
         self.navigationController?.pushViewController(controller, animated: true)
     }
@@ -79,13 +79,13 @@ import ParseUI
     }
     
     @IBAction func didTapDrafts() {
-        var user = PFUser.currentUser()
+        let user = PFUser.currentUser()
         let controller = DraftsViewController.CreateWithModel(user!)
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
     @IBAction func didTapBookmarks() {
-        var user = PFUser.currentUser()
+        let user = PFUser.currentUser()
         let controller = BookmarksViewController.CreateWithModel(user!)
         self.navigationController?.pushViewController(controller, animated: true)
     }
@@ -101,26 +101,26 @@ import ParseUI
     }
     
     @IBAction func didTapPost() {
-        var postID = "AjqOwAuL06"
+        let postID = "AjqOwAuL06"
         let controller = PostViewController.CreateWithId(postID)
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
     @IBAction func  didTapFollowers() {
-        var user = PFUser.currentUser()
+        let user = PFUser.currentUser()
         let controller = FollowersViewController.CreateWithModel(user!)
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
     @IBAction func  didTapYouFollow() {
-        var user = PFUser.currentUser()
+        let user = PFUser.currentUser()
         let controller = YouFollowViewController.CreateWithModel(user!)
         self.navigationController?.pushViewController(controller, animated: true)
     }
 
 
     @IBAction func didTapProfielEdit() {
-        var user = PFUser.currentUser()
+        let user = PFUser.currentUser()
         let controller = ProfileEditViewController.CreateWithModel(user!)
         
         UIView.beginAnimations(nil, context: nil)
@@ -133,7 +133,7 @@ import ParseUI
     
     
     @IBAction func didTapMessages() {
-        var user = PFUser.currentUser()
+        let user = PFUser.currentUser()
         let controller = MessagesViewController.CreateWithModel(user!)
         self.navigationController?.pushViewController(controller, animated: true)
     }

@@ -16,7 +16,7 @@ class BaseNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = transitionDelegate
-        self.interactivePopGestureRecognizer.enabled = false
+        self.interactivePopGestureRecognizer!.enabled = false
         self.navigationBar.hidden = true
     }
     
@@ -25,7 +25,7 @@ class BaseNavigationController: UINavigationController {
     }
     
     func replaceViewController(viewController: UIViewController, animated: Bool) {
-        var controllers = self.viewControllers as! [UIViewController]
+        var controllers = self.viewControllers 
         controllers.removeLast()
         controllers.append(viewController)
         self.setViewControllers(controllers, animated: animated)

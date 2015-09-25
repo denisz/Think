@@ -9,8 +9,8 @@
 import Foundation
 
 extension Array {
-    func find(includedElement: T -> Bool) -> Int? {
-        for (idx, element) in enumerate(self) {
+    func find(includedElement: Element -> Bool) -> Int? {
+        for (idx, element) in self.enumerate() {
             if includedElement(element) {
                 return idx
             }
@@ -18,9 +18,9 @@ extension Array {
         return nil
     }
     
-    mutating func remove(includedElement: T -> Bool) -> Bool {
+    mutating func remove(includedElement: Element -> Bool) -> Bool {
         
-        for (idx, element) in enumerate(self) {
+        for (idx, element) in self.enumerate() {
             if includedElement(element) {
                 self.removeAtIndex(idx)
                 return true

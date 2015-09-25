@@ -27,7 +27,7 @@ class LabelViewWithIcon: UILabel {
         super.awakeFromNib()
         self.definePositionX()
         
-        var iconLayer = CALayer()
+        let iconLayer = CALayer()
         iconLayer.frame = CGRectMake(iconLeft, iconTop, iconWidth, iconHeight)
         iconLayer.contents = iconImage.imageWithColor(iconColor).CGImage
         
@@ -47,7 +47,7 @@ class LabelViewWithIcon: UILabel {
     }
     
     func definePositionX() {
-        var align = self.textAlignment;
+        let align = self.textAlignment;
         var newIconLeft: CGFloat = 0
         
         switch(align) {

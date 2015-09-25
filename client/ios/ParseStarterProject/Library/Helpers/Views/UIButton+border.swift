@@ -16,12 +16,12 @@ extension UIButton {
         
         let menuBottomHairline: UIView = UIView()
         
-        menuBottomHairline.setTranslatesAutoresizingMaskIntoConstraints(false)
+        menuBottomHairline.translatesAutoresizingMaskIntoConstraints = false
         
         self.addSubview(menuBottomHairline)
         
-        let menuBottomHairline_constraint_H:Array = NSLayoutConstraint.constraintsWithVisualFormat("H:|[menuBottomHairline]|", options: NSLayoutFormatOptions(0), metrics: nil, views: ["menuBottomHairline":menuBottomHairline])
-        let menuBottomHairline_constraint_V:Array = NSLayoutConstraint.constraintsWithVisualFormat("V:[menuBottomHairline(0.5)]|", options: NSLayoutFormatOptions(0), metrics: nil, views: ["menuBottomHairline":menuBottomHairline])
+        let menuBottomHairline_constraint_H:Array = NSLayoutConstraint.constraintsWithVisualFormat("H:|[menuBottomHairline]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["menuBottomHairline":menuBottomHairline])
+        let menuBottomHairline_constraint_V:Array = NSLayoutConstraint.constraintsWithVisualFormat("V:[menuBottomHairline(0.5)]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["menuBottomHairline":menuBottomHairline])
         
         self.addConstraints(menuBottomHairline_constraint_H)
         self.addConstraints(menuBottomHairline_constraint_V)
@@ -34,13 +34,13 @@ extension UIButton {
         
         let menuBottomHairline: UIView = UIView()
         
-        menuBottomHairline.setTranslatesAutoresizingMaskIntoConstraints(false)
+        menuBottomHairline.translatesAutoresizingMaskIntoConstraints = false
         
         self.addSubview(menuBottomHairline)
         
-        let menuBottomHairline_constraint_H:Array = NSLayoutConstraint.constraintsWithVisualFormat("H:[menuBottomHairline(0.5)]|", options: NSLayoutFormatOptions(0), metrics: nil, views: ["menuBottomHairline":menuBottomHairline])
+        let menuBottomHairline_constraint_H:Array = NSLayoutConstraint.constraintsWithVisualFormat("H:[menuBottomHairline(0.5)]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["menuBottomHairline":menuBottomHairline])
         let menuBottomHairline_constraint_V:Array = NSLayoutConstraint.constraintsWithVisualFormat(
-            "V:|[menuBottomHairline]|", options: NSLayoutFormatOptions(0), metrics: nil, views: ["menuBottomHairline":menuBottomHairline])
+            "V:|[menuBottomHairline]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["menuBottomHairline":menuBottomHairline])
         
         self.addConstraints(menuBottomHairline_constraint_H)
         self.addConstraints(menuBottomHairline_constraint_V)

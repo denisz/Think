@@ -23,7 +23,7 @@ protocol LogInViewControllerDelegate {
 // (kConstantTop, kConstantSN, show (kConstantTop, kConstantSN) )
 func determineContraints() -> (CGFloat, CGFloat, CGFloat, CGFloat){
     if UIDevice().userInterfaceIdiom == .Phone {
-        println(UIScreen.mainScreen().bounds.height)
+        print(UIScreen.mainScreen().bounds.height)
         switch UIScreen.mainScreen().bounds.height {
         case 960:
             return (20, 40, -45, 25)
@@ -111,8 +111,8 @@ func determineContraints() -> (CGFloat, CGFloat, CGFloat, CGFloat){
         UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
     }
     
-    override func supportedInterfaceOrientations() -> Int {
-        return Int(UIInterfaceOrientationMask.Portrait.rawValue)
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.Portrait
     }
     
     override func shouldAutorotate() -> Bool {
@@ -121,7 +121,7 @@ func determineContraints() -> (CGFloat, CGFloat, CGFloat, CGFloat){
     
     @IBAction func didTapForgot(sender: AnyObject) {
         var userEmailAddress = emailAddress.text
-        userEmailAddress = userEmailAddress.lowercaseString
+        userEmailAddress = userEmailAddress!.lowercaseString
         self.delegate?.logIn(self, forgot: self.forggetPassword, email: userEmailAddress)
     }
     
@@ -145,9 +145,9 @@ func determineContraints() -> (CGFloat, CGFloat, CGFloat, CGFloat){
                 }
                 
                 if newUser.isNew {
-                    println("User signed up and logged in through Facebook!")
+                    print("User signed up and logged in through Facebook!")
                 } else {
-                    println("User logged in through Facebook!")
+                    print("User logged in through Facebook!")
                 }
             } else {
                 self.message.text = "Uh oh. You cancelled the Facebook login."
@@ -163,7 +163,7 @@ func determineContraints() -> (CGFloat, CGFloat, CGFloat, CGFloat){
             (user: PFUser?, error: NSError?) -> Void in
             self.fadeActivity.hidden = true
             if error != nil || user == nil {
-                if let message: AnyObject = error!.userInfo!["error"] {
+                if let message: AnyObject = error!.userInfo["error"] {
                     self.message.text = "\(message)"
                 }
                 dispatch_async(dispatch_get_main_queue()) {
@@ -186,12 +186,12 @@ func determineContraints() -> (CGFloat, CGFloat, CGFloat, CGFloat){
         self.hideKeyboard()
         
         var userEmailAddress = emailAddress.text
-        userEmailAddress = userEmailAddress.lowercaseString
-        var userPassword = password.text
+        userEmailAddress = userEmailAddress!.lowercaseString
+        let userPassword = password.text
         
-        println("\(userEmailAddress) \(userPassword)")
+        print("\(userEmailAddress) \(userPassword)")
 
-        PFUser.logInWithUsernameInBackground(userEmailAddress, password:userPassword) {
+        PFUser.logInWithUsernameInBackground(userEmailAddress!, password:userPassword!) {
             (user: PFUser?, error: NSError?) -> Void in
             self.fadeActivity.hidden = true
             
@@ -201,7 +201,7 @@ func determineContraints() -> (CGFloat, CGFloat, CGFloat, CGFloat){
                 }
             } else {
                 
-                if let message: AnyObject = error!.userInfo!["error"] {
+                if let message: AnyObject = error!.userInfo["error"] {
                     self.message.text = "\(message)"
                 }
                 dispatch_async(dispatch_get_main_queue()) {

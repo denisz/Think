@@ -61,7 +61,7 @@ class CommentsTableView: MyQueryTableView {
     }
     
     override func queryForTable() -> PFQuery {
-        var query = PFQuery(className: self.parseClassName!)
+        let query = PFQuery(className: self.parseClassName!)
         query.whereKey(kActivityTypeKey, equalTo: kActivityTypeComment)
         query.whereKey(kActivityPostKey, equalTo: object!)
         query.orderByDescending("createdAt")
@@ -72,7 +72,7 @@ class CommentsTableView: MyQueryTableView {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell? {
-        var cell = tableView.dequeueReusableCellWithIdentifier(kReusableCommentViewCell) as? CommentViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(kReusableCommentViewCell) as? CommentViewCell
         cell?.contentView.backgroundColor = kColorBackgroundViewController
         cell?.prepareView(object!)
         

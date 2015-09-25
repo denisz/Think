@@ -62,7 +62,7 @@ class SettingsViewController: BaseFormViewController {
     }
     
     func setupSectionSocial() {
-        var section = XLFormSectionDescriptor()
+        let section = XLFormSectionDescriptor()
         var row: XLFormRowDescriptor
         self.form.addFormSection(section)
         
@@ -77,10 +77,10 @@ class SettingsViewController: BaseFormViewController {
     
     func selectorsByArray(options: [(String, String)]) -> [XLFormOptionsObject]{
         var result = [XLFormOptionsObject]()
-        var option: [String: String]
+        var _: [String: String]
         
         for option in options {
-            var obj = XLFormOptionsObject(value: option.0, displayText: option.1)
+            let obj = XLFormOptionsObject(value: option.0, displayText: option.1)
             result.append(obj)
         }
         
@@ -90,13 +90,13 @@ class SettingsViewController: BaseFormViewController {
     func setupNotify() {
         let install = PFInstallation.currentInstallation()
         
-        var section = XLFormSectionDescriptor()
+        let section = XLFormSectionDescriptor()
         var row: XLFormRowDescriptor
         self.form.addFormSection(section)
         
         row = XLFormRowDescriptor(tag: tag.apn, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Push notifications".uppercaseString.localized)
         
-        if let connect = install[kInstallationUserKey] as? PFObject {
+        if let _ = install[kInstallationUserKey] as? PFObject {
             row.value = true
         }
         
@@ -121,7 +121,7 @@ class SettingsViewController: BaseFormViewController {
     }
     
     func setupPrivacy() {
-        var section = XLFormSectionDescriptor()
+        let section = XLFormSectionDescriptor()
         var row: XLFormRowDescriptor
         self.form.addFormSection(section)
         
@@ -140,7 +140,7 @@ class SettingsViewController: BaseFormViewController {
     }
     
     func setupNewMessage() {
-        var section = XLFormSectionDescriptor()
+        let section = XLFormSectionDescriptor()
         section.title = "New messages".uppercaseString.localized
         var row: XLFormRowDescriptor
         
@@ -162,8 +162,8 @@ class SettingsViewController: BaseFormViewController {
     }
     
     func logoutBtn() {
-        var section = XLFormSectionDescriptor()
-        var row = XLFormRowDescriptor(tag: tag.logout, rowType: XLFormRowDescriptorTypeButton, title: "logout".uppercaseString.localized)
+        let section = XLFormSectionDescriptor()
+        let row = XLFormRowDescriptor(tag: tag.logout, rowType: XLFormRowDescriptorTypeButton, title: "logout".uppercaseString.localized)
         
         self.form.addFormSection(section)
         
@@ -205,7 +205,7 @@ class SettingsViewController: BaseFormViewController {
     func performApnEvents(newValue: AnyObject) {
         let install = PFInstallation.currentInstallation()
         var events = [AnyObject]()
-        var values = newValue as! [AnyObject]
+        let values = newValue as! [AnyObject]
         
         for options in values {
             var event: String
@@ -235,7 +235,7 @@ class SettingsViewController: BaseFormViewController {
                 self.performApn(newValue)
                 break
             default:
-                println("settings is not perform")
+                print("settings is not perform")
             }
         }
     }

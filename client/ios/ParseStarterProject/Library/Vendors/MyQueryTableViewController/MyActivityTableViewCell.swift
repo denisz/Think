@@ -18,7 +18,7 @@ class MyActivityTableViewCell: PFTableViewCell {
         
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
+        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
         
         activityIndicator.hidesWhenStopped = true
         self.backgroundColor = UIColor.clearColor()
@@ -30,9 +30,9 @@ class MyActivityTableViewCell: PFTableViewCell {
     }
     
     func setupLabel() {
-        var contentView = self.contentView
-        var label = UILabel()
-        label.setTranslatesAutoresizingMaskIntoConstraints(false)
+        let contentView = self.contentView
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = UIColor.clearColor()
         label.text = "Load more...".localized
         label.textAlignment = NSTextAlignment.Center
@@ -41,13 +41,13 @@ class MyActivityTableViewCell: PFTableViewCell {
         contentView.addSubview(label)
 
         let views = ["view": label]
-        let hConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[view]-(-44)-|", options: nil, metrics: nil, views: views)
-        let vConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[view(44)]|", options: nil, metrics: nil, views: views)
+        let hConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[view]-(-44)-|", options: [], metrics: nil, views: views)
+        let vConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[view(44)]|", options: [], metrics: nil, views: views)
         contentView.addConstraints(hConstraints)
         contentView.addConstraints(vConstraints)
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     

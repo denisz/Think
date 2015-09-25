@@ -30,7 +30,7 @@ class BaseQueryTableViewController: MyQueryTableViewController {
     
     override func defineNavigationItem() -> UINavigationItem {
         let navBar = defineNavigationBar()
-        return navBar!.items[0] as! UINavigationItem
+        return (navBar!.items?.first)!
     }
     
     func setupNavigationBar() {

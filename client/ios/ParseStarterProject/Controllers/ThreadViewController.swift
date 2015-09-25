@@ -33,7 +33,11 @@ import ParseUI
         self.tableView.tableFooterView      = UIView()
         
         if self.tableView.respondsToSelector("layoutMargins") {
-            self.tableView.layoutMargins        = UIEdgeInsetsZero
+            if #available(iOS 8.0, *) {
+                self.tableView.layoutMargins        = UIEdgeInsetsZero
+            } else {
+                // Fallback on earlier versions
+            }
         }
         
         self.setupNavigationBar()
@@ -70,7 +74,7 @@ import ParseUI
         image.image = kUserPlaceholder
         image.file = UserModel.pictureImage(self.participant!)
         
-        let btnBack = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+        let btnBack = UIButton(type: UIButtonType.Custom)
         btnBack.addTarget(self, action: "didTapAvatarBtn:", forControlEvents: UIControlEvents.TouchUpInside)
         btnBack.setImage(placeholder, forState: UIControlState.Normal)
         btnBack.imageEdgeInsets = UIEdgeInsets(top: -4, left: -4, bottom: -4, right: -4)
@@ -113,7 +117,7 @@ import ParseUI
     }
     
     override func queryForTable() -> PFQuery {
-        var query = PFQuery(className: self.parseClassName!)
+        let query = PFQuery(className: self.parseClassName!)
         query.whereKey(kMessageThreadKey, equalTo: owner!)
         query.includeKey(kMessageFromUserKey)
         query.orderByDescending(kClassCreatedAt)
@@ -133,7 +137,11 @@ import ParseUI
         cell.prepareView(object!)
         
         if cell.respondsToSelector("layoutMargins") {
-            cell.layoutMargins  = UIEdgeInsetsZero
+            if #available(iOS 8.0, *) {
+                cell.layoutMargins  = UIEdgeInsetsZero
+            } else {
+                // Fallback on earlier versions
+            }
         }
         
         cell.separatorInset = UIEdgeInsetsZero
@@ -162,9 +170,10 @@ import ParseUI
         
     }
     
-    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> [AnyObject]?  {
+    @available(iOS 8.0, *)
+    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> [UITableViewRowAction]?  {
         
-        var deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Delete" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+        let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Delete" , handler: { (action:UITableViewRowAction, indexPath:NSIndexPath) -> Void in
         })
         
         deleteAction.backgroundColor = UIColor(red:0.91, green:0.3, blue:0.24, alpha:1)
@@ -178,12 +187,12 @@ import ParseUI
             
             self.tableView.beginUpdates()
             
-            var indexPath = NSIndexPath(forRow: 0, inSection: 0)
+            let indexPath = NSIndexPath(forRow: 0, inSection: 0)
             
-            self.tableView.insertRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
+            self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
             
             self.tableView.endUpdates()
-            self.tableView.scrollToRowAtIndexPath(indexPath!, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
+            self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
         }
     }
     
@@ -192,7 +201,7 @@ import ParseUI
     }
     
     class func CreateWithModel(model: PFObject) -> ThreadViewController {
-        var thread = ThreadViewController()
+        let thread = ThreadViewController()
         thread.owner = model
         thread.parseClassName = kMessageClassKey
         thread.participant = Thread.participant(model)

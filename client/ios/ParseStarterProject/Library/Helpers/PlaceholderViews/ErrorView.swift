@@ -25,14 +25,14 @@ class ErrorView: BasicPlaceholderView {
         textLabel.font = UIFont(name: "HelveticaNeue", size: 14)
         textLabel.textColor = UIColor(red:0.28, green:0.31, blue:0.32, alpha:1)
 
-		textLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+		textLabel.translatesAutoresizingMaskIntoConstraints = false
 		centerView.addSubview(textLabel)
 		
 		detailTextLabel.text = "Перезагрузка.".localized
         detailTextLabel.font = UIFont(name: "HelveticaNeue", size: 15)
 		detailTextLabel.textAlignment = .Center
 		detailTextLabel.textColor = UIColor.grayColor()
-		detailTextLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+		detailTextLabel.translatesAutoresizingMaskIntoConstraints = false
 		centerView.addSubview(detailTextLabel)
 		
 		let views = ["label": textLabel, "detailLabel": detailTextLabel]

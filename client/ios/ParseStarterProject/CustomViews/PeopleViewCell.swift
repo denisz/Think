@@ -46,7 +46,7 @@ class PeopleViewCell: PFTableViewCell {
     }
     
     dynamic func userFollowOrUnFollowAuthorPost(notification: NSNotification) {
-        if let user = notification.object as? PFObject{
+        if let _ = notification.object as? PFObject{
             self.updateFollowButton()
         }
     }

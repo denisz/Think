@@ -34,7 +34,7 @@ class EMPartialModalViewController: UIViewController {
     private var snapshotView: UIView?// = UIScreen.mainScreen().snapshotViewAfterScreenUpdates(false)
     
     // An overlay view, as button to dismiss the modal view controller on being touched
-    private let overlayView: UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+    private let overlayView: UIButton = UIButton(type: UIButtonType.Custom)
     
     // A view controller holds the main content of modal
     private var contentViewController: UIViewController?
@@ -74,7 +74,7 @@ class EMPartialModalViewController: UIViewController {
         // Initializing overlay
         overlayView.frame = view.bounds
         overlayView.backgroundColor = UIColor(white: 0, alpha: 0.6)
-        overlayView.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
+        overlayView.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
         overlayView.addTarget(self, action: Selector("dismissViewController"), forControlEvents: UIControlEvents.TouchUpInside)
         
         view.addSubview(overlayView)
@@ -118,7 +118,7 @@ extension EMPartialModalViewController: UIViewControllerTransitioningDelegate {
 
 extension EMPartialModalViewController: UIViewControllerAnimatedTransitioning {
     
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {
+    func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
         return 0.42
     }
     
@@ -126,7 +126,7 @@ extension EMPartialModalViewController: UIViewControllerAnimatedTransitioning {
         let fromViewController: UIViewController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!
         let toViewController: UIViewController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
         let animationDuration: NSTimeInterval = transitionDuration(transitionContext)
-        let containerView: UIView = transitionContext.containerView()
+        let containerView: UIView = transitionContext.containerView()!
         
         fromViewController.viewWillDisappear(transitionContext.isAnimated())
         toViewController.viewWillAppear(transitionContext.isAnimated())

@@ -15,7 +15,7 @@ extension String {
         
         if let jsonData = data {
             // Will return an object or nil if JSON decoding fails
-            return NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers, error: nil)
+            return try? NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers)
         } else {
             // Lossless conversion of the string was not possible
             return nil

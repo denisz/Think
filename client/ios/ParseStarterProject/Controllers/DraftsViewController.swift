@@ -43,7 +43,7 @@ import UIKit
     }
     
     override func queryForTable() -> PFQuery {
-        var query = PFQuery(className: self.parseClassName!)
+        let query = PFQuery(className: self.parseClassName!)
         query.whereKey(kPostOwnerKey, equalTo: owner!)
         query.whereKey(kPostStatusKey, equalTo: kPostStatusDraft)
         query.selectKeys([kPostTitleKey, kPostContentShortKey, kClassCreatedAt])
@@ -75,7 +75,7 @@ import UIKit
     }
     
     class func CreateWithModel(model: PFObject) -> DraftsViewController{
-        var drafts = DraftsViewController()
+        let drafts = DraftsViewController()
         drafts.owner = model
         drafts.parseClassName = kPostClassKey
         drafts.paginationEnabled = true

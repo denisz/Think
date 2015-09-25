@@ -60,19 +60,19 @@ import VGParallaxHeader
             
             self.tableView.beginUpdates()
             
-            var indexPath = NSIndexPath(forRow: 0, inSection: 0)
+            let indexPath = NSIndexPath(forRow: 0, inSection: 0)
             
-            self.tableView.insertRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
+            self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
             
             self.tableView.endUpdates()
-            self.tableView.scrollToRowAtIndexPath(indexPath!, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
+            self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
         }
     }
     
     func userSendMessage(notification: NSNotification) {
         if let message = notification.object as? PFObject {
             if let thread = MessageModel.thread(message) {
-                let index = IndexOf(self.objects!, thread)
+                let index = IndexOf(self.objects!, object: thread)
                 if index > -1 {
                     if let item = self.objects![index] as? PFObject {
                         item.setObject(message, forKey: kThreadLastMessageKey)
@@ -96,7 +96,7 @@ import VGParallaxHeader
         var image = UIImage(named: "ic_search") as UIImage!
         image = image.imageWithColor(color)
         
-        let btnBack = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+        let btnBack = UIButton(type: UIButtonType.Custom)
         btnBack.addTarget(self, action: "didTapSearchBtn:", forControlEvents: UIControlEvents.TouchUpInside)
         btnBack.setImage(image, forState: UIControlState.Normal)
         btnBack.imageEdgeInsets = UIEdgeInsets(top: 1, left: 0, bottom: 2, right: 0)
@@ -167,7 +167,7 @@ import VGParallaxHeader
     }
     
     class func CreateWithModel(model: PFObject) -> MessagesViewController{
-        var messages = MessagesViewController()
+        let messages = MessagesViewController()
         messages.owner = model
         messages.parseClassName = kThreadClassKey
         messages.paginationEnabled = true

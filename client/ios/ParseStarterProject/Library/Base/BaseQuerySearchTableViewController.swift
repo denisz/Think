@@ -59,7 +59,7 @@ extension BaseQuerySearchTableViewController: UISearchBarDelegate {
             self.searchBarTopLayoutConstraint.constant = 20
             
             UIView.animateWithDuration(0.257, delay: 0,
-                options: .BeginFromCurrentState | UIViewAnimationOptions.CurveEaseInOut,
+                options: [.BeginFromCurrentState, UIViewAnimationOptions.CurveEaseInOut],
                 animations: { () -> Void in
                     self.view.layoutIfNeeded()
                     navigationBar.alpha = 0
@@ -77,7 +77,7 @@ extension BaseQuerySearchTableViewController: UISearchBarDelegate {
             self.searchBarTopLayoutConstraint.constant = 64
             
             UIView.animateWithDuration(0.257, delay: 0,
-                options: .BeginFromCurrentState | UIViewAnimationOptions.CurveEaseInOut,
+                options: [.BeginFromCurrentState, UIViewAnimationOptions.CurveEaseInOut],
                 animations: { () -> Void in
                     self.view.layoutIfNeeded()
                     navigationBar.alpha = 1
@@ -98,7 +98,7 @@ extension BaseQuerySearchTableViewController: UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        self.searchText = searchBar.text
+        self.searchText = searchBar.text!
         self.clear()
         self.loadObjects()
     }

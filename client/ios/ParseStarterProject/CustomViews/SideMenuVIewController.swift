@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 typealias SideMenuTuple = (String, String, kSideMenu)
-class SideMenuViewConroller: UITableViewController, UITableViewDataSource {
+class SideMenuViewConroller: UITableViewController {
     var activeItem: String = "Feed"
     
     let items: [SideMenuTuple] = [
@@ -38,7 +38,7 @@ class SideMenuViewConroller: UITableViewController, UITableViewDataSource {
     }
     
     func prepareIcon(named: String) -> UIImage {
-        var image = UIImage(named: named)
+        let image = UIImage(named: named)
         return image!.imageWithColor(UIColor.whiteColor())
     }
     
@@ -72,7 +72,7 @@ class SideMenuViewConroller: UITableViewController, UITableViewDataSource {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier(kReusableSideMenuViewCell) as! SideMenuViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(kReusableSideMenuViewCell) as! SideMenuViewCell
         
         if let obj = self.propsByIndexPath(indexPath) {
             let countNotify = self.prepareCounter(obj.2)

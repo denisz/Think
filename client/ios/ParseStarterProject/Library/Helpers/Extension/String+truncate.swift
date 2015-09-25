@@ -12,8 +12,8 @@ extension String {
     /// Truncates the string to length number of characters and
     /// appends optional trailing string if longer
     func truncate(length: Int, trailing: String? = nil) -> String {
-        if count(self) > length {
-            return self.substringToIndex(advance(self.startIndex, length)) + (trailing ?? "")
+        if self.characters.count > length {
+            return self.substringToIndex(self.startIndex.advancedBy(length)) + (trailing ?? "")
         } else {
             return self
         }

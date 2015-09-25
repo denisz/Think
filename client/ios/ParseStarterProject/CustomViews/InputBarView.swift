@@ -29,7 +29,7 @@ class InputBarView: BaseUIView {
     
     var text: String {
         get {
-            return self.textField.text
+            return self.textField.text!
         }
         set(newText) {
             self.textField.text = newText
@@ -77,7 +77,7 @@ class InputBarView: BaseUIView {
 
 extension InputBarView: UITextFieldDelegate {
     @IBAction func textFieldChanged(sender: AnyObject!) {
-        if textField.text.isEmpty {
+        if textField.text!.isEmpty {
             self.hideLeftButton()
         } else {
             self.showLeftButton()

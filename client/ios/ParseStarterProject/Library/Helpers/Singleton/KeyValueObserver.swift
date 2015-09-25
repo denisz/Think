@@ -28,9 +28,9 @@ class KeyValueObserver: NSObject {
         object.removeObserver(self, forKeyPath: keyPath, context: &kvoContext)
     }
     
-    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         if context == &kvoContext {
-            self.callback(change: change)
+            self.callback(change: change!)
         }
         else {
             super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)

@@ -140,7 +140,7 @@ class RRTagController: XLFormViewController, XLFormRowDescriptorViewController, 
     
     func cancelEditTag() {
         self.view.endEditing(true)
-        UIView.animateWithDuration(0.375, delay: 0, options: UIViewAnimationOptions.allZeros, animations: { () -> Void in
+        UIView.animateWithDuration(0.375, delay: 0, options: UIViewAnimationOptions(), animations: { () -> Void in
             self.addTagView.frame.origin.y = 0
             self.controlPanelEdition.frame.origin.y = UIScreen.mainScreen().bounds.size.height
             self.collectionTag.alpha = 1
@@ -176,7 +176,7 @@ class RRTagController: XLFormViewController, XLFormRowDescriptorViewController, 
         let selectedCell: RRTagCollectionViewCell? = collectionView.cellForItemAtIndexPath(indexPath) as? RRTagCollectionViewCell
         
         if indexPath.row < tags.count {
-            var currentTag = tags[indexPath.row]
+            _ = tags[indexPath.row]
             
             if tags[indexPath.row]._isSelected == false {
                 tags[indexPath.row]._isSelected = true
@@ -192,12 +192,12 @@ class RRTagController: XLFormViewController, XLFormRowDescriptorViewController, 
         else {
             addTagView.textEdit.text = nil
             UIView.animateWithDuration(0.375, delay: 0,
-                options: UIViewAnimationOptions.allZeros, animations: { () -> Void in
+                options: UIViewAnimationOptions(), animations: { () -> Void in
                 self.collectionTag.alpha = 0.3
                 self.addTagView.frame.origin.y = 64
                 }, completion: { (anim: Bool) -> Void in
                     self.addTagView.textEdit.becomeFirstResponder()
-                    println("")
+                    print("")
             })
         }
     }
@@ -221,7 +221,7 @@ class RRTagController: XLFormViewController, XLFormRowDescriptorViewController, 
             if let keyboardSize = (userInfo[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
                 heightKeyboard = keyboardSize.height
                 UIView.animateWithDuration(0.375, delay: 0,
-                    options: UIViewAnimationOptions.allZeros, animations: { () -> Void in
+                    options: UIViewAnimationOptions(), animations: { () -> Void in
                     self.controlPanelEdition.frame.origin.y = self.view.frame.size.height - self.heightKeyboard - 50
                 }, completion: nil)
             }
@@ -239,7 +239,7 @@ class RRTagController: XLFormViewController, XLFormRowDescriptorViewController, 
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.whiteColor()
         
-        var attributes = [
+        let attributes = [
             NSForegroundColorAttributeName: UIColor(red:0.26, green:0.26, blue:0.26, alpha:1),
             NSFontAttributeName: kFontNavigationBarTitle
         ]
@@ -252,7 +252,7 @@ class RRTagController: XLFormViewController, XLFormRowDescriptorViewController, 
         
         self.tags = [Tag]()
         
-        if let value: AnyObject = rowDescriptor!.value {
+        if let _: AnyObject = rowDescriptor!.value {
 
         }
         
@@ -265,7 +265,7 @@ class RRTagController: XLFormViewController, XLFormRowDescriptorViewController, 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil)
     }
     
-    class func displayTagController(#parentController: UIViewController, tagsString: [String]?,
+    class func displayTagController(parentController parentController: UIViewController, tagsString: [String]?,
         blockFinish: (selectedTags: Array<Tag>, unSelectedTags: Array<Tag>)->(), blockCancel: ()->()) {
         let tagController = RRTagController()
             tagController.tags = Array()
@@ -279,7 +279,7 @@ class RRTagController: XLFormViewController, XLFormRowDescriptorViewController, 
             parentController.presentViewController(tagController, animated: true, completion: nil)
     }
 
-    class func displayTagController(#parentController: UIViewController, tags: [Tag]?,
+    class func displayTagController(parentController parentController: UIViewController, tags: [Tag]?,
         blockFinish: (selectedTags: Array<Tag>, unSelectedTags: Array<Tag>)->(), blockCancel: ()->()) {
             let tagController = RRTagController()
             tagController.tags = tags

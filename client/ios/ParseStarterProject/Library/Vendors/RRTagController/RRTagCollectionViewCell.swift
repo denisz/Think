@@ -52,7 +52,7 @@ class RRTagCollectionViewCell: UICollectionViewCell {
     func animateSelection(selection: Bool) {
         _isSelected = selection
     
-        UIView.animateWithDuration(0.375, delay: 0, options: UIViewAnimationOptions.allZeros, animations: { () -> Void in
+        UIView.animateWithDuration(0.375, delay: 0, options: UIViewAnimationOptions(), animations: { () -> Void in
             self.textContent.layer.backgroundColor = (self._isSelected == true) ? colorSelectedTag.CGColor : colorUnselectedTag.CGColor
             self.textContent.textColor = (self._isSelected == true) ? colorTextSelectedTag : colorTextUnSelectedTag
             self.textContent.layer.borderColor = (self._isSelected == true) ? UIColor.clearColor().CGColor : UIColor.lightGrayColor().CGColor

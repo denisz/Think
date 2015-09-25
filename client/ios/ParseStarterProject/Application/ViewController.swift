@@ -148,7 +148,7 @@ extension ViewController: UIAlertViewDelegate {
         let cancel = NSLocalizedString("Cancel", comment: "Cancel")
         let ok = NSLocalizedString("OK", comment: "OK")
         
-        var alertView = UIAlertView(
+        let alertView = UIAlertView(
             title: title,
             message: message,
             delegate: self,
@@ -157,7 +157,7 @@ extension ViewController: UIAlertViewDelegate {
         
         alertView.alertViewStyle = UIAlertViewStyle.PlainTextInput
         
-        var textField = alertView.textFieldAtIndex(0)
+        let textField = alertView.textFieldAtIndex(0)
         textField!.placeholder = NSLocalizedString("Email", comment: "Email")
         textField!.keyboardType = UIKeyboardType.EmailAddress
         textField!.text = email!
@@ -173,31 +173,31 @@ extension ViewController: UIAlertViewDelegate {
     func alertView(alertView: UIAlertView, willDismissWithButtonIndex buttonIndex: Int) {
         if (buttonIndex != alertView.cancelButtonIndex) {
             let email = alertView.textFieldAtIndex(0)!.text
-            self._requestPasswordResetWithEmail(email)
+            self._requestPasswordResetWithEmail(email!)
         }
     }
 }
 
 extension ViewController: LogInViewControllerDelegate {
     func logIn(controller: LogInViewController, failed error: NSError) {
-        println("failed login \(error)")
+        print("failed login \(error)")
     }
     
     func logIn(controller: LogInViewController, successful user: PFUser) {
-        println("logIn \(user)")
+        print("logIn \(user)")
         controller.dismissViewControllerAnimated(true, completion: nil)
         self.app()
     }
     
     func logIn(controller: LogInViewController, facebook user: PFUser) {
-        println("logIn \(user)")
+        print("logIn \(user)")
         controller.dismissViewControllerAnimated(true, completion: nil)
         self.app()
         self.registerDevice()
     }
     
     func logIn(controller: LogInViewController, skiped button: UIView) {
-        println("skip")
+        print("skip")
         controller.dismissViewControllerAnimated(true, completion: nil)
         self.app()
     }
@@ -214,7 +214,7 @@ extension ViewController: LogInViewControllerDelegate {
 
 extension ViewController: SignUpViewControllerDelegate {
     func signUp(controller: SignUpViewController, failed error: NSError) {
-        println("failed signUp \(error)")
+        print("failed signUp \(error)")
     }
     
     func signUp(controller: SignUpViewController, successful user: PFUser) {

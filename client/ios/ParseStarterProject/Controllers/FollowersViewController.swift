@@ -43,7 +43,7 @@ import ParseUI
     }
 
     override func queryForTable() -> PFQuery {
-        var query = PFQuery(className: self.parseClassName!)
+        let query = PFQuery(className: self.parseClassName!)
         query.whereKey(kActivityToUserKey, equalTo: self.owner!)
         query.whereKey(kActivityTypeKey, equalTo: kActivityTypeFollow)
         
@@ -76,7 +76,7 @@ import ParseUI
     }
     
     class func CreateWithModel(model: PFObject) -> FollowersViewController{
-        var followers = FollowersViewController()
+        let followers = FollowersViewController()
         followers.owner = model
         followers.parseClassName = kActivityClassKey
         followers.paginationEnabled = true

@@ -19,7 +19,7 @@ class MyActivityIndicatorCollectionReusableView : UICollectionReusableView {
         super.init(frame: frame)
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -42,6 +42,6 @@ class MyActivityIndicatorCollectionReusableView : UICollectionReusableView {
     }
     
     func handlerTap() {
-        println("test tap")
+        print("test tap")
     }
 }

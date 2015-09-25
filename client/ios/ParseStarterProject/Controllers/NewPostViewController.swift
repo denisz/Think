@@ -100,7 +100,7 @@ import Bolts
         var image = UIImage(named: "ic_next") as UIImage!
         image = image.imageWithColor(color)
         
-        var btnBack:UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+        let btnBack:UIButton = UIButton(type: UIButtonType.Custom)
         btnBack.addTarget(self, action: "didTapNextBtn:", forControlEvents: UIControlEvents.TouchUpInside)
         btnBack.setImage(image, forState: UIControlState.Normal)
         btnBack.imageEdgeInsets = UIEdgeInsets(top: 9, left: 18, bottom: 9, right: 0)
@@ -163,7 +163,7 @@ import Bolts
     }
     
     func preparePost(){
-        var result = [String]()
+        _ = [String]()
         
         let title           = self.titlePost()
         let contentObject   = self.blockByType(PostBlockType.Text).map({ $0.toObject() })
@@ -203,7 +203,7 @@ extension NewPostViewController: UITableViewDelegate {
     }
 
     func insertNewBlockAfterBlock(block: PostBlock, type: PostBlockType) {
-        var index = self.blocks?.find{$0 == block}
+        let index = self.blocks?.find{$0 == block}
         
         if let idx = index {
             let newBlock = PostBlock(type: type)
@@ -278,7 +278,7 @@ extension NewPostViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, cellForBlockAtIndexPath indexPath: NSIndexPath, block: PostBlock) -> UITableViewCell  {
         
         let cellIndentifier = self.parseReuseIdentifierByType(block.type)
-        var cell = tableView.dequeueReusableCellWithIdentifier(cellIndentifier, forIndexPath: indexPath) as! BlockPostViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIndentifier, forIndexPath: indexPath) as! BlockPostViewCell
         
         cell.clearView()
         cell.parentViewController = self
@@ -322,13 +322,13 @@ extension NewPostViewController: ToolbarNewPostViewDelegate {
     }
 }
 
-extension NewPostViewController: UIImagePickerControllerDelegate {
+extension NewPostViewController {
     func performLoadedImage(image: UIImage) {
         if let scenario = SelectImageHelper.lastPresentScenario {
             let user        = PFUser.currentUser()
             let userID      = user!.objectId ?? "unknown"
             let date        = NSDate.timeIntervalSinceReferenceDate()
-            var blockCover  = self.blockByType(PostBlockType.Cover)[0]//тут могут быть проблемы
+            let blockCover  = self.blockByType(PostBlockType.Cover)[0]//тут могут быть проблемы
             
             SelectImageHelper.uploadImage(image,
                 imageName: "\(userID)_\(date)")
@@ -346,14 +346,14 @@ extension NewPostViewController: UIImagePickerControllerDelegate {
                             }
                             break
                         default:
-                            println("scenario is invalid")
+                            print("scenario is invalid")
                         }
                     }
             }
         }
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         
         picker.dismissViewControllerAnimated(true, completion: nil)
         

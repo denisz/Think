@@ -106,7 +106,7 @@ import Bolts
     }
     
     class func Create() -> PeopleSearchViewController {
-        var search = PeopleSearchViewController()
+        let search = PeopleSearchViewController()
         search.parseClassName = kUserClassKey
         search.paginationEnabled = true
         search.pullToRefreshEnabled = false

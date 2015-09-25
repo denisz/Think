@@ -33,7 +33,7 @@ class FactoryControllers {
     }
     
     class func youFollow() -> UIViewController {
-        var user = PFUser.currentUser()
+        let user = PFUser.currentUser()
         let controller = YouFollowViewController.CreateWithModel(user!)
         
         return controller
@@ -81,7 +81,11 @@ class FactoryControllers {
     class func newPost() -> UIViewController {
         let controller = NewPostViewController()
         controller.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
-        controller.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
+        if #available(iOS 8.0, *) {
+            controller.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
+        } else {
+            // Fallback on earlier versions
+        }
         return controller
     }
     

@@ -14,7 +14,7 @@ import ParseUI
 class UserModel: PFUser {
 
     class func isEqualCurrentUser(object: PFObject) -> Bool {
-        var currentUser = PFUser.currentUser()
+        let currentUser = PFUser.currentUser()
         return currentUser!.objectId!.hash == object.objectId!.hash
     }
     
@@ -41,11 +41,11 @@ class UserModel: PFUser {
     class func age(user: PFObject) -> Int {
         if let birthday = user[kUserDateOfBirthKey] as? NSDate {
             let now = NSDate()
-            var calendar : NSCalendar = NSCalendar.currentCalendar()
-            let ageComponents = calendar.components(.CalendarUnitYear,
+            let calendar : NSCalendar = NSCalendar.currentCalendar()
+            let ageComponents = calendar.components(.Year,
                 fromDate: birthday,
                 toDate: now,
-                options: nil)
+                options: [])
             
             return ageComponents.year
         }

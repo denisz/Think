@@ -41,7 +41,7 @@ import VGParallaxHeader
     
     override func configureStateMachine() {
         super.configureStateMachine()
-        var contentAdultView = ContentAdultView(frame: view.frame)
+        let contentAdultView = ContentAdultView(frame: view.frame)
         contentAdultView.tapGestureRecognizer.addTarget(self, action: Selector("didTapLeftBtn"))
         denyView = contentAdultView
 
@@ -166,7 +166,7 @@ import VGParallaxHeader
         var image = UIImage(named: "ic_more2") as UIImage!
         image = image.imageWithColor(color)
         
-        let btnBack:UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+        let btnBack:UIButton = UIButton(type: UIButtonType.Custom)
         btnBack.addTarget(self, action: "didTapMoreBtn:", forControlEvents: UIControlEvents.TouchUpInside)
         btnBack.setImage(image, forState: UIControlState.Normal)
         btnBack.imageEdgeInsets = UIEdgeInsets(top: 13, left: 26, bottom: 13, right: 0)
@@ -216,7 +216,7 @@ import VGParallaxHeader
     }
     
     class func CreateWithModel(model: PFObject) -> PostViewController {
-        var post = PostViewController()
+        let post = PostViewController()
         post.object = model
         post.parseClassName = kPostClassKey
         

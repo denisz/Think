@@ -78,13 +78,13 @@ class MyQueryTableView: UITableView {
         self.setupWithClassName(nil)
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.setupWithClassName(nil)
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(frame: CGRect) {
+        super.init(frame: frame, style: UITableViewStyle.Plain)
         self.setupWithClassName(nil)
     }
     
@@ -112,7 +112,7 @@ class MyQueryTableView: UITableView {
     }
     
     func setupRefreshControl() {
-        var refreshControl = UIRefreshControl()
+        let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: Selector("refreshControlValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
         
         self.refreshControl = refreshControl
@@ -123,18 +123,18 @@ class MyQueryTableView: UITableView {
     }
     
     func refreshLoadingView() {
-        var showLoadingView = self.loadingViewEnabled && self.loading && self.firstLoad;
+        let showLoadingView = self.loadingViewEnabled && self.loading && self.firstLoad;
         
         if (showLoadingView) {
             //            self.tableView.addSubview(self.loadingView!)
-            var newView = self.loadingView!
+            let newView = self.loadingView!
             newView.alpha = 1.0
-            newView.setTranslatesAutoresizingMaskIntoConstraints(false)
+            newView.translatesAutoresizingMaskIntoConstraints = false
             self.addSubview(newView)
             
             let views = ["view": newView]
-            let hConstraints = NSLayoutConstraint.constraintsWithVisualFormat("|[view]|", options: nil, metrics: nil, views: views)
-            let vConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[view]|", options: nil, metrics: nil, views: views)
+            let hConstraints = NSLayoutConstraint.constraintsWithVisualFormat("|[view]|", options: [], metrics: nil, views: views)
+            let vConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[view]|", options: [], metrics: nil, views: views)
             self.addConstraints(hConstraints)
             self.addConstraints(vConstraints)
         } else {
@@ -186,9 +186,9 @@ class MyQueryTableView: UITableView {
         self.loading = true
         self.objectsWillLoad()
         
-        var source = BFTaskCompletionSource()
+        let source = BFTaskCompletionSource()
         
-        var query = self.queryForTable()
+        let query = self.queryForTable()
         self._alterQuery(query, forLoadingPage: page)
         
         PFErrorCode.ErrorCacheMiss
@@ -229,7 +229,7 @@ class MyQueryTableView: UITableView {
     }
     
     func queryForTable() -> PFQuery {
-        var query = PFQuery(className: self.parseClassName!)
+        let query = PFQuery(className: self.parseClassName!)
         
         if (self.objects!.count == 0 && !Parse.isLocalDatastoreEnabled()) {
             query.cachePolicy = PFCachePolicy.CacheThenNetwork
@@ -275,10 +275,10 @@ class MyQueryTableView: UITableView {
     
     func loadImagesForOnscreenRows () {
         if self.objects!.count > 0 {
-            var visiblePaths = self.indexPathsForVisibleRows()
+            let visiblePaths = self.indexPathsForVisibleRows
             
             for indexPath in visiblePaths! {
-                self.loadImageForCellAtIndexPath(indexPath as! NSIndexPath)
+                self.loadImageForCellAtIndexPath(indexPath )
             }
         }
     }
@@ -333,7 +333,7 @@ extension MyQueryTableView: UITableViewDataSource {
             return;
         }
         
-        var indexes = NSMutableIndexSet()
+        let indexes = NSMutableIndexSet()
         
         for indexPath in indexPaths {
             if indexPath.section == 0 {
@@ -343,10 +343,10 @@ extension MyQueryTableView: UITableViewDataSource {
             }
         }
         
-        var allDeletionTasks = NSMutableArray(capacity: indexes.count)
-        var objectsToRemove = self.objects!.objectsAtIndexes(indexes)
+        let allDeletionTasks = NSMutableArray(capacity: indexes.count)
+        let objectsToRemove = self.objects!.objectsAtIndexes(indexes)
         
-        var animation: UITableViewRowAnimation = (animated == true ? .Automatic : .None)
+        let animation: UITableViewRowAnimation = (animated == true ? .Automatic : .None)
         
         self.objects!.removeObjectsInArray(objectsToRemove)
         self.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: animation)
@@ -365,7 +365,7 @@ extension MyQueryTableView: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForNextPageAtIndexPath indexPath: NSIndexPath) -> PFTableViewCell? {
-        var cellIdentifier = "PFTableViewCellNextPage"
+        let cellIdentifier = "PFTableViewCellNextPage"
         
         var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as? MyActivityTableViewCell
         
@@ -401,7 +401,6 @@ extension MyQueryTableView: UITableViewDataSource {
         if  (cell!.isKindOfClass(PFTableViewCell)
             && tableView.dragging
             && tableView.decelerating) {
-                
                 dispatch_async(dispatch_get_main_queue(), {
                     cell!.imageView?.loadInBackground()
                 })

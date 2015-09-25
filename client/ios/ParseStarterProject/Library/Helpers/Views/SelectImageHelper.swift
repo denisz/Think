@@ -25,13 +25,17 @@ class SelectImageHelper {
     
     class func selectAndUploadFile(controller: UIViewController, sourceView: UIView, scenario: SelectImageHelperScenario) {
         lastPresentScenario = scenario
-        controller.presentImagePickerSheet(sourceView, sourceRect: sourceView.frame)
+        if #available(iOS 8.0, *) {
+            controller.presentImagePickerSheet(sourceView, sourceRect: sourceView.frame)
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
     class func uploadImage(image: UIImage, imageName: String, cb: (file: PFFile, error: NSError?)-> Void) -> PFFile {
         let imageData   = UIImagePNGRepresentation(image)
-        let imageFile   = PFFile(name: imageName, data:imageData)
-        var hud         = SelectImageHelper.createHudProgress()
+        let imageFile   = PFFile(name: imageName, data:imageData!)
+        let hud         = SelectImageHelper.createHudProgress()
         
         imageFile.saveInBackgroundWithProgressBlock ({ (progress: Int32) -> Void in
             SelectImageHelper.progressHudProgress(hud, progress: Float(progress) / 100)
@@ -51,7 +55,7 @@ class SelectImageHelper {
     }
     
     class func createHudProgress() -> JGProgressHUD {
-        var HUD = JGProgressHUD(style: JGProgressHUDStyle.Dark)
+        let HUD = JGProgressHUD(style: JGProgressHUDStyle.Dark)
         let window = UIApplication.sharedApplication().keyWindow!
         
         HUD.showInView(window)//может сделать показ на window
@@ -74,8 +78,8 @@ class SelectImageHelper {
         HUD.layoutChangeAnimationDuration = 0.3
         HUD.indicatorView = JGProgressHUDSuccessIndicatorView()
         
-        var delta: Int64 = 1 * Int64(NSEC_PER_SEC)
-        var time = dispatch_time(DISPATCH_TIME_NOW, delta)
+        let delta: Int64 = 1 * Int64(NSEC_PER_SEC)
+        let time = dispatch_time(DISPATCH_TIME_NOW, delta)
         
         dispatch_after(time, dispatch_get_main_queue(), { () -> Void in
             HUD.dismiss();
@@ -88,8 +92,8 @@ class SelectImageHelper {
         HUD.layoutChangeAnimationDuration = 0.3
         HUD.indicatorView = JGProgressHUDErrorIndicatorView()
         
-        var delta: Int64 = 1 * Int64(NSEC_PER_SEC)
-        var time = dispatch_time(DISPATCH_TIME_NOW, delta)
+        let delta: Int64 = 1 * Int64(NSEC_PER_SEC)
+        let time = dispatch_time(DISPATCH_TIME_NOW, delta)
         
         dispatch_after(time, dispatch_get_main_queue(), { () -> Void in
             HUD.dismiss();
@@ -102,7 +106,12 @@ class SelectImageHelper {
     }
 }
 
-extension UIViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension UIViewController: UIImagePickerControllerDelegate {
+    public func imagePickerControllerDidCancel(picker:UIImagePickerController) {
+        picker.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @available(iOS 8.0, *)
     func presentImagePickerSheet(sourceView: UIView, sourceRect: CGRect) {
         let authorization = PHPhotoLibrary.authorizationStatus()
         
@@ -119,12 +128,12 @@ extension UIViewController: UIImagePickerControllerDelegate, UINavigationControl
         if authorization == .Authorized {
             let presentImagePickerController: UIImagePickerControllerSourceType -> () = { source in
                 let controller = UIImagePickerController()
-                controller.delegate = self
+//                controller.delegate = self
                 var sourceType = source
 
                 if (!UIImagePickerController.isSourceTypeAvailable(sourceType)) {
                     sourceType = .PhotoLibrary
-                    println("Fallback to camera roll as a source since the simulator doesn't support taking pictures")
+                    print("Fallback to camera roll as a source since the simulator doesn't support taking pictures")
                 }
                 
                 controller.allowsEditing = false
@@ -135,9 +144,9 @@ extension UIViewController: UIImagePickerControllerDelegate, UINavigationControl
             
             let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
             
-            let cameraAction = UIAlertAction(title: "Сделать фото".localized, style: UIAlertActionStyle.Default, handler: { (alert: UIAlertAction!) in presentImagePickerController(.Camera) })
+            let cameraAction = UIAlertAction(title: "Сделать фото".localized, style: UIAlertActionStyle.Default, handler: { (alert: UIAlertAction) in presentImagePickerController(.Camera) })
             
-            let libraryAction = UIAlertAction(title: "Открыть библиотеку".localized, style: UIAlertActionStyle.Default, handler: { (alert: UIAlertAction!) in presentImagePickerController(.PhotoLibrary) })
+            let libraryAction = UIAlertAction(title: "Открыть библиотеку".localized, style: UIAlertActionStyle.Default, handler: { (alert: UIAlertAction) in presentImagePickerController(.PhotoLibrary) })
             
             let cancelAction = UIAlertAction(title: "Закрыть".localized, style: UIAlertActionStyle.Cancel, handler: nil)
             
@@ -156,9 +165,5 @@ extension UIViewController: UIImagePickerControllerDelegate, UINavigationControl
             let alertView = UIAlertView(title: NSLocalizedString("An error occurred", comment: "An error occurred"), message: NSLocalizedString("ImagePickerSheet needs access to the camera roll", comment: "ImagePickerSheet needs access to the camera roll"), delegate: nil, cancelButtonTitle: NSLocalizedString("OK", comment: "OK"))
             alertView.show()
         }
-    }
-    
-    public func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        picker.dismissViewControllerAnimated(true, completion: nil)
     }
 }

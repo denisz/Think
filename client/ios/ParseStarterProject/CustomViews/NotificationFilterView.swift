@@ -28,7 +28,7 @@ class NotificationFilterView: UIView {
         xibSetup()
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         xibSetup()
     }
@@ -36,7 +36,7 @@ class NotificationFilterView: UIView {
     func xibSetup() {
         view = loadViewFromNib()
         view.frame = bounds
-        view.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
+        view.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
         addSubview(view)
         
         setupView()
@@ -64,7 +64,7 @@ extension NotificationFilterView: UITableViewDelegate {
                 cell.checkbox.selected = checked
                 
                 if checked {
-                    if !contains(self.selectedItems!, obj.1) {
+                    if !(self.selectedItems!).contains((obj.1)) {
                         self.selectedItems?.append(obj.1)
                     }
                 } else {
@@ -93,7 +93,7 @@ extension NotificationFilterView: UITableViewDataSource {
         
         if let obj  = self.objByIndexPath(indexPath) {
             cell.title.text = obj.0.uppercaseString
-            cell.checkbox.selected = contains(self.selectedItems!, obj.1)
+            cell.checkbox.selected = (self.selectedItems!).contains((obj.1))
         }
         
         if indexPath.row == items.count - 1  {

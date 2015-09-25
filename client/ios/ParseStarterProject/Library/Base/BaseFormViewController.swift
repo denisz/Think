@@ -13,7 +13,7 @@ import Parse
 import ParseUI
 
 
-class BaseFormViewController: XLFormViewController, XLFormViewControllerDelegate {
+class BaseFormViewController: XLFormViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -25,7 +25,7 @@ class BaseFormViewController: XLFormViewController, XLFormViewControllerDelegate
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        var cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath)
+        let cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath)
         SeperatorView.addHairline(cell)
         
         return cell
@@ -39,7 +39,7 @@ class BaseFormViewController: XLFormViewController, XLFormViewControllerDelegate
     
     override func defineNavigationItem() -> UINavigationItem {
         let navBar = defineNavigationBar()
-        return navBar!.items[0] as! UINavigationItem
+        return (navBar!.items?.first)!
     }
     
     func setupNavigationBar() {

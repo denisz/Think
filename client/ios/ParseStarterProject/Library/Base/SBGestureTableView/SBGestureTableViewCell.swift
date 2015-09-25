@@ -10,7 +10,7 @@ import UIKit
 import Parse
 import ParseUI
 
-class SBGestureTableViewCell: PFTableViewCell, UIGestureRecognizerDelegate {
+class SBGestureTableViewCell: PFTableViewCell {
 
     var actionIconsFollowSliding = true
     var actionIconsMargin: CGFloat = 20.0
@@ -76,7 +76,7 @@ class SBGestureTableViewCell: PFTableViewCell, UIGestureRecognizerDelegate {
         addGestureRecognizer(panGestureRecognizer)
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }

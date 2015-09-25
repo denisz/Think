@@ -46,7 +46,11 @@ class Location: NSObject {
         
         self.taskSource = BFTaskCompletionSource()
         
-        locationManager.requestWhenInUseAuthorization()
+        if #available(iOS 8.0, *) {
+            locationManager.requestWhenInUseAuthorization()
+        } else {
+            // Fallback on earlier versions
+        }
         locationManager.startUpdatingLocation()
         
         return self.taskSource!.task
@@ -65,17 +69,18 @@ class Location: NSObject {
 }
 
 extension Location: CLLocationManagerDelegate {
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        CLGeocoder().reverseGeocodeLocation(manager.location, completionHandler: {
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        CLGeocoder().reverseGeocodeLocation(manager.location!, completionHandler: {
             (placemarks, error) -> Void in
             if (error != nil) {
                 self.lastError = error
                 return
             }
             
-            if placemarks.count > 0 {
-                let pm = placemarks[0] as! CLPlacemark
-                self.lastPlacemark = pm
+            if placemarks!.count > 0 {
+                if let pm = placemarks!.first {
+                    self.lastPlacemark = pm
+                }
             } else {
                 self.lastError = error
             }
@@ -84,7 +89,7 @@ extension Location: CLLocationManagerDelegate {
         })
     }
     
-    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         self.locationManager.stopUpdatingLocation()
         self.lastError = error
     }

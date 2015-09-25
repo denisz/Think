@@ -12,7 +12,7 @@ class SwipeTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     let animationDuration = 0.257
     var tabBarIndex: Int?
     
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {
+    func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
         return animationDuration
     }
     
@@ -26,16 +26,22 @@ class SwipeTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         var fromView: UIView
         
         // from view is the pushed view in the pop case
-        if iOS7 {
-            fromView    = fromVC.view
-            toView      = toVC.view
-        } else {
+        if #available(iOS 8.0, *) {
             fromView    = transitionContext.viewForKey(UITransitionContextFromViewKey)!
-            toView      = transitionContext.viewForKey(UITransitionContextToViewKey)!
+        } else {
+            // Fallback on earlier versions
+            fromView    = fromVC.view
         }
         
-        let initialFrame = transitionContext.initialFrameForViewController(toVC)
-        let finialFrame = transitionContext.finalFrameForViewController(toVC)
+        if #available(iOS 8.0, *) {
+            toView      = transitionContext.viewForKey(UITransitionContextToViewKey)!
+        } else {
+            // Fallback on earlier versions
+            toView      = toVC.view
+        }
+        
+        _ = transitionContext.initialFrameForViewController(toVC)
+        _ = transitionContext.finalFrameForViewController(toVC)
         
         let screenWidth = UIScreen.mainScreen().bounds.width
         
@@ -50,7 +56,7 @@ class SwipeTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         fromViewInitialFrame.origin.x = 0
         fromView.frame = fromViewInitialFrame
         
-        containerView.insertSubview(toView, belowSubview: fromView)
+        containerView!.insertSubview(toView, belowSubview: fromView)
         
         // animate tab bar if neccessary
         let tabBar = fromVC.tabBarController?.tabBar
@@ -62,8 +68,10 @@ class SwipeTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         if tabBar != nil {
             // in order to interactive animate tab bar, add tab bar as the container view's
             // subview
-            tabBarIndex = find(originalSuperView?.subviews as! [UIView], tabBar!)
-            containerView.insertSubview(tabBar!, aboveSubview: toView)
+            if let subviews = originalSuperView?.subviews {
+                tabBarIndex = subviews.indexOf(tabBar!)
+                containerView!.insertSubview(tabBar!, aboveSubview: toView)
+            }
         }
         
         addShadowLayerTo(fromView)

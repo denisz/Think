@@ -34,7 +34,7 @@ class PostContentView: UITableView  {
         self.delegate = self
         self.dataSource = self
         self.scrollEnabled = false
-        self.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.translatesAutoresizingMaskIntoConstraints = false
         self.estimatedRowHeight = 100
         self.rowHeight = UITableViewAutomaticDimension
         self.tableFooterView = UIView()
@@ -93,7 +93,7 @@ extension PostContentView: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier(kReusablePostBlockViewCell) as? PostBlockViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(kReusablePostBlockViewCell) as? PostBlockViewCell
         
         if let block = self.blockByIndexPath(indexPath) {
             cell!.prepareView(block)
