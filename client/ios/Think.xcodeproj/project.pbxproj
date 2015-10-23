@@ -73,7 +73,6 @@
 		A92897B31B7CD54E00A1A754 /* FollowersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A92897B21B7CD54E00A1A754 /* FollowersViewController.xib */; };
 		A92897B51B7CD6AC00A1A754 /* ProfileGuestHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A92897B41B7CD6AC00A1A754 /* ProfileGuestHeaderView.xib */; };
 		A92897B71B7CD73F00A1A754 /* ProfileGuestHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92897B61B7CD73F00A1A754 /* ProfileGuestHeaderView.swift */; };
-		A92897B91B7CE16F00A1A754 /* SLKTextInputbar+height.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92897B81B7CE16F00A1A754 /* SLKTextInputbar+height.swift */; };
 		A962DBC51B8E0054000A17F3 /* Follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = A962DBC41B8E0054000A17F3 /* Follower.swift */; };
 		A962DBC71B8E0C41000A17F3 /* Notify.swift in Sources */ = {isa = PBXBuildFile; fileRef = A962DBC61B8E0C41000A17F3 /* Notify.swift */; };
 		A962DBC91B8EE643000A17F3 /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A962DBC81B8EE643000A17F3 /* PrivacyViewController.swift */; };
@@ -357,7 +356,6 @@
 		A92897B21B7CD54E00A1A754 /* FollowersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FollowersViewController.xib; sourceTree = "<group>"; };
 		A92897B41B7CD6AC00A1A754 /* ProfileGuestHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileGuestHeaderView.xib; sourceTree = "<group>"; };
 		A92897B61B7CD73F00A1A754 /* ProfileGuestHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileGuestHeaderView.swift; sourceTree = "<group>"; };
-		A92897B81B7CE16F00A1A754 /* SLKTextInputbar+height.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SLKTextInputbar+height.swift"; sourceTree = "<group>"; };
 		A962DBC41B8E0054000A17F3 /* Follower.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Follower.swift; sourceTree = "<group>"; };
 		A962DBC61B8E0C41000A17F3 /* Notify.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notify.swift; sourceTree = "<group>"; };
 		A962DBC81B8EE643000A17F3 /* PrivacyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
@@ -1012,7 +1010,6 @@
 				A99AE6371B774C2800085138 /* UIButtonRoundedBorder.swift */,
 				A99AE6391B775DC400085138 /* SeperatorView.swift */,
 				A9D385E91B77F33C00DD8492 /* UIImage+Itunes11.swift */,
-				A92897B81B7CE16F00A1A754 /* SLKTextInputbar+height.swift */,
 				A92390181B7FB5A3004E3ECD /* UIViewController+FilterView.swift */,
 				A9B5D4DA1B8725B4003B2E78 /* UIView+cornerEdge.swift */,
 			);
@@ -1267,6 +1264,8 @@
 		81BA813D1A49DA1800E65899 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = Parse;
 				TargetAttributes = {
@@ -1492,7 +1491,6 @@
 				A921066D1B835C0C009C0B08 /* Extension+String.swift in Sources */,
 				A90B28201B832D5C00A8D3E7 /* RRTagController.swift in Sources */,
 				A99AE62E1B77466100085138 /* NotificationsViewController.swift in Sources */,
-				A92897B91B7CE16F00A1A754 /* SLKTextInputbar+height.swift in Sources */,
 				A9D385FA1B78080E00DD8492 /* SettingsPostViewController.swift in Sources */,
 				A999C2441B9067610068C330 /* KeyValueObserver.swift in Sources */,
 				A91AE0EC1B8ADE0900104795 /* CommentViewCell.swift in Sources */,
@@ -1736,6 +1734,7 @@
 				CODE_SIGN_ENTITLEMENTS = Think.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1759,6 +1758,7 @@
 				CODE_SIGN_ENTITLEMENTS = Think.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

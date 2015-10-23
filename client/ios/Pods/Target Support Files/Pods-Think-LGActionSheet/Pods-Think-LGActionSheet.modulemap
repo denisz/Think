@@ -1,6 +1,0 @@
-framework module LGActionSheet {
-  umbrella header "Pods-Think-LGActionSheet-umbrella.h"
-
-  export *
-  module * { export * }
-}

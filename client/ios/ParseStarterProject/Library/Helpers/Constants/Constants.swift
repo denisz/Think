@@ -115,7 +115,6 @@ let kInstallationChannelsKey    = "channels"
 let kInstallationEventsKey      = "events"
 
 // MARK: Threads
-
 let kThreadClassKey     = "Threads"
 
 //fields threads

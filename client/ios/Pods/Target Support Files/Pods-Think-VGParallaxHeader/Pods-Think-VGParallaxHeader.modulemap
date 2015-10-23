@@ -1,6 +1,0 @@
-framework module VGParallaxHeader {
-  umbrella header "Pods-Think-VGParallaxHeader-umbrella.h"
-
-  export *
-  module * { export * }
-}

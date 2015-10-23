@@ -1,0 +1,6 @@
+framework module LGViews {
+  umbrella header "LGViews-umbrella.h"
+
+  export *
+  module * { export * }
+}

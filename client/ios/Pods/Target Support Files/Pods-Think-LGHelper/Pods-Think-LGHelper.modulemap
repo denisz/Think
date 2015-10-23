@@ -1,6 +1,0 @@
-framework module LGHelper {
-  umbrella header "Pods-Think-LGHelper-umbrella.h"
-
-  export *
-  module * { export * }
-}

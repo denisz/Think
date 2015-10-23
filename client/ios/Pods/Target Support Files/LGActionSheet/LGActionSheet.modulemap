@@ -1,0 +1,6 @@
+framework module LGActionSheet {
+  umbrella header "LGActionSheet-umbrella.h"
+
+  export *
+  module * { export * }
+}

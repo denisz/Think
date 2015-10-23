@@ -1,6 +1,0 @@
-framework module UIImage_AF_Additions {
-  umbrella header "Pods-Think-UIImage+AF+Additions-umbrella.h"
-
-  export *
-  module * { export * }
-}

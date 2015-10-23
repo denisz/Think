@@ -5,8 +5,6 @@ source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
 target 'Think' do
-    #pod 'Alamofire', '~> 1.2'
-    #pod 'FXBlurView', '~> 1.6.3'
 	pod 'LGActionSheet', '~> 1.0.0'
 	pod 'LGAlertView', '~> 1.0.0'
 	pod 'LGSideMenuController', '~> 1.0.0'
@@ -18,14 +16,9 @@ target 'Think' do
 	pod 'FormatterKit', '~> 1.8.0'
 	pod 'JGProgressHUD'
 	pod 'TOCropViewController'
-    #pod 'AsyncDisplayKit', '~> 1.2.3'
-    #pod 'SlackTextViewController', '~> 1.5'
 	pod 'VGParallaxHeader'
 	pod 'LGFilterView', '~> 1.0.0'
 	pod 'MXSegmentedPager'
-    #pod 'Kingfisher', '~> 1.4'
-    #pod 'LTMorphingLabel', '~> 0.0.7'
-#	pod 'StatefulViewController', "~> 0.1"
 	pod 'XLForm', :git => 'https://github.com/xmartlabs/XLForm.git'
 end
 

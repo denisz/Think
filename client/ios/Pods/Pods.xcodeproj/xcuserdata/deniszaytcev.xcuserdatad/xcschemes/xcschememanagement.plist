@@ -4,92 +4,62 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-Think-FormatterKit.xcscheme</key>
+		<key>FormatterKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-Think-HMSegmentedControl.xcscheme</key>
+		<key>HMSegmentedControl.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-Think-JGProgressHUD.xcscheme</key>
+		<key>JGProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-Think-LGActionSheet.xcscheme</key>
+		<key>LGActionSheet.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-Think-LGAlertView.xcscheme</key>
+		<key>LGAlertView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-Think-LGDrawer.xcscheme</key>
+		<key>LGDrawer.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-Think-LGFilterView.xcscheme</key>
+		<key>LGFilterView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-Think-LGHelper.xcscheme</key>
+		<key>LGHelper.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-Think-LGSideMenuController.xcscheme</key>
+		<key>LGSideMenuController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-Think-LGViews.xcscheme</key>
+		<key>LGViews.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-Think-LoremIpsum.xcscheme</key>
+		<key>LoremIpsum.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-Think-MXSegmentedPager.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-Think-PureLayout.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-Think-Reachability.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-Think-TOCropViewController.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-Think-UIImage+AF+Additions.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-Think-VGParallaxHeader.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-Think-XLForm.xcscheme</key>
+		<key>MXSegmentedPager.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -99,100 +69,130 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>PureLayout.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Reachability.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>TOCropViewController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>UIImage+AF+Additions.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>VGParallaxHeader.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>XLForm.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>06D4BD4FA34A8F6C1B61B264</key>
+		<key>18DDACDE516806375A63253120478D6B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>152544591AF3A81CD4F2BB76</key>
+		<key>2051F9B0164452FB888762E6060B9C31</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2113D6B9F86931177F2A520D</key>
+		<key>2474CFE815C041B2D26EFCF020F403A3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2E4BBC34BE953E7F07F32C13</key>
+		<key>486D7F528B38503107097F7B9F84AA43</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3C84BF9E7511DFECAC996CDA</key>
+		<key>4A6021A925A8BCD5D78079300009389C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3DCD536B0A145E0B95B792D0</key>
+		<key>53FFD38F81CD1E929E513EF0EABAF0DB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3DCEB68CB377EF0115AE1D2C</key>
+		<key>8415DFB13A46289D77208BFCC3801764</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>43FCEECFE44D86F0E9819849</key>
+		<key>8839BECF0F11539B790CBDB4FC999DDF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4B5D755AE8EB59A8C7953F20</key>
+		<key>8BAD33A559B26404CEABB249F54F1647</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5BC795802D269B7A8D7978FC</key>
+		<key>A07FE6662FE21C841053EF18653C3652</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>97A0A5965EEFEE67DC376C54</key>
+		<key>A544390CCB9488D905937A24EFC581D7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>98667152D709CEF9883AFACB</key>
+		<key>AB285E91451952561A8B1AB0E3D5A91B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A1B6F1A6A4B24D9C2924FF7F</key>
+		<key>B1DC04E8AD8EFA1D3F18BAE13C51ACB3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B01C173C7B9B6A02E5751B34</key>
+		<key>C8B92D3FFAC0AED16838211D30B4C2DE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C9F07CC9627D49F9BDB6F276</key>
+		<key>CF0F69481B0FCBF29CC61D4EA5641F0F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CE2B2C1F64DA557C1F16D84D</key>
+		<key>D276B812098614CA3E50F4261402D59E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D1886238BFEBACDCA1C09552</key>
+		<key>F54F5A30C9FB32A271B65EBDA4E4585D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D54DA6D30C2FC407271C248E</key>
+		<key>F58137806886549CB45B783320BBF6B8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E60F01A7ABD3D2535E88845C</key>
+		<key>F710747AEA6E14802B28BB033B7ADD02</key>
 		<dict>
 			<key>primary</key>
 			<true/>

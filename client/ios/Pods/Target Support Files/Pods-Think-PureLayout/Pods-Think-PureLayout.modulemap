@@ -1,6 +1,0 @@
-framework module PureLayout {
-  umbrella header "Pods-Think-PureLayout-umbrella.h"
-
-  export *
-  module * { export * }
-}
