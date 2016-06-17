@@ -26,19 +26,9 @@ class SwipeTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         var fromView: UIView
         
         // from view is the pushed view in the pop case
-        if #available(iOS 8.0, *) {
             fromView    = transitionContext.viewForKey(UITransitionContextFromViewKey)!
-        } else {
-            // Fallback on earlier versions
-            fromView    = fromVC.view
-        }
         
-        if #available(iOS 8.0, *) {
             toView      = transitionContext.viewForKey(UITransitionContextToViewKey)!
-        } else {
-            // Fallback on earlier versions
-            toView      = toVC.view
-        }
         
         _ = transitionContext.initialFrameForViewController(toVC)
         _ = transitionContext.finalFrameForViewController(toVC)

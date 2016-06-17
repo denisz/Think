@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '16EC70B4DA6DC8AC228FEC1C'
+               BlueprintIdentifier = '7937BBD4CAFF6559E0B9F378'
                BlueprintName = 'LGFilterView'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'LGFilterView.framework'>

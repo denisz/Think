@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import Parse
 import ParseUI
+import ParseFacebookUtilsV4
 
 protocol LogInViewControllerDelegate {
     func logIn(controller: LogInViewController, successful user: PFUser)

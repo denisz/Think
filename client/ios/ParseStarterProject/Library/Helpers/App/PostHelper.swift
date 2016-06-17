@@ -66,11 +66,7 @@ class PostHelper: NSObject {
     }
     
     class func actionSheet(post: PFObject, controller: UIViewController) {
-        if #available(iOS 8.0, *) {
-            self.actionSheetIOS8(post, controller: controller)
-        } else {
-            self.actionSheetIOS7(post, controller: controller)
-        }
+        self.actionSheetIOS8(post, controller: controller)
     }
     
     class func actionSheetIOS7(post: PFObject, controller: UIViewController) {

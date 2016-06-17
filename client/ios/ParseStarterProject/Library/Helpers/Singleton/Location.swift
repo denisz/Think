@@ -46,11 +46,7 @@ class Location: NSObject {
         
         self.taskSource = BFTaskCompletionSource()
         
-        if #available(iOS 8.0, *) {
-            locationManager.requestWhenInUseAuthorization()
-        } else {
-            // Fallback on earlier versions
-        }
+        locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         
         return self.taskSource!.task
@@ -62,7 +58,7 @@ class Location: NSObject {
         let adminArea   = (placemark.administrativeArea != nil) ? placemark.administrativeArea : ""
         let country     = (placemark.country != nil) ? placemark.country : ""
         let street      = (placemark.thoroughfare != nil) ? placemark.thoroughfare : ""
-        
+
         let formatter = TTTAddressFormatter()
         return formatter.stringFromAddressWithStreet(street, locality: locality, region: adminArea, postalCode: postalCode, country: country)
     }

@@ -11,6 +11,9 @@ import Parse
 import FBSDKCoreKit
 // If you want to use any of the UI components, uncomment this line
 import ParseUI
+import ParseCrashReporting
+import ParseFacebookUtilsV4
+import ParseTwitterUtils
 
 // If you want to use Crash Reporting - uncomment this line
 import ParseCrashReporting
@@ -73,16 +76,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
-        if #available(iOS 8.0, *) {
             let userNotificationTypes: UIUserNotificationType = [UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound]
             let settings = UIUserNotificationSettings(forTypes: userNotificationTypes, categories: nil)
             application.registerUserNotificationSettings(settings)
             application.registerForRemoteNotifications()
-        } else {
-            // Fallback on earlier versions
-            let types: UIRemoteNotificationType = [UIRemoteNotificationType.Badge, UIRemoteNotificationType.Alert, UIRemoteNotificationType.Sound]
-            application.registerForRemoteNotificationTypes(types)
-        }
         
         ViewController.globalApperence()
         return true

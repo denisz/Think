@@ -33,11 +33,7 @@ import ParseUI
         self.tableView.tableFooterView      = UIView()
         
         if self.tableView.respondsToSelector("layoutMargins") {
-            if #available(iOS 8.0, *) {
-                self.tableView.layoutMargins        = UIEdgeInsetsZero
-            } else {
-                // Fallback on earlier versions
-            }
+            self.tableView.layoutMargins        = UIEdgeInsetsZero
         }
         
         self.setupNavigationBar()
@@ -137,11 +133,7 @@ import ParseUI
         cell.prepareView(object!)
         
         if cell.respondsToSelector("layoutMargins") {
-            if #available(iOS 8.0, *) {
-                cell.layoutMargins  = UIEdgeInsetsZero
-            } else {
-                // Fallback on earlier versions
-            }
+            cell.layoutMargins  = UIEdgeInsetsZero
         }
         
         cell.separatorInset = UIEdgeInsetsZero

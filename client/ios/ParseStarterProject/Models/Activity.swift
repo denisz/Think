@@ -70,7 +70,7 @@ class Activity: PFObject, PFSubclassing {
         activity.setObject(kActivityTypeLike, forKey: kActivityTypeKey)
         
         let activityACL = PFACL(user: user!)
-        activityACL.setPublicReadAccess(true)
+        activityACL.publicReadAccess = true
         activity.ACL = activityACL
         
         activity.saveInBackground()
@@ -96,7 +96,7 @@ class Activity: PFObject, PFSubclassing {
         activity.setObject(kActivityTypeFollow, forKey: kActivityTypeKey)
         
         let activityACL = PFACL(user: user!)
-        activityACL.setPublicReadAccess(true)
+        activityACL.publicReadAccess = true
         activity.ACL = activityACL
         
         activity.saveEventually()
@@ -139,7 +139,7 @@ class Activity: PFObject, PFSubclassing {
         activity.setObject(kActivityTypeComment, forKey: kActivityTypeKey)
         
         let activityACL = PFACL(user: user!)
-        activityACL.setPublicReadAccess(true)
+        activityACL.publicReadAccess = true
         activity.ACL = activityACL
         
         return activity.saveInBackground().continueWithBlock { (task: BFTask!) -> AnyObject! in

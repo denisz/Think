@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '6A8D785DA7DE717DB48BAF39'
+               BlueprintIdentifier = '61825CEE0C4389C3E33B17A8'
                BlueprintName = 'LGHelper'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'LGHelper.framework'>

@@ -191,7 +191,7 @@ class MyQueryCollectionViewController: UIViewController{
         
         PFErrorCode.ErrorCacheMiss
         
-        query.findObjectsInBackgroundWithBlock { (foundObjects:[AnyObject]?, error: NSError?) in
+        query.findObjectsInBackgroundWithBlock { (foundObjects:[PFObject]?, error: NSError?) in
             
             if (!Parse.isLocalDatastoreEnabled()
                 && query.cachePolicy != PFCachePolicy.CacheOnly
@@ -205,6 +205,7 @@ class MyQueryCollectionViewController: UIViewController{
             if (error != nil) {
                 self.lastLoadCount = -1
                 self.currentNextPageView?.setAnimating(false)
+                source.setError(error!)
             } else {
                 self.currentPage = page
                 self.lastLoadCount = foundObjects!.count
@@ -227,7 +228,7 @@ class MyQueryCollectionViewController: UIViewController{
                 self.refreshControl?.endRefreshing()
             })
             
-            source.setError(error)
+            
         }
         
         return source.task
@@ -341,7 +342,7 @@ extension MyQueryCollectionViewController: UICollectionViewDataSource {
         BFTask(forCompletionOfAllTasks: allDeletionTasks as [AnyObject]).continueWithBlock { (task:BFTask!) -> AnyObject! in
             self.refreshControl?.enabled = true
             if (task.error != nil) {
-                self.handleDeletionError(task.error)
+                self.handleDeletionError(task.error!)
             }
             return nil
         }

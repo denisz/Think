@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '3D1DD9CAEC6D6017189E81C6'
+               BlueprintIdentifier = 'AE759DA89EAD532A37419937'
                BlueprintName = 'LGViews'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'LGViews.framework'>

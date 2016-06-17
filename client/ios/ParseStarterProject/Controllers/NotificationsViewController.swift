@@ -99,19 +99,11 @@ import Bolts
         let cell = tableView.dequeueReusableCellWithIdentifier(kReusableNotificationsViewCell) as! NotificationViewCell
         
         if cell.respondsToSelector("layoutMargins") {
-            if #available(iOS 8.0, *) {
                 cell.layoutMargins = UIEdgeInsetsZero
-            } else {
-                // Fallback on earlier versions
-            }
         }
         
         if cell.respondsToSelector("preservesSuperviewLayoutMargins") {
-            if #available(iOS 8.0, *) {
                 cell.preservesSuperviewLayoutMargins = false
-            } else {
-                // Fallback on earlier versions
-            }
         }
 
         cell.prepareView(object!)

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="OpenSans-Light.ttf">
@@ -29,12 +30,14 @@
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_bg" translatesAutoresizingMaskIntoConstraints="NO" id="5LP-y3-TSK" customClass="PFImageView">
                     <rect key="frame" x="0.0" y="0.0" width="581" height="221"/>
+                    <animations/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Sa-a1-YQO">
                     <rect key="frame" x="0.0" y="45" width="581" height="130"/>
                     <subviews>
                         <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ava_profile" translatesAutoresizingMaskIntoConstraints="NO" id="FGl-yL-9NR" customClass="PFImageView">
                             <rect key="frame" x="240" y="0.0" width="100" height="100"/>
+                            <animations/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="100" id="PHY-n7-VVc"/>
                                 <constraint firstAttribute="height" constant="100" id="XhI-e4-U75"/>
@@ -42,6 +45,7 @@
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ALEXANDER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dlI-D9-fD1">
                             <rect key="frame" x="190" y="107" width="200" height="21"/>
+                            <animations/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="aXa-6Y-06x"/>
                                 <constraint firstAttribute="width" constant="200" id="ajL-yF-Pe2"/>
@@ -51,6 +55,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
+                    <animations/>
                     <constraints>
                         <constraint firstAttribute="centerX" secondItem="dlI-D9-fD1" secondAttribute="centerX" id="Hbq-cS-crI"/>
                         <constraint firstItem="dlI-D9-fD1" firstAttribute="top" secondItem="FGl-yL-9NR" secondAttribute="bottom" constant="7" id="KVg-rN-Xi8"/>
@@ -65,6 +70,7 @@
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lx9-ju-AqF" customClass="UIButtonRoundedBorder" customModule="Think" customModuleProvider="target">
                             <rect key="frame" x="100" y="-3" width="70" height="33"/>
+                            <animations/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="33" id="fUo-9m-RAR"/>
                                 <constraint firstAttribute="width" constant="70" id="ljo-tn-zfR"/>
@@ -91,6 +97,7 @@
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bTd-l4-igA" customClass="UIButtonRoundedBorder" customModule="Think" customModuleProvider="target">
                             <rect key="frame" x="15" y="-3" width="70" height="33"/>
+                            <animations/>
                             <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="15"/>
                             <state key="normal" title="follow">
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -112,6 +119,7 @@
                             </connections>
                         </button>
                     </subviews>
+                    <animations/>
                     <constraints>
                         <constraint firstItem="Lx9-ju-AqF" firstAttribute="width" secondItem="bTd-l4-igA" secondAttribute="width" id="0qF-wP-gpK"/>
                         <constraint firstItem="Lx9-ju-AqF" firstAttribute="height" secondItem="bTd-l4-igA" secondAttribute="height" id="0v9-o6-rPp"/>
@@ -124,6 +132,7 @@
                     </constraints>
                 </view>
             </subviews>
+            <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="8Sa-a1-YQO" firstAttribute="leading" secondItem="y2d-Hw-d2L" secondAttribute="leading" id="7qH-rn-icV"/>

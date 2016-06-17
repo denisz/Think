@@ -42,14 +42,16 @@ install_framework()
   # Resign the code if required by the build settings to avoid unstable apps
   code_sign_if_enabled "${destination}/$(basename "$1")"
 
-  # Embed linked Swift runtime libraries
-  local swift_runtime_libs
-  swift_runtime_libs=$(xcrun otool -LX "$binary" | grep --color=never @rpath/libswift | sed -E s/@rpath\\/\(.+dylib\).*/\\1/g | uniq -u  && exit ${PIPESTATUS[0]})
-  for lib in $swift_runtime_libs; do
-    echo "rsync -auv \"${SWIFT_STDLIB_PATH}/${lib}\" \"${destination}\""
-    rsync -auv "${SWIFT_STDLIB_PATH}/${lib}" "${destination}"
-    code_sign_if_enabled "${destination}/${lib}"
-  done
+  # Embed linked Swift runtime libraries. No longer necessary as of Xcode 7.
+  if [ "${XCODE_VERSION_MAJOR}" -lt 7 ]; then
+    local swift_runtime_libs
+    swift_runtime_libs=$(xcrun otool -LX "$binary" | grep --color=never @rpath/libswift | sed -E s/@rpath\\/\(.+dylib\).*/\\1/g | uniq -u  && exit ${PIPESTATUS[0]})
+    for lib in $swift_runtime_libs; do
+      echo "rsync -auv \"${SWIFT_STDLIB_PATH}/${lib}\" \"${destination}\""
+      rsync -auv "${SWIFT_STDLIB_PATH}/${lib}" "${destination}"
+      code_sign_if_enabled "${destination}/${lib}"
+    done
+  fi
 }
 
 # Signs a framework with the provided identity
@@ -82,6 +84,9 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "Pods-Think/Bolts.framework"
+  install_framework "Pods-Think/FBSDKCoreKit.framework"
+  install_framework "Pods-Think/FBSDKLoginKit.framework"
   install_framework "Pods-Think/FormatterKit.framework"
   install_framework "Pods-Think/HMSegmentedControl.framework"
   install_framework "Pods-Think/JGProgressHUD.framework"
@@ -94,6 +99,10 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-Think/LGViews.framework"
   install_framework "Pods-Think/LoremIpsum.framework"
   install_framework "Pods-Think/MXSegmentedPager.framework"
+  install_framework "Pods-Think/Parse.framework"
+  install_framework "Pods-Think/ParseFacebookUtilsV4.framework"
+  install_framework "Pods-Think/ParseTwitterUtils.framework"
+  install_framework "Pods-Think/ParseUI.framework"
   install_framework "Pods-Think/PureLayout.framework"
   install_framework "Pods-Think/Reachability.framework"
   install_framework "Pods-Think/TOCropViewController.framework"
@@ -102,6 +111,9 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-Think/XLForm.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "Pods-Think/Bolts.framework"
+  install_framework "Pods-Think/FBSDKCoreKit.framework"
+  install_framework "Pods-Think/FBSDKLoginKit.framework"
   install_framework "Pods-Think/FormatterKit.framework"
   install_framework "Pods-Think/HMSegmentedControl.framework"
   install_framework "Pods-Think/JGProgressHUD.framework"
@@ -114,6 +126,10 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-Think/LGViews.framework"
   install_framework "Pods-Think/LoremIpsum.framework"
   install_framework "Pods-Think/MXSegmentedPager.framework"
+  install_framework "Pods-Think/Parse.framework"
+  install_framework "Pods-Think/ParseFacebookUtilsV4.framework"
+  install_framework "Pods-Think/ParseTwitterUtils.framework"
+  install_framework "Pods-Think/ParseUI.framework"
   install_framework "Pods-Think/PureLayout.framework"
   install_framework "Pods-Think/Reachability.framework"
   install_framework "Pods-Think/TOCropViewController.framework"

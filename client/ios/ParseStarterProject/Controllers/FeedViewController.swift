@@ -82,11 +82,7 @@ import UIKit
     func didTapNewPostBtn(sender: AnyObject?) {
         let controller = NewPostViewController()
         controller.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
-        if #available(iOS 8.0, *) {
             controller.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
-        } else {
-            // Fallback on earlier versions
-        }
         
         let navigation = BaseNavigationController(rootViewController: controller)
         

@@ -64,7 +64,7 @@ class Thread:  PFObject, PFSubclassing {
             if error == nil {
                 source.setResult(thread)
             } else {
-                source.setError(error)
+                source.setError(error!)
             }
         }
         
@@ -76,8 +76,8 @@ class Thread:  PFObject, PFSubclassing {
         let source          = BFTaskCompletionSource()
         
         findExistsThread(otherUser).continueWithBlock { (task: BFTask!) -> AnyObject! in
-            if task.error == nil {
-                source.setError(task.error)
+            if task.error != nil {
+                source.setError(task.error!)
             } else {
                 if let thread = task.result as? PFObject {
                     source.setResult(thread)
@@ -101,7 +101,7 @@ class Thread:  PFObject, PFSubclassing {
                             source.setResult(thread)
                             NSNotificationCenter.defaultCenter().postNotificationName(kUserCreateThread, object: thread)
                         } else {
-                            source.setError(task.error)
+                            source.setError(task.error!)
                         }
                         
                         return task

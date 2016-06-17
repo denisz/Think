@@ -25,11 +25,7 @@ class SelectImageHelper {
     
     class func selectAndUploadFile(controller: UIViewController, sourceView: UIView, scenario: SelectImageHelperScenario) {
         lastPresentScenario = scenario
-        if #available(iOS 8.0, *) {
-            controller.presentImagePickerSheet(sourceView, sourceRect: sourceView.frame)
-        } else {
-            // Fallback on earlier versions
-        }
+        controller.presentImagePickerSheet(sourceView, sourceRect: sourceView.frame)
     }
     
     class func uploadImage(image: UIImage, imageName: String, cb: (file: PFFile, error: NSError?)-> Void) -> PFFile {
@@ -37,7 +33,7 @@ class SelectImageHelper {
         let imageFile   = PFFile(name: imageName, data:imageData!)
         let hud         = SelectImageHelper.createHudProgress()
         
-        imageFile.saveInBackgroundWithProgressBlock ({ (progress: Int32) -> Void in
+        imageFile!.saveInBackgroundWithProgressBlock ({ (progress: Int32) -> Void in
             SelectImageHelper.progressHudProgress(hud, progress: Float(progress) / 100)
         }).continueWithBlock({ (task: BFTask!) -> AnyObject! in
             if (task.error != nil) {
@@ -46,12 +42,12 @@ class SelectImageHelper {
                 SelectImageHelper.successHudProgress(hud)
             }
             
-            cb(file: imageFile, error: task.error)
+            cb(file: imageFile!, error: task.error)
             
             return task
         })
         
-        return imageFile
+        return imageFile!
     }
     
     class func createHudProgress() -> JGProgressHUD {

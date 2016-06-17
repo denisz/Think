@@ -217,7 +217,7 @@ class MyQueryTableViewController: UIViewController {
         
         PFErrorCode.ErrorCacheMiss
         
-        query.findObjectsInBackgroundWithBlock { (foundObjects:[AnyObject]?, error: NSError?) in
+        query.findObjectsInBackgroundWithBlock { (foundObjects:[PFObject]?, error: NSError?) in
             
             if (!Parse.isLocalDatastoreEnabled()
                 && query.cachePolicy != PFCachePolicy.CacheOnly
@@ -230,20 +230,24 @@ class MyQueryTableViewController: UIViewController {
             
             if (error != nil) {
                 self.lastLoadCount = -1
-                self.refreshPaginationCell()
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.refreshPaginationCell()
+                    self.refreshLoadingView()
+                })
             } else {
                 self.currentPage = page
                 self.lastLoadCount = foundObjects!.count
                 
                 if clear {
-                    self.objects?.removeAllObjects()
+                    self.objects!.removeAllObjects()
                 }
                 
                 self.objectsWillAppend(foundObjects!)
                 source.trySetResult(foundObjects!)
                 
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { () -> Void in
                     self.tableView.reloadData()
+                    self.refreshLoadingView()
                 })
             }
             
@@ -251,8 +255,6 @@ class MyQueryTableViewController: UIViewController {
                 self.objectsDidLoad(error)
                 self.refreshControl?.endRefreshing()
             })
-            
-            source.setError(error)
         }
         
         return source.task
@@ -425,7 +427,7 @@ extension MyQueryTableViewController: UITableViewDataSource {
         BFTask(forCompletionOfAllTasks: allDeletionTasks as [AnyObject]).continueWithBlock { (task:BFTask!) -> AnyObject! in
             self.refreshControl?.enabled = true
             if (task.error != nil) {
-                self.handleDeletionError(task.error)
+                self.handleDeletionError(task.error!)
             }
             return nil
         }

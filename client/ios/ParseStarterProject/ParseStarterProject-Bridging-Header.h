@@ -10,7 +10,10 @@
 // If you are using Facebook, uncomment this line to get automatic import of the header inside your project.
 //#import <ParseFacebookUtils/PFFacebookUtils.h>
 
+#import <Parse/Parse.h>
+#import <ParseUI/ParseUI.h>
 #import <ParseFacebookUtilsV4/PFFacebookUtils.h>
+#import <ParseTwitterUtils/ParseTwitterUtils.h>
 
 #import <XLForm/XLForm.h>
 #import <VGParallaxHeader/UIScrollView+VGParallaxHeader.h>

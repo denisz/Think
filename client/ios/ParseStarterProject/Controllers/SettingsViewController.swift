@@ -54,7 +54,7 @@ class SettingsViewController: BaseFormViewController {
     }
     
     func setupSections() {
-//        self.setupSectionSocial()
+        self.setupSectionSocial()
         self.setupNotify()
 //        self.setupNewMessage()
         self.setupPrivacy()

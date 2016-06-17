@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'E2A9CCB2E70B5EA03F04C527'
+               BlueprintIdentifier = '90FE98E93795566EBA6052CF'
                BlueprintName = 'LGDrawer'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'LGDrawer.framework'>

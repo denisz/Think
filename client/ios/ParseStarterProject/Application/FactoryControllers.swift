@@ -81,11 +81,7 @@ class FactoryControllers {
     class func newPost() -> UIViewController {
         let controller = NewPostViewController()
         controller.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
-        if #available(iOS 8.0, *) {
-            controller.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
-        } else {
-            // Fallback on earlier versions
-        }
+        controller.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
         return controller
     }
     

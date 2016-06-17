@@ -206,11 +206,7 @@ extension ProfileViewController: ProfileHeaderViewDelegate {
     func profileView(view: ProfileHeaderView, didTapNewPost button: UIButton) {
         let controller = NewPostViewController()
         controller.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
-        if #available(iOS 8.0, *) {
-            controller.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
-        } else {
-            // Fallback on earlier versions
-        }
+        controller.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
         
         let navigation = BaseNavigationController(rootViewController: controller)
         

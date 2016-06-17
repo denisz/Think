@@ -174,7 +174,7 @@ class Post: PFObject, PFSubclassing {
     class func raisePost(post: PFObject) {
         let user = PFUser.currentUser()
         let postACL = PFACL(user: user!)
-        postACL.setPublicReadAccess(false)
+        postACL.publicReadAccess = false
         post.ACL = postACL
         post.setObject(kPostStatusDraft, forKey: kPostStatusKey)
         post.saveInBackground().continueWithBlock { (task: BFTask!) -> AnyObject! in
@@ -189,7 +189,7 @@ class Post: PFObject, PFSubclassing {
     class func publicPost(post: PFObject, var withSettings: [String: AnyObject]) -> BFTask {
         let user = PFUser.currentUser()
         let postACL = PFACL(user: user!)
-        postACL.setPublicReadAccess(true)
+        postACL.publicReadAccess = true
         post.ACL = postACL
         
         if let tags = withSettings[kPostTagsKey] as? [String] {

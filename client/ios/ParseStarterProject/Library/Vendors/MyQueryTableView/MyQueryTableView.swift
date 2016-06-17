@@ -193,7 +193,7 @@ class MyQueryTableView: UITableView {
         
         PFErrorCode.ErrorCacheMiss
         
-        query.findObjectsInBackgroundWithBlock { (foundObjects:[AnyObject]?, error: NSError?) in
+        query.findObjectsInBackgroundWithBlock { (foundObjects:[PFObject]?, error: NSError?) in
             
             if (!Parse.isLocalDatastoreEnabled()
                 && query.cachePolicy != PFCachePolicy.CacheOnly
@@ -207,6 +207,7 @@ class MyQueryTableView: UITableView {
             if (error != nil) {
                 self.lastLoadCount = -1
                 self.refreshPaginationCell()
+                source.setError(error!)
             } else {
                 self.currentPage = page
                 self.lastLoadCount = foundObjects!.count
@@ -222,7 +223,7 @@ class MyQueryTableView: UITableView {
             self.objectsDidLoad(error)
             self.refreshControl?.endRefreshing()
             
-            source.setError(error)
+            
         }
         
         return source.task
@@ -358,7 +359,7 @@ extension MyQueryTableView: UITableViewDataSource {
         BFTask(forCompletionOfAllTasks: allDeletionTasks as [AnyObject]).continueWithBlock { (task:BFTask!) -> AnyObject! in
             self.refreshControl?.enabled = true
             if (task.error != nil) {
-                self.handleDeletionError(task.error)
+                self.handleDeletionError(task.error!)
             }
             return nil
         }
